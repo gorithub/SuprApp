@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/profile/pages/profile.dart';
 import 'package:suprapp/app/routes/error_route.dart';
+import 'package:suprapp/app/routes/route_transition.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.spalshScreen}',
+    initialLocation: '/${AppRoute.profilePage}',
     routes: [
-      // GoRoute(
-      //   name: AppRoute.bottomNavBar,
-      //   path: '/${AppRoute.bottomNavBar}',
-      //   pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-      //     context: context,
-      //     state: state,
-      //     child: const CustomBottomNavBar(),
-      //   ),
-      // ),
+      GoRoute(
+        name: AppRoute.profilePage,
+        path: '/${AppRoute.profilePage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const ProfileScreen(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -32,12 +34,6 @@ class MyAppRouter {
 
 class AppRoute {
   static const String errorPage = 'error-page';
-  static const String spalshScreen = 'splash-page';
-  static const String bottomNavBar = 'bottom-nav-bar';
-
-  // auth
-  static const String loginPage = 'login-page';
-  static const String registerPage = 'register-page';
-
-  static const String recipeDetailPage = 'recipe-detail-page';
+  //!---- profile Section---- !//
+  static const String profilePage = 'profile';
 }
