@@ -42,6 +42,10 @@ dependencies:
   device_preview: ^1.2.0
   shared_preferences: ^2.5.3
   loader_overlay: ^4.0.1
+  connectivity_plus: ^6.1.4
+  intl_phone_field: ^3.2.0
+  country_picker: ^2.0.27
+  lottie: ^3.1.3
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +73,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/
+    - assets/video/
+    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

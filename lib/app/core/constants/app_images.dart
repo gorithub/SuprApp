@@ -86,9 +86,11 @@ class AppImages {
   static const String dol = 'assets/dol.png';
   static const String dol1 = 'assets/dol1.png';
   static const String image1 = 'assets/image1.png';
+  static const String appLogo = 'assets/app_logo.png';
 }
 
 class AppIcon {
+  static String appleIcon = 'assets/icons/apple_icon.svg';
   static String googleIcon = 'assets/icons/google_icon.svg';
   static const String calenderIcon = 'assets/icons/calender_icon.svg';
   static const String locationIcon = 'assets/icons/location_icon.svg';
@@ -140,4 +142,12 @@ class AppIcon {
 class AppNetworkImages {
   // static const String profileImage =
   //     "https://i.pinimg.com/736x/51/e0/d5/51e0d5aa27808ce689e3dd5a5cd7685a.jpg";
+}
+
+class AppVideos {
+  static const String splashVideo = 'assets/video/splash.mp4';
+}
+
+class AppLotties {
+  static const String bioMetricAnimationLottie = 'assets/lottie/scan.json';
 }
