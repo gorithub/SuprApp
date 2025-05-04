@@ -3,6 +3,8 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/core/theme/app_theme.dart';
+import 'package:suprapp/app/features/auth/provider/otp_provider.dart';
+import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,7 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // ChangeNotifierProvider(create: (_) => AddressProvider()),
+        ChangeNotifierProvider(
+          create: (_) => PhoneInputProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OTPProvider()..startTimer(),
+        ),
       ],
       child: GlobalLoaderOverlay(
         child: MaterialApp.router(

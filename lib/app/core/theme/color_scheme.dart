@@ -13,6 +13,4 @@ const ColorScheme colorSchemeLight = ColorScheme(
   onSurface: Colors.black,
   outline: Color(0xffE0E0E0),
   outlineVariant: Color(0xff000000),
-
 );
-
