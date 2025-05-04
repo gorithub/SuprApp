@@ -17,7 +17,7 @@ class AppColors {
   static const textGrey = Color(0xff565656);
   static const darkGrey = Color(0xff808080);
   static const darkTextGrey = Color(0xff5A5A5A);
-
+  static const colorGreen = Color(0xff6AFF05);
   static const greenishTextColor = Color(0xff249738);
   static const yelloeTextColor = Color(0xffFFC700);
   static const gradientYellowColorlight = Color(0xffFDDEA7);
@@ -39,5 +39,4 @@ class AppColors {
   // static const chatBubble = Color(0xffF5F9FF);
 
   static const blackGrey = Color(0xff242424);
-
 }
