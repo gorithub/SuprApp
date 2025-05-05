@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 
 class SelectCountryScreen extends StatefulWidget {
-  const SelectCountryScreen({Key? key}) : super(key: key);
+  const SelectCountryScreen({super.key});
 
   @override
   State<SelectCountryScreen> createState() => _SelectCountryScreenState();
@@ -9,8 +11,6 @@ class SelectCountryScreen extends StatefulWidget {
 
 class _SelectCountryScreenState extends State<SelectCountryScreen> {
   String selectedCountry = 'United States Of America';
-
-  // List of countries with their flags and names
   final List<Map<String, dynamic>> countries = [
     {'name': 'United States Of America', 'flag': 'assets/English.png'},
     {'name': 'United Kingdom of Saudia', 'flag': 'assets/Arabic.png'},
@@ -22,29 +22,12 @@ class _SelectCountryScreenState extends State<SelectCountryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Container(
-          margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: IconButton(
-            icon: const Icon(Icons.chevron_left, color: Color(0xff007438)),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
-        title: const Text(
-          'Select Country',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-        ),
+        leading: const CustomArrowBack(),
+        title: Text('Select Country',
+            style: textTheme(context)
+                .headlineMedium
+                ?.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -115,16 +98,14 @@ class _SelectCountryScreenState extends State<SelectCountryScreen> {
                 width: 20,
                 height: 20,
                 decoration: BoxDecoration(
-                  color:
-                      isSelected
-                          ? const Color(0xff007438)
-                          : Colors.grey.shade200,
+                  color: isSelected
+                      ? const Color(0xff007438)
+                      : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child:
-                    isSelected
-                        ? const Icon(Icons.check, size: 14, color: Colors.white)
-                        : null,
+                child: isSelected
+                    ? const Icon(Icons.check, size: 14, color: Colors.white)
+                    : null,
               ),
             ],
           ),

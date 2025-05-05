@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
+import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
+import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
+import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class AddBankAccountScreen extends StatefulWidget {
-  const AddBankAccountScreen({Key? key}) : super(key: key);
+  const AddBankAccountScreen({super.key});
 
   @override
   State<AddBankAccountScreen> createState() => _AddBankAccountScreenState();
@@ -31,45 +37,24 @@ class _AddBankAccountScreenState extends State<AddBankAccountScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bankProvider = Provider.of<BankProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Container(
-          margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: IconButton(
-            icon: const Icon(Icons.chevron_left, color: Color(0xff007438)),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
-        title: const Text(
-          'Add New Bank Account',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-        ),
+        leading: const CustomArrowBack(),
+        title: Text('Add New Bank Account',
+            style: textTheme(context)
+                .headlineMedium
+                ?.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Bank name field
-            const Text(
-              'Bank Name',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
-              ),
-            ),
+            Text('Bank Name',
+                style: textTheme(context)
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
@@ -77,7 +62,7 @@ class _AddBankAccountScreenState extends State<AddBankAccountScreen> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: DropdownButtonFormField<String>(
-                value: _selectedBank,
+                value: bankProvider.selectedBank,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
@@ -92,62 +77,38 @@ class _AddBankAccountScreenState extends State<AddBankAccountScreen> {
                   color: Colors.grey.shade400,
                 ),
                 onChanged: (value) {
-                  setState(() {
-                    _selectedBank = value;
-                  });
+                  bankProvider.setSelectedBank(value);
                 },
-                items:
-                    _banks.map((bank) {
-                      return DropdownMenuItem<String>(
-                        value: bank,
-                        child: Text(bank),
-                      );
-                    }).toList(),
+                items: _banks.map((bank) {
+                  return DropdownMenuItem<String>(
+                    value: bank,
+                    child: Text(bank),
+                  );
+                }).toList(),
               ),
             ),
             const SizedBox(height: 24),
 
             // Account number field
-            const Text(
-              'Account Number',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
-              ),
-            ),
+            Text('Account Number',
+                style: textTheme(context)
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: TextField(
-                controller: _accountNumberController,
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                  border: InputBorder.none,
-                  hintText: 'Enter account number',
-                  hintStyle: TextStyle(color: Colors.grey),
-                ),
-              ),
+            CustomTextFormField(
+              controller: _accountNumberController,
+              fillColor: colorScheme(context).onPrimary,
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              hint: "Enter Account number",
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
-
-            // Spacer to push button to bottom
             const Spacer(),
 
-            // Confirm button
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
+            CustomElevatedButton(
+                text: "CONFIRM",
                 onPressed: () {
-                  // Handle confirm action
                   if (_selectedBank != null &&
                       _accountNumberController.text.isNotEmpty) {
                     // Perform validation and submission
@@ -162,24 +123,7 @@ class _AddBankAccountScreenState extends State<AddBankAccountScreen> {
                       const SnackBar(content: Text('Please fill all fields')),
                     );
                   }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff007438),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  elevation: 0,
-                ),
-                child: const Text(
-                  'CONFIRM',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
+                }),
             const SizedBox(height: 16),
           ],
         ),
@@ -187,5 +131,3 @@ class _AddBankAccountScreenState extends State<AddBankAccountScreen> {
     );
   }
 }
-
-// Example usage in main.dart

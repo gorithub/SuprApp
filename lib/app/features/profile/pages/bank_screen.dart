@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
+import 'package:suprapp/app/routes/go_router.dart';
+import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
 class BankAccountScreen extends StatelessWidget {
   const BankAccountScreen({super.key});
@@ -6,35 +11,17 @@ class BankAccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Container(
-          margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: IconButton(
-            icon: const Icon(Icons.chevron_left, color: Color(0xff007438)),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
-        title: const Text(
-          'Bank Account',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-        ),
+        leading: const CustomArrowBack(),
+        title: Text('Bank Account',
+            style: textTheme(context)
+                .headlineMedium
+                ?.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Bank account card
             Container(
               decoration: BoxDecoration(
                 border: Border(
@@ -45,36 +32,20 @@ class BankAccountScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'PT. Bank Central Asia TBK',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
+                  Text('PT. Bank Central Asia TBK',
+                      style: textTheme(context).titleLarge),
                   const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Arief Wahdan Alfhat',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black87,
-                            ),
-                          ),
+                        children: [
+                          Text('Arief Wahdan Alfhat',
+                              style: textTheme(context).titleSmall),
                           SizedBox(height: 4),
-                          Text(
-                            '893462013',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black87,
-                            ),
-                          ),
+                          Text('893462013',
+                              style: textTheme(context).titleSmall),
                         ],
                       ),
                       Container(
@@ -87,7 +58,6 @@ class BankAccountScreen extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            // Handle delete action
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
@@ -97,11 +67,11 @@ class BankAccountScreen extends StatelessWidget {
                                 ),
                                 actions: [
                                   TextButton(
-                                    onPressed: () => Navigator.pop(context),
+                                    onPressed: () => context.pop(),
                                     child: const Text('Cancel'),
                                   ),
                                   TextButton(
-                                    onPressed: () => Navigator.pop(context),
+                                    onPressed: () => context.pop(),
                                     child: const Text(
                                       'Delete',
                                       style: TextStyle(color: Colors.red),
@@ -133,36 +103,12 @@ class BankAccountScreen extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Spacer to push the button to the bottom
             const Spacer(),
-
-            // Add new bank account button
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton.icon(
+            CustomElevatedButton(
+                text: "+ Add New Bank Account",
                 onPressed: () {
-                  // Handle add new bank account action
-                },
-                icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text(
-                  'Add New Bank Account',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff007438),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  elevation: 0,
-                ),
-              ),
-            ),
+                  context.pushNamed(AppRoute.addBankPage);
+                }),
             const SizedBox(height: 16),
           ],
         ),
@@ -170,5 +116,3 @@ class BankAccountScreen extends StatelessWidget {
     );
   }
 }
-
-// Example usage in main.dart

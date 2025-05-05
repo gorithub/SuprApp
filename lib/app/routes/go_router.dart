@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
+import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/change_password_screen.dart';
 import 'package:suprapp/app/features/profile/pages/contact_screen.dart';
@@ -9,6 +11,7 @@ import 'package:suprapp/app/features/profile/pages/invite_screen.dart';
 import 'package:suprapp/app/features/profile/pages/language_screen.dart';
 import 'package:suprapp/app/features/profile/pages/notification_screen.dart';
 import 'package:suprapp/app/features/profile/pages/profile.dart';
+import 'package:suprapp/app/features/profile/pages/select_country_screen.dart';
 import 'package:suprapp/app/features/profile/pages/settings_screen.dart';
 import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
 import 'package:suprapp/app/routes/error_route.dart';
@@ -157,6 +160,33 @@ class MyAppRouter {
           child: const BankAccountScreen(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.addBankPage,
+        path: '/${AppRoute.addBankPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const AddBankAccountScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.accountSettingPage,
+        path: '/${AppRoute.accountSettingPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const AccountSettingsScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.selectcCountryPage,
+        path: '/${AppRoute.selectcCountryPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const SelectCountryScreen(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -185,6 +215,9 @@ class AppRoute {
   static const String languagePage = 'language-screen';
   static const String deleteAccountPage = 'delete-account-screen';
   static const String bankpage = 'bank-screen';
+  static const String addBankPage = 'add-bank-screen';
+  static const String accountSettingPage = 'account-setting-screen';
+  static const String selectcCountryPage = 'select-country-screen';
 
   static const String splashScreen = 'splash-page';
   static const String bottomNavBar = 'bottom-nav-bar';
