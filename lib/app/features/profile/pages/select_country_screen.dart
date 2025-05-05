@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 
@@ -12,11 +14,11 @@ class SelectCountryScreen extends StatefulWidget {
 class _SelectCountryScreenState extends State<SelectCountryScreen> {
   String selectedCountry = 'United States Of America';
   final List<Map<String, dynamic>> countries = [
-    {'name': 'United States Of America', 'flag': 'assets/English.png'},
-    {'name': 'United Kingdom of Saudia', 'flag': 'assets/Arabic.png'},
-    {'name': 'French', 'flag': 'assets/French.png'},
-    {'name': 'Turkey', 'flag': 'assets/Turkish.png'},
-    {'name': 'Dutch', 'flag': 'assets/Dutch.png'},
+    {'name': 'United States Of America', 'flag': AppImages.english},
+    {'name': 'United Kingdom of Saudia', 'flag': AppImages.arabic},
+    {'name': 'French', 'flag': AppImages.french},
+    {'name': 'Turkey', 'flag': AppImages.turkish},
+    {'name': 'Dutch', 'flag': AppImages.dutch},
   ];
 
   @override
@@ -63,52 +65,29 @@ class _SelectCountryScreenState extends State<SelectCountryScreen> {
     bool isSelected, {
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(color: Colors.grey.shade200, width: 1),
+    return Card(
+      child: ListTile(
+        onTap: onTap,
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Image.asset(
+            flagAsset,
+            width: 28,
+            height: 20,
+            fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: Image.asset(
-                  flagAsset,
-                  width: 28,
-                  height: 20,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(width: 16),
-              Text(
-                countryName,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
-                  color: Colors.black87,
-                ),
-              ),
-              const Spacer(),
-              Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? const Color(0xff007438)
-                      : Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: isSelected
-                    ? const Icon(Icons.check, size: 14, color: Colors.white)
-                    : null,
-              ),
-            ],
+        title: Text(countryName, style: textTheme(context).titleSmall),
+        trailing: Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            color: isSelected ? AppColors.appGreen : AppColors.appGrey,
+            borderRadius: BorderRadius.circular(4),
           ),
+          child: isSelected
+              ? const Icon(Icons.check, size: 14, color: Colors.white)
+              : null,
         ),
       ),
     );

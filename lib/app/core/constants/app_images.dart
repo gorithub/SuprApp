@@ -91,6 +91,10 @@ class AppImages {
   static const String lorem1 = 'assets/images/lorem1.png';
   static const String lorem2 = 'assets/images/lorem2.png';
   static const String lorem3 = 'assets/images/lorem3.png';
+  static const String english = 'assets/images/English.png';
+  static const String arabic = 'assets/images/Arabic.png';
+  static const String french = 'assets/images/French.png';
+  static const String dutch = 'assets/images/Dutch.png';
 }
 
 class AppIcon {
