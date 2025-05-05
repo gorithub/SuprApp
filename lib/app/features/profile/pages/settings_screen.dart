@@ -25,7 +25,9 @@ class ProfileSettingsScreen extends StatelessWidget {
             Align(
                 alignment: Alignment.topCenter,
                 child: Text('Profile Settings',
-                    style: textTheme(context).headlineSmall)),
+                    style: textTheme(context)
+                        .headlineSmall
+                        ?.copyWith(fontWeight: FontWeight.bold))),
             const SizedBox(height: 10),
             ListView.builder(
               shrinkWrap: true,
