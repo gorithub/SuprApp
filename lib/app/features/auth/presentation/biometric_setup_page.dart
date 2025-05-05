@@ -42,75 +42,77 @@ class _BiometricSetupPageState extends State<BiometricSetupPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(13),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Enable secure login',
-              style: textTheme(context).headlineMedium?.copyWith(
-                  color: colorScheme(context).onSurface,
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Secure login provides increased security and faster login experiences',
-              style: textTheme(context).titleSmall?.copyWith(
-                  color: AppColors.darkTextGrey, fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: LottieBuilder.asset(
-                AppLotties.bioMetricAnimationLottie,
-                height: 250,
-                width: 250,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Enable secure login',
+                style: textTheme(context).headlineMedium?.copyWith(
+                    color: colorScheme(context).onSurface,
+                    fontWeight: FontWeight.w600),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            CustomElevatedButton(
-              text: 'Enable secure login',
-              onPressed: () {},
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () {
-                  context.pushNamed(AppRoute.homePage);
-                },
-                style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Secure login provides increased security and faster login experiences',
+                style: textTheme(context).titleSmall?.copyWith(
+                    color: AppColors.darkTextGrey, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: LottieBuilder.asset(
+                  AppLotties.bioMetricAnimationLottie,
+                  height: 250,
+                  width: 250,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomElevatedButton(
+                text: 'Enable secure login',
+                onPressed: () {},
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () {
+                    context.pushNamed(AppRoute.homePage);
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    side: const BorderSide(color: Colors.black),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  side: const BorderSide(color: Colors.black),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-                child: Text(
-                  "I\'ll do this later",
-                  style: textTheme(context).titleSmall?.copyWith(
-                        color: colorScheme(context).onSurface,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  child: Text(
+                    "I\'ll do this later",
+                    style: textTheme(context).titleSmall?.copyWith(
+                          color: colorScheme(context).onSurface,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Once this is setup, you\'ll need to use your device biometric to acess your Careem account and for other sensitive actions',
-              style: textTheme(context).titleSmall?.copyWith(
-                  color: AppColors.darkTextGrey, fontWeight: FontWeight.w500),
-            ),
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Once this is setup, you\'ll need to use your device biometric to acess your Careem account and for other sensitive actions',
+                style: textTheme(context).titleSmall?.copyWith(
+                    color: AppColors.darkTextGrey, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
         ),
       ),
     );

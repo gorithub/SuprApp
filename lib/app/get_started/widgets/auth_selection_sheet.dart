@@ -25,8 +25,8 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
     final double screenWidth = screenSize.width;
     final double buttonWidth = screenWidth > 600 ? 400 : screenWidth;
     return DraggableScrollableSheet(
-      initialChildSize: 0.35,
-      minChildSize: 0.35,
+      initialChildSize: 0.37,
+      minChildSize: 0.37,
       maxChildSize: 0.9,
       builder: (context, scrollController) {
         return Container(
