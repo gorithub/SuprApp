@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:suprapp/app/core/theme/color_scheme.dart';
 
 TextTheme get appTextTheme => const TextTheme(
       displayLarge: TextStyle(

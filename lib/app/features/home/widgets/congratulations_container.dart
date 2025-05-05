@@ -38,7 +38,7 @@ class CongratulationsContainer extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 35),
               child: Image.asset(
-                'assets/car_background.png',
+                'assets/images/car_background.png',
                 fit: BoxFit.fill,
               )),
           SizedBox(

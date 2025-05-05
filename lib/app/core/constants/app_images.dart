@@ -11,7 +11,7 @@ class AppImages {
   static const String pharmacy = 'assets/images/pharmacy.png';
   static const String electronics = 'assets/images/electronics.png';
   static const String superMarket = 'assets/images/superMarket.png';
-  static const String dailyProdcuts = 'assets/dailyProducts.png';
+  static const String dailyProdcuts = 'assets/images/dailyProducts.png';
   static const String petShops = 'assets/images/petShops.png';
   static const String specialityGrocery = 'assets/images/specialityGrocery.png';
   static const String moreShops = 'assets/images/moreShops.png';
@@ -87,6 +87,10 @@ class AppImages {
   static const String dol1 = 'assets/dol1.png';
   static const String image1 = 'assets/image1.png';
   static const String appLogo = 'assets/app_logo.png';
+  static const String invite = 'assets/images/invite.png';
+  static const String lorem1 = 'assets/images/lorem1.png';
+  static const String lorem2 = 'assets/images/lorem2.png';
+  static const String lorem3 = 'assets/images/lorem3.png';
 }
 
 class AppIcon {

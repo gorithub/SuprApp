@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
+import 'package:suprapp/app/features/profile/pages/change_password_screen.dart';
+import 'package:suprapp/app/features/profile/pages/contact_screen.dart';
+import 'package:suprapp/app/features/profile/pages/delete_account_screen.dart';
+import 'package:suprapp/app/features/profile/pages/help_center_screen.dart';
+import 'package:suprapp/app/features/profile/pages/invite_screen.dart';
+import 'package:suprapp/app/features/profile/pages/language_screen.dart';
+import 'package:suprapp/app/features/profile/pages/notification_screen.dart';
+import 'package:suprapp/app/features/profile/pages/profile.dart';
+import 'package:suprapp/app/features/profile/pages/settings_screen.dart';
+import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
+import 'package:suprapp/app/routes/error_route.dart';
+import 'package:suprapp/app/routes/route_transition.dart';
 import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
 import 'package:suprapp/app/features/auth/presentation/phone_auth_page.dart';
 import 'package:suprapp/app/features/auth/presentation/verify_phone_auth_page.dart';
@@ -19,7 +31,7 @@ class MyAppRouter {
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
           context: context,
           state: state,
-          child: SplashPage(),
+          child: const SplashPage(),
         ),
       ),
       GoRoute(
@@ -58,6 +70,104 @@ class MyAppRouter {
           child: const HomeScreen(),
         ),
       ),
+      GoRoute(
+          name: AppRoute.profilePage,
+          path: '/${AppRoute.profilePage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const ProfileScreen(),
+              )),
+      GoRoute(
+        name: AppRoute.helpcenter,
+        path: '/${AppRoute.helpcenter}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const HelpCenter(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.winRewardPage,
+        path: '/${AppRoute.winRewardPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const WinRewardScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.notificationpage,
+        path: '/${AppRoute.notificationpage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const NotificationSettingsScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.invitePage,
+        path: '/${AppRoute.invitePage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const InviteFriendsScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.settingPage,
+        path: '/${AppRoute.settingPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const ProfileSettingsScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.changePasswordPage,
+        path: '/${AppRoute.changePasswordPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const ChangePasswordScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.contactpage,
+        path: '/${AppRoute.contactpage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const ContactUsScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.languagePage,
+        path: '/${AppRoute.languagePage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const LanguageScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.deleteAccountPage,
+        path: '/${AppRoute.deleteAccountPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const DeleteAccountScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.bankpage,
+        path: '/${AppRoute.bankpage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const BankAccountScreen(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -74,6 +184,19 @@ class MyAppRouter {
 
 class AppRoute {
   static const String errorPage = 'error-page';
+  //!---- profile Section---- !//
+  static const String profilePage = 'profile';
+  static const String helpcenter = 'win-reward-screen';
+  static const String winRewardPage = 'help-center-screen';
+  static const String notificationpage = 'notification-screen';
+  static const String invitePage = 'invite-screen';
+  static const String settingPage = 'settings-screen';
+  static const String changePasswordPage = 'change-passorsd-screen';
+  static const String contactpage = 'contact-screen';
+  static const String languagePage = 'language-screen';
+  static const String deleteAccountPage = 'delete-account-screen';
+  static const String bankpage = 'bank-screen';
+
   static const String splashScreen = 'splash-page';
   static const String homePage = 'home-page';
 
