@@ -26,17 +26,12 @@ class AppColors {
   static const accentColor = Color(0xffF1C623);
   static const darkGreens = Color(0xff00342C);
 
-  // static const blackText = Color(0xff222222);
-  // static const greyText = Color(0xff2C3E50);
-  // static const lightblue = Color(0xff202244);
-  // static const darkblue = Color(0xff09093A);
-  // static const appPink = Color(0xffF83332);
-  // static const appRed = Color(0xffFF0303);
-  // static const appYellow = Color(0xffFFF2CC);
-  // static const appBlue = Color(0xff006EE9);
-  // static const lightBorder = Color(0xffE8F1FF);
-  // static const outlineSurface = Color(0xfffafafa);
-  // static const chatBubble = Color(0xffF5F9FF);
+  static const azure = Color(0xFF0192FF); // Azure used for highlights
+  static const aqua = Color(0xFF00FFF9);
+  static const brightGreen = Color(0xFF6AFF05);
+  static const yellowRose = Color(0xFFFFF000);
+  static const chromeYellow = Color(0xFFFFAA02);
+  static const carmineRed = Color(0xFFFF003A);
 
   static const blackGrey = Color(0xff242424);
 }

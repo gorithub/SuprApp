@@ -11,7 +11,7 @@ class AppImages {
   static const String pharmacy = 'assets/images/pharmacy.png';
   static const String electronics = 'assets/images/electronics.png';
   static const String superMarket = 'assets/images/superMarket.png';
-  static const String dailyProdcuts = 'assets/dailyProducts.png';
+  static const String dailyProdcuts = 'assets/images/dailyProducts.png';
   static const String petShops = 'assets/images/petShops.png';
   static const String specialityGrocery = 'assets/images/specialityGrocery.png';
   static const String moreShops = 'assets/images/moreShops.png';
