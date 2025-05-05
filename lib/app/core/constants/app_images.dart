@@ -72,7 +72,7 @@ class AppImages {
   static const String groupOrder = 'assets/images/group order.png';
   static const String russian = 'assets/images/russian.png';
   static const String sushi = 'assets/images/sushi.png';
-  static const String turkish = 'assets/images/turkish.png';
+  static const String turkish = 'assets/images/Turkish.png';
   static const String breakfast = 'assets/images/breakfast.png';
   static const String freeOffers = 'assets/images/free offers.png';
   static const String doneImage = 'assets/images/done_image.png';
