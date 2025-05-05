@@ -10,9 +10,13 @@ import 'package:suprapp/app/features/profile/pages/help_center_screen.dart';
 import 'package:suprapp/app/features/profile/pages/invite_screen.dart';
 import 'package:suprapp/app/features/profile/pages/language_screen.dart';
 import 'package:suprapp/app/features/profile/pages/notification_screen.dart';
+import 'package:suprapp/app/features/profile/pages/personal_info.dart';
 import 'package:suprapp/app/features/profile/pages/profile.dart';
 import 'package:suprapp/app/features/profile/pages/select_country_screen.dart';
 import 'package:suprapp/app/features/profile/pages/settings_screen.dart';
+import 'package:suprapp/app/features/profile/pages/update_email.dart';
+import 'package:suprapp/app/features/profile/pages/update_name.dart';
+import 'package:suprapp/app/features/profile/pages/update_phone_no.dart';
 import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
 import 'package:suprapp/app/routes/error_route.dart';
 import 'package:suprapp/app/routes/route_transition.dart';
@@ -20,8 +24,6 @@ import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart
 import 'package:suprapp/app/features/auth/presentation/phone_auth_page.dart';
 import 'package:suprapp/app/features/auth/presentation/verify_phone_auth_page.dart';
 import 'package:suprapp/app/features/home/home.dart';
-import 'package:suprapp/app/routes/error_route.dart';
-import 'package:suprapp/app/routes/route_transition.dart';
 import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
@@ -198,6 +200,42 @@ class MyAppRouter {
           child: const SelectCountryScreen(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.personalInfo,
+        path: '/${AppRoute.personalInfo}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const PersonalInfo(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.updateNamePage,
+        path: '/${AppRoute.updateNamePage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const UpdateName(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.updateemailPage,
+        path: '/${AppRoute.updateemailPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const UpdateEmai(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.updatePhonPage,
+        path: '/${AppRoute.updatePhonPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const UpdatePhoneNo(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -229,6 +267,10 @@ class AppRoute {
   static const String addBankPage = 'add-bank-screen';
   static const String accountSettingPage = 'account-setting-screen';
   static const String selectcCountryPage = 'select-country-screen';
+  static const String personalInfo = 'personal-info';
+  static const String updateNamePage = 'update-name';
+  static const String updateemailPage = 'update-email';
+  static const String updatePhonPage = 'update-phone-no';
 
   static const String splashScreen = 'splash-page';
   static const String homePage = 'home-page';
