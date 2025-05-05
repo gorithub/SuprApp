@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suprapp/app/features/profile/pages/profile.dart';
 
 class TopSheetWidget extends StatelessWidget {
   const TopSheetWidget({super.key});
@@ -81,11 +82,11 @@ class TopSheetWidget extends StatelessWidget {
                   Icons.person_outline,
                   'Profile',
                   () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => SettingsScreen(),
-                    //     ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileScreen(),
+                        ));
                   },
                 ),
               ],

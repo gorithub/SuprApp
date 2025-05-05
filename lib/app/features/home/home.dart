@@ -26,7 +26,10 @@ class HomeScreen extends StatelessWidget {
     ];
     final List<Map<String, String>> suggestionsItems = [
       {'imagePath': AppImages.dailyProdcuts, 'title': 'Daily Products'},
-      {'imagePath': "assets/fresh_vegetables.png", 'title': 'Fresh vegetables'},
+      {
+        'imagePath': "assets/images/fresh_vegetables.png",
+        'title': 'Fresh vegetables'
+      },
       {'imagePath': AppImages.dailyProdcuts, 'title': 'Fresh Fruits'},
       // Add more items as needed
     ];
@@ -35,7 +38,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             HomeHeader(),
-            // CategoriesGridview(items: items),
+            CategoriesGridview(items: items),
             HomeProductCategories(),
             SizedBox(height: 10),
             Align(
@@ -57,7 +60,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Image.asset(
-              'assets/taj_mehal.PNG',
+              'assets/images/taj_mehal.PNG',
               width: double.infinity,
               height: 100,
               fit: BoxFit.cover,

@@ -41,7 +41,7 @@ class SuprPlusPromoSection extends StatelessWidget {
                     ],
                   ),
                 ),
-                imagePath: 'assets/mobileee.PNG',
+                imagePath: 'assets/images/mobileee.PNG',
               ),
               const SizedBox(width: 12),
               _promoCard(
@@ -66,7 +66,7 @@ class SuprPlusPromoSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                imagePath: 'assets/pizzaheart.png',
+                imagePath: 'assets/images/pizzaheart.png',
               ),
             ],
           ),

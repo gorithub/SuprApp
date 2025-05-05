@@ -28,7 +28,7 @@ class HomeProductCategories extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                      image: AssetImage("assets/vr_background.jpg"),
+                      image: AssetImage("assets/images/vr_background.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),

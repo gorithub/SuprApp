@@ -37,7 +37,7 @@ class HomeHeader extends StatelessWidget {
               Row(
                 children: [
                   Image.asset(
-                    "assets/app_logo.png",
+                    'assets/images/app_logo.png',
                     height: 30,
                     width: 70,
                   ),
