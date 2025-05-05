@@ -40,7 +40,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   subtitle: "+914567893 ",
                   onTap: () {},
                 ),
-                _buildSettingItem('Cards and accounts', onTap: () {}),
+                _buildSettingItem('Cards and accounts', onTap: () {
+                  context.pushNamed(AppRoute.bankpage);
+                }),
                 _buildSettingItem('Saved addresses', onTap: () {}),
                 _buildSettingItem('Notifications', onTap: () {
                   context.pushNamed(AppRoute.notificationpage);
@@ -95,12 +97,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSettingItem(
                   'Language',
                   subtitle: 'English',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.languagePage);
+                  },
                 ),
                 _buildSettingItem(
                   'Country',
                   subtitle: 'United States of America',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.selectcCountryPage);
+                  },
                 ),
                 _buildSettingItem(
                   'Settings',
@@ -111,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSettingItem(
                   'Account Setting',
                   onTap: () {
-                    context.pushNamed(AppRoute.bankpage);
+                    context.pushNamed(AppRoute.accountSettingPage);
                   },
                 ),
               ]),
