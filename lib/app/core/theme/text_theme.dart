@@ -1,50 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextTheme get appTextTheme => TextTheme(
-      displayLarge: GoogleFonts.poppins(
+TextTheme get appTextTheme => const TextTheme(
+      displayLarge: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 26.0,
       ),
-      displayMedium: GoogleFonts.poppins(
+      displayMedium: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 24.0,
       ),
-      displaySmall: GoogleFonts.poppins(
+      displaySmall: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 23.0,
       ),
-      headlineLarge: GoogleFonts.poppins(
+      headlineLarge: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 22.0,
       ),
-      headlineMedium: GoogleFonts.poppins(
+      headlineMedium: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 21.0,
       ),
-      headlineSmall: GoogleFonts.poppins(
+      headlineSmall: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 20.0,
       ),
-      titleLarge: GoogleFonts.poppins(
+      titleLarge: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 18.0,
       ),
-      titleMedium: GoogleFonts.poppins(
+      titleMedium: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 16.0,
       ),
-      titleSmall: GoogleFonts.poppins(
+      titleSmall: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 15.0,
       ),
-      bodyLarge: GoogleFonts.poppins(
+      bodyLarge: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 14.0,
       ),
-      bodyMedium: GoogleFonts.poppins(
+      bodyMedium: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 13.0,
       ),
-      bodySmall: GoogleFonts.poppins(
+      bodySmall: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 12.0,
       ),
-      labelLarge: GoogleFonts.poppins(
+      labelLarge: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 11.0,
       ),
-      labelMedium: GoogleFonts.poppins(
+      labelMedium: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 10.0,
       ),
-      labelSmall: GoogleFonts.poppins(
+      labelSmall: TextStyle(
+        fontFamily: 'ProximaNovaThin',
         fontSize: 6.0,
       ),
     );

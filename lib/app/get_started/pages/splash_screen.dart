@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unnecessary_const
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -17,17 +17,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   late VideoPlayerController _controller;
 
-  void _openSelectAddressSheet() async {
-    await Future.delayed(const Duration(seconds: 2));
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => const AuthSelectionSheet(),
-    );
-  }
-
   @override
   void initState() {
     super.initState();
@@ -39,14 +28,11 @@ class _SplashPageState extends State<SplashPage> {
     _controller = VideoPlayerController.asset(AppVideos.splashVideo);
     _controller.initialize().then((_) {
       _controller.setLooping(true);
-      Timer(Duration(milliseconds: 100), () {
+      Timer(const Duration(milliseconds: 100), () {
         setState(() {
           _controller.play();
         });
       });
-    });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _openSelectAddressSheet();
     });
   }
 
@@ -68,6 +54,10 @@ class _SplashPageState extends State<SplashPage> {
         child: Stack(
           children: <Widget>[
             _getVideoBackground(),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: const AuthSelectionSheet(),
+            ),
           ],
         ),
       ),
