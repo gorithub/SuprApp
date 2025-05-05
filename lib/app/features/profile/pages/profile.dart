@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -39,7 +42,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 _buildSettingItem('Cards and accounts', onTap: () {}),
                 _buildSettingItem('Saved addresses', onTap: () {}),
-                _buildSettingItem('Notifications', onTap: () {}),
+                _buildSettingItem('Notifications', onTap: () {
+                  context.pushNamed(AppRoute.notificationpage);
+                }),
                 _buildSettingItem('Manage Business profile', onTap: () {}),
               ]),
               const SizedBox(height: 24),
@@ -52,17 +57,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       vertical: 2,
                     ),
                     decoration: BoxDecoration(
-                      color: Color(0xff018D14),
+                      color: colorScheme(context).primary,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Text(
-                      'S+',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: Text('S+',
+                        style: textTheme(context)
+                            .bodySmall
+                            ?.copyWith(color: colorScheme(context).onPrimary)),
                   ),
                   subtitle: 'See the benefits',
                   onTap: () {},
@@ -72,15 +73,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               _buildSection('Support', [
                 _buildSettingItem(
                   'Help Center',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.helpcenter);
+                  },
                 ),
                 _buildSettingItem(
                   'Invite Friends',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.invitePage);
+                  },
                 ),
                 _buildSettingItem(
                   'Win Rewards',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.winRewardPage);
+                  },
                 ),
               ]),
               const SizedBox(height: 24),
@@ -97,11 +104,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 _buildSettingItem(
                   'Settings',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.settingPage);
+                  },
                 ),
                 _buildSettingItem(
                   'Account Setting',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.bankpage);
+                  },
                 ),
               ]),
               const SizedBox(height: 16),
@@ -131,7 +142,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: textTheme(context)
+              .titleLarge
+              ?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         ...items,
@@ -149,13 +162,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
       title: Text(
         title,
-        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+        style: textTheme(context)
+            .titleMedium
+            ?.copyWith(fontWeight: FontWeight.w500),
       ),
       subtitle: subtitle != null
-          ? Text(
-              subtitle,
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
-            )
+          ? Text(subtitle,
+              style: textTheme(context).bodyMedium?.copyWith(
+                  color: colorScheme(context).onSurface.withOpacity(0.3)))
           : null,
       leading: leading,
       trailing: const Icon(Icons.chevron_right, color: Colors.black54),
@@ -166,8 +180,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildSuprPlusCard() {
     return Container(
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF018D14), Color(0xFF002706)],
+        gradient: LinearGradient(
+          colors: [
+            colorScheme(context).primary,
+            colorScheme(context).onSurface.withOpacity(0.85)
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -183,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Text('Supr+',
                     style: textTheme(context).titleLarge?.copyWith(
-                        color: colorScheme(context).primary,
+                        color: AppColors.colorGreen,
                         fontWeight: FontWeight.bold)),
                 Container(
                   padding: const EdgeInsets.symmetric(
@@ -191,44 +208,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: colorScheme(context).onPrimary.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Text(
-                    'Tap for instant help',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  child: Text('Tap for instant help',
+                      style: textTheme(context)
+                          .bodySmall
+                          ?.copyWith(color: colorScheme(context).onPrimary)),
                 ),
               ],
             ),
             const SizedBox(height: 6),
-            const Text(
-              'Get more with Supr',
-              style: TextStyle(color: Colors.white, fontSize: 14),
-            ),
+            Text('Get more with Supr',
+                style: textTheme(context)
+                    .bodyMedium
+                    ?.copyWith(color: colorScheme(context).onPrimary)),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'See the benefits',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(height: 4),
+                  children: [
+                    Text('See the benefits',
+                        style: textTheme(context).titleSmall?.copyWith(
+                            color: colorScheme(context).onPrimary,
+                            fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 4),
                     Text(
                       'Save ₹1000+ per month\nStart Supr Plus Now',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      style: textTheme(context)
+                          .bodySmall
+                          ?.copyWith(color: colorScheme(context).onPrimary),
                     ),
                   ],
                 ),
@@ -238,16 +249,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xff00241E),
+                    color: colorScheme(context).onSurface.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Text(
-                    'See the Benefits',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: Text('See the Benefits',
+                      style: textTheme(context).bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: colorScheme(context).onPrimary)),
                 ),
               ],
             ),

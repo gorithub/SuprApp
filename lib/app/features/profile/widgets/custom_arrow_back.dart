@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class CustomArrowBack extends StatelessWidget {
@@ -21,3 +22,15 @@ class CustomArrowBack extends StatelessWidget {
     );
   }
 }
+
+List<String> mylist = [
+  "Push Notifications",
+  "Notifications Sound",
+  "Wallet Updates",
+  "Promotion"
+];
+List<String> imageList = [
+  AppImages.lorem1,
+  AppImages.lorem2,
+  AppImages.lorem3,
+];
