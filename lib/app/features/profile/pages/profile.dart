@@ -38,7 +38,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSettingItem(
                   'Personal Information',
                   subtitle: "+914567893 ",
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.personalInfo);
+                  },
                 ),
                 _buildSettingItem('Cards and accounts', onTap: () {
                   context.pushNamed(AppRoute.bankpage);
