@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class TopPicksSection extends StatelessWidget {

@@ -15,7 +15,7 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(35)),
         gradient: LinearGradient(
           colors: [
@@ -27,7 +27,7 @@ class HomeHeader extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +41,7 @@ class HomeHeader extends StatelessWidget {
                     height: 30,
                     width: 70,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -57,7 +57,7 @@ class HomeHeader extends StatelessWidget {
                     child: CustomElevatedButton(
                       borderRadius: 30,
                       buttonColor: colorScheme(context).secondary,
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       width: 70,
                       height: 30,
                       onPressed: () {
@@ -74,7 +74,7 @@ class HomeHeader extends StatelessWidget {
                           ),
                     ),
                   ),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -109,20 +109,20 @@ class HomeHeader extends StatelessWidget {
                                 begin: const Offset(0, -1),
                                 end: Offset.zero,
                               ).animate(animation),
-                              child: Align(
+                              child: const Align(
                                 alignment: Alignment.topCenter,
-                                child: const TopSheetWidget(),
+                                child: TopSheetWidget(),
                               ),
                             );
                           },
                         );
                       },
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Text(
@@ -132,37 +132,40 @@ class HomeHeader extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 25),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              TextField(
-                controller: searchController,
-                style:
-                    GoogleFonts.poppins(fontSize: 13, color: Color(0xff000000)),
-                decoration: InputDecoration(
-                  hintText: 'Search what you need',
-                  hintStyle: GoogleFonts.poppins(
-                      fontSize: 13, color: Color(0xff000000)),
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 7),
+                child: TextField(
+                  controller: searchController,
+                  style: GoogleFonts.poppins(
+                      fontSize: 13, color: const Color(0xff000000)),
+                  decoration: InputDecoration(
+                    hintText: 'Search what you need',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 13, color: const Color(0xff000000)),
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: const BorderSide(color: Colors.green),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
                   ),
-                  fillColor: Colors.white,
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.green),
-                  ),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -177,14 +180,14 @@ class HomeHeader extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 color: colorScheme(context).onSurface,
                               )),
-                      Text('0 INR',
+                      Text('245 INR',
                           style: textTheme(context).bodySmall!.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: colorScheme(context).onSurface,
                               )),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Container(
@@ -192,7 +195,7 @@ class HomeHeader extends StatelessWidget {
                     height: 30,
                     color: colorScheme(context).onSurface,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Column(
@@ -203,7 +206,7 @@ class HomeHeader extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 color: colorScheme(context).onSurface,
                               )),
-                      Text('0',
+                      Text('233',
                           style: textTheme(context).bodySmall!.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: colorScheme(context).onSurface,
@@ -212,7 +215,7 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -220,7 +223,7 @@ class HomeHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(AppIcon.locationIcon),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text('Deliver to Delhi Ncr,1100',
@@ -229,6 +232,9 @@ class HomeHeader extends StatelessWidget {
                             color: colorScheme(context).onSurface,
                           )),
                 ],
+              ),
+              const SizedBox(
+                height: 15,
               ),
             ],
           ),

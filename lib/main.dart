@@ -5,6 +5,6 @@ import 'package:suprapp/app/state/app.dart';
 
 void main() {
   runApp(
-    DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()),
+    DevicePreview(enabled: !kReleaseMode, builder: (context) => const MyApp()),
   );
 }

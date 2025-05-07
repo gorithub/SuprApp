@@ -35,7 +35,7 @@ class ItemGridTileLargeImage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: height * 0.7,
+              height: height * 0.65,
               width: width * 0.8,
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(imagePath, fit: BoxFit.cover),
