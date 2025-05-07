@@ -28,7 +28,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.splashScreen}',
+    initialLocation: '/${AppRoute.homePage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -271,10 +271,8 @@ class AppRoute {
   static const String updateNamePage = 'update-name';
   static const String updateemailPage = 'update-email';
   static const String updatePhonPage = 'update-phone-no';
-
   static const String splashScreen = 'splash-page';
   static const String homePage = 'home-page';
-
   // auth
   static const String phoneAuthPage = 'phone-auth-page';
   static const String verifyPhoneAuthPage = 'verify-phone-auth-page';
