@@ -52,10 +52,13 @@ class CongratulationsContainer extends StatelessWidget {
               color: const Color(0xff000000),
             ),
           ),
-          const SizedBox(height: 30),
-          Wrap(
-            spacing: 16,
-            runSpacing: 16,
+          const SizedBox(height: 15),
+          GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               _buildBox('Fashion', 'assets/images/fashion.png'),
               _buildBox('Food\nDelivery', 'assets/images/foodDelievry.png'),
@@ -79,8 +82,7 @@ class CongratulationsContainer extends StatelessWidget {
               ],
             ),
             child: TextButton(
-              onPressed: () {
-              },
+              onPressed: () {},
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 shape: RoundedRectangleBorder(
@@ -120,7 +122,7 @@ class CongratulationsContainer extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 140 + 3, 
+          width: 170 + 3,
           height: 140 + 3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
@@ -135,7 +137,7 @@ class CongratulationsContainer extends StatelessWidget {
           ),
         ),
         Container(
-          width: 140,
+          width: 170,
           height: 140,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
