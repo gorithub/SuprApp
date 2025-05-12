@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             HomeHeader(),
             CategoriesGridview(items: items),
-            const HomeProductCategories(),
+            HomeProductCategories(),
             const SizedBox(height: 10),
             Align(
               alignment: Alignment.centerLeft,

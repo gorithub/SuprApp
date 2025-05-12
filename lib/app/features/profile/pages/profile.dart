@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -17,9 +16,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: colorScheme(context).onPrimary,
-          automaticallyImplyLeading: false,
-          leading: const CustomArrowBack()),
+        backgroundColor: colorScheme(context).onPrimary,
+        surfaceTintColor: colorScheme(context).onPrimary,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: InkWell(
+            onTap: () {
+              context.pop();
+            },
+            child: Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.appGrey),
+                  borderRadius: BorderRadius.circular(7)),
+              child: const Icon(
+                Icons.arrow_back,
+                color: AppColors.darkGrey,
+                size: 20,
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -36,20 +55,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               _buildSection('Your account', [
                 _buildSettingItem(
+                  leading: Icon(Icons.person_outline_outlined),
                   'Personal Information',
                   subtitle: "+914567893 ",
                   onTap: () {
                     context.pushNamed(AppRoute.personalInfo);
                   },
                 ),
-                _buildSettingItem('Cards and accounts', onTap: () {
+                _buildSettingItem('Cards and accounts',
+                    leading: Icon(Icons.credit_card_outlined), onTap: () {
                   context.pushNamed(AppRoute.bankpage);
                 }),
-                _buildSettingItem('Saved addresses', onTap: () {}),
-                _buildSettingItem('Notifications', onTap: () {
+                _buildSettingItem('Saved addresses',
+                    leading: Icon(Icons.home), onTap: () {}),
+                _buildSettingItem('Notifications',
+                    leading: Icon(Icons.notifications_none_outlined),
+                    onTap: () {
                   context.pushNamed(AppRoute.notificationpage);
                 }),
-                _buildSettingItem('Manage Business profile', onTap: () {}),
+                _buildSettingItem('Manage Business profile',
+                    leading: Icon(Icons.add_business_outlined), onTap: () {}),
               ]),
               const SizedBox(height: 24),
               _buildSection('Benefits', [
@@ -64,10 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: colorScheme(context).primary,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Text('S+',
-                        style: textTheme(context)
-                            .bodySmall
-                            ?.copyWith(color: colorScheme(context).onPrimary)),
+                    child: Text(
+                      'S+',
+                      style: textTheme(context).bodySmall?.copyWith(
+                          color: colorScheme(context).onPrimary,
+                          fontWeight: FontWeight.w800),
+                    ),
                   ),
                   subtitle: 'See the benefits',
                   onTap: () {},
@@ -76,18 +103,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               _buildSection('Support', [
                 _buildSettingItem(
+                  leading: Icon(Icons.headphones_outlined),
                   'Help Center',
                   onTap: () {
                     context.pushNamed(AppRoute.helpcenter);
                   },
                 ),
                 _buildSettingItem(
+                  leading: Icon(Icons.person_add_alt),
                   'Invite Friends',
                   onTap: () {
                     context.pushNamed(AppRoute.invitePage);
                   },
                 ),
                 _buildSettingItem(
+                  leading: Icon(Icons.star_border_sharp),
                   'Win Rewards',
                   onTap: () {
                     context.pushNamed(AppRoute.winRewardPage);
@@ -97,6 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               _buildSection('Preferences', [
                 _buildSettingItem(
+                  leading: Icon(Icons.language_outlined),
                   'Language',
                   subtitle: 'English',
                   onTap: () {
@@ -104,6 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
                 _buildSettingItem(
+                  leading: Icon(Icons.flag_outlined),
                   'Country',
                   subtitle: 'United States of America',
                   onTap: () {
@@ -111,32 +143,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
                 _buildSettingItem(
+                  leading: Icon(Icons.settings),
                   'Settings',
                   onTap: () {
                     context.pushNamed(AppRoute.settingPage);
                   },
                 ),
                 _buildSettingItem(
+                  leading: Icon(Icons.settings_outlined),
                   'Account Setting',
                   onTap: () {
                     context.pushNamed(AppRoute.accountSettingPage);
                   },
                 ),
               ]),
-              const SizedBox(height: 16),
               Center(
                 child: TextButton(
                   onPressed: () {},
-                  child: const Text(
-                    'Terms And Conditions',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: Text(
+                    'Terms and Conditions',
+                    style: textTheme(context).titleSmall!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: colorScheme(context).onSurface.withOpacity(0.5)),
                   ),
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 50),
             ],
           ),
         ),
@@ -151,8 +183,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Text(
           title,
           style: textTheme(context)
-              .titleLarge
-              ?.copyWith(fontWeight: FontWeight.bold),
+              .headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w800),
         ),
         const SizedBox(height: 8),
         ...items,
@@ -177,7 +209,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       subtitle: subtitle != null
           ? Text(subtitle,
               style: textTheme(context).bodyMedium?.copyWith(
-                  color: colorScheme(context).onSurface.withOpacity(0.3)))
+                  color: colorScheme(context).onSurface.withOpacity(0.6)))
           : null,
       leading: leading,
       trailing: const Icon(Icons.chevron_right, color: Colors.black54),
@@ -191,7 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         gradient: LinearGradient(
           colors: [
             colorScheme(context).primary,
-            colorScheme(context).onSurface.withOpacity(0.85)
+            colorScheme(context).onSurface.withOpacity(0.8)
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -206,10 +238,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Supr+',
-                    style: textTheme(context).titleLarge?.copyWith(
-                        color: AppColors.colorGreen,
-                        fontWeight: FontWeight.bold)),
+                Text(
+                  'Supr+',
+                  style: textTheme(context).titleLarge?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 27),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
