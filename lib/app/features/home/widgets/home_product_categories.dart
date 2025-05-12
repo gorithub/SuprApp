@@ -1,8 +1,27 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class HomeProductCategories extends StatelessWidget {
-  const HomeProductCategories({super.key});
+  HomeProductCategories({super.key});
+
+  final List<Map<String, String>> sliderItems = [
+    {
+      'image':
+          'https://tapcom-live.ams3.cdn.digitaloceanspaces.com/media/cache/f0/a0/f0a0e2c7269e2c92eb270c41b967da47.jpg',
+      'title': 'Shop Healthy Food',
+    },
+    {
+      'image':
+          'https://www.macopkg.com/wp-content/uploads/2023/02/supermarket-aisle-1536x1152.jpg',
+      'title': 'shop Groceries',
+    },
+    {
+      'image':
+          'https://i.pinimg.com/736x/69/e1/d8/69e1d85f37191bcfd655c9892dcf11f4.jpg',
+      'title': 'shop Electronics',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +39,15 @@ class HomeProductCategories extends StatelessWidget {
           ),
           SizedBox(
             height: 200,
-            child: PageView.builder(
-              itemBuilder: (context, index) {
+            child: CarouselSlider(
+              items: sliderItems.map((item) {
                 return Container(
-                  width: 250,
+                  width: 400,
                   margin: EdgeInsets.symmetric(vertical: 16, horizontal: 4),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                      image: AssetImage("assets/images/vr_background.jpg"),
+                      image: NetworkImage(item['image']!),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -68,9 +87,9 @@ class HomeProductCategories extends StatelessWidget {
                                 Colors.transparent,
                                 Colors.transparent,
                                 colorScheme(context).secondary.withOpacity(
-                                    0.1), // Lower opacity for smoother fade
+                                    0.2), // Lower opacity for smoother fade
                                 colorScheme(context).secondary.withOpacity(
-                                    0.3), // Lower opacity for smoother fade
+                                    0.8), // Lower opacity for smoother fade
                               ],
                             ),
                           ),
@@ -78,19 +97,37 @@ class HomeProductCategories extends StatelessWidget {
                       ),
                       // Centered Text on top of the image
                       Positioned(
-                        bottom: 15,
+                        bottom: 7,
                         left: 20,
                         child: Text(
-                          'Essential for Gaming',
+                          item['title']!,
                           style: textTheme(context).titleMedium?.copyWith(
-                              color: colorScheme(context).onSecondary,
-                              fontWeight: FontWeight.w600),
+                              color: colorScheme(context).onSurface,
+                              fontWeight: FontWeight.w800),
                         ),
                       ),
                     ],
                   ),
                 );
-              },
+              }).toList(),
+              options: CarouselOptions(
+                height: 200,
+                aspectRatio: 14 / 9,
+                viewportFraction: 0.9,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 2),
+                autoPlayAnimationDuration: Duration(milliseconds: 600),
+                autoPlayCurve: Curves.linear,
+                enlargeCenterPage: true,
+                enlargeFactor: 0.3,
+                onPageChanged: (index, reason) {
+                  print(index);
+                },
+                scrollDirection: Axis.horizontal,
+              ),
             ),
           ),
         ],

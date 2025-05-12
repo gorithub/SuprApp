@@ -11,17 +11,22 @@ class CongratulationsContainer extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1), // soft black shadow
-            offset: const Offset(0, 4), // only bottom side
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 4),
             blurRadius: 6,
             spreadRadius: 1,
           ),
         ],
         gradient: LinearGradient(
           colors: [
-            Color(0xFFFFF3D9),
-            Color(0xFFD0F4C4).withOpacity(0.8),
+            // const Color(0xFFFFF3D9),
+            // const Color(0xFFD0F4C4).withOpacity(0.8),
+            // Colors.white,
+            const Color(0xFFFFF3D9),
+
+            const Color(0xFFFFF000).withOpacity(0.8),
           ],
+          stops: [0.3, 1.4],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -33,23 +38,15 @@ class CongratulationsContainer extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-              height: 80,
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 35),
-              child: Image.asset(
-                'assets/images/car_background.png',
-                fit: BoxFit.fill,
-              )),
-          SizedBox(
-            height: 15,
+          const SizedBox(
+            height: 60,
           ),
           Text(
             'Congratulations!',
             style: GoogleFonts.poppins(
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: Color(0xff000000),
+              color: const Color(0xff000000),
             ),
           ),
           const SizedBox(height: 8),
@@ -57,13 +54,16 @@ class CongratulationsContainer extends StatelessWidget {
             'Exclusive discounts just for you',
             style: GoogleFonts.poppins(
               fontSize: 16,
-              color: Color(0xff000000),
+              color: const Color(0xff000000),
             ),
           ),
-          const SizedBox(height: 30),
-          Wrap(
-            spacing: 16,
-            runSpacing: 16,
+          const SizedBox(height: 15),
+          GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               _buildBox('Fashion', 'assets/images/fashion.png'),
               _buildBox('Food\nDelivery', 'assets/images/foodDelievry.png'),
@@ -75,7 +75,7 @@ class CongratulationsContainer extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 50,
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(14),
@@ -87,10 +87,7 @@ class CongratulationsContainer extends StatelessWidget {
               ],
             ),
             child: TextButton(
-              onPressed: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => ComingSoonPage()));
-              },
+              onPressed: () {},
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 shape: RoundedRectangleBorder(
@@ -103,12 +100,12 @@ class CongratulationsContainer extends StatelessWidget {
                   Text(
                     'View all Supr Plus benefits',
                     style: GoogleFonts.poppins(
-                      color: Color(0xff393939),
+                      color: const Color(0xff393939),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward,
                     color: Colors.black87,
                     size: 30,
@@ -117,7 +114,7 @@ class CongratulationsContainer extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
         ],
@@ -129,13 +126,12 @@ class CongratulationsContainer extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Outer container with gradient border
         Container(
-          width: 140 + 3, // Add padding size for border thickness
-          height: 140 + 3, // Add padding size for border thickness
+          width: 170 + 3,
+          height: 140 + 3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
                 Color(0xFFFFDD00),
                 Color(0xFF998500),
@@ -146,7 +142,7 @@ class CongratulationsContainer extends StatelessWidget {
           ),
         ),
         Container(
-          width: 140,
+          width: 170,
           height: 140,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(

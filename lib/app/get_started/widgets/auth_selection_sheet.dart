@@ -23,9 +23,6 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    final Size screenSize = MediaQuery.of(context).size;
-    final double screenWidth = screenSize.width;
-    final double buttonWidth = screenWidth > 600 ? 400 : screenWidth;
     return DraggableScrollableSheet(
       initialChildSize: 0.37,
       minChildSize: 0.37,
@@ -43,7 +40,7 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
@@ -82,7 +79,7 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Container(
@@ -106,6 +103,19 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
                   ),
                 ],
               ),
+              const Spacer(),
+              Center(
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Terms and Conditions',
+                    style: textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: colorScheme.onSurface.withOpacity(0.5)),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
             ],
           ),
         );

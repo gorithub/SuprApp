@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
             HomeHeader(),
             CategoriesGridview(items: items),
             HomeProductCategories(),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
@@ -50,26 +50,46 @@ class HomeScreen extends StatelessWidget {
                   style: textTheme(
                     context,
                   ).headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold, color: Color(0xff0A0C0B)),
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xff0A0C0B)),
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             SuggestionTile(
               suggestionsItems: suggestionsItems,
             ),
-            SizedBox(height: 20),
-            Image.asset(
-              'assets/images/taj_mehal.PNG',
-              width: double.infinity,
-              height: 100,
-              fit: BoxFit.cover,
+            const SizedBox(height: 20),
+            Stack(
+              children: [
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/taj_mehal.PNG',
+                      width: double.infinity,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                    const CongratulationsContainer(),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 80),
+                  child: Container(
+                      height: 80,
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 35),
+                      child: Image.asset(
+                        'assets/images/car_background.png',
+                        fit: BoxFit.fill,
+                      )),
+                ),
+              ],
             ),
-            CongratulationsContainer(),
-            SizedBox(height: 19),
-            TopPicksSection(),
-            TopOffersSection(),
-            SuprPlusPromoSection(),
+            const SizedBox(height: 19),
+            const TopPicksSection(),
+            const TopOffersSection(),
+            const SuprPlusPromoSection(),
           ],
         ),
       ),

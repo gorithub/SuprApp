@@ -20,6 +20,15 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
   final List<TextEditingController> _controllers =
       List.generate(4, (_) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
+  void initState() {
+    super.initState();
+
+    for (var controller in _controllers) {
+      controller.addListener(() {
+        setState(() {}); // Triggers rebuild on text change
+      });
+    }
+  }
 
   void _handleChange(BuildContext context, String value, int index) {
     final provider = Provider.of<OTPProvider>(context, listen: false);
@@ -35,6 +44,8 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<OTPProvider>(context);
+    final bool isOtpEmpty =
+        _controllers.any((controller) => controller.text.isEmpty);
 
     return Scaffold(
       appBar: AppBar(
@@ -58,9 +69,31 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
             ),
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                context.pushNamed(AppRoute.helpcenter);
+              },
+              child: Container(
+                height: 50,
+                width: 40,
+                decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.appGrey),
+                    borderRadius: BorderRadius.circular(7)),
+                child: const Icon(
+                  Icons.headphones,
+                  color: AppColors.darkGrey,
+                  size: 20,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
-        height: 90,
+        height: 130,
         width: double.infinity,
         decoration: BoxDecoration(
           boxShadow: [
@@ -81,28 +114,36 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
               height: 50,
               width: 300,
               text: 'Continue',
+              buttonColor: isOtpEmpty
+                  ? colorScheme(context).outline
+                  : colorScheme(context).primary,
+              textStyle: textTheme(context).titleSmall?.copyWith(
+                    color: isOtpEmpty ? Colors.black38 : null,
+                    fontWeight: FontWeight.w800,
+                  ),
               onPressed: () {
-                bool isOtpEmpty =
+                final isOtpEmptyNow =
                     _controllers.any((controller) => controller.text.isEmpty);
-
-                if (isOtpEmpty) {
+                if (isOtpEmptyNow) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text("Please enter OTP"),
+                      content: const Text("Please enter phone number"),
                       backgroundColor: colorScheme(context).error,
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
                   return;
                 }
-                context.pushNamed(AppRoute.bioMetricSetupPage);
+
+                context.pushNamed(AppRoute.homePage);
               },
             ),
+            const SizedBox(height: 50)
           ],
         )),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(13),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,19 +152,15 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
               'Verify your mobile number',
               style: textTheme(context).headlineMedium?.copyWith(
                   color: colorScheme(context).onSurface,
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w700),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 15),
             Text(
               'You wil recieve a SMS with verification pin on +93143523154',
               style: textTheme(context).titleSmall?.copyWith(
                   color: AppColors.darkTextGrey, fontWeight: FontWeight.w500),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(4, (index) {
@@ -164,7 +201,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                     children: [
                       Text(
                         "Resend code ${provider.formattedTime}",
-                        style: textTheme(context).headlineSmall?.copyWith(
+                        style: textTheme(context).titleSmall?.copyWith(
                             color: AppColors.darkGrey,
                             fontWeight: FontWeight.w500),
                       ),
@@ -205,8 +242,8 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                             child: Text(
                               "Call",
                               style: textTheme(context).titleSmall?.copyWith(
-                                  color: colorScheme(context).surface,
-                                  fontWeight: FontWeight.w500),
+                                  color: colorScheme(context).onSurface,
+                                  fontWeight: FontWeight.w800),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -226,7 +263,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                               "SMS",
                               style: textTheme(context).titleSmall?.copyWith(
                                   color: colorScheme(context).onSurface,
-                                  fontWeight: FontWeight.w500),
+                                  fontWeight: FontWeight.w800),
                             ),
                           ),
                         ],
