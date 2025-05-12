@@ -96,7 +96,6 @@ class AppImages {
   static const String french = 'assets/images/French.png';
   static const String dutch = 'assets/images/Dutch.png';
 }
-
 class AppIcon {
   static String appleIcon = 'assets/icons/apple_icon.svg';
   static String googleIcon = 'assets/icons/google_icon.svg';
@@ -154,6 +153,7 @@ class AppNetworkImages {
 
 class AppVideos {
   static const String splashVideo = 'assets/video/splash.mp4';
+  static const String goVideo = 'assets/video/go.mp4';
 }
 
 class AppLotties {

@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
       DeviceOrientation.portraitUp,
     ]);
 
-    _controller = VideoPlayerController.asset(AppVideos.splashVideo);
+    _controller = VideoPlayerController.asset(AppVideos.goVideo);
     _controller.initialize().then((_) {
       _controller.setLooping(true);
       Timer(const Duration(milliseconds: 100), () {
