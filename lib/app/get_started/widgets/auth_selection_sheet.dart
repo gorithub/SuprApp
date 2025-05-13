@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -22,8 +24,8 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
     return DraggableScrollableSheet(
-      initialChildSize: 0.37,
-      minChildSize: 0.37,
+      initialChildSize: 0.44,
+      minChildSize: 0.44,
       maxChildSize: 0.9,
       builder: (context, scrollController) {
         return Container(
@@ -101,7 +103,6 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
                   ),
                 ],
               ),
-              const Spacer(),
               Center(
                 child: TextButton(
                   onPressed: () {},
@@ -113,7 +114,6 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
             ],
           ),
         );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const ColorScheme colorSchemeLight = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xffFFAA02), //Chrome Yellow for buttons and icons
+  primary: Color(0xff018D14), //Chrome Yellow for buttons and icons
   onPrimary: Colors.white,
   secondary: Color(
       0xFFFFF000), // Yellow Rose for logo and background and primary brands
