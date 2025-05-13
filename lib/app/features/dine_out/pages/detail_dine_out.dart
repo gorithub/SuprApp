@@ -65,58 +65,64 @@ class DetailDineOut extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
                         Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                  color: colorScheme(context)
-                                      .onSurface
-                                      .withOpacity(0.3)),
-                              borderRadius: BorderRadius.circular(8),
+                          margin: const EdgeInsets.only(right: 8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                                color: colorScheme(context)
+                                    .onSurface
+                                    .withOpacity(0.3)),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child:
+                              const Icon(Icons.filter_alt_outlined, size: 16),
+                        ),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: filters
+                                  .map((f) => FilterButton(label: f))
+                                  .toList(),
                             ),
-                            child: const Icon(Icons.filter_alt_outlined,
-                                size: 16)),
-                        ...filters.map((f) => FilterButton(label: f)).toList(),
+                          ),
+                        ),
                       ],
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      width: MediaQuery.of(context).size.width,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: nestedItem.anotherDiscription.length,
-                        itemBuilder: (context, index) {
-                          final discription =
-                              nestedItem.anotherDiscription[index];
-                          final List<String> imageUrls = discription.image
-                              .expand((img) => [
-                                    img.image1,
-                                    img.image2,
-                                    img.image3,
-                                    img.image4,
-                                    img.image5,
-                                    img.image6,
-                                    img.image7,
-                                    img.image8,
-                                  ])
-                              .toList();
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: nestedItem.anotherDiscription.length,
+                      itemBuilder: (context, index) {
+                        final discription =
+                            nestedItem.anotherDiscription[index];
+                        final List<String> imageUrls = discription.image
+                            .expand((img) => [
+                                  img.image1,
+                                  img.image2,
+                                  img.image3,
+                                  img.image4,
+                                  img.image5,
+                                  img.image6,
+                                  img.image7,
+                                  img.image8,
+                                ])
+                            .toList();
 
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: customContainer(context, imageUrls),
-                          );
-                        },
-                      ),
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: customContainer(
+                              context, imageUrls, "only on cream"),
+                        );
+                      },
                     )
                   ],
                 ),
@@ -129,9 +135,7 @@ class DetailDineOut extends StatelessWidget {
   }
 
   Widget customContainer(
-    BuildContext context,
-    List<String> images,
-  ) {
+      BuildContext context, List<String> images, String text) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
       width: MediaQuery.of(context).size.width * 0.3,
@@ -167,13 +171,23 @@ class DetailDineOut extends StatelessWidget {
                           child: CustomTabPageSelector(
                             controller: tabController,
                             selectedColor: Colors.white,
-                            unselectedColor: Colors.grey.shade300,
+                            unselectedColor: Colors.grey,
                             width: 10,
                             height: 5,
                             borderRadius: 6,
                           ),
                         ),
                       ),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 10),
+                            child: Text(text,
+                                style: textTheme(context).labelMedium),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
