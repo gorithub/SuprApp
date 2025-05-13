@@ -96,7 +96,15 @@ class AppImages {
   static const String french = 'assets/images/French.png';
   static const String dutch = 'assets/images/Dutch.png';
 }
+
 class AppIcon {
+  static const String percetIcon = 'assets/icons/percen_icon.svg';
+  static const String starIcon = 'assets/icons/star_icon.svg';
+  static const String trophyIcon = 'assets/icons/trophy_icon.svg';
+  static const String cheersIcon = 'assets/icons/wine_bar_icon.svg';
+  static const String viewIcon = 'assets/icons/water_lux_icon.svg';
+  static const String leafIcon = 'assets/icons/eco_icon.svg';
+  static const String waterBottleIcon = 'assets/icons/water_bottle_icon.svg';
   static String appleIcon = 'assets/icons/apple_icon.svg';
   static String googleIcon = 'assets/icons/google_icon.svg';
   static const String calenderIcon = 'assets/icons/calender_icon.svg';

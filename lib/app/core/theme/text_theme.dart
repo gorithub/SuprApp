@@ -1,66 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:suprapp/app/core/theme/color_scheme.dart';
 
-TextTheme get appTextTheme => const TextTheme(
-      displayLarge: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+TextTheme get appTextTheme => TextTheme(
+      displayLarge: GoogleFonts.plusJakartaSans(
         fontSize: 26.0,
       ),
-      displayMedium: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      displayMedium: GoogleFonts.plusJakartaSans(
         fontSize: 24.0,
       ),
-      displaySmall: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      displaySmall: GoogleFonts.plusJakartaSans(
         fontSize: 23.0,
       ),
-      headlineLarge: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      headlineLarge: GoogleFonts.plusJakartaSans(
         fontSize: 22.0,
       ),
-      headlineMedium: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      headlineMedium: GoogleFonts.plusJakartaSans(
         fontSize: 21.0,
       ),
-      headlineSmall: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      headlineSmall: GoogleFonts.plusJakartaSans(
         fontSize: 20.0,
       ),
-      titleLarge: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      titleLarge: GoogleFonts.plusJakartaSans(
         fontSize: 18.0,
       ),
-      titleMedium: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      titleMedium: GoogleFonts.plusJakartaSans(
         fontSize: 16.0,
       ),
-      titleSmall: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      titleSmall: GoogleFonts.plusJakartaSans(
         fontSize: 15.0,
       ),
-      bodyLarge: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      bodyLarge: GoogleFonts.plusJakartaSans(
         fontSize: 14.0,
       ),
-      bodyMedium: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      bodyMedium: GoogleFonts.plusJakartaSans(
         fontSize: 13.0,
       ),
-      bodySmall: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      bodySmall: GoogleFonts.plusJakartaSans(
         fontSize: 12.0,
       ),
-      labelLarge: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      labelLarge: GoogleFonts.plusJakartaSans(
         fontSize: 11.0,
       ),
-      labelMedium: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      labelMedium: GoogleFonts.plusJakartaSans(
         fontSize: 10.0,
       ),
-      labelSmall: TextStyle(
-        fontFamily: 'ProximaNovaThin',
+      labelSmall: GoogleFonts.plusJakartaSans(
         fontSize: 6.0,
       ),
     );
