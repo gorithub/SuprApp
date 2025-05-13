@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -236,6 +237,15 @@ class MyAppRouter {
           child: const UpdatePhoneNo(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.dineOutPage,
+        path: '/${AppRoute.dineOutPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const DineOutPage(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -252,7 +262,7 @@ class MyAppRouter {
 
 class AppRoute {
   static const String errorPage = 'error-page';
-  //!---- profile Section---- !//
+  //!---- Profile Section---- !//
   static const String profilePage = 'profile';
   static const String helpcenter = 'win-reward-screen';
   static const String winRewardPage = 'help-center-screen';
@@ -273,8 +283,10 @@ class AppRoute {
   static const String updatePhonPage = 'update-phone-no';
   static const String splashScreen = 'splash-page';
   static const String homePage = 'home-page';
-  // auth
+  //!---- Auth Section---- !//
   static const String phoneAuthPage = 'phone-auth-page';
   static const String verifyPhoneAuthPage = 'verify-phone-auth-page';
   static const String bioMetricSetupPage = 'bio-metric-page';
+//!---- DineOut Section---- !//
+  static const String dineOutPage = 'dine-out-page';
 }
