@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
+import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class DineOutPage extends StatefulWidget {
   const DineOutPage({super.key});
@@ -81,6 +84,7 @@ class _DineOutPageState extends State<DineOutPage>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final provider = Provider.of<DineOutProvider>(context);
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -115,9 +119,7 @@ class _DineOutPageState extends State<DineOutPage>
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
-              onTap: () {
-                context.pushNamed(AppRoute.favouriteRestaurentPage);
-              },
+              onTap: () {},
               child: Container(
                 height: 50,
                 width: 40,
@@ -240,6 +242,72 @@ class _DineOutPageState extends State<DineOutPage>
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          "Where to DineOut?",
+                          style: textTheme(context)
+                              .bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Text(
+                          "Handpicked spots you'll want to try",
+                          style: textTheme(context).bodyMedium?.copyWith(
+                              color: colorScheme(context)
+                                  .onSurface
+                                  .withOpacity(0.4)),
+                        ),
+                        trailing: Icon(
+                          Icons.east,
+                          color: Colors.black.withOpacity(0.6),
+                          size: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.23,
+                        width: size.width,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: provider.items.length,
+                            itemBuilder: (context, index) {
+                              final item = provider.items[index];
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () => context.pushNamed(
+                                    AppRoute.detailDineOutPage,
+                                    pathParameters: {
+                                      'parentIndex': index.toString(),
+                                    },
+                                  ),
+                                  child: Container(
+                                    height: size.height * 0.2,
+                                    width: size.width * 0.3,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(item.imageUrl),
+                                            fit: BoxFit.fill),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Text(
+                                          item.title,
+                                          style: textTheme(context)
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: colorScheme(context)
+                                                      .onPrimary),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
                       Text(
                         'Explore dining spots',
                         style: textTheme(context).titleMedium?.copyWith(

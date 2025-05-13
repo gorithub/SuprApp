@@ -5,6 +5,8 @@ import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/core/theme/app_theme.dart';
 import 'package:suprapp/app/features/auth/provider/otp_provider.dart';
 import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
+import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
+import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
 import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
 import 'package:suprapp/app/features/profile/controller/date_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
@@ -39,6 +41,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<DateProvider>(
           create: (_) => DateProvider(),
+        ),
+        ChangeNotifierProvider<DineOutProvider>(
+          create: (_) => DineOutProvider(),
+        ),
+        ChangeNotifierProvider<FilterProvider>(
+          create: (_) => FilterProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(
