@@ -140,99 +140,103 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                final item = data[index];
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundImage: NetworkImage(item['image']),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item['name'],
-                            style: textTheme(context).bodyLarge?.copyWith(
-                                  color: colorScheme(context).onSurface,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            item['subtitle'],
-                            style: textTheme(context).bodyMedium?.copyWith(
-                                  color: colorScheme(context)
-                                      .onSurface
-                                      .withOpacity(0.6),
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                          Row(
-                            children: [
-                              Icon(Icons.star, color: Colors.orange, size: 26),
-                              SizedBox(width: 4),
-                              Text(
-                                item['rating'].toString(),
-                                style: textTheme(context).bodyLarge?.copyWith(
-                                      color: colorScheme(context)
-                                          .onSurface
-                                          .withOpacity(0.6),
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              SizedBox(width: 8),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(80, 24),
-                                  backgroundColor: Colors.green,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 0),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  "+ | 20 % off",
-                                  style:
-                                      textTheme(context).bodyMedium?.copyWith(
-                                            color: AppColors.lightGreen,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      IconButton(
-                        icon: Icon(
-                          Icons.favorite,
-                          size: 20,
-                          color: AppColors.appGreen,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                );
-              },
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final item = data[index];
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(item['image']),
+                        ),
+                        SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item['name'],
+                              style: textTheme(context).bodyLarge?.copyWith(
+                                    color: colorScheme(context).onSurface,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                            Text(
+                              item['subtitle'],
+                              style: textTheme(context).bodyMedium?.copyWith(
+                                    color: colorScheme(context)
+                                        .onSurface
+                                        .withOpacity(0.6),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                            Row(
+                              children: [
+                                Icon(Icons.star,
+                                    color: Colors.orange, size: 26),
+                                SizedBox(width: 4),
+                                Text(
+                                  item['rating'].toString(),
+                                  style: textTheme(context).bodyLarge?.copyWith(
+                                        color: colorScheme(context)
+                                            .onSurface
+                                            .withOpacity(0.6),
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                                SizedBox(width: 8),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    minimumSize: Size(80, 24),
+                                    backgroundColor: Colors.green,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 0),
+                                  ),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "+ | 20 % off",
+                                    style:
+                                        textTheme(context).bodyMedium?.copyWith(
+                                              color: AppColors.lightGreen,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Spacer(),
+                        IconButton(
+                          icon: Icon(
+                            Icons.favorite,
+                            size: 20,
+                            color: AppColors.appGreen,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
