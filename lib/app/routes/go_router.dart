@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
@@ -246,6 +247,18 @@ class MyAppRouter {
           child: const DineOutPage(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.detailDineOutPage,
+        path: '/${AppRoute.detailDineOutPage}/:parentIndex',
+        pageBuilder: (context, state) {
+          final parentIndex = int.parse(state.pathParameters['parentIndex']!);
+          return buildPageWithFadeTransition<void>(
+            context: context,
+            state: state,
+            child: DetailDineOut(parentIndex: parentIndex),
+          );
+        },
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -289,4 +302,5 @@ class AppRoute {
   static const String bioMetricSetupPage = 'bio-metric-page';
 //!---- DineOut Section---- !//
   static const String dineOutPage = 'dine-out-page';
+  static const String detailDineOutPage = 'detail-dine-out';
 }

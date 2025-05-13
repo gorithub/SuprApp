@@ -95,7 +95,11 @@ class AppImages {
   static const String arabic = 'assets/images/Arabic.png';
   static const String french = 'assets/images/French.png';
   static const String dutch = 'assets/images/Dutch.png';
+  static const String tranding = 'assets/images/tranding.jpg';
+  static const String award = 'assets/images/award.jpg';
+  static const String eggtranding = 'assets/images/egg.jpg';
 }
+
 class AppIcon {
   static String appleIcon = 'assets/icons/apple_icon.svg';
   static String googleIcon = 'assets/icons/google_icon.svg';
