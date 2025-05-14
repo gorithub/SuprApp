@@ -242,17 +242,23 @@ class _DineOutPageState extends State<DineOutPage>
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(right: 8),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                        color: colorScheme(context).onSurface.withOpacity(0.3)),
-                    borderRadius: BorderRadius.circular(5),
+                InkWell(
+                  onTap: () {
+                    context.pushNamed(AppRoute.filterPage);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                          color:
+                              colorScheme(context).onSurface.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: const Icon(Icons.filter_alt_outlined, size: 16),
                   ),
-                  child: const Icon(Icons.filter_alt_outlined, size: 16),
                 ),
                 Expanded(
                   child: SingleChildScrollView(

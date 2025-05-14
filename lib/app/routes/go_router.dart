@@ -3,8 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
+import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
+import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -284,12 +286,30 @@ class MyAppRouter {
         },
       ),
       GoRoute(
-        name: AppRoute.usefull,
-        path: '/${AppRoute.usefull}',
+        name: AppRoute.faqsPage,
+        path: '/${AppRoute.faqsPage}',
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
           context: context,
           state: state,
-          child: const FiliCafeDetails(),
+          child: const FaqsPage(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.termsConditionPage,
+        path: '/${AppRoute.termsConditionPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const TermsConditionPage(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.filterPage,
+        path: '/${AppRoute.filterPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const FilterWidget(),
         ),
       ),
     ],
@@ -339,4 +359,7 @@ class AppRoute {
   static const String detailDineOutPage = 'detail-dine-out';
   static const String anotherpage = 'another-retorant';
   static const String usefull = 'usefull-bit';
+  static const String filterPage = 'filter-page';
+  static const String termsConditionPage = 'terms-condition-page';
+  static const String faqsPage = 'faqs-page';
 }
