@@ -6,6 +6,7 @@ import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/core/theme/color_scheme.dart';
 import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
+import 'package:suprapp/app/features/dine_out/widgets/custom_bottomsheett_subscription.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
@@ -37,6 +38,24 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void showSubscriptionSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => SubscriptionBottomSheet(
+        onSubscribe: () {
+          context.pop();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Subscribed to Careem Plus!')),
+          );
+        },
+      ),
+    );
   }
 
   @override

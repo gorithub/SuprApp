@@ -13,8 +13,9 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails>
     with TickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
-  final GlobalKey _foodKey = GlobalKey();
-  final GlobalKey _beveragesKey = GlobalKey();
+  final GlobalKey _about = GlobalKey();
+  final GlobalKey _amenities = GlobalKey();
+  final GlobalKey _house = GlobalKey();
 
   @override
   void initState() {
@@ -26,8 +27,8 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails>
   void _handleTabSelection() {
     if (_tabController.indexIsChanging) return;
     final context = _tabController.index == 0
-        ? _foodKey.currentContext
-        : _beveragesKey.currentContext;
+        ? _about.currentContext
+        : _amenities.currentContext;
     if (context != null) {
       Scrollable.ensureVisible(context,
           duration: const Duration(milliseconds: 300));
@@ -53,6 +54,9 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails>
             child: Align(
               alignment: Alignment.topLeft,
               child: TabBar(
+                labelStyle: textTheme(context)
+                    .bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
                 controller: _tabController,
                 labelColor: Colors.black,
                 indicatorColor: Colors.teal,
@@ -76,28 +80,26 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Filli Cafe - Al Karamah',
+                key: _about,
                 style: textTheme(context)
-                    .headlineMedium
+                    .titleMedium
                     ?.copyWith(fontWeight: FontWeight.bold)),
             const SizedBox(height: 4),
             Text(
               'Cafe',
-              style: textTheme(context)
-                  .bodySmall
-                  ?.copyWith(color: Colors.black.withOpacity(0.4)),
+              style:
+                  textTheme(context).bodySmall?.copyWith(color: Colors.black),
             ),
             const Divider(
               color: Color.fromARGB(255, 214, 212, 212),
             ),
             Text(
-              'Any time is tea time! This is your go-to casual hangout spot - hop in for a hot brew and crispy samosas! Whether you\'re here to work, read a book, or just spill the tea with friends, this is your perfect evening place to sip and yap. You’re probably a fan of Zafraan Coco Tea, and if not, it’s time to be. The setting is simple - benches, chairs, and good vibes. So, grab a seat for steaming hot samosas, chai, and endless chats!',
-              style: textTheme(context)
-                  .labelMedium
-                  ?.copyWith(color: Colors.black.withOpacity(0.6)),
-            ),
+                'Any time is tea time! This is your go-to casual hangout spot - hop in for a hot brew and crispy samosas! Whether you\'re here to work, read a book, or just spill the tea with friends, this is your perfect evening place to sip and yap. You’re probably a fan of Zafraan Coco Tea, and if not, it’s time to be. The setting is simple - benches, chairs, and good vibes. So, grab a seat for steaming hot samosas, chai, and endless chats!',
+                style: textTheme(context).bodySmall),
             const SizedBox(height: 10),
             Text(
               "Amenities",
+              key: _amenities,
               style: textTheme(context)
                   .bodyLarge
                   ?.copyWith(fontWeight: FontWeight.bold),
@@ -120,6 +122,7 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails>
             const SizedBox(height: 10),
             Text(
               "House Rules",
+              key: _house,
               style: textTheme(context)
                   .bodyLarge
                   ?.copyWith(fontWeight: FontWeight.bold),
