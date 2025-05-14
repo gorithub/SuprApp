@@ -3,16 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+class RestaurentPhotosPage extends StatefulWidget {
+  const RestaurentPhotosPage({super.key});
 
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  State<RestaurentPhotosPage> createState() => _RestaurentPhotosPageState();
 }
 
-class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
+class _RestaurentPhotosPageState extends State<RestaurentPhotosPage>
+    with TickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _foodKey = GlobalKey();
@@ -39,7 +39,6 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         forceMaterialTransparency: true,
         leading: Padding(
@@ -62,12 +61,13 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
             ),
           ),
         ),
-        actions: [
-          customIconContainer(Icons.share_outlined, () {}),
-          const SizedBox(width: 10),
-          customIconContainer(Icons.favorite_outline, () {}),
-          const SizedBox(width: 10),
-        ],
+        title: Text(
+          'Photos',
+          style: textTheme(context).titleMedium?.copyWith(
+                color: colorScheme(context).onSurface,
+                fontWeight: FontWeight.w600,
+              ),
+        ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight - 10),
           child: Padding(
@@ -83,8 +83,8 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
                 isScrollable: true,
                 labelPadding: const EdgeInsets.symmetric(horizontal: 10),
                 tabs: const [
+                  Tab(text: 'Ambience'),
                   Tab(text: 'Food'),
-                  Tab(text: 'Beverages'),
                 ],
               ),
             ),
@@ -99,39 +99,80 @@ class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Food',
+                'Ambience',
                 key: _foodKey,
                 style: textTheme(context)
-                    .bodyLarge
+                    .titleSmall
                     ?.copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
-                '8 photos',
+                '2 photos',
                 style: textTheme(context)
-                    .labelMedium
+                    .bodyMedium
                     ?.copyWith(color: Colors.black.withOpacity(0.5)),
               ),
-              const SizedBox(height: 10),
-              Image.asset(AppImages.menu),
-              const SizedBox(height: 10),
-              Image.asset(AppImages.menu),
+              const SizedBox(height: 20),
+              Container(
+                height: 180,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?cs=srgb&dl=pexels-reneterp-1581384.jpg&fm=jpg')),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                height: 180,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzJfzFjVVumyxfxiNZNAF6NmTKPm5IgOOQgA&s')),
+                ),
+              ),
+              const SizedBox(height: 20),
               Text(
-                'Beverages',
+                'Food',
                 key: _beveragesKey,
                 style: textTheme(context)
-                    .bodyLarge
+                    .titleSmall
                     ?.copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
-                '5 photos',
+                '2 photos',
                 style: textTheme(context)
-                    .labelMedium
+                    .bodyMedium
                     ?.copyWith(color: Colors.black.withOpacity(0.5)),
               ),
+              const SizedBox(height: 20),
+              Container(
+                height: 180,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          'https://septemberfarmcheese.b-cdn.net/wp-content/uploads/Blogs/Homemade-Pizza/homemade-pizza-monterey-jack-cheese.jpg')),
+                ),
+              ),
               const SizedBox(height: 10),
-              Image.asset(AppImages.menu),
-              const SizedBox(height: 10),
-              Image.asset(AppImages.menu),
+              Container(
+                height: 180,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          'https://www.foodandwine.com/thmb/XE8ubzwObCIgMw7qJ9CsqUZocNM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSG-Smash-Burger-FT-RECIPE0124-d9682401f3554ef683e24311abdf342b.jpg')),
+                ),
+              ),
             ],
           ),
         ),

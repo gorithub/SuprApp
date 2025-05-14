@@ -7,6 +7,7 @@ import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
+import 'package:suprapp/app/features/dine_out/pages/restaurent_photos.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
@@ -333,6 +334,24 @@ class MyAppRouter {
           child: const CareemPlusScreen(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.restaurentPhotosPage,
+        path: '/${AppRoute.restaurentPhotosPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const RestaurentPhotosPage(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.usefull,
+        path: '/${AppRoute.usefull}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const FiliCafeDetails(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -385,4 +404,5 @@ class AppRoute {
   static const String faqsPage = 'faqs-page';
   static const String menu = 'menu-page';
   static const String creamplusPage = 'cream-plus';
+  static const String restaurentPhotosPage = 'restaurent-photos-page';
 }
