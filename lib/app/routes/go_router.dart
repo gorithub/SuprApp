@@ -6,6 +6,7 @@ import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
+import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -34,7 +35,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.splashScreen}',
+    initialLocation: '/${AppRoute.dineOutPage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -294,12 +295,20 @@ class MyAppRouter {
         ),
       ),
       GoRoute(
-        name: AppRoute.creamplusPage,
-        path: '/${AppRoute.creamplusPage}',
+          name: AppRoute.creamplusPage,
+          path: '/${AppRoute.creamplusPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const CareemPlusScreen(),
+              )),
+      GoRoute(
+        name: AppRoute.favouriteRestaurentPage,
+        path: '/${AppRoute.favouriteRestaurentPage}',
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
           context: context,
           state: state,
-          child: const CareemPlusScreen(),
+          child: const FavouriteRestaurentPage(),
         ),
       ),
     ],
@@ -350,4 +359,5 @@ class AppRoute {
   static const String usefull = 'usefull-bit';
   static const String menu = 'menu-page';
   static const String creamplusPage = 'cream-plus';
+  static const String favouriteRestaurentPage = 'favourite-restaurent-page';
 }
