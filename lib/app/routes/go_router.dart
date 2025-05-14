@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -259,6 +261,27 @@ class MyAppRouter {
           );
         },
       ),
+      GoRoute(
+        name: AppRoute.anotherpage,
+        path: '/${AppRoute.anotherpage}/:parentIndex/:childIndex',
+        builder: (context, state) {
+          final parentIndex = int.parse(state.pathParameters['parentIndex']!);
+          final childIndex = int.parse(state.pathParameters['childIndex']!);
+          return AnotherRestorantScreen(
+            parentIndex: parentIndex,
+            childIndex: childIndex,
+          );
+        },
+      ),
+      GoRoute(
+        name: AppRoute.usefull,
+        path: '/${AppRoute.usefull}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const FiliCafeDetails(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -303,4 +326,6 @@ class AppRoute {
 //!---- DineOut Section---- !//
   static const String dineOutPage = 'dine-out-page';
   static const String detailDineOutPage = 'detail-dine-out';
+  static const String anotherpage = 'another-retorant';
+  static const String usefull = 'usefull-bit';
 }

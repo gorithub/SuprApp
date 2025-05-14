@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
-import 'package:suprapp/app/features/dine_out/widgets/customTabController.dart';
+import 'package:suprapp/app/features/dine_out/widgets/custom_card.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filterwidget.dart';
+import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class DetailDineOut extends StatelessWidget {
   final int parentIndex;
@@ -22,43 +25,62 @@ class DetailDineOut extends StatelessWidget {
           SliverAppBar(
             expandedHeight: 200.0,
             pinned: true,
-            floating: true,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: false,
-              titlePadding: const EdgeInsets.all(16),
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    nestedItem.title,
-                    style: textTheme(context).labelLarge?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+            floating: false,
+            leading: const CustomArrowBack(),
+            backgroundColor: colorScheme(context).onPrimary,
+            flexibleSpace: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                final isCollapsed = constraints.maxHeight <=
+                    kToolbarHeight + MediaQuery.of(context).padding.top;
+
+                return FlexibleSpaceBar(
+                  centerTitle: true,
+                  titlePadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  title: isCollapsed
+                      ? Text(
+                          "Handpicked spots that have received",
+                          style: textTheme(context)
+                              .bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        )
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              nestedItem.title,
+                              style: textTheme(context).labelLarge?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "Handpicked spots that have received a lot of love lately!",
+                              style: textTheme(context)
+                                  .labelSmall
+                                  ?.copyWith(color: Colors.white, fontSize: 8),
+                            ),
+                            Row(
+                              children: [
+                                const Icon(Icons.location_on_outlined,
+                                    size: 10, color: Colors.white),
+                                Text(
+                                  "15 restaurants",
+                                  style: textTheme(context)
+                                      .labelSmall
+                                      ?.copyWith(
+                                          color: Colors.white, fontSize: 7),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                  background: Image.asset(
+                    nestedItem.imageUrl,
+                    fit: BoxFit.cover,
                   ),
-                  Text(
-                    "Handpicked spots taht have recieved a lot of love lately!!",
-                    style: textTheme(context)
-                        .labelSmall
-                        ?.copyWith(color: Colors.white, fontSize: 8),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.location_on_outlined,
-                          size: 10, color: colorScheme(context).onPrimary),
-                      Text(
-                        "15 restaurants",
-                        style: textTheme(context)
-                            .labelSmall
-                            ?.copyWith(color: Colors.white, fontSize: 7),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              background: Image.asset(
-                nestedItem.imageUrl,
-                fit: BoxFit.cover,
-              ),
+                );
+              },
             ),
           ),
           SliverToBoxAdapter(
@@ -119,8 +141,22 @@ class DetailDineOut extends StatelessWidget {
 
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: customContainer(
-                              context, imageUrls, "only on cream"),
+                          child: GestureDetector(
+                              onTap: () => context.pushNamed(
+                                    AppRoute.anotherpage,
+                                    pathParameters: {
+                                      'parentIndex': parentIndex.toString(),
+                                      'childIndex': index.toString(),
+                                    },
+                                  ),
+                              child: CustomContainer(
+                                  images: imageUrls,
+                                  text: "only on cream",
+                                  title: discription.title,
+                                  rating: discription.rating,
+                                  location: discription.location,
+                                  food: discription.food,
+                                  discount: discription.discount)),
                         );
                       },
                     )
@@ -130,71 +166,6 @@ class DetailDineOut extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget customContainer(
-      BuildContext context, List<String> images, String text) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      width: MediaQuery.of(context).size.width * 0.3,
-      child: DefaultTabController(
-        length: images.length,
-        child: Builder(
-          builder: (context) {
-            final TabController tabController =
-                DefaultTabController.of(context);
-
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 159,
-                  child: Stack(
-                    children: [
-                      TabBarView(
-                        controller: tabController,
-                        children: images.map((imgPath) {
-                          return Image.asset(
-                            imgPath,
-                            cacheHeight: 150,
-                            cacheWidth: 500,
-                            fit: BoxFit.cover,
-                          );
-                        }).toList(),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CustomTabPageSelector(
-                            controller: tabController,
-                            selectedColor: Colors.white,
-                            unselectedColor: Colors.grey,
-                            width: 10,
-                            height: 5,
-                            borderRadius: 6,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 10),
-                            child: Text(text,
-                                style: textTheme(context).labelMedium),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
       ),
     );
   }
