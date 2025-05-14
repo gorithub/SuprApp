@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
+import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
+import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -312,6 +315,24 @@ class MyAppRouter {
           child: const FilterWidget(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.menu,
+        path: '/${AppRoute.menu}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const MenuScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.creamplusPage,
+        path: '/${AppRoute.creamplusPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const CareemPlusScreen(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -362,4 +383,6 @@ class AppRoute {
   static const String filterPage = 'filter-page';
   static const String termsConditionPage = 'terms-condition-page';
   static const String faqsPage = 'faqs-page';
+  static const String menu = 'menu-page';
+  static const String creamplusPage = 'cream-plus';
 }
