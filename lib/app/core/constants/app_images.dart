@@ -95,6 +95,11 @@ class AppImages {
   static const String arabic = 'assets/images/Arabic.png';
   static const String french = 'assets/images/French.png';
   static const String dutch = 'assets/images/Dutch.png';
+  static const String tranding = 'assets/images/tranding.jpg';
+  static const String award = 'assets/images/award.jpg';
+  static const String eggtranding = 'assets/images/egg.jpg';
+  static const String menu =
+      'assets/images/WhatsApp Image 2025-05-14 at 3.41.50 PM.jpeg';
 }
 
 class AppIcon {

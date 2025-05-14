@@ -12,11 +12,12 @@ class CustomArrowBack extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
+        color: Colors.white,
         border: Border.all(color: AppColors.appGrey.withOpacity(0.3)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: IconButton(
-        icon: Icon(Icons.chevron_left, color: colorScheme(context).primary),
+        icon: const Icon(Icons.chevron_left),
         onPressed: () => context.pop(),
       ),
     );

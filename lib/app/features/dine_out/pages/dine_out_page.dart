@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
+import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
+import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
+import 'package:suprapp/app/features/dine_out/widgets/filterwidget.dart';
+import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class DineOutPage extends StatefulWidget {
@@ -34,40 +38,40 @@ class _DineOutPageState extends State<DineOutPage>
       'image':
           'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=300&q=60',
       'name': 'Press\'d',
-      'location': 'Ground Level, Polo Residence Nad Al Sheba',
-      'billingperperson': 'AED 40',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
       'tag': 'Coffee & Snacks',
     },
     {
       'image':
-          'https://images.unsplash.com/photo-1555992336-03a23c5f177c?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAXpv8jwkMAtO-0eUQZf8LiwgGYF_np8aObA&s',
       'name': 'Urban Bites',
-      'location': 'Al Barsha, Dubai',
-      'billingperperson': 'AED 55',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
       'tag': 'Fast Food',
     },
     {
       'image':
-          'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdWPzgJkstd0rds9qWiBde--Dw_4sB-FdGSg&s',
       'name': 'Green Bowl',
-      'location': 'Downtown Dubai, Dubai Mall',
-      'billingperperson': 'AED 60',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
       'tag': 'Healthy',
     },
     {
       'image':
-          'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgXw0pqGYwHn2ieksnWU1IoVsu7TQUfvFwsQ&s',
       'name': 'Cafe Bloom',
-      'location': 'Jumeirah Beach Road',
-      'billingperperson': 'AED 30',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
       'tag': 'Cafe',
     },
     {
       'image':
-          'https://images.unsplash.com/photo-1600891965059-4d47cfa8fc17?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz12UCZeZo5yxJMx3rXcat92SbXA8LT0VVsw&s',
       'name': 'The Sizzle House',
-      'location': 'Marina Walk, Dubai Marina',
-      'billingperperson': 'AED 85',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
       'tag': 'Grill',
     },
   ];
@@ -81,8 +85,11 @@ class _DineOutPageState extends State<DineOutPage>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final provider = Provider.of<DineOutProvider>(context);
+    final filters = context.watch<FilterProvider>().allFilters;
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
@@ -231,8 +238,155 @@ class _DineOutPageState extends State<DineOutPage>
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    context.pushNamed(AppRoute.filterPage);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                          color:
+                              colorScheme(context).onSurface.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: const Icon(Icons.filter_alt_outlined, size: 16),
+                  ),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children:
+                          filters.map((f) => FilterButton(label: f)).toList(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: TabBarView(controller: _tabController, children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          "Where  to  DineOut ?",
+                          style: textTheme(context)
+                              .titleLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        subtitle: Text(
+                          "Handpicked spots you'll want to try",
+                          style: textTheme(context).bodyMedium?.copyWith(
+                              color: colorScheme(context)
+                                  .onSurface
+                                  .withOpacity(0.5),
+                              fontWeight: FontWeight.w600),
+                        ),
+                        trailing: Icon(
+                          Icons.east,
+                          color: Colors.black.withOpacity(0.6),
+                          size: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.23,
+                        width: size.width,
+                        child: ListView.builder(
+                            padding: EdgeInsets.zero,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: provider.items.length,
+                            itemBuilder: (context, index) {
+                              final item = provider.items[index];
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () => context.pushNamed(
+                                    AppRoute.detailDineOutPage,
+                                    pathParameters: {
+                                      'parentIndex': index.toString(),
+                                    },
+                                  ),
+                                  child: Container(
+                                    height: size.height * 0.2,
+                                    width: size.width * 0.25,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(item.imageUrl),
+                                            fit: BoxFit.cover),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Text(
+                                          item.title,
+                                          style: textTheme(context)
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: colorScheme(context)
+                                                      .onPrimary),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleLarge?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: restaurant.length,
+                        itemBuilder: (context, index) {
+                          final item = restaurant[index];
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: InkWell(
+                              onTap: () {},
+                              child: RestaurantCard(
+                                imageUrl: item['image'],
+                                title: item['name'],
+                                location: item['location'],
+                                price: item['billingperperson'],
+                                tag: item['tag'],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: SingleChildScrollView(
@@ -276,13 +430,264 @@ class _DineOutPageState extends State<DineOutPage>
                   ),
                 ),
               ),
-              Center(child: Text('123')),
-              Center(child: Text('123')),
-              Center(child: Text('123')),
-              Center(child: Text('123')),
-              Center(child: Text('123')),
-              Center(child: Text('123')),
-              Center(child: Text('123')),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleMedium?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.6,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: restaurant.length,
+                          itemBuilder: (context, index) {
+                            final item = restaurant[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: RestaurantCard(
+                                  imageUrl: item['image'],
+                                  title: item['name'],
+                                  location: item['location'],
+                                  price: item['billingperperson'],
+                                  tag: item['tag'],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleMedium?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.6,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: restaurant.length,
+                          itemBuilder: (context, index) {
+                            final item = restaurant[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: RestaurantCard(
+                                  imageUrl: item['image'],
+                                  title: item['name'],
+                                  location: item['location'],
+                                  price: item['billingperperson'],
+                                  tag: item['tag'],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleMedium?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.6,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: restaurant.length,
+                          itemBuilder: (context, index) {
+                            final item = restaurant[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: RestaurantCard(
+                                  imageUrl: item['image'],
+                                  title: item['name'],
+                                  location: item['location'],
+                                  price: item['billingperperson'],
+                                  tag: item['tag'],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleMedium?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.6,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: restaurant.length,
+                          itemBuilder: (context, index) {
+                            final item = restaurant[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: RestaurantCard(
+                                  imageUrl: item['image'],
+                                  title: item['name'],
+                                  location: item['location'],
+                                  price: item['billingperperson'],
+                                  tag: item['tag'],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleMedium?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.6,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: restaurant.length,
+                          itemBuilder: (context, index) {
+                            final item = restaurant[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: RestaurantCard(
+                                  imageUrl: item['image'],
+                                  title: item['name'],
+                                  location: item['location'],
+                                  price: item['billingperperson'],
+                                  tag: item['tag'],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explore dining spots',
+                        style: textTheme(context).titleMedium?.copyWith(
+                            color: colorScheme(context).onSurface,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.6,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: restaurant.length,
+                          itemBuilder: (context, index) {
+                            final item = restaurant[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: RestaurantCard(
+                                  imageUrl: item['image'],
+                                  title: item['name'],
+                                  location: item['location'],
+                                  price: item['billingperperson'],
+                                  tag: item['tag'],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ]),
           ),
         ],
