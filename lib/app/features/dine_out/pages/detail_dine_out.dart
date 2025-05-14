@@ -26,7 +26,26 @@ class DetailDineOut extends StatelessWidget {
             expandedHeight: 200.0,
             pinned: true,
             floating: false,
-            leading: const CustomArrowBack(),
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  context.pop();
+                },
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: colorScheme(context).surface,
+                      borderRadius: BorderRadius.circular(7)),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: colorScheme(context).onSurface,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
             backgroundColor: colorScheme(context).onPrimary,
             flexibleSpace: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
@@ -50,15 +69,19 @@ class DetailDineOut extends StatelessWidget {
                           children: [
                             Text(
                               nestedItem.title,
-                              style: textTheme(context).labelLarge?.copyWith(
+                              style: textTheme(context).bodyMedium?.copyWith(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "Handpicked spots that have received a lot of love lately!",
-                              style: textTheme(context)
-                                  .labelSmall
-                                  ?.copyWith(color: Colors.white, fontSize: 8),
+                              style: textTheme(context).labelMedium?.copyWith(
+                                  fontSize: 8,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Row(
                               children: [
@@ -69,7 +92,9 @@ class DetailDineOut extends StatelessWidget {
                                   style: textTheme(context)
                                       .labelSmall
                                       ?.copyWith(
-                                          color: Colors.white, fontSize: 7),
+                                          fontSize: 7,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -151,7 +176,7 @@ class DetailDineOut extends StatelessWidget {
                                   ),
                               child: CustomContainer(
                                   images: imageUrls,
-                                  text: "only on cream",
+                                  text: "only on supr",
                                   title: discription.title,
                                   rating: discription.rating,
                                   location: discription.location,

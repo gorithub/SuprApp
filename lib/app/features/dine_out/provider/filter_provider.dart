@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class FilterProviders with ChangeNotifier {
   int selectedSortIndex = 0;
   bool isOffersSelected = false;
-  final Set<String> selectedQuickFilters = {};
   void selectSort(int index) {
     selectedSortIndex = index;
     notifyListeners();
@@ -14,24 +13,19 @@ class FilterProviders with ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleQuickFilter(String filterName) {
-    if (selectedQuickFilters.contains(filterName)) {
-      selectedQuickFilters.remove(filterName);
-    } else {
-      selectedQuickFilters.add(filterName);
-    }
-    notifyListeners();
+  int selectedIndex = -1; // Initially, no checkbox is selected
+
+  void setSelectedIndex(int index) {
+    selectedIndex = index;
+    notifyListeners(); // Update the UI when selection changes
   }
 
   void clearAll() {
     selectedSortIndex = 0;
     isOffersSelected = false;
-    selectedQuickFilters.clear();
     notifyListeners();
   }
 
   bool get isAnythingSelected =>
       selectedSortIndex != 0 || isOffersSelected == true;
-  bool isQuickFilterSelected(String filterName) =>
-      selectedQuickFilters.contains(filterName);
 }

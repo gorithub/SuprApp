@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/core/theme/color_scheme.dart';
+import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
 class CareemPlusScreen extends StatefulWidget {
@@ -50,7 +54,9 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
                 const Icon(Icons.percent, size: 15),
                 Text(
                   "Offer",
-                  style: textTheme(context).labelLarge,
+                  style: textTheme(context).bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: colorScheme(context).onSurface.withOpacity(0.7)),
                 ),
                 const Icon(
                   Icons.keyboard_arrow_down_outlined,
@@ -59,24 +65,47 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
               ],
             ),
           ),
-          SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.07,
-              child:
-                  CustomElevatedButton(text: "Subscribe Now", onPressed: () {}))
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: MediaQuery.of(context).size.height * 0.07,
+                child: CustomElevatedButton(
+                    text: "Subscribe Now", onPressed: () {})),
+          )
         ],
       ),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
           SliverAppBar(
+              forceMaterialTransparency: true,
               pinned: true,
               floating: false,
-              expandedHeight: 180,
+              expandedHeight: 200,
               backgroundColor: appBarProvider.isCollapsed
                   ? Colors.white
-                  : Theme.of(context).primaryColor,
-              leading: const CustomArrowBack(),
+                  : colorScheme(context).primary,
+              leading: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: colorScheme(context).surface,
+                        borderRadius: BorderRadius.circular(7)),
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: colorScheme(context).onSurface,
+                      size: 20,
+                    ),
+                  ),
+                ),
+              ),
               flexibleSpace: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 final isCollapsed = constraints.maxHeight <=
@@ -85,13 +114,14 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
                 return FlexibleSpaceBar(
                   title: isCollapsed
                       ? Text(
-                          "Join Caream Plus",
+                          "Join Supr Plus",
                           style: textTheme(context)
                               .bodyLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         )
                       : null,
                   background: Container(
+                    color: colorScheme(context).primary,
                     padding:
                         const EdgeInsets.only(top: 60, left: 16, right: 16),
                     child: Column(
@@ -106,11 +136,13 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          "Caream+ ",
+                          "Supr+ ",
                           style: textTheme(context).displayLarge?.copyWith(
+                              fontSize: 32,
                               color: AppColors.brightGreen,
                               fontWeight: FontWeight.bold),
                         ),
+                        const SizedBox(height: 15),
                         Text('DineOut | Rides | Food | More',
                             style: textTheme(context).headlineSmall?.copyWith(
                                 fontWeight: FontWeight.bold,
@@ -135,6 +167,7 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
                 children: [
                   ListView.builder(
                     shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: 3,
                     itemBuilder: (context, index) => Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
@@ -153,8 +186,12 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
                         .headlineSmall
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  customTile("Frequently asked questions", () {}),
-                  customTile("T&Cs apply", () {})
+                  customTile("Frequently asked questions", () {
+                    context.pushNamed(AppRoute.faqsPage);
+                  }),
+                  customTile("T&Cs apply", () {
+                    context.pushNamed(AppRoute.termsConditionPage);
+                  })
                 ],
               ),
             ),
