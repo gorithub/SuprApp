@@ -34,9 +34,10 @@ class FilterButton extends StatelessWidget {
             ],
             Text(
               label,
-              style: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
-              ),
+              style: textTheme(context).bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: isSelected ? Colors.white : Colors.black,
+                  ),
             ),
           ],
         ),

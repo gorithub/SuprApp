@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/dine_out/widgets/remove_fav_bottom_sheet.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class FavouriteRestaurentPage extends StatefulWidget {
@@ -16,45 +17,45 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
   final List<Map<String, dynamic>> data = [
     {
       'name': 'Press\'d',
-      'subtitle': 'Ground Level, Polo Residence Nad Al\nSheba',
+      'subtitle': 'Ground Level, Polo Residence',
       'rating': 4.5,
       'image':
-          'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=300&q=60',
+          'https://upload.wikimedia.org/wikipedia/commons/6/62/Barbieri_-_ViaSophia25668.jpg',
     },
     {
       'name': 'Urban Bites',
       'subtitle': 'Al Barsha, Dubai',
       'rating': 4.2,
       'image':
-          'https://images.unsplash.com/photo-1555992336-03a23c5f177c?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL57-kIGC5qv12b-6JEq0am9RQmRnT1iHZZQ&s',
     },
     {
       'name': 'Green Bowl',
       'subtitle': 'Downtown Dubai, Dubai Mall',
       'rating': 4.8,
       'image':
-          'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmnuNE7Vg8_evlj5T85CKWArPluVly20wLw&s',
     },
     {
       'name': 'Cafe Bloom',
       'subtitle': 'Jumeirah Beach Road',
       'rating': 4.1,
       'image':
-          'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=300&q=60',
+          'https://images.unsplash.com/photo-1682778418768-16081e4470a1?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudCUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D',
     },
     {
       'name': 'The Sizzle House',
       'subtitle': 'Marina Walk, Dubai Marina',
       'rating': 4.7,
       'image':
-          'https://images.unsplash.com/photo-1600891965059-4d47cfa8fc17?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSWGa7nz-J8ZfjAVxPSsPdXwLJw1ajyWAEmQ&s',
     },
     {
       'name': 'Tandoori Flames',
       'subtitle': 'Karama, Dubai',
       'rating': 4.3,
       'image':
-          'https://images.unsplash.com/photo-1600891964603-82b6c2f1dc1c?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYzox8cw_TmfixXla85NzLjsMEwRhstuq1g&s',
     },
     {
       'name': 'The Noodle House',
@@ -68,21 +69,21 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
       'subtitle': 'Business Bay, Dubai',
       'rating': 4.6,
       'image':
-          'https://images.unsplash.com/photo-1600891964539-6b5f2c0b3fc1?auto=format&fit=crop&w=300&q=60',
+          'https://media.istockphoto.com/id/1369561386/photo/having-a-great-lunch-and-time-with-you.jpg?s=612x612&w=0&k=20&c=2Gj9ChgYNzp3CK1zxRqJunu4oQHN8YkoOMBZyV6uXNw=',
     },
     {
       'name': 'Zaatar W Zeit',
       'subtitle': 'Al Quoz, Dubai',
       'rating': 4.0,
       'image':
-          'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIzd-M3sajCPoY-nXWH_KWNlRGhVcL7VDCVw&s',
     },
     {
       'name': 'Food Hall',
       'subtitle': 'Mall of the Emirates',
       'rating': 4.9,
       'image':
-          'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=300&q=60',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj8L-vjust5NvQGP5gwsCI9u-zLPQ594P2TA&s',
     },
   ];
 
@@ -90,6 +91,7 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
@@ -140,99 +142,125 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                final item = data[index];
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundImage: NetworkImage(item['image']),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item['name'],
-                            style: textTheme(context).bodyLarge?.copyWith(
-                                  color: colorScheme(context).onSurface,
-                                  fontWeight: FontWeight.w600,
-                                ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final item = data[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3),
+                          child: Container(
+                            height: 75,
+                            width: 75,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(item['image']),
+                              ),
+                            ),
                           ),
-                          Text(
-                            item['subtitle'],
-                            style: textTheme(context).bodyMedium?.copyWith(
-                                  color: colorScheme(context)
-                                      .onSurface
-                                      .withOpacity(0.6),
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                          Row(
+                        ),
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Icon(Icons.star, color: Colors.orange, size: 26),
-                              SizedBox(width: 4),
                               Text(
-                                item['rating'].toString(),
-                                style: textTheme(context).bodyLarge?.copyWith(
+                                item['name'],
+                                style: textTheme(context).bodyMedium?.copyWith(
+                                      color: colorScheme(context).onSurface,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              Text(
+                                item['subtitle'],
+                                style: textTheme(context).bodySmall?.copyWith(
                                       color: colorScheme(context)
                                           .onSurface
                                           .withOpacity(0.6),
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
-                              SizedBox(width: 8),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(80, 24),
-                                  backgroundColor: Colors.green,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 0),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  "+ | 20 % off",
-                                  style:
-                                      textTheme(context).bodyMedium?.copyWith(
+                              Row(
+                                children: [
+                                  Icon(Icons.star,
+                                      color: Colors.orange, size: 16),
+                                  SizedBox(width: 3),
+                                  Text(
+                                    item['rating'].toString(),
+                                    style:
+                                        textTheme(context).bodySmall?.copyWith(
+                                              color: colorScheme(context)
+                                                  .onSurface
+                                                  .withOpacity(0.6),
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                  ),
+                                  SizedBox(width: 6),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 2),
+                                      minimumSize: Size(0, 24),
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    onPressed: () {},
+                                    child: Text(
+                                      "+ | 20% off",
+                                      style: textTheme(context)
+                                          .bodySmall
+                                          ?.copyWith(
                                             color: AppColors.lightGreen,
                                             fontWeight: FontWeight.w600,
                                           ),
-                                ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                      Spacer(),
-                      IconButton(
-                        icon: Icon(
-                          Icons.favorite,
-                          size: 20,
-                          color: AppColors.appGreen,
                         ),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                );
-              },
+                        IconButton(
+                          icon: Icon(Icons.favorite,
+                              size: 18, color: AppColors.appGreen),
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) =>
+                                  const RemoveFavBottomSheet(),
+                            );
+                          },
+                          padding: EdgeInsets.zero,
+                          constraints: BoxConstraints(),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
