@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
+import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
@@ -282,6 +284,24 @@ class MyAppRouter {
           child: const FiliCafeDetails(),
         ),
       ),
+      GoRoute(
+        name: AppRoute.menu,
+        path: '/${AppRoute.menu}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const MenuScreen(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.creamplusPage,
+        path: '/${AppRoute.creamplusPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const CareemPlusScreen(),
+        ),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -328,4 +348,6 @@ class AppRoute {
   static const String detailDineOutPage = 'detail-dine-out';
   static const String anotherpage = 'another-retorant';
   static const String usefull = 'usefull-bit';
+  static const String menu = 'menu-page';
+  static const String creamplusPage = 'cream-plus';
 }

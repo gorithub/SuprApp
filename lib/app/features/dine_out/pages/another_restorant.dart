@@ -182,7 +182,9 @@ class AnotherRestorantScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    _menuCard(() {}, context),
+                    _menuCard(() {
+                      context.pushNamed(AppRoute.menu);
+                    }, context),
                     const SizedBox(height: 24),
                     customTile("Photos", () {}, context),
                     const SizedBox(height: 16),
@@ -223,7 +225,10 @@ class AnotherRestorantScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     CustomElevatedButton(
-                        text: "Subscribe to creame plus now", onPressed: () {})
+                        text: "Subscribe to creame plus now",
+                        onPressed: () {
+                          context.pushNamed(AppRoute.creamplusPage);
+                        })
                   ],
                 ),
               ),

@@ -9,7 +9,31 @@ class FiliCafeDetails extends StatefulWidget {
   State<FiliCafeDetails> createState() => _FiliCafeDetailsState();
 }
 
-class _FiliCafeDetailsState extends State<FiliCafeDetails> {
+class _FiliCafeDetailsState extends State<FiliCafeDetails>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _foodKey = GlobalKey();
+  final GlobalKey _beveragesKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+  }
+
+  void _handleTabSelection() {
+    if (_tabController.indexIsChanging) return;
+    final context = _tabController.index == 0
+        ? _foodKey.currentContext
+        : _beveragesKey.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(context,
+          duration: const Duration(milliseconds: 300));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +44,29 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails> {
           style: textTheme(context)
               .bodyLarge
               ?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight - 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: TabBar(
+                controller: _tabController,
+                labelColor: Colors.black,
+                indicatorColor: Colors.teal,
+                dividerColor: Colors.white,
+                indicatorPadding: const EdgeInsets.symmetric(horizontal: 5),
+                isScrollable: true,
+                labelPadding: const EdgeInsets.symmetric(horizontal: 10),
+                tabs: const [
+                  Tab(text: 'About'),
+                  Tab(text: 'Amenities'),
+                  Tab(text: 'House rules'),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -108,5 +155,12 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _scrollController.dispose();
+    super.dispose();
   }
 }
