@@ -10,9 +10,7 @@ import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filterwidget.dart';
 import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
-import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
-import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
 
 class DineOutPage extends StatefulWidget {
   const DineOutPage({super.key});
