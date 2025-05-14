@@ -10,6 +10,7 @@ import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart'
 import 'package:suprapp/app/features/dine_out/provider/faqs_provider.dart';
 import 'package:suprapp/app/features/dine_out/provider/filter_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
+import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
 import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
 import 'package:suprapp/app/features/profile/controller/date_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<AppBarProvider>(
           create: (_) => AppBarProvider(),
         ),
+        ChangeNotifierProvider(create: (_) => ViewToggleProvider()),
       ],
       child: GlobalLoaderOverlay(
         child: MaterialApp.router(

@@ -234,31 +234,37 @@ class AnotherRestorantScreen extends StatelessWidget {
                     Divider(
                       color: Colors.black.withOpacity(0.3),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "Amenities",
                       style: textTheme(context)
-                          .bodyLarge
+                          .titleMedium
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "indoor Seating, Parking Availablity (Paid , Outdoor/ \n Street), Whellchair Accessible, Outdoor Seating, Kid \n Friendly",
                       style: textTheme(context)
-                          .labelLarge
+                          .bodyMedium
                           ?.copyWith(color: Colors.black.withOpacity(0.6)),
                     ),
                     Divider(
                       color: Colors.black.withOpacity(0.3),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "House Rules",
                       style: textTheme(context)
-                          .bodyLarge
+                          .titleMedium
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Dress Code, Casual, Family Friendly",
                       style: textTheme(context)
-                          .labelLarge
+                          .bodyMedium
                           ?.copyWith(color: Colors.black.withOpacity(0.6)),
                     ),
                     const SizedBox(height: 20),
