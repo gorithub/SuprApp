@@ -71,11 +71,16 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
             child: Row(
               children: [
                 const Icon(Icons.percent, size: 15),
-                Text(
-                  "Offer",
-                  style: textTheme(context).bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: colorScheme(context).onSurface.withOpacity(0.7)),
+                InkWell(
+                  onTap: () {
+                    context.pushNamed(AppRoute.offer);
+                  },
+                  child: Text(
+                    "Offer",
+                    style: textTheme(context).bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme(context).onSurface.withOpacity(0.7)),
+                  ),
                 ),
                 const Icon(
                   Icons.keyboard_arrow_down_outlined,

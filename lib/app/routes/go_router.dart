@@ -44,7 +44,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.verifyPhoneAuthPage}',
+    initialLocation: '/${AppRoute.dineOutPage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -331,15 +331,6 @@ class MyAppRouter {
         ),
       ),
       GoRoute(
-        name: AppRoute.creamplusPage,
-        path: '/${AppRoute.creamplusPage}',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-          context: context,
-          state: state,
-          child: const CareemPlusScreen(),
-        ),
-      ),
-      GoRoute(
         name: AppRoute.restaurentPhotosPage,
         path: '/${AppRoute.restaurentPhotosPage}',
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
@@ -372,14 +363,6 @@ class MyAppRouter {
                 context: context,
                 state: state,
                 child: const OfferScreen(),
-              )),
-      GoRoute(
-          name: AppRoute.usefull,
-          path: '/${AppRoute.usefull}',
-          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-                context: context,
-                state: state,
-                child: const FiliCafeDetails(),
               )),
     ],
     errorPageBuilder: (context, state) {

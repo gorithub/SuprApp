@@ -96,7 +96,26 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
               customIconContainer(Icons.favorite_outline, () {}),
               const SizedBox(width: 10),
             ],
-            leading: const CustomArrowBack(),
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  context.pop();
+                },
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: colorScheme(context).surface,
+                      borderRadius: BorderRadius.circular(7)),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: colorScheme(context).onSurface,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
             backgroundColor: colorScheme(context).onPrimary,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.all(10),
