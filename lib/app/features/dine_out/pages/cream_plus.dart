@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
+import 'package:suprapp/app/features/dine_out/widgets/custom_bottomsheett_subscription.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
 class CareemPlusScreen extends StatefulWidget {
@@ -35,6 +38,24 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
     super.dispose();
   }
 
+  void showSubscriptionSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => SubscriptionBottomSheet(
+        onSubscribe: () {
+          context.pop();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Subscribed to Careem Plus!')),
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final appBarProvider = Provider.of<AppBarProvider>(context);
@@ -42,28 +63,34 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 50,
-            width: 80,
-            child: Row(
-              children: [
-                const Icon(Icons.percent, size: 15),
-                Text(
-                  "Offer",
-                  style: textTheme(context).labelLarge,
-                ),
-                const Icon(
-                  Icons.keyboard_arrow_down_outlined,
-                  size: 15,
-                )
-              ],
+          GestureDetector(
+            onTap: () => context.pushNamed(AppRoute.offer),
+            child: SizedBox(
+              height: 50,
+              width: 80,
+              child: Row(
+                children: [
+                  const Icon(Icons.percent, size: 15),
+                  Text(
+                    "Offer",
+                    style: textTheme(context).labelLarge,
+                  ),
+                  const Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    size: 15,
+                  )
+                ],
+              ),
             ),
           ),
           SizedBox(
               width: MediaQuery.of(context).size.width * 0.6,
               height: MediaQuery.of(context).size.height * 0.07,
-              child:
-                  CustomElevatedButton(text: "Subscribe Now", onPressed: () {}))
+              child: CustomElevatedButton(
+                  text: "Subscribe Now",
+                  onPressed: () {
+                    showSubscriptionSheet(context);
+                  }))
         ],
       ),
       body: CustomScrollView(

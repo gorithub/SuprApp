@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -10,39 +11,101 @@ import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
-class AnotherRestorantScreen extends StatelessWidget {
+class AnotherRestorantScreen extends StatefulWidget {
   final int parentIndex;
   final int childIndex;
-  const AnotherRestorantScreen(
-      {super.key, required this.childIndex, required this.parentIndex});
+  const AnotherRestorantScreen({
+    super.key,
+    required this.childIndex,
+    required this.parentIndex,
+  });
+
+  @override
+  State<AnotherRestorantScreen> createState() => _AnotherRestorantScreenState();
+}
+
+class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
+  int _currentIndex = 0;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _startImageCarousel();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startImageCarousel() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      setState(() {
+        final provider = Provider.of<DineOutProvider>(context, listen: false);
+        final data =
+            provider.getAnotherByIndex(widget.parentIndex, widget.childIndex);
+        final imageModel = data.image.isNotEmpty ? data.image[0] : null;
+        final imageList = imageModel != null
+            ? [
+                imageModel.image1,
+                imageModel.image2,
+                imageModel.image3,
+                imageModel.image4,
+                imageModel.image5,
+                imageModel.image6,
+                imageModel.image7,
+                imageModel.image8,
+              ].where((img) => img.isNotEmpty).toList()
+            : [AppImages.eggtranding];
+        _currentIndex = (_currentIndex + 1) % imageList.length;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DineOutProvider>(context);
-    final data = provider.getAnotherByIndex(parentIndex, childIndex);
+    final data =
+        provider.getAnotherByIndex(widget.parentIndex, widget.childIndex);
+    final imageModel = data.image.isNotEmpty ? data.image[0] : null;
+    final imageList = imageModel != null
+        ? [
+            imageModel.image1,
+            imageModel.image2,
+            imageModel.image3,
+            imageModel.image4,
+            imageModel.image5,
+            imageModel.image6,
+            imageModel.image7,
+            imageModel.image8,
+          ].where((img) => img.isNotEmpty).toList()
+        : [AppImages.eggtranding];
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-              expandedHeight: 200.0,
-              pinned: true,
-              floating: false,
-              actions: [
-                customIconContainer(Icons.share_outlined, () {}),
-                const SizedBox(width: 10),
-                customIconContainer(Icons.favorite_outline, () {}),
-                const SizedBox(width: 10),
-              ],
-              leading: const CustomArrowBack(),
-              backgroundColor: colorScheme(context).onPrimary,
-              flexibleSpace: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                final isCollapsed = constraints.maxHeight <=
-                    kToolbarHeight + MediaQuery.of(context).padding.top;
+            expandedHeight: 200.0,
+            pinned: true,
+            floating: false,
+            actions: [
+              customIconContainer(Icons.share_outlined, () {}),
+              const SizedBox(width: 10),
+              customIconContainer(Icons.favorite_outline, () {}),
+              const SizedBox(width: 10),
+            ],
+            leading: const CustomArrowBack(),
+            backgroundColor: colorScheme(context).onPrimary,
+            flexibleSpace: FlexibleSpaceBar(
+              titlePadding: const EdgeInsets.all(10),
+              title: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  final isCollapsed = constraints.maxHeight <=
+                      kToolbarHeight + MediaQuery.of(context).padding.top;
 
-                return FlexibleSpaceBar(
-                  titlePadding: const EdgeInsets.all(10),
-                  title: isCollapsed
+                  return isCollapsed
                       ? const SizedBox()
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,8 +123,9 @@ class AnotherRestorantScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 4),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
-                                    color: colorScheme(context).primary),
+                                  borderRadius: BorderRadius.circular(2),
+                                  color: colorScheme(context).primary,
+                                ),
                                 child: Row(
                                   children: [
                                     Text(
@@ -81,14 +145,15 @@ class AnotherRestorantScreen extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2),
-                                  color: colorScheme(context).primary),
+                                borderRadius: BorderRadius.circular(2),
+                                color: colorScheme(context).primary,
+                              ),
                               child: Row(
                                 children: [
                                   const Icon(Icons.photo_camera_outlined,
                                       size: 10, color: Colors.white),
                                   Text(
-                                    "4 of 9",
+                                    "${_currentIndex + 1} of ${imageList.length}",
                                     style: textTheme(context)
                                         .labelSmall
                                         ?.copyWith(
@@ -98,13 +163,32 @@ class AnotherRestorantScreen extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
-                  background: Image.asset(
-                    data.image[0].image1,
-                    fit: BoxFit.cover,
-                  ),
-                );
-              })),
+                        );
+                },
+              ),
+              background: Stack(
+                fit: StackFit.expand,
+                children: List.generate(imageList.length, (index) {
+                  return AnimatedOpacity(
+                    opacity: _currentIndex == index ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 500),
+                    child: Image.asset(
+                      imageList[index],
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        print(
+                            "Error loading image: ${imageList[index]}"); // Debug log
+                        return Image.asset(
+                          AppImages.eggtranding,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -203,7 +287,7 @@ class AnotherRestorantScreen extends StatelessWidget {
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "indoor Seating, Parking Availablity (Paid , Outdoor/ \n Street), Whellchair Accessible, Outdoor Seating, Kid \n Friendly",
+                      "Indoor Seating, Parking Availability (Paid, Outdoor/Street), Wheelchair Accessible, Outdoor Seating, Kid Friendly",
                       style: textTheme(context)
                           .labelLarge
                           ?.copyWith(color: Colors.black.withOpacity(0.6)),
@@ -225,15 +309,16 @@ class AnotherRestorantScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     CustomElevatedButton(
-                        text: "Subscribe to creame plus now",
-                        onPressed: () {
-                          context.pushNamed(AppRoute.creamplusPage);
-                        })
+                      text: "Subscribe to Careem Plus now",
+                      onPressed: () {
+                        context.pushNamed(AppRoute.creamplusPage);
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -248,18 +333,14 @@ class AnotherRestorantScreen extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          Stack(
-            children: [
-              Text(
-                "Caream+ |",
-                style: textTheme(context)
-                    .bodyMedium
-                    ?.copyWith(color: AppColors.brightGreen),
-              ),
-            ],
+          Text(
+            "Careem+ |",
+            style: textTheme(context)
+                .bodyMedium
+                ?.copyWith(color: AppColors.brightGreen),
           ),
           Text(
-            "  Subscribe to get",
+            " Subscribe to get",
             style: textTheme(context).bodyMedium?.copyWith(color: Colors.white),
           ),
           Text(
@@ -306,8 +387,9 @@ class AnotherRestorantScreen extends StatelessWidget {
       child: ListTile(
         leading: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromARGB(255, 232, 232, 232)),
+            borderRadius: BorderRadius.circular(10),
+            color: const Color.fromARGB(255, 232, 232, 232),
+          ),
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           child: const Icon(Icons.menu_book_outlined,
               color: Color.fromARGB(255, 63, 63, 63)),
@@ -318,10 +400,12 @@ class AnotherRestorantScreen extends StatelessWidget {
               .bodyMedium
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
-        subtitle: Text("Bon appetit!",
-            style: textTheme(context)
-                .labelLarge
-                ?.copyWith(color: Colors.black.withOpacity(0.7))),
+        subtitle: Text(
+          "Bon appétit!",
+          style: textTheme(context)
+              .labelLarge
+              ?.copyWith(color: Colors.black.withOpacity(0.7)),
+        ),
         onTap: onTap,
       ),
     );
@@ -341,7 +425,7 @@ class AnotherRestorantScreen extends StatelessWidget {
     );
   }
 
-  Widget customTile(String title, VoidCallback onTpa, BuildContext context) {
+  Widget customTile(String title, VoidCallback onTap, BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       title: Text(
@@ -353,7 +437,7 @@ class AnotherRestorantScreen extends StatelessWidget {
         Icons.arrow_forward_outlined,
         size: 20,
       ),
-      onTap: onTpa,
+      onTap: onTap,
     );
   }
 
@@ -404,9 +488,9 @@ class AnotherRestorantScreen extends StatelessWidget {
                   cacheHeight: 150,
                   cacheWidth: 150,
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

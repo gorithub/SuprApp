@@ -7,6 +7,7 @@ import 'package:suprapp/app/features/auth/provider/otp_provider.dart';
 import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
+import 'package:suprapp/app/features/dine_out/controller/offer_controller.dart';
 import 'package:suprapp/app/features/dine_out/provider/faqs_provider.dart';
 import 'package:suprapp/app/features/dine_out/provider/filter_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<AppBarProvider>(
           create: (_) => AppBarProvider(),
+        ),
+        ChangeNotifierProvider<OfferProvider>(
+          create: (_) => OfferProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(
