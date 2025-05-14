@@ -1,10 +1,8 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
-import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
@@ -37,32 +35,50 @@ class RemoveFavBottomSheet extends StatelessWidget {
               ),
               Text(
                 'Remove from favourites ?',
-                style: textTheme.titleLarge!.copyWith(
+                style: textTheme.displayMedium!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Text(
                 'Are you sure you wnat to remove this\nfrom your favourite',
                 style: textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
+                  color: AppColors.darkGrey,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 30),
               CustomElevatedButton(
-                buttonColor: colorScheme.error,
+                buttonColor: const Color.fromARGB(255, 205, 18, 5),
                 text: 'Remove',
                 onPressed: () {
                   context.pushNamed(AppRoute.phoneAuthPage);
                 },
               ),
               const SizedBox(height: 30),
-              CustomElevatedButton(
-                buttonColor: colorScheme.error,
-                text: 'Cancel',
-                onPressed: () {
-                  context.pushNamed(AppRoute.phoneAuthPage);
-                },
-              ),
+              SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: OutlinedButton(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(
+                        color: Color.fromARGB(217, 214, 215, 206)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    'Cancel',
+                    style: textTheme.bodyLarge!.copyWith(
+                      color: AppColors.darkGrey,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         );

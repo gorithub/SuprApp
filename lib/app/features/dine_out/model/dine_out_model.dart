@@ -94,7 +94,7 @@ List<NestedItem> mydinout = [
             ],
             title: "Parisian cafe - Al Khubeirah",
             rating: "4.8",
-            location: "Level 2, National Tower Mall, Al Khubeirah",
+            location: "Level 2, National Tower Mall",
             food: "Cafe, French. Avg bill: AED 105 / person",
             discount: "20% off on A la carte",
             isopen: true,
