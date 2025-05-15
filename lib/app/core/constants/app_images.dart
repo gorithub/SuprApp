@@ -158,6 +158,7 @@ class AppIcon {
   static const String tickIcon = "assets/icons/tick_icon.PNG";
   static const String green = "assets/green.png";
   static const String doller = "assets/icons/doller (2).svg";
+  static const String offer = "assets/icons/offer.svg";
 }
 
 class AppNetworkImages {

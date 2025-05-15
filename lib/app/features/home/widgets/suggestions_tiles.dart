@@ -10,7 +10,7 @@ class SuggestionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 180,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: suggestionsItems.length,

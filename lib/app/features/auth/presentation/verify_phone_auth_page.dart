@@ -20,6 +20,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
   final List<TextEditingController> _controllers =
       List.generate(4, (_) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
+  @override
   void initState() {
     super.initState();
 

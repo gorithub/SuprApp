@@ -54,7 +54,7 @@ class OfferScreen extends StatelessWidget {
             Expanded(
               child: Consumer<OfferProvider>(
                 builder: (context, provider, _) {
-                  final injectedIndex = 1;
+                  const injectedIndex = 1;
                   final totalItems = offers.length + 1;
 
                   return ListView.builder(
@@ -62,7 +62,7 @@ class OfferScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       if (index == injectedIndex) {
                         return Padding(
-                          padding: EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
                           child: Text("All Offers",
                               style: textTheme(context)
                                   .bodyLarge

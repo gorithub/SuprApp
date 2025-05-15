@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                       height: 80,
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 35),
+                      padding: const EdgeInsets.symmetric(horizontal: 35),
                       child: Image.asset(
                         'assets/images/car_background.png',
                         fit: BoxFit.fill,

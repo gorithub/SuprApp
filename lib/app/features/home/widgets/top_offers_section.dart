@@ -23,7 +23,8 @@ class TopOffersSection extends StatelessWidget {
                   style: textTheme(
                     context,
                   ).headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold, color: Color(0xff0A0C0B)),
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xff0A0C0B)),
                 ),
               ],
             ),

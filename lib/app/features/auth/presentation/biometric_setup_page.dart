@@ -95,7 +95,7 @@ class _BiometricSetupPageState extends State<BiometricSetupPage> {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   child: Text(
-                    "I\'ll do this later",
+                    "I'll do this later",
                     style: textTheme(context).titleSmall?.copyWith(
                           color: colorScheme(context).onSurface,
                           fontWeight: FontWeight.w600,

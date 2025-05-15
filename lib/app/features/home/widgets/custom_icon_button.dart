@@ -32,7 +32,7 @@ class CustomIconButton extends StatelessWidget {
       height: height ?? 50, // Default height if not provided
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(
             buttonColor ?? colorScheme(context).primary,
           ),
           shape: WidgetStateProperty.all(
@@ -41,7 +41,7 @@ class CustomIconButton extends StatelessWidget {
             ),
           ),
           padding: WidgetStateProperty.all(
-            padding ?? EdgeInsets.all(8),
+            padding ?? const EdgeInsets.all(8),
           ), // Default padding if not provided
         ),
         onPressed: onPressed,

@@ -43,7 +43,7 @@ class BankAccountScreen extends StatelessWidget {
                         children: [
                           Text('Arief Wahdan Alfhat',
                               style: textTheme(context).titleSmall),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text('893462013',
                               style: textTheme(context).titleSmall),
                         ],

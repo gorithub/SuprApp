@@ -26,7 +26,7 @@ class HomeProductCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,7 +35,7 @@ class HomeProductCategories extends StatelessWidget {
             style: textTheme(
               context,
             ).headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold, color: Color(0xff0A0C0B)),
+                fontWeight: FontWeight.bold, color: const Color(0xff0A0C0B)),
           ),
           SizedBox(
             height: 200,
@@ -43,7 +43,8 @@ class HomeProductCategories extends StatelessWidget {
               items: sliderItems.map((item) {
                 return Container(
                   width: 400,
-                  margin: EdgeInsets.symmetric(vertical: 16, horizontal: 4),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 4),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
@@ -118,8 +119,8 @@ class HomeProductCategories extends StatelessWidget {
                 enableInfiniteScroll: true,
                 reverse: false,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 2),
-                autoPlayAnimationDuration: Duration(milliseconds: 600),
+                autoPlayInterval: const Duration(seconds: 2),
+                autoPlayAnimationDuration: const Duration(milliseconds: 600),
                 autoPlayCurve: Curves.linear,
                 enlargeCenterPage: true,
                 enlargeFactor: 0.3,

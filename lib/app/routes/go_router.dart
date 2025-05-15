@@ -10,13 +10,11 @@ import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/restaurent_photos.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/offer_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/food_page.dart';
+import 'package:suprapp/app/features/food/pages/food_detail_page.dart';
+import 'package:suprapp/app/features/food/pages/food_home_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -45,7 +43,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.foodPage}',
+    initialLocation: '/${AppRoute.foodHomePage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -366,12 +364,29 @@ class MyAppRouter {
                 child: const OfferScreen(),
               )),
       GoRoute(
-          name: AppRoute.foodPage,
-          path: '/${AppRoute.foodPage}',
+        name: AppRoute.foodPage,
+        path: '/${AppRoute.foodPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const FoodPage(),
+        ),
+      ),
+      GoRoute(
+          name: AppRoute.foodHomePage,
+          path: '/${AppRoute.foodHomePage}',
           pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
                 context: context,
                 state: state,
-                child: const FoodPage(),
+                child: const FoodHomePage(),
+              )),
+      GoRoute(
+          name: AppRoute.foodDetail,
+          path: '/${AppRoute.foodDetail}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const FoodDetailPage(),
               )),
     ],
     errorPageBuilder: (context, state) {
@@ -429,4 +444,6 @@ class AppRoute {
   static const String offer = 'offer-page';
   //!---- Food Section---- !//
   static const String foodPage = 'food-page';
+  static const String foodHomePage = 'food-home-page';
+  static const String foodDetail = 'food-detail-page';
 }

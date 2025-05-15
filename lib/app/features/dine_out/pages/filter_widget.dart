@@ -237,7 +237,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               SizedBox(
@@ -299,7 +299,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               SizedBox(

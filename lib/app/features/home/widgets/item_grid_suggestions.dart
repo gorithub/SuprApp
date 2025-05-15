@@ -49,7 +49,7 @@ class ItemGridTileLargeImage extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xff000000),
+                    color: const Color(0xff000000),
                   ),
             ),
           ],

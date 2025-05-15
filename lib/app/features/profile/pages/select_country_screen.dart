@@ -52,7 +52,7 @@ class _SelectCountryScreenState extends State<SelectCountryScreen> {
                   const SizedBox(height: 8),
                 ],
               );
-            }).toList(),
+            }),
           ],
         ),
       ),

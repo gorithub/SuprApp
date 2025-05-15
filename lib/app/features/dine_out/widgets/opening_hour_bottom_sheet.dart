@@ -63,7 +63,7 @@ class OpeningHoursBottomSheet extends StatelessWidget {
                 ],
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );

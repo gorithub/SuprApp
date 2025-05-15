@@ -13,7 +13,7 @@ class CustomBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       style: ButtonStyle(
-        visualDensity: VisualDensity(horizontal: 0, vertical: 0),
+        visualDensity: const VisualDensity(horizontal: 0, vertical: 0),
         backgroundColor: WidgetStatePropertyAll(colorScheme(context).onPrimary),
       ),
       onPressed: onPressed,
