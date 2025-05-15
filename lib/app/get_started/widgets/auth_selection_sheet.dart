@@ -53,7 +53,7 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
               CustomElevatedButton(
                 text: 'Continue with phone number',
                 onPressed: () {
-                  context.pushNamed(AppRoute.phoneAuthPage);
+                  context.pushReplacementNamed(AppRoute.phoneAuthPage);
                 },
               ),
               const SizedBox(height: 30),

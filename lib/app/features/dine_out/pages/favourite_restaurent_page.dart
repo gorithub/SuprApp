@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
 import 'package:suprapp/app/features/dine_out/widgets/remove_fav_bottom_sheet.dart';
+import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class FavouriteRestaurentPage extends StatefulWidget {
@@ -86,174 +89,102 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj8L-vjust5NvQGP5gwsCI9u-zLPQ594P2TA&s',
     },
   ];
-
+  final List<Map<String, dynamic>> restaurant = [
+    {
+      'image':
+          'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=300&q=60',
+      'name': 'Press\'d',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
+      'tag': 'Coffee & Snacks',
+    },
+    {
+      'image':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAXpv8jwkMAtO-0eUQZf8LiwgGYF_np8aObA&s',
+      'name': 'Urban Bites',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
+      'tag': 'Fast Food',
+    },
+    {
+      'image':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdWPzgJkstd0rds9qWiBde--Dw_4sB-FdGSg&s',
+      'name': 'Green Bowl',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
+      'tag': 'Healthy',
+    },
+    {
+      'image':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgXw0pqGYwHn2ieksnWU1IoVsu7TQUfvFwsQ&s',
+      'name': 'Cafe Bloom',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
+      'tag': 'Cafe',
+    },
+    {
+      'image':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz12UCZeZo5yxJMx3rXcat92SbXA8LT0VVsw&s',
+      'name': 'The Sizzle House',
+      'location': ' 4.3 . Ground Level, Polo Residence',
+      'billingperperson': 'Fast Food , Burher . Avg bill: AED 100/person',
+      'tag': 'Grill',
+    },
+  ];
+  bool showAlternateView = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              context.pop();
-            },
-            child: Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.appGrey),
-                  borderRadius: BorderRadius.circular(7)),
-              child: const Icon(
-                Icons.arrow_back,
-                color: AppColors.darkGrey,
-                size: 20,
-              ),
-            ),
-          ),
-        ),
-        title: Text(
-          'Favourites',
-          style: textTheme(context).titleLarge?.copyWith(
-                color: colorScheme(context).onSurface,
-                fontWeight: FontWeight.w600,
-              ),
-        ),
-        actions: [
-          Padding(
+        appBar: AppBar(
+          forceMaterialTransparency: true,
+          leading: Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                context.pushNamed(AppRoute.favouriteRestaurentPage);
+                context.pop();
               },
               child: Container(
-                height: 50,
-                width: 40,
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                     border: Border.all(color: AppColors.appGrey),
                     borderRadius: BorderRadius.circular(7)),
-                child: Icon(
-                  Icons.view_agenda_outlined,
+                child: const Icon(
+                  Icons.arrow_back,
                   color: AppColors.darkGrey,
-                  size: 16,
+                  size: 20,
                 ),
               ),
             ),
           ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  final item = data[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 3),
-                          child: Container(
-                            height: 75,
-                            width: 75,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(item['image']),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                item['name'],
-                                style: textTheme(context).bodyMedium?.copyWith(
-                                      color: colorScheme(context).onSurface,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                              Text(
-                                item['subtitle'],
-                                style: textTheme(context).bodySmall?.copyWith(
-                                      color: colorScheme(context)
-                                          .onSurface
-                                          .withOpacity(0.6),
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.star,
-                                      color: Colors.orange, size: 16),
-                                  SizedBox(width: 3),
-                                  Text(
-                                    item['rating'].toString(),
-                                    style:
-                                        textTheme(context).bodySmall?.copyWith(
-                                              color: colorScheme(context)
-                                                  .onSurface
-                                                  .withOpacity(0.6),
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                  ),
-                                  SizedBox(width: 6),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 2),
-                                      minimumSize: Size(0, 24),
-                                      backgroundColor: Colors.green,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                    ),
-                                    onPressed: () {},
-                                    child: Text(
-                                      "+ | 20% off",
-                                      style: textTheme(context)
-                                          .bodySmall
-                                          ?.copyWith(
-                                            color: AppColors.lightGreen,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.favorite,
-                              size: 18, color: AppColors.appGreen),
-                          onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              builder: (context) =>
-                                  const RemoveFavBottomSheet(),
-                            );
-                          },
-                          padding: EdgeInsets.zero,
-                          constraints: BoxConstraints(),
-                        ),
-                      ],
+          title: Text(
+            'Favourites',
+            style: textTheme(context).titleLarge?.copyWith(
+                  color: colorScheme(context).onSurface,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Consumer<ViewToggleProvider>(
+                builder: (context, viewToggle, _) {
+                  return InkWell(
+                    onTap: () => viewToggle.toggleView(),
+                    child: Container(
+                      height: 50,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.appGrey),
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                      child: Icon(
+                        viewToggle.showAlternateList
+                            ? Icons.menu_outlined
+                            : Icons.view_agenda_outlined,
+                        color: AppColors.darkGrey,
+                        size: 16,
+                      ),
                     ),
                   );
                 },
@@ -261,7 +192,175 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
             ),
           ],
         ),
-      ),
-    );
+        body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(children: [
+              SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: Consumer<ViewToggleProvider>(
+                  builder: (context, viewToggle, _) {
+                    return viewToggle.showAlternateList
+                        ? Expanded(
+                            child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: restaurant.length,
+                              itemBuilder: (context, index) {
+                                final item = restaurant[index];
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: RestaurantCard(
+                                      imageUrl: item['image'],
+                                      title: item['name'],
+                                      location: item['location'],
+                                      price: item['billingperperson'],
+                                      tag: item['tag'],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                        : Expanded(
+                            child: ListView.builder(
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                final item = data[index];
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 3),
+                                        child: Container(
+                                          height: 75,
+                                          width: 75,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image:
+                                                  NetworkImage(item['image']),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              item['name'],
+                                              style: textTheme(context)
+                                                  .bodyMedium
+                                                  ?.copyWith(
+                                                    color: colorScheme(context)
+                                                        .onSurface,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                            Text(
+                                              item['subtitle'],
+                                              style: textTheme(context)
+                                                  .bodySmall
+                                                  ?.copyWith(
+                                                    color: colorScheme(context)
+                                                        .onSurface
+                                                        .withOpacity(0.6),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(Icons.star,
+                                                    color: Colors.orange,
+                                                    size: 16),
+                                                SizedBox(width: 3),
+                                                Text(
+                                                  item['rating'].toString(),
+                                                  style: textTheme(context)
+                                                      .bodySmall
+                                                      ?.copyWith(
+                                                        color: colorScheme(
+                                                                context)
+                                                            .onSurface
+                                                            .withOpacity(0.6),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
+                                                SizedBox(width: 6),
+                                                ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 8,
+                                                            vertical: 2),
+                                                    minimumSize: Size(0, 24),
+                                                    backgroundColor:
+                                                        Colors.green,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                    ),
+                                                  ),
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    "+ | 20% off",
+                                                    style: textTheme(context)
+                                                        .bodySmall
+                                                        ?.copyWith(
+                                                          color: AppColors
+                                                              .lightGreen,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(Icons.favorite,
+                                            size: 18,
+                                            color: AppColors.appGreen),
+                                        onPressed: () {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            builder: (context) =>
+                                                const RemoveFavBottomSheet(),
+                                          );
+                                        },
+                                        padding: EdgeInsets.zero,
+                                        constraints: BoxConstraints(),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                  },
+                ),
+              ),
+            ])));
   }
 }

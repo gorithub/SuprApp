@@ -4,6 +4,11 @@ import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
+import 'package:suprapp/app/features/dine_out/pages/restaurent_photos.dart';
+import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
@@ -39,7 +44,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.verifyPhoneAuthPage}',
+    initialLocation: '/${AppRoute.dineOutPage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -326,6 +331,24 @@ class MyAppRouter {
         ),
       ),
       GoRoute(
+        name: AppRoute.restaurentPhotosPage,
+        path: '/${AppRoute.restaurentPhotosPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const RestaurentPhotosPage(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.usefull,
+        path: '/${AppRoute.usefull}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const FiliCafeDetails(),
+        ),
+      ),
+      GoRoute(
           name: AppRoute.creamplusPage,
           path: '/${AppRoute.creamplusPage}',
           pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
@@ -340,14 +363,6 @@ class MyAppRouter {
                 context: context,
                 state: state,
                 child: const OfferScreen(),
-              )),
-      GoRoute(
-          name: AppRoute.usefull,
-          path: '/${AppRoute.usefull}',
-          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-                context: context,
-                state: state,
-                child: const FiliCafeDetails(),
               )),
     ],
     errorPageBuilder: (context, state) {
@@ -401,5 +416,6 @@ class AppRoute {
   static const String faqsPage = 'faqs-page';
   static const String menu = 'menu-page';
   static const String creamplusPage = 'cream-plus';
+  static const String restaurentPhotosPage = 'restaurent-photos-page';
   static const String offer = 'offer-page';
 }

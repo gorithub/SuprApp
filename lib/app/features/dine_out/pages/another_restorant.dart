@@ -96,7 +96,26 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
               customIconContainer(Icons.favorite_outline, () {}),
               const SizedBox(width: 10),
             ],
-            leading: const CustomArrowBack(),
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  context.pop();
+                },
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: colorScheme(context).surface,
+                      borderRadius: BorderRadius.circular(7)),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: colorScheme(context).onSurface,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
             backgroundColor: colorScheme(context).onPrimary,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.all(10),
@@ -199,14 +218,20 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                     Text(
                       data.title,
                       style: textTheme(context)
-                          .bodyLarge
+                          .titleLarge
                           ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 5,
                     ),
                     Text(
                       data.location,
-                      style: textTheme(context)
-                          .labelLarge
-                          ?.copyWith(fontWeight: FontWeight.bold),
+                      style: textTheme(context).bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.darkGrey),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Row(
                       children: [
@@ -215,7 +240,7 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                         Text(
                           "${data.rating} (2454 ratings on google)",
                           style: textTheme(context)
-                              .labelLarge
+                              .bodySmall
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -246,22 +271,34 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        const Icon(Icons.restaurant_menu_outlined, size: 18),
+                        const Icon(
+                          Icons.restaurant_menu_outlined,
+                          size: 18,
+                          color: AppColors.darkGrey,
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           "Cafe",
-                          style: textTheme(context).bodySmall,
+                          style: textTheme(context).bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: colorScheme(context).onSurface),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 10),
                     Row(
                       children: [
-                        const Icon(Icons.payments_outlined, size: 18),
+                        const Icon(
+                          Icons.payments_outlined,
+                          size: 18,
+                          color: AppColors.darkGrey,
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           "Average cost of AED 45 for one",
-                          style: textTheme(context).bodySmall,
+                          style: textTheme(context).bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: colorScheme(context).onSurface),
                         ),
                       ],
                     ),
@@ -269,51 +306,57 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                     _menuCard(() {
                       context.pushNamed(AppRoute.menu);
                     }, context),
-                    const SizedBox(height: 24),
-                    customTile("Photos", () {}, context),
+                    const SizedBox(height: 10),
+                    customTile("Photos", () {
+                      context.pushNamed(AppRoute.restaurentPhotosPage);
+                    }, context),
                     const SizedBox(height: 16),
                     customPhotos(context),
-                    const SizedBox(height: 16),
                     customTile("Useful bits", () {
                       context.pushNamed(AppRoute.usefull);
                     }, context),
                     Divider(
                       color: Colors.black.withOpacity(0.3),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "Amenities",
                       style: textTheme(context)
-                          .bodyLarge
+                          .titleMedium
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Indoor Seating, Parking Availability (Paid, Outdoor/Street), Wheelchair Accessible, Outdoor Seating, Kid Friendly",
                       style: textTheme(context)
-                          .labelLarge
+                          .bodyMedium
                           ?.copyWith(color: Colors.black.withOpacity(0.6)),
                     ),
                     Divider(
                       color: Colors.black.withOpacity(0.3),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "House Rules",
                       style: textTheme(context)
-                          .bodyLarge
+                          .titleMedium
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Dress Code, Casual, Family Friendly",
                       style: textTheme(context)
-                          .labelLarge
+                          .bodyMedium
                           ?.copyWith(color: Colors.black.withOpacity(0.6)),
                     ),
                     const SizedBox(height: 20),
                     CustomElevatedButton(
-                      text: "Subscribe to Careem Plus now",
-                      onPressed: () {
-                        context.pushNamed(AppRoute.creamplusPage);
-                      },
-                    ),
+                        text: "Subscribe to supr plus now",
+                        onPressed: () {
+                          context.pushNamed(AppRoute.creamplusPage);
+                        })
                   ],
                 ),
               ),
@@ -333,11 +376,15 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          Text(
-            "Careem+ |",
-            style: textTheme(context)
-                .bodyMedium
-                ?.copyWith(color: AppColors.brightGreen),
+          Stack(
+            children: [
+              Text(
+                "Supr+ |",
+                style: textTheme(context)
+                    .bodyMedium
+                    ?.copyWith(color: AppColors.brightGreen),
+              ),
+            ],
           ),
           Text(
             " Subscribe to get",
@@ -369,9 +416,9 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
         ),
         label: Text(
           label,
-          style: textTheme(context)
-              .labelLarge
-              ?.copyWith(color: Colors.black.withOpacity(0.4)),
+          style: textTheme(context).labelLarge?.copyWith(
+              color: Colors.black.withOpacity(0.9),
+              fontWeight: FontWeight.w600),
         ),
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -381,33 +428,26 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
   }
 
   Widget _menuCard(VoidCallback onTap, BuildContext context) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: ListTile(
-        leading: Container(
-          decoration: BoxDecoration(
+    return ListTile(
+      leading: Container(
+        decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: const Color.fromARGB(255, 232, 232, 232),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-          child: const Icon(Icons.menu_book_outlined,
-              color: Color.fromARGB(255, 63, 63, 63)),
-        ),
-        title: Text(
-          "View menu",
-          style: textTheme(context)
-              .bodyMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(
-          "Bon appétit!",
+            color: const Color.fromARGB(255, 232, 232, 232)),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        child: const Icon(Icons.menu_book_outlined,
+            color: Color.fromARGB(255, 63, 63, 63)),
+      ),
+      title: Text(
+        "View menu",
+        style: textTheme(context)
+            .bodyMedium
+            ?.copyWith(fontWeight: FontWeight.bold),
+      ),
+      subtitle: Text("Bon appetit!",
           style: textTheme(context)
               .labelLarge
-              ?.copyWith(color: Colors.black.withOpacity(0.7)),
-        ),
-        onTap: onTap,
-      ),
+              ?.copyWith(color: Colors.black.withOpacity(0.7))),
+      onTap: onTap,
     );
   }
 
@@ -430,8 +470,9 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
       contentPadding: EdgeInsets.zero,
       title: Text(
         title,
-        style:
-            textTheme(context).bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+        style: textTheme(context)
+            .titleMedium
+            ?.copyWith(fontWeight: FontWeight.bold),
       ),
       trailing: const Icon(
         Icons.arrow_forward_outlined,

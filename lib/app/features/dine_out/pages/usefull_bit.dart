@@ -39,6 +39,7 @@ class _FiliCafeDetailsState extends State<FiliCafeDetails>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         leading: const CustomArrowBack(),
         title: Text(
           "Usefull bits",
