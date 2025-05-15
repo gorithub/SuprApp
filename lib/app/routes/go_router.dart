@@ -16,6 +16,7 @@ import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/offer_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
+import 'package:suprapp/app/features/food_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -44,7 +45,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.dineOutPage}',
+    initialLocation: '/${AppRoute.foodPage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -364,6 +365,14 @@ class MyAppRouter {
                 state: state,
                 child: const OfferScreen(),
               )),
+      GoRoute(
+          name: AppRoute.foodPage,
+          path: '/${AppRoute.foodPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const FoodPage(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -418,4 +427,6 @@ class AppRoute {
   static const String creamplusPage = 'cream-plus';
   static const String restaurentPhotosPage = 'restaurent-photos-page';
   static const String offer = 'offer-page';
+  //!---- Food Section---- !//
+  static const String foodPage = 'food-page';
 }
