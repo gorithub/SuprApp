@@ -6,6 +6,7 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
+import 'package:suprapp/app/features/dine_out/widgets/custom_container.dart';
 import 'package:suprapp/app/features/dine_out/widgets/opening_hour_bottom_sheet.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 import 'package:suprapp/app/routes/go_router.dart';
@@ -222,6 +223,7 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                     ),
                     const SizedBox(height: 40),
                     _careemPlusCard(context),
+                    const PromotionBanner(),
                     const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
