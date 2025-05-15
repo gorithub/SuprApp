@@ -131,7 +131,7 @@ class _DineOutPageState extends State<DineOutPage>
                 decoration: BoxDecoration(
                     border: Border.all(color: AppColors.appGrey),
                     borderRadius: BorderRadius.circular(7)),
-                child: Icon(
+                child: const Icon(
                   Icons.favorite_outline,
                   color: AppColors.darkGrey,
                   size: 16,
@@ -150,9 +150,9 @@ class _DineOutPageState extends State<DineOutPage>
                     color: colorScheme(context).primary,
                     border: Border.all(color: AppColors.appGrey),
                     borderRadius: BorderRadius.circular(7)),
-                child: Icon(
+                child: const Icon(
                   Icons.menu,
-                  color: const Color.fromARGB(255, 20, 188, 96),
+                  color: Color.fromARGB(255, 20, 188, 96),
                   size: 15,
                 ),
               ),
@@ -201,7 +201,7 @@ class _DineOutPageState extends State<DineOutPage>
                       width: 2.0,
                       color: colorScheme(context).primary,
                     ),
-                    insets: EdgeInsets.symmetric(horizontal: 15.0),
+                    insets: const EdgeInsets.symmetric(horizontal: 15.0),
                   ),
                   tabs: List.generate(tabData.length, (index) {
                     final isSelected = _tabController.index == index;
@@ -221,7 +221,7 @@ class _DineOutPageState extends State<DineOutPage>
                               width: 24,
                               color: color,
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               tabData[index]['text']!,
                               style: textTheme(context).bodySmall?.copyWith(
@@ -274,7 +274,7 @@ class _DineOutPageState extends State<DineOutPage>
           ),
           Expanded(
             child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 controller: _tabController,
                 children: [
                   Padding(
@@ -356,7 +356,7 @@ class _DineOutPageState extends State<DineOutPage>
                                   );
                                 }),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Text(
@@ -365,13 +365,13 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w600),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           ListView.builder(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: restaurant.length,
                             itemBuilder: (context, index) {
                               final item = restaurant[index];
@@ -407,7 +407,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -450,7 +450,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -493,7 +493,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -536,7 +536,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -579,7 +579,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -622,7 +622,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -665,7 +665,7 @@ class _DineOutPageState extends State<DineOutPage>
                                 color: colorScheme(context).onSurface,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(

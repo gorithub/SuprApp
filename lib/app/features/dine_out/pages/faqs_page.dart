@@ -95,7 +95,7 @@ class _FaqsPageState extends State<FaqsPage> {
       body: Consumer<FAQProvider>(builder: (context, provider, _) {
         return ListView.separated(
           itemCount: faqData.length,
-          separatorBuilder: (context, index) => Divider(
+          separatorBuilder: (context, index) => const Divider(
             height: 1,
             color: AppColors.appGrey,
           ),
@@ -104,7 +104,7 @@ class _FaqsPageState extends State<FaqsPage> {
             final isExpanded = provider.expandedIndex == index;
 
             return ExpansionTile(
-              title: Text(''),
+              title: const Text(''),
               leading: Text(
                 item['title'],
                 style: textTheme(context).titleSmall?.copyWith(

@@ -16,7 +16,7 @@ class HomeHeader extends StatelessWidget {
       height: 320,
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(35)),
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(35)),
         gradient: LinearGradient(
           colors: [
             Colors.white,
@@ -24,7 +24,7 @@ class HomeHeader extends StatelessWidget {
             // Color(0xFFFFF3D9),
             // Color(0xFFD0F4C4),
           ],
-          stops: [0.2, 1.4],
+          stops: const [0.2, 1.4],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -215,7 +215,7 @@ class HomeHeader extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

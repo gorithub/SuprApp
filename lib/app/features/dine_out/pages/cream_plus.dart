@@ -191,10 +191,10 @@ class _CareemPlusScreenState extends State<CareemPlusScreen> {
                 children: [
                   ListView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: 3,
                     itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: _buildBenefitTile(
                         title: 'Buy 1 Get 1 deals & more',
                         subtitle: 'Save across 800+ dining places',

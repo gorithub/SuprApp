@@ -221,7 +221,7 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                           .titleLarge
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
@@ -230,7 +230,7 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                           fontWeight: FontWeight.bold,
                           color: AppColors.darkGrey),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -318,7 +318,7 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                     Divider(
                       color: Colors.black.withOpacity(0.3),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(
@@ -336,7 +336,7 @@ class _AnotherRestorantScreenState extends State<AnotherRestorantScreen> {
                     Divider(
                       color: Colors.black.withOpacity(0.3),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(

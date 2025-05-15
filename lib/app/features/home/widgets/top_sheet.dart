@@ -38,7 +38,7 @@ class TopSheetWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.close, color: Colors.black),
+                    icon: const Icon(Icons.close, color: Colors.black),
                     iconSize: 20,
                     padding: EdgeInsets.zero,
                     onPressed: () => Navigator.of(context).pop(),
@@ -85,7 +85,7 @@ class TopSheetWidget extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProfileScreen(),
+                          builder: (context) => const ProfileScreen(),
                         ));
                   },
                 ),

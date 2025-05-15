@@ -72,7 +72,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Column(
@@ -90,7 +90,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
             const SizedBox(height: 4),
             Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.star,
                   color: AppColors.appOrange,
                   size: 20,

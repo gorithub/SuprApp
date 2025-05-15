@@ -40,10 +40,10 @@ class CustomElevatedButton extends StatelessWidget {
       height: height ?? 50, // Default to 50 if height is not provided
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(
             buttonColor ?? colorScheme(context).primary,
           ),
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
               side: BorderSide(
@@ -52,8 +52,8 @@ class CustomElevatedButton extends StatelessWidget {
               ),
             ),
           ),
-          padding: MaterialStateProperty.all(
-            padding ?? EdgeInsets.all(12),
+          padding: WidgetStateProperty.all(
+            padding ?? const EdgeInsets.all(12),
           ), // Default padding if not provided
         ),
         onPressed: onPressed,
