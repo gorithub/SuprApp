@@ -128,7 +128,6 @@ class AllTab extends StatelessWidget {
       const CategoryItem(
           title: 'Gifting',
           imageUrl: 'https://cdn-icons-png.flaticon.com/512/3145/3145765.png'),
-      // const CategoryItem(title: 'Seasonal', imageUrl: 'https://cdn-icons-png.flaticon.com/512/1513/1513600.png'),
     ];
 
     final items = [
@@ -253,13 +252,11 @@ class AllTab extends StatelessWidget {
         'discount': '-16%'
       },
     ];
-
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        
           _buildProductRow(items),
           _buildSection('Herbal Goodness', herbal),
           _buildSection('Beverages', beverages),
@@ -303,7 +300,6 @@ class AllTab extends StatelessWidget {
       ],
     );
   }
-
   Widget _buildProductRow(List<Map<String, String>> products,
       {bool isHerbal = false}) {
     return SizedBox(
