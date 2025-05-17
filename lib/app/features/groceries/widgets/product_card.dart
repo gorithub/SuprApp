@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String discount;
+  final String imageUrl;
   final String? oldPrice;
   final bool showOldPrice;
   final VoidCallback? onAddTap;
@@ -13,6 +16,7 @@ class ProductCard extends StatelessWidget {
     required this.title,
     required this.price,
     required this.discount,
+    required this.imageUrl,
     this.oldPrice,
     this.showOldPrice = false,
     this.onAddTap,
@@ -33,6 +37,20 @@ class ProductCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xFFFAF6EF),
                   borderRadius: BorderRadius.circular(16),
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
+                    child: Container(
+                      color: Colors.grey[300],
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error,
+                      size: 40, color: Colors.redAccent),
                 ),
               ),
               Positioned(
