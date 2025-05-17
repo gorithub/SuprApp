@@ -12,7 +12,7 @@ import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
 import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/offer_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
-import 'package:suprapp/app/features/food_page.dart';
+import 'package:suprapp/app/features/food/pages/food_page.dart';
 import 'package:suprapp/app/features/food/pages/food_detail_page.dart';
 import 'package:suprapp/app/features/food/pages/food_home_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
@@ -43,7 +43,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.foodHomePage}',
+    initialLocation: '/${AppRoute.splashScreen}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,

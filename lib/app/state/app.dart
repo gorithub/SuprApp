@@ -13,6 +13,7 @@ import 'package:suprapp/app/features/dine_out/provider/filter_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
 import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
+import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
 import 'package:suprapp/app/features/profile/controller/date_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
@@ -41,21 +42,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<FilterProvider>(create: (_) => FilterProvider()),
         ChangeNotifierProvider(create: (_) => FAQProvider()),
         ChangeNotifierProvider(create: (_) => FilterProviders()),
-        ChangeNotifierProvider(
-          create: (_) => DineOutProvider(),
-        ),
-        ChangeNotifierProvider<FilterProvider>(
-          create: (_) => FilterProvider(),
-        ),
-        ChangeNotifierProvider<AppBarProvider>(
-          create: (_) => AppBarProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => DineOutProvider()),
+        ChangeNotifierProvider<FilterProvider>(create: (_) => FilterProvider()),
+        ChangeNotifierProvider<AppBarProvider>(create: (_) => AppBarProvider()),
         ChangeNotifierProvider(create: (_) => ViewToggleProvider()),
-        ChangeNotifierProvider<OfferProvider>(
-          create: (_) => OfferProvider(),
-        ),
+        ChangeNotifierProvider<OfferProvider>(create: (_) => OfferProvider()),
         ChangeNotifierProvider<FoodController>(
           create: (_) => FoodController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FoodToggleProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

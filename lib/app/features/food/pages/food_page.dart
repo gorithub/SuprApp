@@ -5,10 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/food_filter_widget.dart';
+import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
+import 'package:suprapp/app/features/food/widgets/food_filter_widget.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
-import '../routes/go_router.dart';
+import '../../../routes/go_router.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({super.key});
@@ -95,6 +96,7 @@ class _FoodPageState extends State<FoodPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final foodToggle = Provider.of<FoodToggleProvider>(context);
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
@@ -189,20 +191,52 @@ class _FoodPageState extends State<FoodPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTextFormField(
-                  hint: 'Search for restaurents , dishes & cusines',
-                  horizontalPadding: 15,
-                  hintSize: 16,
-                  hintColor: AppColors.darkGrey,
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: SvgPicture.asset(
-                      AppIcon.searchIcon,
-                      height: 10,
-                      width: 10,
-                      color: colorScheme(context).onSurface.withOpacity(0.6),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextFormField(
+                        hint: ' Search for restaurents , dishes & cusines',
+                        horizontalPadding: 5,
+                        hintSize: 16,
+                        hintColor: AppColors.darkGrey,
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: SvgPicture.asset(
+                            AppIcon.searchIcon,
+                            height: 10,
+                            width: 10,
+                            color:
+                                colorScheme(context).onSurface.withOpacity(0.6),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'VEG\nMODE',
+                          style: textTheme(context).bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                height: 1.0, // Tighter line height
+                                color: foodToggle.isVeg
+                                    ? Colors.green
+                                    : Colors.grey,
+                              ),
+                        ),
+                        Transform.scale(
+                          scale: 0.7,
+                          child: Switch(
+                            value: foodToggle.isVeg,
+                            onChanged: (val) {
+                              foodToggle.toggle();
+                            },
+                            activeColor: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 10,
