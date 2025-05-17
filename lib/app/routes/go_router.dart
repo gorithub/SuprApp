@@ -33,6 +33,8 @@ import 'package:suprapp/app/features/profile/pages/update_email.dart';
 import 'package:suprapp/app/features/profile/pages/update_name.dart';
 import 'package:suprapp/app/features/profile/pages/update_phone_no.dart';
 import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
+import 'package:suprapp/app/features/rides/pages/enter_pick_up_location.dart';
+import 'package:suprapp/app/features/rides/pages/search_page.dart';
 import 'package:suprapp/app/routes/error_route.dart';
 import 'package:suprapp/app/routes/route_transition.dart';
 import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
@@ -43,7 +45,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.splashScreen}',
+    initialLocation: '/${AppRoute.enterPickUpLocationPage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -388,6 +390,22 @@ class MyAppRouter {
                 state: state,
                 child: const FoodDetailPage(),
               )),
+      GoRoute(
+          name: AppRoute.enterPickUpLocationPage,
+          path: '/${AppRoute.enterPickUpLocationPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const EnterPickUpLocationPage(),
+              )),
+      GoRoute(
+          name: AppRoute.searchLocationPage,
+          path: '/${AppRoute.searchLocationPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const SearchPage(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -446,4 +464,8 @@ class AppRoute {
   static const String foodPage = 'food-page';
   static const String foodHomePage = 'food-home-page';
   static const String foodDetail = 'food-detail-page';
+
+  //!---- Rides Section---- !//
+  static const String enterPickUpLocationPage = 'enter-pick-up-location-page';
+  static const String searchLocationPage = 'search-location-page';
 }

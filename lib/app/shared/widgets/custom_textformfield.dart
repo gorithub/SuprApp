@@ -134,7 +134,9 @@ class CustomTextFormField extends StatelessWidget {
             suffixIconConstraints: suffixIconConstraints,
             prefixIcon: prefixIcon != null
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12.0,
+                    ),
                     child: SvgPicture.asset(prefixIcon!),
                   )
                 : null, // Handle nullable prefixIcon
