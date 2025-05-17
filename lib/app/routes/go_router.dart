@@ -15,6 +15,7 @@ import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/food/pages/food_page.dart';
 import 'package:suprapp/app/features/food/pages/food_detail_page.dart';
 import 'package:suprapp/app/features/food/pages/food_home_page.dart';
+import 'package:suprapp/app/features/groceries/groceries_home_screen.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -43,7 +44,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.splashScreen}',
+    initialLocation: '/${AppRoute.homePage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -388,6 +389,15 @@ class MyAppRouter {
                 state: state,
                 child: const FoodDetailPage(),
               )),
+               //!---- Grocery Section---- !//
+      GoRoute(
+          name: AppRoute.groceryHomeScreen,
+          path: '/${AppRoute.groceryHomeScreen}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child:  GroceriesHomeScreen(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -446,4 +456,6 @@ class AppRoute {
   static const String foodPage = 'food-page';
   static const String foodHomePage = 'food-home-page';
   static const String foodDetail = 'food-detail-page';
+   //!---- Grocery Section---- !//
+  static const String groceryHomeScreen = 'grocery-home-screen';
 }

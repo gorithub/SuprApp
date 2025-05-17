@@ -25,8 +25,7 @@ class CategoriesGridview extends StatelessWidget {
         context.pushNamed(AppRoute.dineOutPage);
         break;
       case 'Groceries':
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => GroceryScreen()));
+      context.pushNamed(AppRoute.groceryHomeScreen);
         break;
       case 'Shops':
         // Navigator.pushNamed(context, AppRoutes.shopsScreen);
