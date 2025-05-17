@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CategoryItem {
   final String title;
@@ -50,8 +51,14 @@ class ShopByCategoryGrid extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: item.imageUrl,
                     fit: BoxFit.contain,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(strokeWidth: 2),
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: Container(
+                        width: double.infinity,
+                        height: 60,
+                        color: Colors.grey[300],
+                      ),
                     ),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
