@@ -89,7 +89,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         SizedBox(width: 10),
                         Text(
-                          "USA", // Replace with selected country variable
+                          "Dubai", // Replace with selected country variable
                           style: textTheme(context).titleSmall?.copyWith(
                               color: colorScheme(context)
                                   .onSurface
@@ -97,11 +97,17 @@ class _SearchPageState extends State<SearchPage> {
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(width: 10),
-                        Icon(
-                          Icons.keyboard_arrow_down,
-                          color:
-                              colorScheme(context).onSurface.withOpacity(0.2),
-                          size: 23,
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            context.pushNamed(AppRoute.searchCityPage);
+                          },
+                          icon: Icon(
+                            Icons.keyboard_arrow_down,
+                            color:
+                                colorScheme(context).onSurface.withOpacity(0.2),
+                            size: 23,
+                          ),
                         ),
                       ],
                     ),
@@ -127,7 +133,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 400,
+                  height: 200,
                   child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -150,7 +156,121 @@ class _SearchPageState extends State<SearchPage> {
                               fontWeight: FontWeight.w600),
                         ),
                         trailing: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Dialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            20.0)), //this right here
+                                    child: Container(
+                                      height: 200,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Center(
+                                              child: Text(
+                                                'Are you sure you want to remove this ',
+                                                style: textTheme(context)
+                                                    .bodyLarge
+                                                    ?.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: colorScheme(
+                                                                context)
+                                                            .onSurface
+                                                            .withOpacity(0.4)),
+                                              ),
+                                            ),
+                                            Center(
+                                              child: Text(
+                                                ' saved location? "Mona"',
+                                                style: textTheme(context)
+                                                    .bodyLarge
+                                                    ?.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: colorScheme(
+                                                                context)
+                                                            .onSurface
+                                                            .withOpacity(0.4)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                ElevatedButton(
+                                                  style: ButtonStyle(
+                                                    backgroundColor:
+                                                        WidgetStatePropertyAll(
+                                                            const Color
+                                                                .fromARGB(255,
+                                                                222, 36, 23)),
+                                                    fixedSize: MaterialStateProperty
+                                                        .all(Size(130,
+                                                            50)), // width: 150, height: 50
+                                                  ),
+                                                  child: Text(
+                                                    'No',
+                                                    style: textTheme(context)
+                                                        .bodyLarge
+                                                        ?.copyWith(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: colorScheme(
+                                                                    context)
+                                                                .surface),
+                                                  ),
+                                                  onPressed: () {},
+                                                ),
+                                                ElevatedButton(
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          WidgetStatePropertyAll(
+                                                              colorScheme(
+                                                                      context)
+                                                                  .primary),
+                                                      fixedSize:
+                                                          MaterialStateProperty
+                                                              .all(Size(130,
+                                                                  50)), // width: 150, height: 50
+                                                    ),
+                                                    child: Text(
+                                                      'Yes',
+                                                      style: textTheme(context)
+                                                          .bodyLarge
+                                                          ?.copyWith(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color: colorScheme(
+                                                                      context)
+                                                                  .surface),
+                                                    ),
+                                                    onPressed: () =>
+                                                        Navigator.pop(context)),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
                           icon: Icon(
                             Icons.favorite,
                             size: 20,
@@ -203,7 +323,9 @@ class _SearchPageState extends State<SearchPage> {
                               fontWeight: FontWeight.w600),
                         ),
                         trailing: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.pushNamed(AppRoute.savedLocationPage);
+                          },
                           icon: Icon(
                             Icons.favorite_outline,
                             size: 20,

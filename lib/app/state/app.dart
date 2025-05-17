@@ -20,6 +20,8 @@ import 'package:suprapp/app/features/profile/controller/date_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
 import 'package:suprapp/app/features/profile/controller/language_controller.dart';
 import 'package:suprapp/app/features/profile/controller/profile_controller.dart';
+import 'package:suprapp/app/features/rides/provider/pick_up_provider.dart';
+import 'package:suprapp/app/features/rides/provider/selection_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class MyApp extends StatelessWidget {
@@ -47,13 +49,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<FilterProvider>(create: (_) => FilterProvider()),
         ChangeNotifierProvider<AppBarProvider>(create: (_) => AppBarProvider()),
         ChangeNotifierProvider(create: (_) => ViewToggleProvider()),
-         ChangeNotifierProvider(create: (_) => TabProvider()),
+        ChangeNotifierProvider(create: (_) => TabProvider()),
         ChangeNotifierProvider<OfferProvider>(create: (_) => OfferProvider()),
         ChangeNotifierProvider<FoodController>(
           create: (_) => FoodController(),
         ),
         ChangeNotifierProvider(
           create: (_) => FoodToggleProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PickupDetailsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SelectionProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(
