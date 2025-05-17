@@ -120,14 +120,14 @@ class _CustomContainerState extends State<CustomContainer> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(widget.title,
                   style: textTheme(context).titleLarge?.copyWith(
                       color: colorScheme(context).onSurface,
                       fontWeight: FontWeight.w700)),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -155,14 +155,14 @@ class _CustomContainerState extends State<CustomContainer> {
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(widget.food,
                   style: textTheme(context).bodyLarge?.copyWith(
                       color: colorScheme(context).onSurface.withOpacity(0.7),
                       fontWeight: FontWeight.w600)),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(

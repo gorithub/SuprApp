@@ -98,6 +98,7 @@ class AppImages {
   static const String tranding = 'assets/images/tranding.jpg';
   static const String award = 'assets/images/award.jpg';
   static const String eggtranding = 'assets/images/egg.jpg';
+  static const String abcd = 'assets/images/Abcd.png';
   static const String menu =
       'assets/images/WhatsApp Image 2025-05-14 at 3.41.50 PM.jpeg';
 }
@@ -157,6 +158,7 @@ class AppIcon {
   static const String tickIcon = "assets/icons/tick_icon.PNG";
   static const String green = "assets/green.png";
   static const String doller = "assets/icons/doller (2).svg";
+  static const String offer = "assets/icons/offer.svg";
 }
 
 class AppNetworkImages {

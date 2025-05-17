@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               _buildSection('Your account', [
                 _buildSettingItem(
-                  leading: Icon(Icons.person_outline_outlined),
+                  leading: const Icon(Icons.person_outline_outlined),
                   'Personal Information',
                   subtitle: "+914567893 ",
                   onTap: () {
@@ -63,18 +63,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
                 _buildSettingItem('Cards and accounts',
-                    leading: Icon(Icons.credit_card_outlined), onTap: () {
+                    leading: const Icon(Icons.credit_card_outlined), onTap: () {
                   context.pushNamed(AppRoute.bankpage);
                 }),
                 _buildSettingItem('Saved addresses',
-                    leading: Icon(Icons.home), onTap: () {}),
+                    leading: const Icon(Icons.home), onTap: () {}),
                 _buildSettingItem('Notifications',
-                    leading: Icon(Icons.notifications_none_outlined),
+                    leading: const Icon(Icons.notifications_none_outlined),
                     onTap: () {
                   context.pushNamed(AppRoute.notificationpage);
                 }),
                 _buildSettingItem('Manage Business profile',
-                    leading: Icon(Icons.add_business_outlined), onTap: () {}),
+                    leading: const Icon(Icons.add_business_outlined),
+                    onTap: () {}),
               ]),
               const SizedBox(height: 24),
               _buildSection('Benefits', [
@@ -103,21 +104,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               _buildSection('Support', [
                 _buildSettingItem(
-                  leading: Icon(Icons.headphones_outlined),
+                  leading: const Icon(Icons.headphones_outlined),
                   'Help Center',
                   onTap: () {
                     context.pushNamed(AppRoute.helpcenter);
                   },
                 ),
                 _buildSettingItem(
-                  leading: Icon(Icons.person_add_alt),
+                  leading: const Icon(Icons.person_add_alt),
                   'Invite Friends',
                   onTap: () {
                     context.pushNamed(AppRoute.invitePage);
                   },
                 ),
                 _buildSettingItem(
-                  leading: Icon(Icons.star_border_sharp),
+                  leading: const Icon(Icons.star_border_sharp),
                   'Win Rewards',
                   onTap: () {
                     context.pushNamed(AppRoute.winRewardPage);
@@ -127,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
               _buildSection('Preferences', [
                 _buildSettingItem(
-                  leading: Icon(Icons.language_outlined),
+                  leading: const Icon(Icons.language_outlined),
                   'Language',
                   subtitle: 'English',
                   onTap: () {
@@ -135,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
                 _buildSettingItem(
-                  leading: Icon(Icons.flag_outlined),
+                  leading: const Icon(Icons.flag_outlined),
                   'Country',
                   subtitle: 'United States of America',
                   onTap: () {
@@ -143,14 +144,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
                 _buildSettingItem(
-                  leading: Icon(Icons.settings),
+                  leading: const Icon(Icons.settings),
                   'Settings',
                   onTap: () {
                     context.pushNamed(AppRoute.settingPage);
                   },
                 ),
                 _buildSettingItem(
-                  leading: Icon(Icons.settings_outlined),
+                  leading: const Icon(Icons.settings_outlined),
                   'Account Setting',
                   onTap: () {
                     context.pushNamed(AppRoute.accountSettingPage);

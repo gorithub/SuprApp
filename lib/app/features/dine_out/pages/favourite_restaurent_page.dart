@@ -195,7 +195,7 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
         body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Expanded(
@@ -252,7 +252,7 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(width: 8),
+                                      const SizedBox(width: 8),
                                       Expanded(
                                         child: Column(
                                           crossAxisAlignment:
@@ -283,10 +283,10 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
                                             ),
                                             Row(
                                               children: [
-                                                Icon(Icons.star,
+                                                const Icon(Icons.star,
                                                     color: Colors.orange,
                                                     size: 16),
-                                                SizedBox(width: 3),
+                                                const SizedBox(width: 3),
                                                 Text(
                                                   item['rating'].toString(),
                                                   style: textTheme(context)
@@ -300,15 +300,16 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
                                                             FontWeight.w600,
                                                       ),
                                                 ),
-                                                SizedBox(width: 6),
+                                                const SizedBox(width: 6),
                                                 ElevatedButton(
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 8,
-                                                            vertical: 2),
-                                                    minimumSize: Size(0, 24),
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 8,
+                                                        vertical: 2),
+                                                    minimumSize:
+                                                        const Size(0, 24),
                                                     backgroundColor:
                                                         Colors.green,
                                                     shape:
@@ -337,7 +338,7 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
                                         ),
                                       ),
                                       IconButton(
-                                        icon: Icon(Icons.favorite,
+                                        icon: const Icon(Icons.favorite,
                                             size: 18,
                                             color: AppColors.appGreen),
                                         onPressed: () {
@@ -350,7 +351,7 @@ class _FavouriteRestaurentPageState extends State<FavouriteRestaurentPage> {
                                           );
                                         },
                                         padding: EdgeInsets.zero,
-                                        constraints: BoxConstraints(),
+                                        constraints: const BoxConstraints(),
                                       ),
                                     ],
                                   ),

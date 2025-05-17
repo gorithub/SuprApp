@@ -52,7 +52,7 @@ class TermsConditionPage extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -62,7 +62,7 @@ class TermsConditionPage extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -72,7 +72,7 @@ class TermsConditionPage extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(

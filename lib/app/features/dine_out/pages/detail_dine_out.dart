@@ -80,7 +80,7 @@ class DetailDineOut extends StatelessWidget {
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(

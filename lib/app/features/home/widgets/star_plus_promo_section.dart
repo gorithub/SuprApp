@@ -18,7 +18,7 @@ class SuprPlusPromoSection extends StatelessWidget {
           Text(
             'Get with Supr +',
             style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold, color: Color(0xff0A0C0B)),
+                fontWeight: FontWeight.bold, color: const Color(0xff0A0C0B)),
           ),
           const SizedBox(height: 16),
           Row(
@@ -90,12 +90,12 @@ class SuprPlusPromoSection extends StatelessWidget {
                 Text(
                   'View all Supr Plus benefits',
                   style: GoogleFonts.poppins(
-                    color: Color(0xff000000),
+                    color: const Color(0xff000000),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Icon(
+                const Icon(
                   Icons.arrow_forward,
                   color: Color(0xff000000),
                   size: 30,
