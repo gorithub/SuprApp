@@ -15,6 +15,7 @@ import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/food/pages/food_page.dart';
 import 'package:suprapp/app/features/food/pages/food_detail_page.dart';
 import 'package:suprapp/app/features/food/pages/food_home_page.dart';
+import 'package:suprapp/app/features/groceries/groceries_home_screen.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -45,7 +46,8 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.enterPickUpLocationPage}',
+    // initialLocation: '/${AppRoute.enterPickUpLocationPage}',
+    initialLocation: '/${AppRoute.homePage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -399,12 +401,22 @@ class MyAppRouter {
                 child: const EnterPickUpLocationPage(),
               )),
       GoRoute(
-          name: AppRoute.searchLocationPage,
-          path: '/${AppRoute.searchLocationPage}',
+        name: AppRoute.searchLocationPage,
+        path: '/${AppRoute.searchLocationPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const SearchPage(),
+        ),
+      ),
+      //!---- Grocery Section---- !//
+      GoRoute(
+          name: AppRoute.groceryHomeScreen,
+          path: '/${AppRoute.groceryHomeScreen}',
           pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
                 context: context,
                 state: state,
-                child: const SearchPage(),
+                child: GroceriesHomeScreen(),
               )),
     ],
     errorPageBuilder: (context, state) {
@@ -468,4 +480,6 @@ class AppRoute {
   //!---- Rides Section---- !//
   static const String enterPickUpLocationPage = 'enter-pick-up-location-page';
   static const String searchLocationPage = 'search-location-page';
+  //!---- Grocery Section---- !//
+  static const String groceryHomeScreen = 'grocery-home-screen';
 }
