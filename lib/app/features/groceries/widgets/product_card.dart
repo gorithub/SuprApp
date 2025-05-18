@@ -33,24 +33,31 @@ class ProductCard extends StatelessWidget {
           Stack(
             children: [
               Container(
-                height: 110,
+                width: 170, 
+                height: 110, 
                 decoration: BoxDecoration(
                   color: const Color(0xFFFAF6EF),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 clipBehavior: Clip.hardEdge,
-                child: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
-                    child: Container(
-                      color: Colors.grey[300],
+                child: AspectRatio(
+                  aspectRatio: 4 / 3, 
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: Container(
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                      size: 40,
+                      color: Colors.redAccent,
                     ),
                   ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error,
-                      size: 40, color: Colors.redAccent),
                 ),
               ),
               Positioned(

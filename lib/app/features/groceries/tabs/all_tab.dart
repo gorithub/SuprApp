@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suprapp/app/features/groceries/widgets/category_grid.dart';
 import 'package:suprapp/app/features/groceries/widgets/large_image_listview.dart';
-import 'package:suprapp/app/features/groceries/widgets/product_card.dart';
+import 'package:suprapp/app/features/groceries/widgets/product_section.dart';
 
 class AllTab extends StatelessWidget {
   const AllTab({super.key});
@@ -136,19 +136,22 @@ class AllTab extends StatelessWidget {
         'title': 'Sanita Club Biodegradable',
         'price': 'AED 25.99',
         'discount': '-9%',
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s',
+        'image':
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s',
       },
       {
         'title': 'Sanita Paper Cups 266.16 m...',
         'price': 'AED 13.85',
         'discount': '-8%',
-         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrXh06hIlgR0eXl4lKBHgaz9kmS--IkgmHoQ&s',
+        'image':
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrXh06hIlgR0eXl4lKBHgaz9kmS--IkgmHoQ&s',
       },
       {
         'title': 'Sanita Club Garbage Bags',
         'price': 'AED 19.95',
         'discount': '-15%',
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRib_d0P13XP13Mypnc8tu893qOD9Rl-MdILg&s',
+        'image':
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRib_d0P13XP13Mypnc8tu893qOD9Rl-MdILg&s',
       },
     ];
 
@@ -212,21 +215,24 @@ class AllTab extends StatelessWidget {
         'price': 'AED 18.00',
         'old': 'AED 22.00',
         'discount': '-18%',
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4bajQIs2fcjMbvO_qcCiKC2BbDM43CgmSw&s',
+        'image':
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4bajQIs2fcjMbvO_qcCiKC2BbDM43CgmSw&s',
       },
       {
         'title': 'Buy 1 Get 1 Biscuits',
         'price': 'AED 10.00',
         'old': 'AED 14.00',
         'discount': '-29%',
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRinpOFSYKilh42mODD8KwHwILgNCCI9Leq4w&s',
+        'image':
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRinpOFSYKilh42mODD8KwHwILgNCCI9Leq4w&s',
       },
       {
         'title': 'Rice & Lentil Combo',
         'price': 'AED 30.00',
         'old': 'AED 35.00',
         'discount': '-14%',
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0V_h6HGYxgYPyZa4Rg3QOZRAsIypy2IMi8g&s',
+        'image':
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0V_h6HGYxgYPyZa4Rg3QOZRAsIypy2IMi8g&s',
       },
     ];
 
@@ -284,14 +290,34 @@ class AllTab extends StatelessWidget {
     ];
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildProductRow(items),
-          _buildSection('Herbal Goodness', herbal),
-          _buildSection('Milk & Yogurt', milkAndYogurt),
-          const SizedBox(height: 12),
+          ProductSection(
+            title: 'Recommended',
+            products: items,
+            isHerbal: false,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ProductSection(
+            title: 'Herbal Goodness',
+            products: herbal,
+            isHerbal: true,
+            onSectionTap: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ProductSection(
+            title: 'Milk & Yogurt',
+            products: milkAndYogurt,
+            isHerbal: false,
+            onSectionTap: () {},
+          ),
+          const SizedBox(height: 20),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -300,18 +326,39 @@ class AllTab extends StatelessWidget {
               Icon(Icons.arrow_forward),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
           ShopByCategoryGrid(categories: categories),
           const SizedBox(height: 20),
-          _buildSection('Bundle Offers', bundleOffers),
-          _buildSection('Reduced to Clear', reducedToClear),
-          _buildSection('Beverages', beverages),
+          ProductSection(
+            title: 'Bundle Offers',
+            products: bundleOffers,
+            isHerbal: false,
+            onSectionTap: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ProductSection(
+            title: 'Reduced to Clear',
+            products: reducedToClear,
+            isHerbal: false,
+            onSectionTap: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ProductSection(
+            title: 'Beverages',
+            products: beverages,
+            isHerbal: false,
+            onSectionTap: () {},
+          ),
           const SizedBox(
             height: 250,
             child: LargeImageList(
               imageUrls: [
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMIh-OsMjJMEfnxl3IIhIr2bIWUmkEXRikWw&s"
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjjpf6uemrYZC16p9XjA8xvqQfWRHMIXMKFA&s',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjjpf6uemrYZC16p9XjA8xvqQfWRHMIXMKFA&s',
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8d2IYYe7usBxeyzKCyVESImqcCENieL1pLw&s',
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWvo5gawyT3ciPZz3TXAxpRYutChp7_VHqxg&s',
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbU0uYwyRqHXYWAaTC8UJOaQtBD4oizlCE2Q&s',
@@ -320,49 +367,6 @@ class AllTab extends StatelessWidget {
           ),
           const SizedBox(height: 20),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSection(String title, List<Map<String, String>> products) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const Icon(Icons.arrow_forward),
-          ],
-        ),
-        const SizedBox(height: 12),
-        _buildProductRow(products, isHerbal: true),
-      ],
-    );
-  }
-
-  Widget _buildProductRow(List<Map<String, String>> products,
-      {bool isHerbal = false}) {
-    return SizedBox(
-      height: 200,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          final item = products[index];
-          return ProductCard(
-            title: item['title']!,
-            price: item['price']!,
-            discount: item['discount']!,
-            oldPrice: item['old'],
-            showOldPrice: isHerbal,
-            imageUrl: item['image'] ?? 'https://via.placeholder.com/150',
-            onAddTap: () {},
-          );
-        },
       ),
     );
   }
