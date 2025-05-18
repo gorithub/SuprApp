@@ -146,7 +146,7 @@ class _FoodDetailPageState extends State<FoodDetailPage>
                             children: [
                               const SizedBox(height: 30),
                               Text(
-                                selectedFood!.time,
+                                selectedFood.time,
                                 style: textTheme(context)
                                     .bodySmall
                                     ?.copyWith(fontWeight: FontWeight.bold),
