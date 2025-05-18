@@ -50,7 +50,8 @@ class _FoodPageState extends State<FoodPage> {
   ];
   final List<Map<String, dynamic>> burgerList = [
     {
-      'image': AppImages.cheeseBurger,
+      'image':
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtsy5ZBbucwY5XFLqo_wlVUcWwnjqIq3uUhg&s",
       'title': 'Eeetwell',
       'rating': 4.5,
       'foodItems': 'Fast Food',
@@ -58,7 +59,8 @@ class _FoodPageState extends State<FoodPage> {
       'arriveTime': ' . 35-45 mins'
     },
     {
-      'image': "assets/images/burger2.png",
+      'image':
+          "https://media.post.rvohealth.io/wp-content/uploads/2021/07/Starbucks_Food_Spinach_Feta_Wrap-732x549-thumbnail-732x549.jpg",
       'title': 'Yo!-Sushi',
       'foodItems': 'Juices, Sand',
       'distance': '. 1.9 km',
@@ -66,7 +68,8 @@ class _FoodPageState extends State<FoodPage> {
       'arriveTime': ' . 35-45 mins'
     },
     {
-      'image': AppImages.cheeseBurger,
+      'image':
+          'https://m-foodz.com/pk/wp-content/uploads/2023/05/Fast-Food-Restaurants-In-Karachi.jpg',
       'title': 'Eeetwell',
       'rating': 4.5,
       'foodItems': 'Fast Food',
@@ -74,7 +77,8 @@ class _FoodPageState extends State<FoodPage> {
       'arriveTime': ' . 35-45 mins'
     },
     {
-      'image': "assets/images/burger2.png",
+      'image':
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVQ3-mRyGlCWo38s2i1JFRdaABZqKpbgpA&s",
       'title': 'Yo!-Sushi',
       'foodItems': 'Juices, Sand',
       'distance': '. 1.9 km',
@@ -390,7 +394,7 @@ class _FoodPageState extends State<FoodPage> {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
-                          'https://pbs.twimg.com/media/Eh3HzS6XkAUTAsA?format=jpg&name=medium'),
+                          'https://img.pikbest.com/templates/20240528/fast-food-restaurant-banner-template_10587852.jpg!sw800'),
                     ),
                   ),
                 ),
@@ -442,7 +446,7 @@ class _FoodPageState extends State<FoodPage> {
                                     topLeft: Radius.circular(12),
                                     topRight: Radius.circular(12),
                                   ),
-                                  child: Image.asset(
+                                  child: Image.network(
                                     burger['image'],
                                     height: size.height * 0.15,
                                     width: size.width * 0.35,
@@ -661,7 +665,7 @@ class _FoodPageState extends State<FoodPage> {
                                         topLeft: Radius.circular(12),
                                         bottomLeft: Radius.circular(12),
                                       ),
-                                      child: Image.asset(
+                                      child: Image.network(
                                         burger['image'],
                                         height: size.height * 0.14,
                                         width: size.width * 0.25,
@@ -898,7 +902,7 @@ class _FoodPageState extends State<FoodPage> {
                                     topLeft: Radius.circular(12),
                                     topRight: Radius.circular(12),
                                   ),
-                                  child: Image.asset(
+                                  child: Image.network(
                                     burger['image'],
                                     height: size.height * 0.15,
                                     width: size.width * 0.35,
@@ -1047,7 +1051,7 @@ class _FoodPageState extends State<FoodPage> {
                                         topLeft: Radius.circular(12),
                                         bottomLeft: Radius.circular(12),
                                       ),
-                                      child: Image.asset(
+                                      child: Image.network(
                                         burger['image'],
                                         height: size.height * 0.14,
                                         width: size.width * 0.25,
