@@ -35,6 +35,7 @@ import 'package:suprapp/app/features/profile/pages/update_name.dart';
 import 'package:suprapp/app/features/profile/pages/update_phone_no.dart';
 import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
 import 'package:suprapp/app/features/rides/pages/enter_pick_up_location.dart';
+import 'package:suprapp/app/features/rides/pages/ride_home_page.dart';
 import 'package:suprapp/app/features/rides/pages/save_location_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_city_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_page.dart';
@@ -48,7 +49,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.enterPickUpLocationPage}',
+    initialLocation: '/${AppRoute.rideHome}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -435,6 +436,14 @@ class MyAppRouter {
                 state: state,
                 child: SearchCityPage(),
               )),
+      GoRoute(
+          name: AppRoute.rideHome,
+          path: '/${AppRoute.rideHome}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const RideHomePage(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -496,6 +505,7 @@ class AppRoute {
 
   //!---- Rides Section---- !//
   static const String enterPickUpLocationPage = 'enter-pick-up-location-page';
+  static const String rideHome = 'ride-home-page';
   static const String searchLocationPage = 'search-location-page';
   static const String savedLocationPage = 'saved-location-page';
   static const String searchCityPage = 'search-city-page';

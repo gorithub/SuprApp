@@ -20,6 +20,7 @@ import 'package:suprapp/app/features/profile/controller/date_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
 import 'package:suprapp/app/features/profile/controller/language_controller.dart';
 import 'package:suprapp/app/features/profile/controller/profile_controller.dart';
+import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/provider/pick_up_provider.dart';
 import 'package:suprapp/app/features/rides/provider/selection_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
@@ -62,6 +63,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => SelectionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MapProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

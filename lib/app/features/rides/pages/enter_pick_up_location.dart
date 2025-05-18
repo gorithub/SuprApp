@@ -4,7 +4,6 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
-import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class EnterPickUpLocationPage extends StatefulWidget {
   const EnterPickUpLocationPage({super.key});
