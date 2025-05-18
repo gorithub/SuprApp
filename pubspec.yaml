@@ -51,8 +51,9 @@ dependencies:
   cached_network_image: ^3.4.1
   video_player: ^2.9.5
   google_maps_flutter: ^2.12.2
-  geolocator: ^14.0.0
+  location: ^8.0.0
   permission_handler: ^12.0.0+1
+  http: ^1.4.0
 
 
 
