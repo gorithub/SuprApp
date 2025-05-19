@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -5,11 +7,14 @@ import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/food/pages/product_screen.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
+import 'package:suprapp/app/features/food/widgets/food_card.dart';
 import 'package:suprapp/app/features/food/widgets/food_filter_widget.dart';
+import 'package:suprapp/app/features/food/widgets/item_tile.dart';
+import 'package:suprapp/app/features/food/widgets/lists.dart';
+import 'package:suprapp/app/features/food/widgets/top_food_section.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
-
-import '../../../routes/go_router.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({super.key});
@@ -30,73 +35,7 @@ class _FoodPageState extends State<FoodPage> {
     AppImages.cheeseBurger,
     AppImages.chickenSticks,
   ];
-  final List<Map<String, String>> categories = [
-    {'image': AppImages.offers, 'text': 'Offers'},
-    {'image': AppImages.burger, 'text': 'Burger'},
-    {'image': AppImages.healthy, 'text': 'Healthy'},
-    {'image': AppImages.asian, 'text': 'Asian'},
-    {'image': AppImages.exclusiveOffer, 'text': 'Exclusive Offer'},
-    {'image': AppImages.bestSelling, 'text': 'Best Selling'},
-    {'image': AppImages.chickenWings, 'text': 'Chicken & Wings'},
-    {'image': AppImages.russian, 'text': 'Russian'},
-    {'image': AppImages.gotYou, 'text': 'GOT YOU'},
-    {'image': AppImages.lebanese, 'text': 'Lebanese'},
-    {'image': AppImages.pizza, 'text': 'Pizza'},
-    {'image': AppImages.indian, 'text': 'Indian'},
-    {'image': AppImages.dessert, 'text': 'Dessert'},
-    {'image': AppImages.cofee, 'text': 'Cofee'},
-    {'image': AppImages.sushi, 'text': 'Sushi'},
-    {'image': AppImages.breakfast, 'text': 'BreakFast'},
-  ];
-  final List<Map<String, dynamic>> burgerList = [
-    {
-      'image':
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtsy5ZBbucwY5XFLqo_wlVUcWwnjqIq3uUhg&s",
-      'title': 'Eeetwell',
-      'rating': 4.5,
-      'foodItems': 'Fast Food',
-      'distance': '. 1.7 km',
-      'arriveTime': ' . 35-45 mins'
-    },
-    {
-      'image':
-          "https://media.post.rvohealth.io/wp-content/uploads/2021/07/Starbucks_Food_Spinach_Feta_Wrap-732x549-thumbnail-732x549.jpg",
-      'title': 'Yo!-Sushi',
-      'foodItems': 'Juices, Sand',
-      'distance': '. 1.9 km',
-      'rating': 4.5,
-      'arriveTime': ' . 35-45 mins'
-    },
-    {
-      'image':
-          'https://m-foodz.com/pk/wp-content/uploads/2023/05/Fast-Food-Restaurants-In-Karachi.jpg',
-      'title': 'Eeetwell',
-      'rating': 4.5,
-      'foodItems': 'Fast Food',
-      'distance': '. 1.7 km',
-      'arriveTime': ' . 35-45 mins'
-    },
-    {
-      'image':
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVQ3-mRyGlCWo38s2i1JFRdaABZqKpbgpA&s",
-      'title': 'Yo!-Sushi',
-      'foodItems': 'Juices, Sand',
-      'distance': '. 1.9 km',
-      'rating': 4.5,
-      'arriveTime': ' . 35-45 mins'
-    },
-  ];
-  final List<String> brandsList = [
-    'https://logos-world.net/wp-content/uploads/2020/04/McDonalds-Logo.png',
-    'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/cf/b9/28/cheezious-pizza.jpg?w=900&h=500&s=1',
-    'https://play-lh.googleusercontent.com/qR-sPEGkCQvborNj2jqOF00EV3N9vxJMXYwaufVQMnIspanioOVOqLUSB4kLOkzKYJE7=w600-h300-pc0xffffff-pd',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4mn74PTlVHE-UElXmyr5dVzzs8X4MDG8pzQ&s'
-  ];
-  final List<String> inspiringList = [
-    'https://img.freepik.com/free-photo/people-taking-photos-food_23-2149303524.jpg',
-    'https://media.istockphoto.com/id/506828094/photo/waitress-taking-orders-to-people-at-a-restaurant.jpg?s=612x612&w=0&k=20&c=ppBNb3-qk0S8VprfTNmJLbHQIb5O4qgm7UiWw9cr_OI=',
-    'https://media.istockphoto.com/id/1304752349/photo/female-customer-buying-food-on-digital-tablet-at-cashier-counter.jpg?s=170667a&w=is&k=20&c=QyFbRTExyAWvH5PWXk3jwg4kSgayEWI2-W9KOBqnw9s='
-  ];
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -135,7 +74,7 @@ class _FoodPageState extends State<FoodPage> {
                   .bodyLarge
                   ?.copyWith(fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               width: 3,
             ),
             DropdownButtonHideUnderline(
@@ -157,7 +96,7 @@ class _FoodPageState extends State<FoodPage> {
                     selectedAddress = newValue!;
                   });
                 },
-                icon: Icon(Icons.keyboard_arrow_down_outlined, size: 20),
+                icon: const Icon(Icons.keyboard_arrow_down_outlined, size: 20),
                 style: textTheme(context).bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
@@ -178,9 +117,9 @@ class _FoodPageState extends State<FoodPage> {
                     color: colorScheme(context).primary,
                     border: Border.all(color: AppColors.appGrey),
                     borderRadius: BorderRadius.circular(7)),
-                child: Icon(
+                child: const Icon(
                   Icons.menu,
-                  color: const Color.fromARGB(255, 20, 188, 96),
+                  color: Color.fromARGB(255, 20, 188, 96),
                   size: 15,
                 ),
               ),
@@ -242,7 +181,7 @@ class _FoodPageState extends State<FoodPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -276,7 +215,7 @@ class _FoodPageState extends State<FoodPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -286,7 +225,7 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: imageList.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(right: 12),
+                        margin: const EdgeInsets.only(right: 12),
                         width: size.width * 0.7,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
@@ -302,7 +241,7 @@ class _FoodPageState extends State<FoodPage> {
                             BoxShadow(
                               color: Colors.black.withOpacity(0.15),
                               blurRadius: 6,
-                              offset: Offset(2, 4),
+                              offset: const Offset(2, 4),
                             ),
                           ],
                           image: DecorationImage(
@@ -314,8 +253,17 @@ class _FoodPageState extends State<FoodPage> {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
+                ),
+                Text(
+                  "What are you craving today ",
+                  style: textTheme(context)
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 SizedBox(
                   height: size.height * 0.45,
@@ -337,7 +285,16 @@ class _FoodPageState extends State<FoodPage> {
                       final item = categories[index];
 
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductScreen(
+                                category: item['text']!,
+                              ),
+                            ),
+                          );
+                        },
                         child: Container(
                           height: size.height * 0.15,
                           width: size.width * 0.9,
@@ -369,7 +326,7 @@ class _FoodPageState extends State<FoodPage> {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -388,17 +345,17 @@ class _FoodPageState extends State<FoodPage> {
                       BoxShadow(
                         color: Colors.black.withOpacity(0.15),
                         blurRadius: 6,
-                        offset: Offset(2, 4),
+                        offset: const Offset(2, 4),
                       ),
                     ],
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
                           'https://img.pikbest.com/templates/20240528/fast-food-restaurant-banner-template_10587852.jpg!sw800'),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
@@ -406,775 +363,306 @@ class _FoodPageState extends State<FoodPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Top trending restaurents",
+                      "Offer Zone - Flat 125 Off ",
                       style: textTheme(context)
                           .titleLarge
                           ?.copyWith(fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 2,
                     ),
                     Text(
-                      " Discover the hottest spots in town 👇",
+                      "Add 2 of the same item to use FLAT125   coupon",
                       style: textTheme(context).labelLarge?.copyWith(
                           fontWeight: FontWeight.w600,
                           color: AppColors.darkGrey),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SizedBox(
-                  height: size.height * 0.3,
+                  height: size.height * 0.4,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: burgerList.length,
                     itemBuilder: (context, index) {
                       final burger = burgerList[index];
-                      return Container(
-                        height: size.height * 0.3,
-                        width: size.width * 0.4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(12),
-                                    topRight: Radius.circular(12),
-                                  ),
-                                  child: Image.network(
-                                    burger['image'],
-                                    height: size.height * 0.15,
-                                    width: size.width * 0.35,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    burger['title'],
-                                    style: textTheme(context)
-                                        .bodyMedium
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.w600,
-                                            color:
-                                                colorScheme(context).onSurface),
-                                  ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.star,
-                                          color: colorScheme(context).primary,
-                                          size: 14),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        burger['rating'].toString(),
-                                        style: textTheme(context)
-                                            .labelLarge
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                color: colorScheme(context)
-                                                    .primary),
-                                      ),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        burger['arriveTime'],
-                                        style: textTheme(context)
-                                            .bodySmall
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                color: colorScheme(context)
-                                                    .onSurface),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(burger['foodItems'].toString(),
-                                          style: textTheme(context)
-                                              .labelLarge
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: AppColors.darkGrey)),
-                                      const SizedBox(width: 8),
-                                      Text(burger['distance'].toString(),
-                                          style: textTheme(context)
-                                              .labelLarge
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: AppColors.darkGrey)),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8, vertical: 3),
-                                        decoration: BoxDecoration(
-                                          color: Colors.pink,
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                        child: Text('50 % off just for items',
-                                            style: textTheme(context)
-                                                .labelMedium
-                                                ?.copyWith(
-                                                    color: colorScheme(context)
-                                                        .surface,
-                                                    fontWeight:
-                                                        FontWeight.w600)),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                      return SizedBox(
+                        height: size.height * 0.32,
+                        child: FoodCard(
+                          portion: burger['portion'],
+                          image: burger['image'],
+                          title: burger['title'],
+                          oldPrice: burger['oldPrice'],
+                          newPrice: burger['newPrice'],
+                          offerText: burger['offerText'],
                         ),
                       );
                     },
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 2,
+                      width: 100,
+                      color: AppColors.appGrey,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            text: "Top",
+                            style: textTheme(context).displaySmall!.copyWith(
+                                  color: colorScheme(context).onSurface,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                            children: <TextSpan>[
+                          TextSpan(
+                            text: 'Picks',
+                            style: textTheme(context).displaySmall!.copyWith(
+                                  color: colorScheme(context).primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ])),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      height: 2,
+                      width: 100,
+                      color: AppColors.appGrey,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
-                  height: 10,
+                  height: size.height * 0.35,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: burgerList.length,
+                    itemBuilder: (context, index) {
+                      final burger = burgerList[index];
+                      return TopPickItem(
+                        discountText: '20 % off',
+                        image: burger['image'],
+                        title: burger['title'],
+                        oldPrice: burger['oldPrice'],
+                        newPrice: burger['newPrice'],
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 Text(
-                  "Popular  Brands",
+                  "Chaat Cravings Sorted",
                   style: textTheme(context)
                       .titleLarge
                       ?.copyWith(fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
-                  height: size.height * 0.08,
+                  height: size.height * 0.4,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: brandsList.length,
-                    padding: EdgeInsets.zero,
+                    itemCount: chaatCravingList.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: size.height * 0.08,
-                        width: size.width * 0.2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(brandsList[index]),
-                          ),
-                        ),
+                      final chaat = chaatCravingList[index];
+                      return FoodCard(
+                        offerText: '20 % off',
+                        portion: chaat['portion'],
+                        image: chaat['image'],
+                        title: chaat['title'],
+                        oldPrice: chaat['oldPrice'],
+                        newPrice: chaat['newPrice'],
                       );
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: size.height * 0.2,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.black.withOpacity(0.4),
+                        Colors.transparent
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.topRight,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.15),
+                        blurRadius: 6,
+                        offset: const Offset(2, 4),
+                      ),
+                    ],
+                    image: const DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(
+                          'https://img.freepik.com/free-psd/food-menu-restaurant-facebook-cover-template_106176-749.jpg'),
+                    ),
+                  ),
+                ),
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Best Sellers 🔥",
-                          style: textTheme(context)
-                              .titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "Satisfy cravings from top restaurents!",
-                          style: textTheme(context).labelLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.darkGrey),
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.arrow_forward_outlined,
-                      size: 20,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: size.height * 0.55,
-                  width: size.width,
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: burgerList.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // This will ensure two rows of items
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 5,
-                      childAspectRatio:
-                          (size.width * 0.9 / 9) / (size.height * 0.2),
-                    ),
-                    scrollDirection:
-                        Axis.horizontal, // Enables horizontal scrolling
-                    itemBuilder: (context, index) {
-                      final burger = burgerList[index];
-
-                      return Card(
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        shadowColor: const Color.fromARGB(255, 236, 239, 227),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: size.height * 0.2,
-                            width: size.width * 0.8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12),
-                                        bottomLeft: Radius.circular(12),
-                                      ),
-                                      child: Image.network(
-                                        burger['image'],
-                                        height: size.height * 0.14,
-                                        width: size.width * 0.25,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            burger['title'],
-                                            style: textTheme(context)
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: colorScheme(context)
-                                                        .onSurface),
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.star,
-                                                  color: colorScheme(context)
-                                                      .primary,
-                                                  size: 14),
-                                              const SizedBox(width: 4),
-                                              Text(
-                                                burger['rating'].toString(),
-                                                style: textTheme(context)
-                                                    .labelLarge
-                                                    ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            colorScheme(context)
-                                                                .primary),
-                                              ),
-                                              const SizedBox(width: 4),
-                                              Text(
-                                                burger['arriveTime'],
-                                                style: textTheme(context)
-                                                    .bodySmall
-                                                    ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            colorScheme(context)
-                                                                .onSurface),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                  burger['foodItems']
-                                                      .toString(),
-                                                  style:
-                                                      textTheme(context)
-                                                          .labelLarge
-                                                          ?.copyWith(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              color: AppColors
-                                                                  .darkGrey)),
-                                              const SizedBox(width: 8),
-                                              Text(
-                                                  burger['distance'].toString(),
-                                                  style: textTheme(context)
-                                                      .labelLarge
-                                                      ?.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: AppColors
-                                                              .darkGrey)),
-                                            ],
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8,
-                                                        vertical: 3),
-                                                decoration: BoxDecoration(
-                                                  color: Colors.pink,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
-                                                child: Text(
-                                                    '50 % off just for items',
-                                                    style: textTheme(context)
-                                                        .labelMedium
-                                                        ?.copyWith(
-                                                            color: colorScheme(
-                                                                    context)
-                                                                .surface,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600)),
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
                     Text(
-                      "Need inspiration",
+                      "Cofees for you",
                       style: textTheme(context)
                           .titleLarge
                           ?.copyWith(fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    Text(
-                      "Restaurents for every occasion",
-                      style: textTheme(context).labelLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.darkGrey),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'View All',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: colorScheme(context).primary,
+                          decorationThickness: 2,
+                          color: colorScheme(context).primary,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 20,
+                const SizedBox(
+                  height: 10,
                 ),
                 SizedBox(
-                  height: size.height * 0.25,
+                  height: size.height * 0.4,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: inspiringList.length,
-                    padding: EdgeInsets.zero,
+                    itemCount: cofees.length,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: size.height * 0.15,
-                          width: size.width * 0.35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(inspiringList[index]),
-                            ),
-                          ),
-                        ),
+                      final cofee = cofees[index];
+                      return FoodCard(
+                        offerText: '20 % off',
+                        portion: cofee['portion'],
+                        image: cofee['image'],
+                        title: cofee['title'],
+                        oldPrice: cofee['oldPrice'],
+                        newPrice: cofee['newPrice'],
                       );
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Nearby  ⚡",
-                          style: textTheme(context)
-                              .titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "Savor the speedy goodness!",
-                          style: textTheme(context).labelLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.darkGrey),
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.arrow_forward_outlined,
-                      size: 20,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                SizedBox(
-                  height: size.height * 0.3,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: burgerList.length,
-                    itemBuilder: (context, index) {
-                      final burger = burgerList[index];
-                      return Container(
-                        height: size.height * 0.3,
-                        width: size.width * 0.4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(12),
-                                    topRight: Radius.circular(12),
-                                  ),
-                                  child: Image.network(
-                                    burger['image'],
-                                    height: size.height * 0.15,
-                                    width: size.width * 0.35,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    burger['title'],
-                                    style: textTheme(context)
-                                        .bodyMedium
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.w600,
-                                            color:
-                                                colorScheme(context).onSurface),
-                                  ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.star,
-                                          color: colorScheme(context).primary,
-                                          size: 14),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        burger['rating'].toString(),
-                                        style: textTheme(context)
-                                            .labelLarge
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                color: colorScheme(context)
-                                                    .primary),
-                                      ),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        burger['arriveTime'],
-                                        style: textTheme(context)
-                                            .bodySmall
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                color: colorScheme(context)
-                                                    .onSurface),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(burger['foodItems'].toString(),
-                                          style: textTheme(context)
-                                              .labelLarge
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: AppColors.darkGrey)),
-                                      const SizedBox(width: 8),
-                                      Text(burger['distance'].toString(),
-                                          style: textTheme(context)
-                                              .labelLarge
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: AppColors.darkGrey)),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8, vertical: 3),
-                                        decoration: BoxDecoration(
-                                          color: Colors.pink,
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                        child: Text('50 % off just for items',
-                                            style: textTheme(context)
-                                                .labelMedium
-                                                ?.copyWith(
-                                                    color: colorScheme(context)
-                                                        .surface,
-                                                    fontWeight:
-                                                        FontWeight.w600)),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Text(
-                  "All Restaurants",
+                  "Blissful Bites",
                   style: textTheme(context)
                       .titleLarge
                       ?.copyWith(fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
-                  height: size.height * 0.7,
+                  height: size.height * 0.4,
                   child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: blisfulbites.length,
+                    itemBuilder: (context, index) {
+                      final bliss = blisfulbites[index];
+                      return Container(
+                        height: size.height * 0.32,
+                        child: FoodCard(
+                          portion: bliss['portion'],
+                          image: bliss['image'],
+                          title: bliss['title'],
+                          oldPrice: bliss['oldPrice'],
+                          newPrice: bliss['newPrice'],
+                          offerText: bliss['offerText'],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Quick Grabs",
+                  style: textTheme(context)
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: size.height * 0.4,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: quickGrabs.length,
+                    itemBuilder: (context, index) {
+                      final quick = quickGrabs[index];
+                      return Container(
+                        height: size.height * 0.32,
+                        child: FoodCard(
+                          portion: quick['portion'],
+                          image: quick['image'],
+                          title: quick['title'],
+                          oldPrice: quick['oldPrice'],
+                          newPrice: quick['newPrice'],
+                          offerText: quick['offerText'],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Crazy Delight",
+                  style: textTheme(context)
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: size.height * 0.9,
+                  child: ListView.builder(
                     scrollDirection: Axis.vertical,
-                    itemCount: burgerList.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: crazyDelight.length,
                     itemBuilder: (context, index) {
-                      final burger = burgerList[index];
-                      return Card(
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        shadowColor: const Color.fromARGB(255, 236, 239, 227),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: size.height * 0.15,
-                            width: size.width * 0.8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12),
-                                        bottomLeft: Radius.circular(12),
-                                      ),
-                                      child: Image.network(
-                                        burger['image'],
-                                        height: size.height * 0.14,
-                                        width: size.width * 0.25,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            burger['title'],
-                                            style: textTheme(context)
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: colorScheme(context)
-                                                        .onSurface),
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.star,
-                                                  color: colorScheme(context)
-                                                      .primary,
-                                                  size: 14),
-                                              const SizedBox(width: 4),
-                                              Text(
-                                                burger['rating'].toString(),
-                                                style: textTheme(context)
-                                                    .labelLarge
-                                                    ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            colorScheme(context)
-                                                                .primary),
-                                              ),
-                                              const SizedBox(width: 4),
-                                              Text(
-                                                burger['arriveTime'],
-                                                style: textTheme(context)
-                                                    .bodySmall
-                                                    ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            colorScheme(context)
-                                                                .onSurface),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                  burger['foodItems']
-                                                      .toString(),
-                                                  style:
-                                                      textTheme(context)
-                                                          .labelLarge
-                                                          ?.copyWith(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              color: AppColors
-                                                                  .darkGrey)),
-                                              const SizedBox(width: 8),
-                                              Text(
-                                                  burger['distance'].toString(),
-                                                  style: textTheme(context)
-                                                      .labelLarge
-                                                      ?.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: AppColors
-                                                              .darkGrey)),
-                                            ],
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8,
-                                                        vertical: 3),
-                                                decoration: BoxDecoration(
-                                                  color: Colors.pink,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
-                                                child: Text(
-                                                    '50 % off just for items',
-                                                    style: textTheme(context)
-                                                        .labelMedium
-                                                        ?.copyWith(
-                                                            color: colorScheme(
-                                                                    context)
-                                                                .surface,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600)),
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+                      final crazy = crazyDelight[index];
+                      return Container(
+                        height: size.height * 0.32,
+                        child: ItemTile(
+                          portion: crazy['portion'],
+                          priceBefore: crazy['priceBefore'],
+                          priceNow: crazy['priceNow'],
+                          subtitle: crazy['subtitle'],
+                          tag: crazy['tag'],
+                          image: crazy['image'],
+                          title: crazy['title'],
                         ),
                       );
                     },
