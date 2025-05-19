@@ -9,7 +9,7 @@ class MapProvider with ChangeNotifier {
   GoogleMapController? _mapController;
   List<Map<String, dynamic>> _placeSuggestions = [];
   Set<Polyline> _polylines = {};
-  final String _apiKey = 'AIzaSyBd3kJD7r1aKzBg7rMrfV2Rys9p9rz_OS0';
+  final String _apiKey = 'AIzaSyCqVUbT_OfI_eJ8uJUHuFFxh5igh_DbzbM';
 
   LatLng? get currentPosition => _currentPosition;
   List<Map<String, dynamic>> get placeSuggestions => _placeSuggestions;
@@ -54,106 +54,71 @@ class MapProvider with ChangeNotifier {
 
   // Search for places using Google Places API
   Future<void> searchPlaces(String query) async {
-    if (query.isEmpty) {
-      _placeSuggestions = [];
-      notifyListeners();
-      return;
-    }
-
-    final url = Uri.parse(
-      'https://maps.googleapis.com/maps/api/place/textsearch/json?query=${Uri.encodeQueryComponent(query)}&key=$_apiKey',
-    );
+    final String url =
+        'https://maps.googleapis.com/maps/api/place/textsearch/json?query=$query&key=$_apiKey';
 
     try {
-      final response = await http.get(url);
+      final response = await http.get(Uri.parse(url));
+
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+        final data = json.decode(response.body);
+
         if (data['status'] == 'OK') {
           _placeSuggestions = List<Map<String, dynamic>>.from(data['results']);
-          notifyListeners();
         } else {
           _placeSuggestions = [];
-          notifyListeners();
+          debugPrint('Google Places Error: ${data['status']}');
         }
       } else {
         _placeSuggestions = [];
-        notifyListeners();
+        debugPrint('Failed to fetch places');
       }
     } catch (e) {
       _placeSuggestions = [];
-      notifyListeners();
+      debugPrint('Error during place search: $e');
     }
+
+    notifyListeners();
   }
 
-  // Draw polyline to destination using Google Directions API
-  Future<void> drawPolyline(Map<String, dynamic> destination) async {
-    if (_currentPosition == null) return;
+  Future<void> drawPolyline(Map<String, dynamic> place) async {
+    final location = place['geometry']['location'];
+    if (_currentPosition == null || location == null) return;
 
-    final destinationLocation = destination['geometry']['location'];
-    final destLat = destinationLocation['lat'];
-    final destLng = destinationLocation['lng'];
+    final LatLng destination = LatLng(location['lat'], location['lng']);
 
-    final url = Uri.parse(
-      'https://maps.googleapis.com/maps/api/directions/json?'
-      'origin=${_currentPosition!.latitude},${_currentPosition!.longitude}'
-      '&destination=$destLat,$destLng'
-      '&mode=driving'
-      '&key=$_apiKey',
-    );
+    final String url =
+        'https://maps.googleapis.com/maps/api/directions/json?origin=${_currentPosition!.latitude},${_currentPosition!.longitude}&destination=${destination.latitude},${destination.longitude}&key=$_apiKey';
 
     try {
-      final response = await http.get(url);
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        if (data['status'] == 'OK') {
-          final polylinePoints =
-              data['routes'][0]['overview_polyline']['points'];
-          final points = _decodePolyline(polylinePoints);
+      final response = await http.get(Uri.parse(url));
 
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['status'] == 'OK') {
+          final route = data['routes'][0]['overview_polyline']['points'];
+          final points = _decodePolyline(route);
           _polylines = {
             Polyline(
-              polylineId: const PolylineId('route'),
-              points: points,
+              polylineId: const PolylineId("route"),
               color: Colors.blue,
               width: 5,
+              points: points,
             ),
           };
 
-          // Move camera to show both points
           _mapController?.animateCamera(
-            CameraUpdate.newLatLngBounds(
-              LatLngBounds(
-                southwest: LatLng(
-                  _currentPosition!.latitude < destLat
-                      ? _currentPosition!.latitude
-                      : destLat,
-                  _currentPosition!.longitude < destLng
-                      ? _currentPosition!.longitude
-                      : destLng,
-                ),
-                northeast: LatLng(
-                  _currentPosition!.latitude > destLat
-                      ? _currentPosition!.latitude
-                      : destLat,
-                  _currentPosition!.longitude > destLng
-                      ? _currentPosition!.longitude
-                      : destLng,
-                ),
-              ),
-              100,
-            ),
+            CameraUpdate.newLatLngBounds(_boundsFromLatLngList(points), 50),
           );
-
-          notifyListeners();
         }
       }
     } catch (e) {
-      _polylines = {};
-      notifyListeners();
+      debugPrint('Error drawing polyline: $e');
     }
+
+    notifyListeners();
   }
 
-  // Decode polyline points
   List<LatLng> _decodePolyline(String encoded) {
     List<LatLng> points = [];
     int index = 0, len = encoded.length;
@@ -163,7 +128,7 @@ class MapProvider with ChangeNotifier {
       int b, shift = 0, result = 0;
       do {
         b = encoded.codeUnitAt(index++) - 63;
-        result |= (b & 0x1f) << shift;
+        result |= (b & 0x1F) << shift;
         shift += 5;
       } while (b >= 0x20);
       int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
@@ -173,7 +138,7 @@ class MapProvider with ChangeNotifier {
       result = 0;
       do {
         b = encoded.codeUnitAt(index++) - 63;
-        result |= (b & 0x1f) << shift;
+        result |= (b & 0x1F) << shift;
         shift += 5;
       } while (b >= 0x20);
       int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
@@ -181,13 +146,29 @@ class MapProvider with ChangeNotifier {
 
       points.add(LatLng(lat / 1E5, lng / 1E5));
     }
+
     return points;
   }
 
-  // Clear suggestions and polylines
+  LatLngBounds _boundsFromLatLngList(List<LatLng> list) {
+    assert(list.isNotEmpty);
+    double x0 = list.first.latitude, x1 = list.first.latitude;
+    double y0 = list.first.longitude, y1 = list.first.longitude;
+    for (LatLng latLng in list) {
+      if (latLng.latitude > x1) x1 = latLng.latitude;
+      if (latLng.latitude < x0) x0 = latLng.latitude;
+      if (latLng.longitude > y1) y1 = latLng.longitude;
+      if (latLng.longitude < y0) y0 = latLng.longitude;
+    }
+    return LatLngBounds(
+      southwest: LatLng(x0, y0),
+      northeast: LatLng(x1, y1),
+    );
+  }
+
   void clear() {
     _placeSuggestions = [];
-    _polylines = {};
+    _polylines.clear();
     notifyListeners();
   }
 }
