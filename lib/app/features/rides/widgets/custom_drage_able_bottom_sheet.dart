@@ -9,6 +9,7 @@ import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/widgets/custom_arrow_down.dart';
 import 'package:suprapp/app/features/rides/widgets/custom_dialog.dart';
 import 'package:suprapp/app/routes/go_router.dart';
+import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class CustomBottomSheet extends StatefulWidget {
@@ -84,11 +85,17 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                       isExpanded: provider.isExpanded,
                       onToggle: provider.toggleBottomSheet,
                       controller: controller,
+                      buttontab: () {
+                        provider.controller.animateTo(
+                          0.3,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: ListView.builder(
-                      controller: scrollController,
                       shrinkWrap: true,
                       itemCount: mapProvider.placeSuggestions.length,
                       itemBuilder: (context, index) {
@@ -166,11 +173,13 @@ class _BottomSheetHeaderDelegate extends SliverPersistentHeaderDelegate {
   final bool isExpanded;
   final VoidCallback onToggle;
   final TextEditingController controller;
+  final VoidCallback buttontab;
 
   _BottomSheetHeaderDelegate(
       {required this.isExpanded,
       required this.onToggle,
-      required this.controller});
+      required this.controller,
+      required this.buttontab});
 
   @override
   Widget build(
@@ -197,12 +206,13 @@ class _BottomSheetHeaderDelegate extends SliverPersistentHeaderDelegate {
                 ),
               ),
             ),
-          Text(
-            'Where To ?',
-            style: textTheme(context)
-                .headlineSmall
-                ?.copyWith(fontWeight: FontWeight.bold),
-          ),
+          if (isExpanded == false)
+            Text(
+              'Where To ?',
+              style: textTheme(context)
+                  .headlineSmall
+                  ?.copyWith(fontWeight: FontWeight.bold),
+            ),
           const SizedBox(height: 15),
           CustomTextFormField(
             controller: controller,
@@ -243,17 +253,72 @@ class _BottomSheetHeaderDelegate extends SliverPersistentHeaderDelegate {
                 ],
               ),
             ),
-          )
+          ),
+          if (isExpanded == true) const SizedBox(height: 40),
+          if (isExpanded == true)
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 16,
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey.withOpacity(0.3)),
+                child: Icon(Icons.search,
+                    size: 25, color: colorScheme(context).primary),
+              ),
+            ),
+          if (isExpanded == true) const SizedBox(height: 20),
+          if (isExpanded == true)
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Where do you want to go ?",
+                style: textTheme(context)
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+            ),
+          if (isExpanded == true) const SizedBox(height: 15),
+          if (isExpanded == true)
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                  "Enter your destination in the search area \nabove to find your location.",
+                  textAlign: TextAlign.center,
+                  style: textTheme(context).bodyMedium),
+            ),
+          if (isExpanded == true) const SizedBox(height: 15),
+          if (isExpanded == true)
+            CustomElevatedButton(
+                text: "Select Location on map", onPressed: buttontab),
+          if (isExpanded == true)
+            Container(
+              height: MediaQuery.of(context).size.height * 0.06,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.grey.withOpacity(0.3))),
+              child: Center(
+                  child: Text(
+                "Skip destination step",
+                style: textTheme(context)
+                    .bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              )),
+            )
         ],
       ),
     );
   }
 
   @override
-  double get maxExtent => 210.0;
+  double get maxExtent => 500;
 
   @override
-  double get minExtent => 210.0;
+  double get minExtent => 500;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>

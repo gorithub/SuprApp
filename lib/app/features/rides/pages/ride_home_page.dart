@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/widgets/custom_drage_able_bottom_sheet.dart';
 import 'package:suprapp/app/features/rides/widgets/nested_bottom_sheets.dart';
@@ -30,19 +32,59 @@ class _RideHomePageState extends State<RideHomePage> {
                 onMapCreated: provider.onMapCreated,
                 polylines: provider.polylines,
               ),
+              const CustomBottomSheet(),
               Positioned(
-                  top: 50,
-                  left: 100,
-                  child: GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          context: context,
-                          builder: (_) => CarBottomSheet(),
-                        );
-                      },
-                      child: Icon(Icons.menu))),
-              const CustomBottomSheet()
+                top: 30,
+                left: 0,
+                right: 0,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // Back Button
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.appGrey),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: AppColors.darkGrey,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(), // Tite
+                      Text(
+                        'Rides',
+                        style: textTheme(context).headlineLarge?.copyWith(
+                              color: colorScheme(context).primary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+
+                      // Menu Button
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          color: colorScheme(context).primary,
+                          border: Border.all(color: AppColors.appGrey),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: const Icon(
+                          Icons.menu,
+                          color: Color.fromARGB(255, 20, 188, 96),
+                          size: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           );
         },

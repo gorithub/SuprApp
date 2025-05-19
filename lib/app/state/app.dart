@@ -21,6 +21,7 @@ import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
 import 'package:suprapp/app/features/profile/controller/language_controller.dart';
 import 'package:suprapp/app/features/profile/controller/profile_controller.dart';
 import 'package:suprapp/app/features/rides/provider/bottom_sheet_provider.dart';
+import 'package:suprapp/app/features/rides/provider/cancel_provider.dart';
 import 'package:suprapp/app/features/rides/provider/date_provider.dart';
 import 'package:suprapp/app/features/rides/provider/favorite_provider.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
@@ -82,6 +83,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => PickupTimeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CancelReasonProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

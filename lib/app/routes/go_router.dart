@@ -35,10 +35,12 @@ import 'package:suprapp/app/features/profile/pages/update_name.dart';
 import 'package:suprapp/app/features/profile/pages/update_phone_no.dart';
 import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
 import 'package:suprapp/app/features/rides/pages/enter_pick_up_location.dart';
+import 'package:suprapp/app/features/rides/pages/manage_ride_page.dart';
 import 'package:suprapp/app/features/rides/pages/ride_home_page.dart';
 import 'package:suprapp/app/features/rides/pages/save_location_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_city_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_page.dart';
+import 'package:suprapp/app/features/rides/pages/your_ride.dart';
 import 'package:suprapp/app/routes/error_route.dart';
 import 'package:suprapp/app/routes/route_transition.dart';
 import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
@@ -444,6 +446,22 @@ class MyAppRouter {
                 state: state,
                 child: const RideHomePage(),
               )),
+      GoRoute(
+          name: AppRoute.manageRide,
+          path: '/${AppRoute.manageRide}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const ManageRidePage(),
+              )),
+      GoRoute(
+          name: AppRoute.yourRidePage,
+          path: '/${AppRoute.yourRidePage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const YourRideScreen(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -509,6 +527,8 @@ class AppRoute {
   static const String searchLocationPage = 'search-location-page';
   static const String savedLocationPage = 'saved-location-page';
   static const String searchCityPage = 'search-city-page';
+  static const String manageRide = 'manage-ride-page';
+  static const String yourRidePage = 'your-ride';
   //!---- Grocery Section---- !//
   static const String groceryHomeScreen = 'grocery-home-screen';
 }
