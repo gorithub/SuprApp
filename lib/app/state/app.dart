@@ -26,6 +26,7 @@ import 'package:suprapp/app/features/rides/provider/date_provider.dart';
 import 'package:suprapp/app/features/rides/provider/favorite_provider.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/provider/pick_up_provider.dart';
+import 'package:suprapp/app/features/rides/provider/saved_favorit_location.dart';
 import 'package:suprapp/app/features/rides/provider/selecting_car_provider.dart';
 import 'package:suprapp/app/features/rides/provider/selection_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
@@ -86,6 +87,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => CancelReasonProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SavedLocationProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

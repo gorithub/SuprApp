@@ -64,8 +64,8 @@ class CarBottomSheetState extends State<CarBottomSheet> {
 
     return DraggableScrollableSheet(
       controller: _scrollController,
-      initialChildSize: 0.5,
-      minChildSize: 0.3,
+      initialChildSize: 0.6,
+      minChildSize: 0.4,
       maxChildSize: 1.0,
       expand: false,
       builder: (_, controller) => Stack(
@@ -208,7 +208,7 @@ class DropdownOptionsSheet extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
             color: Colors.grey.shade100,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10))),
         child: Column(
           children: [

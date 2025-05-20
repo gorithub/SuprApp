@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 import 'package:suprapp/app/features/rides/widgets/arrow_back_leading.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class YourRideScreen extends StatefulWidget {
   const YourRideScreen({super.key});
@@ -99,23 +100,28 @@ class _YourRideScreenState extends State<YourRideScreen>
                       ),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tahir Qadri Abayat, Tariq Road - PECHS Block 2 - Pakistan",
-                              style: textTheme(context)
-                                  .bodySmall
-                                  ?.copyWith(color: Colors.grey),
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              "62, 7 F St, D.H.A Phase 6 Defence Housing Authority",
-                              style: textTheme(context)
-                                  .bodySmall
-                                  ?.copyWith(color: Colors.grey),
-                            ),
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            context.pushNamed(AppRoute.manageRide);
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Tahir Qadri Abayat, Tariq Road - PECHS Block 2 - Pakistan",
+                                style: textTheme(context)
+                                    .bodySmall
+                                    ?.copyWith(color: Colors.grey),
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                "62, 7 F St, D.H.A Phase 6 Defence Housing Authority",
+                                style: textTheme(context)
+                                    .bodySmall
+                                    ?.copyWith(color: Colors.grey),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

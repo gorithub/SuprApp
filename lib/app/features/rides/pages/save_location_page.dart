@@ -177,7 +177,7 @@ class _SaveLocationPageState extends State<SaveLocationPage> {
                   hintStyle: textTheme(context).titleLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: colorScheme(context).onSurface.withOpacity(0.3)),
-                  enabledBorder: UnderlineInputBorder(
+                  enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.green),
                   ),
                 ),
@@ -190,7 +190,11 @@ class _SaveLocationPageState extends State<SaveLocationPage> {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: provider.isFormValid ? () {} : null,
+                onPressed: provider.isFormValid
+                    ? () {
+                        context.pop();
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                     backgroundColor: provider.isFormValid
                         ? colorScheme(context).primary

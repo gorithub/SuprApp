@@ -21,7 +21,7 @@ class _ManageRidePageState extends State<ManageRidePage> {
       appBar: AppBar(
         leading: CustomLeading(
           onTap: () {
-            context.pushNamed(AppRoute.yourRidePage);
+            context.pop();
           },
         ),
         title: Text(
