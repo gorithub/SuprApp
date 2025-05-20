@@ -5,7 +5,6 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/widgets/custom_drage_able_bottom_sheet.dart';
-import 'package:suprapp/app/features/rides/widgets/nested_bottom_sheets.dart';
 
 class RideHomePage extends StatefulWidget {
   const RideHomePage({super.key});
