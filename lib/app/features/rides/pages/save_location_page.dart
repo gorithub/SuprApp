@@ -183,7 +183,7 @@ class _SaveLocationPageState extends State<SaveLocationPage> {
                 ),
                 onChanged: (val) => provider.setPickupDetails(val),
               ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             SizedBox(
