@@ -13,6 +13,7 @@ import 'package:suprapp/app/features/dine_out/provider/filter_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
 import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
+import 'package:suprapp/app/features/food/provider/drink_selection_provider.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/groceries/controllers/tab_provider.dart';
 import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
@@ -82,6 +83,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => PickupTimeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DrinkSelectionProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

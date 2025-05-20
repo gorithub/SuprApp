@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({super.key});
@@ -20,41 +21,38 @@ class AppBarTitle extends StatelessWidget {
                   context.pop();
                 },
                 child: Container(
-                  height: 45,
-                  width: 45,
+                  height: 40,
+                  width: 40,
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.darkGrey),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
+                      border: Border.all(color: AppColors.appGrey),
+                      borderRadius: BorderRadius.circular(7)),
                   child: const Icon(
                     Icons.arrow_back,
                     color: AppColors.darkGrey,
-                    size: 25,
+                    size: 20,
                   ),
                 ),
               ),
-              const Text(
-                "GROCERIES",
-                style: TextStyle(
-                  color: AppColors.darkGreen,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600,
-                ),
+              Text(
+                'GROCERIES',
+                style: textTheme(context).headlineLarge?.copyWith(
+                      color: colorScheme(context).primary,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
               InkWell(
                 onTap: () {},
                 child: Container(
-                  height: 45,
-                  width: 45,
+                  height: 40,
+                  width: 40,
                   decoration: BoxDecoration(
-                    color: AppColors.darkGreen,
-                    border: Border.all(color: AppColors.appGrey),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
+                      color: colorScheme(context).primary,
+                      border: Border.all(color: AppColors.appGrey),
+                      borderRadius: BorderRadius.circular(7)),
                   child: const Icon(
                     Icons.menu,
-                    color: Colors.white,
-                    size: 20,
+                    color: Color.fromARGB(255, 20, 188, 96),
+                    size: 15,
                   ),
                 ),
               ),

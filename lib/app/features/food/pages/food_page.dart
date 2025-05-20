@@ -653,17 +653,14 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: crazyDelight.length,
                     itemBuilder: (context, index) {
                       final crazy = crazyDelight[index];
-                      return Container(
-                        height: size.height * 0.32,
-                        child: ItemTile(
-                          portion: crazy['portion'],
-                          priceBefore: crazy['priceBefore'],
-                          priceNow: crazy['priceNow'],
-                          subtitle: crazy['subtitle'],
-                          tag: crazy['tag'],
-                          image: crazy['image'],
-                          title: crazy['title'],
-                        ),
+                      return ItemTile(
+                        portion: crazy['portion'],
+                        priceBefore: crazy['priceBefore'],
+                        priceNow: crazy['priceNow'],
+                        subtitle: crazy['subtitle'],
+                        tag: crazy['tag'],
+                        image: crazy['image'],
+                        title: crazy['title'],
                       );
                     },
                   ),
