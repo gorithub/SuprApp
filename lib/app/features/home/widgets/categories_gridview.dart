@@ -12,20 +12,20 @@ class CategoriesGridview extends StatelessWidget {
   void _handleNavigation(BuildContext context, String categoryName) {
     switch (categoryName) {
       case 'Rides':
-        // Navigator.pushNamed(context, AppRoutes.selectAddressScreen);
+        context.pushNamed(AppRoute.enterPickUpLocationPage);
         break;
       case 'Electronics':
         //  Navigator.push(context,
         //       MaterialPageRoute(builder: (context) => QuickElectronicsScreen()));
         break;
       case 'Food':
-        // Navigator.pushNamed(context, AppRoutes.foodScreen);
+        context.pushNamed(AppRoute.foodPage);
         break;
       case 'DineOut':
         context.pushNamed(AppRoute.dineOutPage);
         break;
       case 'Groceries':
-      context.pushNamed(AppRoute.groceryHomeScreen);
+        context.pushNamed(AppRoute.groceryHomeScreen);
         break;
       case 'Shops':
         // Navigator.pushNamed(context, AppRoutes.shopsScreen);
