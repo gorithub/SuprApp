@@ -177,20 +177,24 @@ class _SaveLocationPageState extends State<SaveLocationPage> {
                   hintStyle: textTheme(context).titleLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: colorScheme(context).onSurface.withOpacity(0.3)),
-                  enabledBorder: UnderlineInputBorder(
+                  enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.green),
                   ),
                 ),
                 onChanged: (val) => provider.setPickupDetails(val),
               ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: provider.isFormValid ? () {} : null,
+                onPressed: provider.isFormValid
+                    ? () {
+                        context.pop();
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                     backgroundColor: provider.isFormValid
                         ? colorScheme(context).primary

@@ -1,9 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/rides/widgets/schdule_ride.dart';
 
-class BookingBottomSheet extends StatelessWidget {
+class BookingBottomSheet extends StatefulWidget {
   const BookingBottomSheet({super.key});
+
+  @override
+  State<BookingBottomSheet> createState() => _BookingBottomSheetState();
+}
+
+class _BookingBottomSheetState extends State<BookingBottomSheet> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Wait 5 seconds before showing the scheduled ride bottom sheet
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) {
+        Navigator.of(context).pop(); // Close the current bottom sheet
+        _showScheduledRideBottomSheet();
+      }
+    });
+  }
+
+  void _showScheduledRideBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) => ScheduledRideBottomSheet(
+        pickupTimeStart: DateTime(2025, 6, 12, 1, 20),
+        pickupTimeEnd: DateTime(2025, 6, 12, 1, 30),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -64,17 +64,21 @@ class CarBottomSheetState extends State<CarBottomSheet> {
 
     return DraggableScrollableSheet(
       controller: _scrollController,
-      initialChildSize: 0.5,
-      minChildSize: 0.3,
+      initialChildSize: 0.6,
+      minChildSize: 0.4,
       maxChildSize: 1.0,
       expand: false,
       builder: (_, controller) => Stack(
         children: [
           Container(
             padding: const EdgeInsets.all(16),
-            color: Colors.white,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10))),
             child: Column(
               children: [
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -184,8 +188,8 @@ class DropdownOptionsSheet extends StatelessWidget {
   void showCashSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      isDismissible: false, // Prevent dismissing
-      builder: (_) => CashOptionsSheet(),
+      isDismissible: false,
+      builder: (_) => const CashOptionsSheet(),
     );
   }
 
@@ -199,75 +203,80 @@ class DropdownOptionsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      color: Colors.grey[200],
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () => showCashSheet(context),
-                child: SizedBox(
-                  width: 120,
-                  child: Row(
-                    children: [
-                      const Icon(Icons.airplane_ticket_outlined,
-                          color: Colors.grey),
-                      const SizedBox(width: 10),
-                      Text(
-                        "Cash",
-                        style: textTheme(context)
-                            .bodySmall
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(width: 15),
-                      const Icon(
-                        Icons.keyboard_arrow_down,
-                        size: 15,
-                      )
-                    ],
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () => showCashSheet(context),
+                  child: SizedBox(
+                    width: 120,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.airplane_ticket_outlined,
+                            color: Colors.grey),
+                        const SizedBox(width: 10),
+                        Text(
+                          "Cash",
+                          style: textTheme(context)
+                              .bodySmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 15),
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 15,
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => showDiscountSheet(context),
-                child: SizedBox(
-                  width: 120,
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(AppIcon.offer, height: 15, width: 15),
-                      const SizedBox(width: 10),
-                      Text(
-                        "Discount",
-                        style: textTheme(context)
-                            .bodySmall
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(width: 15),
-                      const Icon(
-                        Icons.keyboard_arrow_down,
-                        size: 15,
-                      )
-                    ],
+                GestureDetector(
+                  onTap: () => showDiscountSheet(context),
+                  child: SizedBox(
+                    width: 120,
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(AppIcon.offer, height: 15, width: 15),
+                        const SizedBox(width: 10),
+                        Text(
+                          "Discount",
+                          style: textTheme(context)
+                              .bodySmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 15),
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 15,
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          CustomElevatedButton(
-              text: "Schedule ride",
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (_) => const BookingBottomSheet(),
-                );
-              })
-        ],
+              ],
+            ),
+            const SizedBox(height: 15),
+            CustomElevatedButton(
+                text: "Schedule ride",
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => const BookingBottomSheet(),
+                  );
+                })
+          ],
+        ),
       ),
     );
   }
