@@ -91,8 +91,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             return Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(20)),
+                borderRadius: BorderRadius.circular(19),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),

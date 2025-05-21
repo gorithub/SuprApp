@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/food/pages/poduct_detail_page.dart';
 import 'package:suprapp/app/features/food/pages/product_screen.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/food/widgets/food_card.dart';
@@ -387,15 +388,26 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: burgerList.length,
                     itemBuilder: (context, index) {
                       final burger = burgerList[index];
-                      return SizedBox(
-                        height: size.height * 0.32,
-                        child: FoodCard(
-                          portion: burger['portion'],
-                          image: burger['image'],
-                          title: burger['title'],
-                          oldPrice: burger['oldPrice'],
-                          newPrice: burger['newPrice'],
-                          offerText: burger['offerText'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  ProductDetailPage(product: burger),
+                            ),
+                          );
+                        },
+                        child: SizedBox(
+                          height: size.height * 0.32,
+                          child: FoodCard(
+                            portion: burger['portion'],
+                            image: burger['image'],
+                            title: burger['title'],
+                            oldPrice: burger['oldPrice'],
+                            newPrice: burger['newPrice'],
+                            offerText: burger['offerText'],
+                          ),
                         ),
                       );
                     },
@@ -448,12 +460,23 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: burgerList.length,
                     itemBuilder: (context, index) {
                       final burger = burgerList[index];
-                      return TopPickItem(
-                        discountText: '20 % off',
-                        image: burger['image'],
-                        title: burger['title'],
-                        oldPrice: burger['oldPrice'],
-                        newPrice: burger['newPrice'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  ProductDetailPage(product: burger),
+                            ),
+                          );
+                        },
+                        child: TopPickItem(
+                          discountText: '20 % off',
+                          image: burger['image'],
+                          title: burger['title'],
+                          oldPrice: burger['oldPrice'],
+                          newPrice: burger['newPrice'],
+                        ),
                       );
                     },
                   ),
@@ -477,13 +500,23 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: chaatCravingList.length,
                     itemBuilder: (context, index) {
                       final chaat = chaatCravingList[index];
-                      return FoodCard(
-                        offerText: '20 % off',
-                        portion: chaat['portion'],
-                        image: chaat['image'],
-                        title: chaat['title'],
-                        oldPrice: chaat['oldPrice'],
-                        newPrice: chaat['newPrice'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailPage(product: chaat),
+                            ),
+                          );
+                        },
+                        child: FoodCard(
+                          offerText: '20 % off',
+                          portion: chaat['portion'],
+                          image: chaat['image'],
+                          title: chaat['title'],
+                          oldPrice: chaat['oldPrice'],
+                          newPrice: chaat['newPrice'],
+                        ),
                       );
                     },
                   ),
@@ -555,13 +588,23 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: cofees.length,
                     itemBuilder: (context, index) {
                       final cofee = cofees[index];
-                      return FoodCard(
-                        offerText: '20 % off',
-                        portion: cofee['portion'],
-                        image: cofee['image'],
-                        title: cofee['title'],
-                        oldPrice: cofee['oldPrice'],
-                        newPrice: cofee['newPrice'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailPage(product: cofee),
+                            ),
+                          );
+                        },
+                        child: FoodCard(
+                          offerText: '20 % off',
+                          portion: cofee['portion'],
+                          image: cofee['image'],
+                          title: cofee['title'],
+                          oldPrice: cofee['oldPrice'],
+                          newPrice: cofee['newPrice'],
+                        ),
                       );
                     },
                   ),
@@ -585,15 +628,25 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: blisfulbites.length,
                     itemBuilder: (context, index) {
                       final bliss = blisfulbites[index];
-                      return Container(
-                        height: size.height * 0.32,
-                        child: FoodCard(
-                          portion: bliss['portion'],
-                          image: bliss['image'],
-                          title: bliss['title'],
-                          oldPrice: bliss['oldPrice'],
-                          newPrice: bliss['newPrice'],
-                          offerText: bliss['offerText'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailPage(product: bliss),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: size.height * 0.32,
+                          child: FoodCard(
+                            portion: bliss['portion'],
+                            image: bliss['image'],
+                            title: bliss['title'],
+                            oldPrice: bliss['oldPrice'],
+                            newPrice: bliss['newPrice'],
+                            offerText: bliss['offerText'],
+                          ),
                         ),
                       );
                     },
@@ -618,15 +671,25 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: quickGrabs.length,
                     itemBuilder: (context, index) {
                       final quick = quickGrabs[index];
-                      return Container(
-                        height: size.height * 0.32,
-                        child: FoodCard(
-                          portion: quick['portion'],
-                          image: quick['image'],
-                          title: quick['title'],
-                          oldPrice: quick['oldPrice'],
-                          newPrice: quick['newPrice'],
-                          offerText: quick['offerText'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailPage(product: quick),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: size.height * 0.32,
+                          child: FoodCard(
+                            portion: quick['portion'],
+                            image: quick['image'],
+                            title: quick['title'],
+                            oldPrice: quick['oldPrice'],
+                            newPrice: quick['newPrice'],
+                            offerText: quick['offerText'],
+                          ),
                         ),
                       );
                     },
@@ -645,7 +708,7 @@ class _FoodPageState extends State<FoodPage> {
                   height: 20,
                 ),
                 SizedBox(
-                  height: size.height * 0.9,
+                  height: size.height * 0.7,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     physics: const NeverScrollableScrollPhysics(),
@@ -653,14 +716,24 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: crazyDelight.length,
                     itemBuilder: (context, index) {
                       final crazy = crazyDelight[index];
-                      return ItemTile(
-                        portion: crazy['portion'],
-                        priceBefore: crazy['priceBefore'],
-                        priceNow: crazy['priceNow'],
-                        subtitle: crazy['subtitle'],
-                        tag: crazy['tag'],
-                        image: crazy['image'],
-                        title: crazy['title'],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailPage(product: crazy),
+                            ),
+                          );
+                        },
+                        child: ItemTile(
+                          portion: crazy['portion'],
+                          priceBefore: crazy['priceBefore'],
+                          priceNow: crazy['priceNow'],
+                          subtitle: crazy['subtitle'],
+                          tag: crazy['tag'],
+                          image: crazy['image'],
+                          title: crazy['title'],
+                        ),
                       );
                     },
                   ),
