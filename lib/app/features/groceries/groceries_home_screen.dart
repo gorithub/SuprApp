@@ -10,6 +10,7 @@ import 'package:suprapp/app/features/groceries/tabs/categories_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/exclusive_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/fresh_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/home_tab.dart';
+import 'package:suprapp/app/features/groceries/tabs/kids_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/top_picks_tab.dart';
 import 'package:suprapp/app/features/groceries/widgets/app_bar_title.dart';
 import 'package:suprapp/app/features/groceries/widgets/custom_tab_bar.dart';
@@ -88,18 +89,15 @@ class GroceriesHomeScreen extends StatelessWidget {
         ),
         body: IndexedStack(
           index: selectedIndex,
-          children: [
-            const AllTab(),
-            const CategoriesTab(),
-            const TopPicksTab(),
-            const AllDealsTab(),
-            const FreshTab(),
-            const ExclusiveTab(),
-            const HomeTab(),
-            ...List.generate(
-              tabItems.length - 2,
-              (i) => Center(child: Text('${tabItems[i + 1].label} Tab')),
-            ),
+          children: const [
+            AllTab(),
+            CategoriesTab(),
+            TopPicksTab(),
+            AllDealsTab(),
+            FreshTab(),
+            ExclusiveTab(),
+            HomeTab(),
+            KidsTab(),
           ],
         ),
       ),
