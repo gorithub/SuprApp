@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
@@ -55,7 +56,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet>
                 ),
               ),
               TextButton(
-                  onPressed: null,
+                  onPressed: () {
+                    context.pop();
+                  },
                   child: Text(
                     "Clear all",
                     style: textTheme(context).bodyLarge?.copyWith(

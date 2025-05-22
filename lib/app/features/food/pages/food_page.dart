@@ -269,60 +269,70 @@ class _FoodPageState extends State<FoodPage> {
                 SizedBox(
                   height: size.height * 0.45,
                   width: size.width,
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: categories.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4, // This will ensure two rows of items
-                      mainAxisSpacing: 0,
-                      crossAxisSpacing: 0,
-                      childAspectRatio:
-                          (size.width * 0.9 / 2) / (size.height * 0.3),
-                    ),
-                    scrollDirection:
-                        Axis.horizontal, // Enables horizontal scrolling
-                    itemBuilder: (context, index) {
-                      final item = categories[index];
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      bool isTablet = constraints.maxWidth >
+                          600; // You can fine-tune this breakpoint
 
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductScreen(
-                                category: item['text']!,
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        physics: isTablet
+                            ? const NeverScrollableScrollPhysics()
+                            : const BouncingScrollPhysics(),
+                        scrollDirection:
+                            isTablet ? Axis.horizontal : Axis.horizontal,
+                        itemCount: categories.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: isTablet ? 4 : 4, // 2 rows on phone
+                          mainAxisSpacing: isTablet ? 10 : 0,
+                          crossAxisSpacing: isTablet ? 10 : 0,
+                          childAspectRatio: isTablet
+                              ? 1
+                              : (size.width * 0.9 / 2) / (size.height * 0.3),
+                        ),
+                        itemBuilder: (context, index) {
+                          final item = categories[index];
+
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductScreen(
+                                    category: item['text']!,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: size.height * 0.15,
+                              width: size.width * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    item['image']!,
+                                    height: 45,
+                                    width: 40,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(height: 3),
+                                  Text(
+                                    textAlign: TextAlign.center,
+                                    item['text']!,
+                                    style: textTheme(context)
+                                        .labelLarge
+                                        ?.copyWith(fontWeight: FontWeight.w600),
+                                  ),
+                                ],
                               ),
                             ),
                           );
                         },
-                        child: Container(
-                          height: size.height * 0.15,
-                          width: size.width * 0.9,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                item['image']!,
-                                height: 45,
-                                width: 40,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(height: 3),
-                              Text(
-                                textAlign: TextAlign.center,
-                                item['text']!,
-                                style: textTheme(context)
-                                    .labelLarge
-                                    ?.copyWith(fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        ),
                       );
                     },
                   ),
