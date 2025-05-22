@@ -43,13 +43,15 @@ class ProductSection extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = products[index];
               return ProductCard(
+                id: item['id']?? "",
                 title: item['title']!,
                 price: item['price']!,
                 discount: item['discount']!,
                 oldPrice: item['old'],
                 showOldPrice: isHerbal,
                 imageUrl: item['image'] ?? 'https://via.placeholder.com/150',
-                onAddTap: () {},
+                onTap: () {
+                },
               );
             },
           ),

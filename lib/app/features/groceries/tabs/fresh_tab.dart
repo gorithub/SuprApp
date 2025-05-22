@@ -40,83 +40,94 @@ class _FreshTabState extends State<FreshTab> {
         imageUrl: 'https://cdn-icons-png.flaticon.com/512/650/650195.png'),
   ];
   final herbal = [
-    {
-      'title': 'Himalaya Soap Neem & Turm...',
-      'price': 'AED 19.20',
-      'old': 'AED 24',
-      'discount': '-20%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtZEE5zxcfq-nAlS_5fJxJrlcjlnxLWOPMQ&s',
-    },
-    {
-      'title': 'Himalaya Soap Moisturizing A...',
-      'price': 'AED 19.20',
-      'old': 'AED 24',
-      'discount': '-20%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRunZcCzD4RN1X8jK2u5G9VjfFcGExuA5i4dQ&s',
-    },
-    {
-      'title': 'Himalaya Pure Tulsi & Aloe V...',
-      'price': 'AED 25.90',
-      'old': 'AED 30.45',
-      'discount': '-15%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx2-LEkNXJNKwlafI9IkC-ZUMcs7OXfptRGw&s',
-    },
-  ];
-  final mangoes = [
-    {
-      'title': 'Alphonso Mango Premium Box',
-      'price': 'AED 19.20',
-      'old': 'AED 24',
-      'discount': '-20%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEbYmomBlqAHgrep6gH24ZgGnkRsK0mk9Dw&s',
-    },
-    {
-      'title': 'Kesar Mango (Export Quality)',
-      'price': 'AED 19.20',
-      'old': 'AED 24',
-      'discount': '-20%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHUYOGjvIALIoCCp9EYvy-2MtIEhaWdWfh0g&s',
-    },
-    {
-      'title': 'Dasheri Mango – 1 Kg Pack',
-      'price': 'AED 25.90',
-      'old': 'AED 30.45',
-      'discount': '-15%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAn321feU9VoEaA1gOob_qn8hEUw70WgNM0w&s',
-    },
-  ];
-  final mostLoved = [
-    {
-      'title': 'Alphonso Mango Premium Box',
-      'price': 'AED 19.20',
-      'old': 'AED 24',
-      'discount': '-20%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgYoY-mxL8X2G2cF1okBsFDc_EqIjhTsznw&s',
-    },
-    {
-      'title': 'Kesar Mango (Export Quality)',
-      'price': 'AED 19.20',
-      'old': 'AED 24',
-      'discount': '-20%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8zud_GiEq2I5xU0w-6tcVPEtZB_jjCJx3w&s',
-    },
-    {
-      'title': 'Dasheri Mango – 1 Kg Pack',
-      'price': 'AED 25.90',
-      'old': 'AED 30.45',
-      'discount': '-15%',
-      'image':
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW86xKHst7eO2XAXznefUq7jcS7-q3I5Sc9w&s',
-    },
-  ];
+  {
+    'id': 'herbal1',
+    'title': 'Himalaya Soap Neem & Turm...',
+    'price': 'AED 19.20',
+    'old': 'AED 24',
+    'discount': '-20%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtZEE5zxcfq-nAlS_5fJxJrlcjlnxLWOPMQ&s',
+  },
+  {
+    'id': 'herbal2',
+    'title': 'Himalaya Soap Moisturizing A...',
+    'price': 'AED 19.20',
+    'old': 'AED 24',
+    'discount': '-20%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRunZcCzD4RN1X8jK2u5G9VjfFcGExuA5i4dQ&s',
+  },
+  {
+    'id': 'herbal3',
+    'title': 'Himalaya Pure Tulsi & Aloe V...',
+    'price': 'AED 25.90',
+    'old': 'AED 30.45',
+    'discount': '-15%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx2-LEkNXJNKwlafI9IkC-ZUMcs7OXfptRGw&s',
+  },
+];
+
+final mangoes = [
+  {
+    'id': 'mango1',
+    'title': 'Alphonso Mango Premium Box',
+    'price': 'AED 19.20',
+    'old': 'AED 24',
+    'discount': '-20%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEbYmomBlqAHgrep6gH24ZgGnkRsK0mk9Dw&s',
+  },
+  {
+    'id': 'mango2',
+    'title': 'Kesar Mango (Export Quality)',
+    'price': 'AED 19.20',
+    'old': 'AED 24',
+    'discount': '-20%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHUYOGjvIALIoCCp9EYvy-2MtIEhaWdWfh0g&s',
+  },
+  {
+    'id': 'mango3',
+    'title': 'Dasheri Mango – 1 Kg Pack',
+    'price': 'AED 25.90',
+    'old': 'AED 30.45',
+    'discount': '-15%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAn321feU9VoEaA1gOob_qn8hEUw70WgNM0w&s',
+  },
+];
+
+final mostLoved = [
+  {
+    'id': 'loved1',
+    'title': 'Alphonso Mango Premium Box',
+    'price': 'AED 19.20',
+    'old': 'AED 24',
+    'discount': '-20%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgYoY-mxL8X2G2cF1okBsFDc_EqIjhTsznw&s',
+  },
+  {
+    'id': 'loved2',
+    'title': 'Kesar Mango (Export Quality)',
+    'price': 'AED 19.20',
+    'old': 'AED 24',
+    'discount': '-20%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8zud_GiEq2I5xU0w-6tcVPEtZB_jjCJx3w&s',
+  },
+  {
+    'id': 'loved3',
+    'title': 'Dasheri Mango – 1 Kg Pack',
+    'price': 'AED 25.90',
+    'old': 'AED 30.45',
+    'discount': '-15%',
+    'image':
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW86xKHst7eO2XAXznefUq7jcS7-q3I5Sc9w&s',
+  },
+];
 
   @override
   Widget build(BuildContext context) {
