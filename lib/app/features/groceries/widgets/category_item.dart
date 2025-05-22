@@ -13,11 +13,11 @@ class CategoryGrid extends StatelessWidget {
   const CategoryGrid({
     super.key,
     required this.categories,
-    this.tileColor = const Color(0xFFFAF6EF), // Default color
+    this.tileColor = const Color(0xFFFAF6EF), 
   });
 
   final List<CategoryItem> categories;
-  final Color tileColor; // Make tile color customizable
+  final Color tileColor;
 
   @override
   Widget build(BuildContext context) {
