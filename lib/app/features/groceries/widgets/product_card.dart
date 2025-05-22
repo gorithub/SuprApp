@@ -40,6 +40,7 @@ class ProductCard extends StatelessWidget {
           children: [
             Stack(
               children: [
+                // Product Image with placeholder shimmer
                 Container(
                   width: 170,
                   height: 110,
@@ -54,18 +55,19 @@ class ProductCard extends StatelessWidget {
                     placeholder: (context, url) => Shimmer.fromColors(
                       baseColor: Colors.grey.shade300,
                       highlightColor: Colors.grey.shade100,
-                      child: Container(
-                        color: Colors.grey.shade300,
-                      ),
+                      child: Container(color: Colors.grey.shade300),
                     ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
+                // Discount badge
                 Positioned(
                   top: 6,
                   left: 6,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
                       color: Colors.red.shade400,
                       borderRadius: BorderRadius.circular(4),
@@ -80,12 +82,14 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Quantity controls or Add button
                 Positioned(
                   bottom: 6,
                   right: 6,
                   child: quantity > 0
                       ? Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 6),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
@@ -101,7 +105,8 @@ class ProductCard extends StatelessWidget {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              GestureDetector(
+                              InkWell(
+                                borderRadius: BorderRadius.circular(20),
                                 onTap: () {
                                   if (quantity == 1) {
                                     context.read<QuantityProvider>().remove(id);
@@ -112,7 +117,8 @@ class ProductCard extends StatelessWidget {
                                 child: Icon(
                                   quantity == 1 ? Icons.delete : Icons.remove,
                                   size: 20,
-                                  color: quantity == 1 ? Colors.red : Colors.black,
+                                  color:
+                                      quantity == 1 ? Colors.red : Colors.black,
                                 ),
                               ),
                               const SizedBox(width: 12),
@@ -124,7 +130,8 @@ class ProductCard extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 12),
-                              GestureDetector(
+                              InkWell(
+                                borderRadius: BorderRadius.circular(20),
                                 onTap: () {
                                   context.read<QuantityProvider>().increase(id);
                                 },
@@ -133,7 +140,8 @@ class ProductCard extends StatelessWidget {
                             ],
                           ),
                         )
-                      : GestureDetector(
+                      : InkWell(
+                          borderRadius: BorderRadius.circular(8),
                           onTap: () {
                             context.read<QuantityProvider>().increase(id);
                           },

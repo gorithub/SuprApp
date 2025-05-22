@@ -1,4 +1,3 @@
-// quantity_provider.dart
 import 'package:flutter/material.dart';
 
 class QuantityProvider with ChangeNotifier {
@@ -25,4 +24,6 @@ class QuantityProvider with ChangeNotifier {
     _quantities.remove(productId);
     notifyListeners();
   }
+
+  int get totalQuantity => _quantities.values.fold(0, (sum, quantity) => sum + quantity);
 }
