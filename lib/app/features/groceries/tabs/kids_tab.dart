@@ -157,7 +157,6 @@ class _KidsTabState extends State<KidsTab> {
                 isHerbal: false,
                 onSectionTap: () {},
               ),
-            
               const SizedBox(
                 height: 20,
               ),
