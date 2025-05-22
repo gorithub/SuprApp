@@ -5,14 +5,10 @@ import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
-import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -41,7 +37,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.verifyPhoneAuthPage}',
+    initialLocation: '/${AppRoute.phoneAuthPage}',
     routes: [
       GoRoute(
         name: AppRoute.splashScreen,
@@ -335,15 +331,6 @@ class MyAppRouter {
                 state: state,
                 child: const CareemPlusScreen(),
               )),
-      GoRoute(
-        name: AppRoute.favouriteRestaurentPage,
-        path: '/${AppRoute.favouriteRestaurentPage}',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-          context: context,
-          state: state,
-          child: const FavouriteRestaurentPage(),
-        ),
-      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -361,7 +348,7 @@ class MyAppRouter {
 class AppRoute {
   static const String errorPage = 'error-page';
   //!---- Profile Section---- !//
-  static const String profilePage = 'profile';
+  static const String profilePage = 'profile'; //
   static const String helpcenter = 'win-reward-screen';
   static const String winRewardPage = 'help-center-screen';
   static const String notificationpage = 'notification-screen';

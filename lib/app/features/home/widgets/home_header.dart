@@ -19,10 +19,10 @@ class HomeHeader extends StatelessWidget {
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(35)),
         gradient: LinearGradient(
           colors: [
-            Colors.white,
-            colorScheme(context).secondary.withOpacity(0.7),
-            // Color(0xFFFFF3D9),
-            // Color(0xFFD0F4C4),
+            // Colors.white,
+            // colorScheme(context).secondary.withOpacity(0.7),
+            Color(0xFFFFF3D9),
+            Color(0xFFD0F4C4),
           ],
           stops: [0.2, 1.4],
           begin: Alignment.topCenter,
