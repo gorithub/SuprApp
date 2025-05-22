@@ -1,9 +1,15 @@
+// lib/widgets/product_section.dart
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:suprapp/app/features/groceries/controllers/herbal_provider.dart';
+import 'package:suprapp/app/features/groceries/models/product_model.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 import 'product_card.dart';
 
 class ProductSection extends StatelessWidget {
   final String title;
-  final List<Map<String, String>> products;
+  final List<ProductModleherbal> products;
   final bool isHerbal;
   final VoidCallback? onSectionTap;
 
@@ -43,14 +49,17 @@ class ProductSection extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = products[index];
               return ProductCard(
-                id: item['id']?? "",
-                title: item['title']!,
-                price: item['price']!,
-                discount: item['discount']!,
-                oldPrice: item['old'],
+                id: item.id,
+                title: item.title,
+                price: item.price,
+                discount: item.discount,
+                oldPrice: item.old,
                 showOldPrice: isHerbal,
-                imageUrl: item['image'] ?? 'https://via.placeholder.com/150',
+                imageUrl: item.image,
                 onTap: () {
+                  Provider.of<ProductProvider>(context, listen: false)
+                      .setSelectedProduct(item);
+                  context.pushNamed(AppRoute.detailproduct);
                 },
               );
             },
