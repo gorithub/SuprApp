@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/groceries/widgets/select_address_sheet.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({super.key});
@@ -59,41 +60,51 @@ class AppBarTitle extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Mona',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.black,
+              InkWell(
+                onTap: () {
+                   showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const SelectAddressSheet(),
+    );
+                },
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Mona',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 4),
-                      Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        size: 20,
-                        color: Colors.black54,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    'Mona 63, Business Area',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
+                        SizedBox(width: 4),
+                        Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          size: 20,
+                          color: Colors.black54,
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                    SizedBox(height: 2),
+                    Text(
+                      'Mona 63, Business Area',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Column(
+              const Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
