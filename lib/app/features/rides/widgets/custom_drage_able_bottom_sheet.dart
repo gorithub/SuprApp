@@ -69,7 +69,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );
-          Navigator.pop(context);
+          context.pop(context);
         },
       ),
     );
@@ -91,8 +91,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             return Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(20)),
+                borderRadius: BorderRadius.circular(19),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
@@ -228,29 +227,35 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                                 style: textTheme(context).bodyMedium),
                           ),
                           const SizedBox(height: 15),
-                          CustomElevatedButton(
-                              text: "Select Location on map",
-                              onPressed: () {
-                                provider.controller.animateTo(
-                                  0.3,
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.easeInOut,
-                                );
-                              }),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                    color: Colors.grey.withOpacity(0.3))),
-                            child: Center(
-                                child: Text(
-                              "Skip destination step",
-                              style: textTheme(context)
-                                  .bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
-                            )),
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: CustomElevatedButton(
+                                text: "Select Location on map",
+                                onPressed: () {
+                                  provider.controller.animateTo(
+                                    0.3,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                  );
+                                }),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                      color: Colors.grey.withOpacity(0.3))),
+                              child: Center(
+                                  child: Text(
+                                "Skip destination step",
+                                style: textTheme(context)
+                                    .bodyLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              )),
+                            ),
                           ),
                         ],
                       ),

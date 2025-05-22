@@ -13,11 +13,11 @@ class CategoryGrid extends StatelessWidget {
   const CategoryGrid({
     super.key,
     required this.categories,
+    this.tileColor = const Color(0xFFFAF6EF), // Default color
   });
 
   final List<CategoryItem> categories;
-
-  static const _tileBg = Color(0xFFFAF6EF);
+  final Color tileColor; // Make tile color customizable
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CategoryGrid extends StatelessWidget {
         final item = categories[index];
         return Container(
           decoration: BoxDecoration(
-            color: _tileBg,
+            color: tileColor,
             borderRadius: BorderRadius.circular(10),
           ),
           padding: const EdgeInsets.all(8),

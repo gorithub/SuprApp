@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class FoodFilterButton extends StatelessWidget {
   final String label;
@@ -11,7 +14,9 @@ class FoodFilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(AppRoute.offersTabPage);
+      },
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),

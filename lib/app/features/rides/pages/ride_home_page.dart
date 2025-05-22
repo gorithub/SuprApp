@@ -55,14 +55,14 @@ class _RideHomePageState extends State<RideHomePage> {
                 polylines: provider.polylines,
               ),
               Positioned(
-                top: 30,
-                left: 0,
-                right: 0,
+                top: 40,
+                left: 10,
+                right: 10,
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         height: 40,
@@ -77,7 +77,6 @@ class _RideHomePageState extends State<RideHomePage> {
                           size: 20,
                         ),
                       ),
-                      const SizedBox(),
                       Text(
                         'Rides',
                         style: textTheme(context).headlineLarge?.copyWith(
