@@ -139,6 +139,9 @@ class _SearchPageState extends State<SearchPage> {
                     itemBuilder: (context, index) {
                       final item = items[index];
                       return ListTile(
+                        onLongPress: () {
+                          context.pushNamed(AppRoute.rideHome);
+                        },
                         title: Text(
                           item['title']!,
                           style: textTheme(context).bodyLarge?.copyWith(

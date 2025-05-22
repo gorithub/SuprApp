@@ -15,6 +15,7 @@ import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/food/pages/food_page.dart';
 import 'package:suprapp/app/features/food/pages/food_detail_page.dart';
 import 'package:suprapp/app/features/food/pages/food_home_page.dart';
+import 'package:suprapp/app/features/food/pages/offers_tabs_page.dart';
 import 'package:suprapp/app/features/food/pages/order_confirmation_page.dart';
 import 'package:suprapp/app/features/groceries/groceries_home_screen.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
@@ -490,6 +491,14 @@ class MyAppRouter {
                 state: state,
                 child: const DetailCancelRide(),
               )),
+      GoRoute(
+          name: AppRoute.offersTabPage,
+          path: '/${AppRoute.offersTabPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const OffersTabsPage(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -549,6 +558,7 @@ class AppRoute {
   static const String foodHomePage = 'food-home-page';
   static const String foodDetail = 'food-detail-page';
   static const String orderConfirmationPage = 'order-confirmation-page';
+  static const String offersTabPage = 'offers-tabs-page';
   //!---- Rides Section---- !//
   static const String enterPickUpLocationPage = 'enter-pick-up-location-page';
   static const String rideHome = 'ride-home-page';
