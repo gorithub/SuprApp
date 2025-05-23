@@ -6,9 +6,11 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
+import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/restaurent_detail_page.dart';
 import 'package:suprapp/app/features/dine_out/widgets/custom_card.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filter_food.dart';
+import 'package:suprapp/app/features/dine_out/widgets/restaurent_widget.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filterwidget.dart';
@@ -390,17 +392,15 @@ class _DineOutPageState extends State<DineOutPage>
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            RestaurantDetailPage(
-                                          imageUrl: item['image'],
-                                          title: item['name'],
-                                          location: item['location'],
-                                          price: item['billingperperson'],
-                                          tag: item['tag'],
+                                            RestaurentDetailPage(
+                                          childIndex: index,
+                                          parentIndex: index,
+                                          restaurantData: item,
                                         ),
                                       ),
                                     );
                                   },
-                                  child: CustomContainer(
+                                  child: RestaurentWidget(
                                       images: imageUrls,
                                       text: "only on supr",
                                       title: item['name'],
@@ -443,20 +443,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
@@ -486,20 +511,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
@@ -529,20 +579,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
@@ -572,20 +647,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
@@ -615,20 +715,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
@@ -658,20 +783,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
@@ -701,20 +851,45 @@ class _DineOutPageState extends State<DineOutPage>
                             height: size.height * 0.6,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: restaurant.length,
                               itemBuilder: (context, index) {
                                 final item = restaurant[index];
+                                final List<String> imageUrls =
+                                    List.generate(8, (_) => item['image']);
+
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: InkWell(
-                                    onTap: () {},
-                                    child: RestaurantCard(
-                                      imageUrl: item['image'],
-                                      title: item['name'],
-                                      location: item['location'],
-                                      price: item['billingperperson'],
-                                      tag: item['tag'],
-                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurentDetailPage(
+                                            childIndex: index,
+                                            parentIndex: index,
+                                            restaurantData: item,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: RestaurentWidget(
+                                        images: imageUrls,
+                                        text: "only on supr",
+                                        title: item['name'],
+                                        rating: '4.8',
+                                        location: item['location'],
+                                        food: item['billingperperson'],
+                                        discount: item['tag']),
+                                    // RestaurantCard(
+                                    //   imageUrl: item['image'],
+                                    //   title: item['name'],
+                                    //   location: item['location'],
+                                    //   price: item['billingperperson'],
+                                    //   tag: item['tag'],
+                                    // ),
                                   ),
                                 );
                               },
