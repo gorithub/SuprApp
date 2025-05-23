@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/groceries/basket_screen.dart';
 import 'package:suprapp/app/features/groceries/controllers/tab_provider.dart';
 import 'package:suprapp/app/features/groceries/tabs/all_deals_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/categories_tab.dart';
@@ -12,6 +13,7 @@ import 'package:suprapp/app/features/groceries/tabs/fresh_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/home_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/kids_tab.dart';
 import 'package:suprapp/app/features/groceries/tabs/top_picks_tab.dart';
+import 'package:suprapp/app/features/groceries/widgets/add_basket.dart';
 import 'package:suprapp/app/features/groceries/widgets/app_bar_title.dart';
 import 'package:suprapp/app/features/groceries/widgets/custom_tab_bar.dart';
 import 'package:suprapp/app/features/groceries/widgets/grocery_home_tabs.dart';
@@ -87,19 +89,33 @@ class GroceriesHomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: IndexedStack(
-          index: selectedIndex,
-          children: const [
-            AllTab(),
-            CategoriesTab(),
-            TopPicksTab(),
-            AllDealsTab(),
-            FreshTab(),
-            ExclusiveTab(),
-            HomeTab(),
-            KidsTab(),
-          ],
-        ),
+       body: Stack(
+  children: [
+    IndexedStack(
+      index: selectedIndex,
+      children: const [
+        AllTab(),
+        CategoriesTab(),
+        TopPicksTab(),
+        AllDealsTab(),
+        FreshTab(),
+        ExclusiveTab(),
+        HomeTab(),
+        KidsTab(),
+      ],
+    ),
+     FloatingBasketButton(
+      onTap: (){
+        Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => BasketScreen()),
+);
+
+      },
+    ),
+  ],
+),
+
       ),
     );
   }
