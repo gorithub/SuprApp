@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
 import 'package:suprapp/app/features/home/widgets/custom_icon_button.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 import '../../../core/constants/app_images.dart';
 
@@ -19,10 +22,10 @@ class HomeHeader extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(35)),
         gradient: LinearGradient(
           colors: [
-            Colors.white,
-            colorScheme(context).secondary.withOpacity(0.7),
-            // Color(0xFFFFF3D9),
-            // Color(0xFFD0F4C4),
+            // Colors.white,
+            // colorScheme(context).secondary.withOpacity(0.7),
+            Color(0xFFFFF3D9),
+            Color(0xFFD0F4C4),
           ],
           stops: const [0.2, 1.4],
           begin: Alignment.topCenter,
@@ -67,11 +70,7 @@ class HomeHeader extends StatelessWidget {
                     width: 70,
                     height: 30,
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => ComingSoonPage()),
-                      // );
+                      context.pushNamed(AppRoute.suprPayPage);
                     },
                     text: 'Pay',
                     textStyle: textTheme(context).bodyMedium?.copyWith(

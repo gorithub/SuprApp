@@ -3,9 +3,11 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/core/theme/app_theme.dart';
+import 'package:suprapp/app/features/auth/provider/name_input_provider.dart';
 import 'package:suprapp/app/features/auth/provider/otp_provider.dart';
 import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
+import 'package:suprapp/app/features/dine_out/controller/filter_color_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
 import 'package:suprapp/app/features/dine_out/controller/offer_controller.dart';
 import 'package:suprapp/app/features/dine_out/provider/faqs_provider.dart';
@@ -13,12 +15,26 @@ import 'package:suprapp/app/features/dine_out/provider/filter_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
 import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
+import 'package:suprapp/app/features/food/provider/drink_selection_provider.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
+import 'package:suprapp/app/features/groceries/controllers/address_provider.dart';
+import 'package:suprapp/app/features/groceries/controllers/herbal_provider.dart';
+import 'package:suprapp/app/features/groceries/controllers/product_quantity_provider.dart';
+import 'package:suprapp/app/features/groceries/controllers/tab_provider.dart';
 import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
 import 'package:suprapp/app/features/profile/controller/date_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
 import 'package:suprapp/app/features/profile/controller/language_controller.dart';
 import 'package:suprapp/app/features/profile/controller/profile_controller.dart';
+import 'package:suprapp/app/features/rides/provider/bottom_sheet_provider.dart';
+import 'package:suprapp/app/features/rides/provider/cancel_provider.dart';
+import 'package:suprapp/app/features/rides/provider/date_provider.dart';
+import 'package:suprapp/app/features/rides/provider/favorite_provider.dart';
+import 'package:suprapp/app/features/rides/provider/map_provider.dart';
+import 'package:suprapp/app/features/rides/provider/pick_up_provider.dart';
+import 'package:suprapp/app/features/rides/provider/saved_favorit_location.dart';
+import 'package:suprapp/app/features/rides/provider/selecting_car_provider.dart';
+import 'package:suprapp/app/features/rides/provider/selection_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class MyApp extends StatelessWidget {
@@ -46,12 +62,54 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<FilterProvider>(create: (_) => FilterProvider()),
         ChangeNotifierProvider<AppBarProvider>(create: (_) => AppBarProvider()),
         ChangeNotifierProvider(create: (_) => ViewToggleProvider()),
+        ChangeNotifierProvider(create: (_) => AddressProvider()),
+        ChangeNotifierProvider(create: (_) => QuantityProvider()),
+        ChangeNotifierProvider(create: (_) => TabProvider()),
         ChangeNotifierProvider<OfferProvider>(create: (_) => OfferProvider()),
         ChangeNotifierProvider<FoodController>(
           create: (_) => FoodController(),
         ),
         ChangeNotifierProvider(
           create: (_) => FoodToggleProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PickupDetailsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SelectionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MapProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => BottomSheetProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FavoriteProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CarProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PickupTimeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DrinkSelectionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CancelReasonProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SavedLocationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CategoryFilterProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NameInputProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

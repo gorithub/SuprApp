@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/all_services/all_services.dart';
+import 'package:suprapp/app/features/all_services/coming_soon_page.dart';
 import 'package:suprapp/app/features/home/widgets/item_gridtile.dart';
+import 'package:suprapp/app/features/super_quick_electronics/quickelec_main_screen.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class CategoriesGridview extends StatelessWidget {
@@ -12,35 +15,34 @@ class CategoriesGridview extends StatelessWidget {
   void _handleNavigation(BuildContext context, String categoryName) {
     switch (categoryName) {
       case 'Rides':
-        // Navigator.pushNamed(context, AppRoutes.selectAddressScreen);
+        context.pushNamed(AppRoute.enterPickUpLocationPage);
         break;
       case 'Electronics':
-        //  Navigator.push(context,
-        //       MaterialPageRoute(builder: (context) => QuickElectronicsScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => QuickElectronicsScreen()));
         break;
       case 'Food':
-        // Navigator.pushNamed(context, AppRoutes.foodScreen);
+        context.pushNamed(AppRoute.foodPage);
         break;
       case 'DineOut':
         context.pushNamed(AppRoute.dineOutPage);
         break;
       case 'Groceries':
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => GroceryScreen()));
+        context.pushNamed(AppRoute.groceryHomeScreen);
         break;
       case 'Shops':
         // Navigator.pushNamed(context, AppRoutes.shopsScreen);
         break;
       case 'Send Money':
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => ComingSoonPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ComingSoonPage()));
         break;
       case 'All Services':
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => AllServicesPage(),
-        //     ));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AllServicesPage(),
+            ));
         break;
       default:
         ScaffoldMessenger.of(context).showSnackBar(

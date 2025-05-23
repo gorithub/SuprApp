@@ -94,7 +94,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 text: 'Continue',
                 buttonColor: colorScheme(context).outline,
                 textStyle: textTheme(context).titleSmall?.copyWith(
-                      color: Colors.black38,
+                      color: colorScheme(context).surface,
                       fontWeight: FontWeight.w800,
                     ),
                 onPressed: () {
@@ -119,7 +119,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 text: 'Continue',
                 buttonColor: colorScheme(context).primary,
                 textStyle: textTheme(context).titleSmall?.copyWith(
-                      // color: Colors.black38,
+                      color: colorScheme(context).surface,
                       fontWeight: FontWeight.w800,
                     ),
                 onPressed: () {
@@ -147,14 +147,6 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Welcome!',
-              style: textTheme(context).headlineLarge?.copyWith(
-                  color: colorScheme(context).onSurface,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(height: 20),
             Text(
               'Enter your Phone Number',
               style: textTheme(context).headlineMedium?.copyWith(
@@ -228,21 +220,6 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 ),
               ],
             ),
-            // TweenAnimationBuilder<double>(
-            //   tween: Tween<double>(begin: 0, end: 1),
-            //   duration: const Duration(milliseconds: 600),
-            //   curve: Curves.easeInOut,
-            //   builder: (context, value, child) {
-            //     return Align(
-            //       alignment: Alignment.centerLeft,
-            //       child: Container(
-            //         height: 1,
-            //         width: (MediaQuery.of(context).size.width - 32) * value,
-            //         color: Colors.black,
-            //       ),
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),

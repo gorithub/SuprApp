@@ -99,6 +99,8 @@ class AppImages {
   static const String award = 'assets/images/award.jpg';
   static const String eggtranding = 'assets/images/egg.jpg';
   static const String abcd = 'assets/images/Abcd.png';
+  static const String firstCar = 'assets/images/carfirst.png';
+  static const String secondCar = 'assets/images/caresecond.png';
   static const String menu =
       'assets/images/WhatsApp Image 2025-05-14 at 3.41.50 PM.jpeg';
 }

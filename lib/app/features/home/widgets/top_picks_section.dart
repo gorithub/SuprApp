@@ -2,7 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class TopPicksSection extends StatelessWidget {
-  const TopPicksSection({super.key});
+  TopPicksSection({super.key});
+  final List<Map<String, String>> restaurants = [
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStT6eacNbfrriZ--1ou2G1P6ukJL6cDCNYVg&s",
+      "name": "The Spice Villa"
+    },
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1VQDeqq66adbg07OgSvhEhgfUJv2I1EoGRg&s",
+      "name": "Ocean Grill"
+    },
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPY77NwQr2ijvUaG526WAoO2T0r0CxgPwddQ&s",
+      "name": "Pasta Palace"
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,32 +60,27 @@ class TopPicksSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          // SizedBox(
-          //   height: 130,
-          //   child: ListView.builder(
-          //     scrollDirection: Axis.horizontal,
-          //     padding: const EdgeInsets.symmetric(horizontal: 20),
-          //     itemCount: provider.popularRestaurants.length,
-          //     itemBuilder: (context, index) {
-          //       final brand = provider.popularRestaurants[index];
-          //       return InkWell(
-          //         onTap: () {
-          //           Navigator.push(
-          //             context,
-          //             MaterialPageRoute(
-          //               builder: (context) =>
-          //                   RestaurentDetailPage(restaurant: brand),
-          //             ),
-          //           );
-          //         },
-          //         child: _buildModernBrandCard(
-          //           brand.name,
-          //           logo: brand.image,
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
+          SizedBox(
+            height: 130,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              itemCount: restaurants.length,
+              itemBuilder: (context, index) {
+                final restaurant = restaurants[index];
+                return Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: InkWell(
+                    onTap: () {},
+                    child: _buildModernBrandCard(
+                      restaurant['name']!,
+                      logo: restaurant['image']!,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );

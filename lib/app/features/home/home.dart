@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 19),
-            const TopPicksSection(),
+            TopPicksSection(),
             const TopOffersSection(),
             const SuprPlusPromoSection(),
           ],
