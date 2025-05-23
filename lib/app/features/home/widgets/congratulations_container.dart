@@ -19,12 +19,12 @@ class CongratulationsContainer extends StatelessWidget {
         ],
         gradient: LinearGradient(
           colors: [
-            // const Color(0xFFFFF3D9),
-            // const Color(0xFFD0F4C4).withOpacity(0.8),
-            // Colors.white,
             const Color(0xFFFFF3D9),
+            const Color(0xFFD0F4C4).withOpacity(0.8),
+            Colors.white,
+            // const Color(0xFFFFF3D9),
 
-            const Color(0xFFFFF000).withOpacity(0.8),
+            // const Color(0xFFFFF000).withOpacity(0.8),
           ],
           stops: const [0.3, 1.4],
           begin: Alignment.topCenter,

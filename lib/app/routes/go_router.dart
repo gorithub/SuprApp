@@ -4,8 +4,9 @@ import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
 import 'package:suprapp/app/features/dine_out/pages/dine_out_page.dart';
-import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/favourite_restaurent_page.dart';
+import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/restaurent_photos.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
@@ -59,7 +60,6 @@ class MyAppRouter {
     initialLocation: '/${AppRoute.groceryHomeScreen}',
     routes: [
       GoRoute(
-        name: AppRoute.splashScreen,
         path: '/${AppRoute.splashScreen}',
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
           context: context,
@@ -525,7 +525,7 @@ class MyAppRouter {
 class AppRoute {
   static const String errorPage = 'error-page';
   //!---- Profile Section---- !//
-  static const String profilePage = 'profile';
+  static const String profilePage = 'profile'; //
   static const String helpcenter = 'win-reward-screen';
   static const String winRewardPage = 'help-center-screen';
   static const String notificationpage = 'notification-screen';

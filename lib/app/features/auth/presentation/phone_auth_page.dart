@@ -147,14 +147,14 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Welcome!',
-              style: textTheme(context).headlineLarge?.copyWith(
-                  color: colorScheme(context).onSurface,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(height: 20),
+            // Text(
+            //   'Welcome!',
+            //   style: textTheme(context).headlineLarge?.copyWith(
+            //       color: colorScheme(context).onSurface,
+            //       fontSize: 30,
+            //       fontWeight: FontWeight.w700),
+            // ),
+            // const SizedBox(height: 20),
             Text(
               'Enter your Phone Number',
               style: textTheme(context).headlineMedium?.copyWith(
