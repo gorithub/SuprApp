@@ -18,6 +18,7 @@ import 'package:suprapp/app/features/food/pages/food_home_page.dart';
 import 'package:suprapp/app/features/food/pages/offers_tabs_page.dart';
 import 'package:suprapp/app/features/food/pages/order_confirmation_page.dart';
 import 'package:suprapp/app/features/groceries/groceries_home_screen.dart';
+import 'package:suprapp/app/features/groceries/tabs/detail_product_screen.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -499,6 +500,14 @@ class MyAppRouter {
                 state: state,
                 child: const OffersTabsPage(),
               )),
+      GoRoute(
+          name: AppRoute.detailproduct,
+          path: '/${AppRoute.detailproduct}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const ProductDetailScreen(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -571,4 +580,5 @@ class AppRoute {
   static const String detailcancelRidePage = 'detail-cancel';
   //!---- Grocery Section---- !//
   static const String groceryHomeScreen = 'grocery-home-screen';
+  static const String detailproduct = 'detail-product-screen';
 }

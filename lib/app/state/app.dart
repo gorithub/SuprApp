@@ -17,6 +17,7 @@ import 'package:suprapp/app/features/food/controller/food_controller.dart';
 import 'package:suprapp/app/features/food/provider/drink_selection_provider.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/groceries/controllers/address_provider.dart';
+import 'package:suprapp/app/features/groceries/controllers/herbal_provider.dart';
 import 'package:suprapp/app/features/groceries/controllers/product_quantity_provider.dart';
 import 'package:suprapp/app/features/groceries/controllers/tab_provider.dart';
 import 'package:suprapp/app/features/profile/controller/bank_controller.dart';
@@ -102,6 +103,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => CategoryFilterProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(

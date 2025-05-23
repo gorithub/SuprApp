@@ -89,33 +89,31 @@ class GroceriesHomeScreen extends StatelessWidget {
             ),
           ),
         ),
-       body: Stack(
-  children: [
-    IndexedStack(
-      index: selectedIndex,
-      children: const [
-        AllTab(),
-        CategoriesTab(),
-        TopPicksTab(),
-        AllDealsTab(),
-        FreshTab(),
-        ExclusiveTab(),
-        HomeTab(),
-        KidsTab(),
-      ],
-    ),
-     FloatingBasketButton(
-      onTap: (){
-        Navigator.push(
-  context,
-  MaterialPageRoute(builder: (context) => BasketScreen()),
-);
-
-      },
-    ),
-  ],
-),
-
+        body: Stack(
+          children: [
+            IndexedStack(
+              index: selectedIndex,
+              children: const [
+                AllTab(),
+                CategoriesTab(),
+                // TopPicksTab(),
+                AllDealsTab(),
+                FreshTab(),
+                ExclusiveTab(),
+                // HomeTab(),
+                // KidsTab(),
+              ],
+            ),
+            FloatingBasketButton(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BasketScreen()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
