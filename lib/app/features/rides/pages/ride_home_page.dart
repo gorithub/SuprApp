@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/widgets/appbar_seet.dart';
 import 'package:suprapp/app/features/rides/widgets/custom_drage_able_bottom_sheet.dart';
@@ -86,7 +87,27 @@ class _RideHomePageState extends State<RideHomePage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          showTopSheet(context);
+                          showGeneralDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            barrierLabel: 'TopSheet',
+                            transitionDuration:
+                                const Duration(milliseconds: 300),
+                            pageBuilder: (_, __, ___) =>
+                                const SizedBox.shrink(),
+                            transitionBuilder: (_, animation, __, ___) {
+                              return SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, -1),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: const Align(
+                                  alignment: Alignment.topCenter,
+                                  child: TopSheetWidget(),
+                                ),
+                              );
+                            },
+                          );
                         },
                         child: Container(
                           height: 40,

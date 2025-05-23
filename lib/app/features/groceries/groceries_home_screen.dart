@@ -30,9 +30,6 @@ class GroceriesHomeScreen extends StatelessWidget {
     TabItem(label: 'Top Picks', icon: Icons.thumb_up),
     TabItem(label: 'All Deals', icon: Icons.local_offer),
     TabItem(label: 'Fresh', icon: Icons.eco),
-    TabItem(label: 'Exclusive', icon: Icons.star),
-    TabItem(label: 'Home', icon: Icons.home),
-    TabItem(label: 'Kids', icon: Icons.child_care),
   ];
   TextEditingController searchControlller = TextEditingController();
   @override
@@ -50,7 +47,7 @@ class GroceriesHomeScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           toolbarHeight: 0,
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(270),
+            preferredSize: const Size.fromHeight(220),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -96,10 +93,10 @@ class GroceriesHomeScreen extends StatelessWidget {
               children: const [
                 AllTab(),
                 CategoriesTab(),
-                // TopPicksTab(),
+                TopPicksTab(),
                 AllDealsTab(),
                 FreshTab(),
-                ExclusiveTab(),
+                // ExclusiveTab(),
                 // HomeTab(),
                 // KidsTab(),
               ],

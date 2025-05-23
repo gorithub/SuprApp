@@ -26,7 +26,7 @@ class CongratulationsContainer extends StatelessWidget {
 
             // const Color(0xFFFFF000).withOpacity(0.8),
           ],
-          stops: const [0.3, 1.4],
+          stops: const [0.3, 1.4, 0.1],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),

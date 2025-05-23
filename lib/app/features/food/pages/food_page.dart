@@ -15,6 +15,7 @@ import 'package:suprapp/app/features/food/widgets/food_filter_widget.dart';
 import 'package:suprapp/app/features/food/widgets/item_tile.dart';
 import 'package:suprapp/app/features/food/widgets/lists.dart';
 import 'package:suprapp/app/features/food/widgets/top_food_section.dart';
+import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class FoodPage extends StatefulWidget {
@@ -110,7 +111,27 @@ class _FoodPageState extends State<FoodPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                showGeneralDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  barrierLabel: 'TopSheet',
+                  transitionDuration: const Duration(milliseconds: 300),
+                  pageBuilder: (_, __, ___) => const SizedBox.shrink(),
+                  transitionBuilder: (_, animation, __, ___) {
+                    return SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0, -1),
+                        end: Offset.zero,
+                      ).animate(animation),
+                      child: const Align(
+                        alignment: Alignment.topCenter,
+                        child: TopSheetWidget(),
+                      ),
+                    );
+                  },
+                );
+              },
               child: Container(
                 height: 50,
                 width: 40,

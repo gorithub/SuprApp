@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_const_constructors
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -119,7 +120,9 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                   ? colorScheme(context).outline
                   : colorScheme(context).primary,
               textStyle: textTheme(context).titleSmall?.copyWith(
-                    color: isOtpEmpty ? Colors.black38 : null,
+                    color: isOtpEmpty
+                        ? Colors.black38
+                        : colorScheme(context).surface,
                     fontWeight: FontWeight.w800,
                   ),
               onPressed: () {
@@ -136,7 +139,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                   return;
                 }
 
-                context.pushNamed(AppRoute.homePage);
+                context.pushNamed(AppRoute.enterNamePage);
               },
             ),
             const SizedBox(height: 50)
@@ -156,10 +159,30 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                   fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 15),
-            Text(
-              'You wil recieve a SMS with verification pin on +93143523154',
-              style: textTheme(context).titleSmall?.copyWith(
-                  color: AppColors.darkTextGrey, fontWeight: FontWeight.w500),
+            RichText(
+              text: TextSpan(
+                style: textTheme(context).titleSmall?.copyWith(
+                      color: AppColors.darkTextGrey,
+                      fontWeight: FontWeight.w500,
+                    ),
+                children: [
+                  const TextSpan(
+                    text:
+                        'You will receive an SMS with verification pin on +93143523154  ',
+                  ),
+                  TextSpan(
+                    text: 'Edit number',
+                    style: textTheme(context).bodyLarge?.copyWith(
+                          color: colorScheme(context).primary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.pushNamed(AppRoute.phoneAuthPage);
+                      },
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 10),
             Row(

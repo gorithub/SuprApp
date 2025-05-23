@@ -67,7 +67,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   context.pushNamed(AppRoute.bankpage);
                 }),
                 _buildSettingItem('Saved addresses',
-                    leading: const Icon(Icons.home), onTap: () {}),
+                    leading: const Icon(Icons.home), onTap: () {
+                  context.pushNamed(AppRoute.savedAddressPage);
+                }),
                 _buildSettingItem('Notifications',
                     leading: const Icon(Icons.notifications_none_outlined),
                     onTap: () {
@@ -75,7 +77,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 }),
                 _buildSettingItem('Manage Business profile',
                     leading: const Icon(Icons.add_business_outlined),
-                    onTap: () {}),
+                    onTap: () {
+                  context.pushNamed(AppRoute.manageBusinessProfile);
+                }),
               ]),
               const SizedBox(height: 24),
               _buildSection('Benefits', [
@@ -98,7 +102,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   subtitle: 'See the benefits',
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoute.creamplusPage);
+                  },
                 ),
               ]),
               const SizedBox(height: 24),

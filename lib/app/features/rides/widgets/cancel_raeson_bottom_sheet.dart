@@ -53,7 +53,7 @@ class CancelReasonBottomSheet extends StatelessWidget {
                     title: Text(
                       reason,
                       style: textTheme(context)
-                          .labelLarge
+                          .bodyLarge
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     contentPadding: EdgeInsets.zero,

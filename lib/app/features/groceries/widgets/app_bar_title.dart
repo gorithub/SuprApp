@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/groceries/widgets/select_address_sheet.dart';
+import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({super.key});
@@ -42,7 +43,27 @@ class AppBarTitle extends StatelessWidget {
                     ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  showGeneralDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    barrierLabel: 'TopSheet',
+                    transitionDuration: const Duration(milliseconds: 300),
+                    pageBuilder: (_, __, ___) => const SizedBox.shrink(),
+                    transitionBuilder: (_, animation, __, ___) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: const Offset(0, -1),
+                          end: Offset.zero,
+                        ).animate(animation),
+                        child: const Align(
+                          alignment: Alignment.topCenter,
+                          child: TopSheetWidget(),
+                        ),
+                      );
+                    },
+                  );
+                },
                 child: Container(
                   height: 40,
                   width: 40,
@@ -60,80 +81,6 @@ class AppBarTitle extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                   showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => const SelectAddressSheet(),
-    );
-                },
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Mona',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(width: 4),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          size: 20,
-                          color: Colors.black54,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 2),
-                    Text(
-                      'Mona 63, Business Area',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'Delivering in',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black54,
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Row(
-                    children: [
-                      Icon(Icons.flash_on_outlined,
-                          color: Colors.black, size: 18),
-                      SizedBox(width: 4),
-                      Text(
-                        '18 mins',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
         ],
       ),
     );

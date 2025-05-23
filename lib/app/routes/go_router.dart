@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/auth/presentation/enter_name.dart';
 import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
@@ -29,9 +30,11 @@ import 'package:suprapp/app/features/profile/pages/delete_account_screen.dart';
 import 'package:suprapp/app/features/profile/pages/help_center_screen.dart';
 import 'package:suprapp/app/features/profile/pages/invite_screen.dart';
 import 'package:suprapp/app/features/profile/pages/language_screen.dart';
+import 'package:suprapp/app/features/profile/pages/manage_business_profile.dart';
 import 'package:suprapp/app/features/profile/pages/notification_screen.dart';
 import 'package:suprapp/app/features/profile/pages/personal_info.dart';
 import 'package:suprapp/app/features/profile/pages/profile.dart';
+import 'package:suprapp/app/features/profile/pages/saved_address_page.dart';
 import 'package:suprapp/app/features/profile/pages/select_country_screen.dart';
 import 'package:suprapp/app/features/profile/pages/settings_screen.dart';
 import 'package:suprapp/app/features/profile/pages/update_email.dart';
@@ -47,6 +50,7 @@ import 'package:suprapp/app/features/rides/pages/save_location_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_city_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_page.dart';
 import 'package:suprapp/app/features/rides/pages/your_ride.dart';
+import 'package:suprapp/app/features/supr_pay/pages/supr_pay.dart';
 import 'package:suprapp/app/routes/error_route.dart';
 import 'package:suprapp/app/routes/route_transition.dart';
 import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
@@ -57,7 +61,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.groceryHomeScreen}',
+    initialLocation: '/${AppRoute.splashScreen}',
     routes: [
       GoRoute(
         path: '/${AppRoute.splashScreen}',
@@ -508,6 +512,38 @@ class MyAppRouter {
                 state: state,
                 child: const ProductDetailScreen(),
               )),
+      GoRoute(
+          name: AppRoute.enterNamePage,
+          path: '/${AppRoute.enterNamePage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const EnterNamePage(),
+              )),
+      GoRoute(
+          name: AppRoute.suprPayPage,
+          path: '/${AppRoute.suprPayPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const SuprPayPage(),
+              )),
+      GoRoute(
+          name: AppRoute.savedAddressPage,
+          path: '/${AppRoute.savedAddressPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const SavedAddressPage(),
+              )),
+      GoRoute(
+          name: AppRoute.manageBusinessProfile,
+          path: '/${AppRoute.manageBusinessProfile}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const ManageBusinessProfilePage(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -545,10 +581,13 @@ class AppRoute {
   static const String updatePhonPage = 'update-phone-no';
   static const String splashScreen = 'splash-page';
   static const String homePage = 'home-page';
+  static const String savedAddressPage = 'saved-address-page';
+  static const String manageBusinessProfile = 'manage-business-profile';
   //!---- Auth Section---- !//
   static const String phoneAuthPage = 'phone-auth-page';
   static const String verifyPhoneAuthPage = 'verify-phone-auth-page';
   static const String bioMetricSetupPage = 'bio-metric-page';
+  static const String enterNamePage = 'enter-name-page';
 //!---- DineOut Section---- !//
   static const String dineOutPage = 'dine-out-page';
   static const String favouriteRestaurentPage = 'favourite-restaurent-page';
@@ -581,4 +620,7 @@ class AppRoute {
   //!---- Grocery Section---- !//
   static const String groceryHomeScreen = 'grocery-home-screen';
   static const String detailproduct = 'detail-product-screen';
+
+  //!---- Supr pay Section---- !//
+  static const String suprPayPage = 'supr-pay-page';
 }

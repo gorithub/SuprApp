@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
 import 'package:suprapp/app/features/profile/pages/profile.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class TopSheetWidget extends StatelessWidget {
   const TopSheetWidget({super.key});
@@ -55,7 +58,7 @@ class TopSheetWidget extends StatelessWidget {
                   Icons.home_outlined,
                   'Home',
                   () {
-                    // Navigator.pushNamed(context, AppRoutes.homeScreen);
+                    context.pushNamed(AppRoute.homePage);
                   },
                 ),
                 _buildMenuItem(
@@ -63,7 +66,7 @@ class TopSheetWidget extends StatelessWidget {
                   Icons.headset_mic_outlined,
                   'Help',
                   () {
-                    // Navigator.pushNamed(context, AppRoutes.helpScreen);
+                    context.pushNamed(AppRoute.helpcenter);
                   },
                 ),
                 _buildMenuItem(
@@ -71,10 +74,7 @@ class TopSheetWidget extends StatelessWidget {
                   Icons.credit_card_outlined,
                   'Supr Pay',
                   () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => ComingSoonPage()));
+                    context.pushNamed(AppRoute.suprPayPage);
                   },
                 ),
                 _buildMenuItem(
@@ -82,11 +82,7 @@ class TopSheetWidget extends StatelessWidget {
                   Icons.person_outline,
                   'Profile',
                   () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileScreen(),
-                        ));
+                    context.pushNamed(AppRoute.profilePage);
                   },
                 ),
               ],

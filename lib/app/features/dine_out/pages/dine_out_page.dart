@@ -11,6 +11,7 @@ import 'package:suprapp/app/features/dine_out/pages/restaurent_detail_page.dart'
 import 'package:suprapp/app/features/dine_out/widgets/custom_card.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filter_food.dart';
 import 'package:suprapp/app/features/dine_out/widgets/restaurent_widget.dart';
+import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filterwidget.dart';
@@ -147,7 +148,27 @@ class _DineOutPageState extends State<DineOutPage>
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                showGeneralDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  barrierLabel: 'TopSheet',
+                  transitionDuration: const Duration(milliseconds: 300),
+                  pageBuilder: (_, __, ___) => const SizedBox.shrink(),
+                  transitionBuilder: (_, animation, __, ___) {
+                    return SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0, -1),
+                        end: Offset.zero,
+                      ).animate(animation),
+                      child: const Align(
+                        alignment: Alignment.topCenter,
+                        child: TopSheetWidget(),
+                      ),
+                    );
+                  },
+                );
+              },
               child: Container(
                 height: 50,
                 width: 40,

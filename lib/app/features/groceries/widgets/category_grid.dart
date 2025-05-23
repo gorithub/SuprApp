@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:suprapp/app/features/groceries/models/item_model.dart';
+import 'package:suprapp/app/features/groceries/widgets/catagory_product_page.dart';
 
 class CategoryItem {
   final String title;
   final String imageUrl;
+  final List<ProductItem> products;
 
-  const CategoryItem({required this.title, required this.imageUrl});
+  const CategoryItem({
+    required this.title,
+    required this.imageUrl,
+    required this.products,
+  });
 }
 
 class ShopByCategoryGrid extends StatelessWidget {
@@ -38,44 +45,57 @@ class ShopByCategoryGrid extends StatelessWidget {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final item = categories[index];
-          return Container(
-            decoration: BoxDecoration(
-              color: _tileBg,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 60,
-                  child: CachedNetworkImage(
-                    imageUrl: item.imageUrl,
-                    fit: BoxFit.contain,
-                    placeholder: (context, url) => Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
-                      child: Container(
-                        width: double.infinity,
-                        height: 60,
-                        color: Colors.grey[300],
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CategoryProductsScreen(
+                    categoryTitle: item.title,
+                    products: item.products,
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: _tileBg,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 40,
+                    child: CachedNetworkImage(
+                      imageUrl: item.imageUrl,
+                      fit: BoxFit.contain,
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          width: double.infinity,
+                          height: 40,
+                          color: Colors.grey[300],
+                        ),
                       ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  item.title,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(height: 8),
+                  Text(
+                    item.title,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
