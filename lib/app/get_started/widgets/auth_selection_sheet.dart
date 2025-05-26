@@ -53,7 +53,7 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
               CustomElevatedButton(
                 text: 'Continue with phone number',
                 onPressed: () {
-                  context.pushReplacementNamed(AppRoute.phoneAuthPage);
+                  context.pushNamed(AppRoute.phoneAuthPage);
                 },
               ),
               const SizedBox(height: 30),
@@ -105,7 +105,9 @@ class _AuthSelectionSheetState extends State<AuthSelectionSheet> {
               ),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(AppRoute.termsConditionPage);
+                  },
                   child: Text(
                     'Terms and Conditions',
                     style: textTheme.titleSmall!.copyWith(

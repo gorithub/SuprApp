@@ -32,7 +32,7 @@ class CongratulationsContainer extends StatelessWidget {
         ),
       ),
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
+        horizontal: 10,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -62,6 +62,7 @@ class CongratulationsContainer extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 5,
             mainAxisSpacing: 5,
+            childAspectRatio: 170 / 140,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: [
@@ -71,7 +72,7 @@ class CongratulationsContainer extends StatelessWidget {
               _buildBox('Discount\nStore', 'assets/images/discountStore.png'),
             ],
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 10),
           Container(
             width: double.infinity,
             height: 50,

@@ -57,8 +57,11 @@ class AllServicesPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: Image.asset("assets/images/$image", fit: BoxFit.contain),
+            Image.asset(
+              "assets/images/$image",
+              fit: BoxFit.contain,
+              height: 50,
+              width: 50,
             ),
             const SizedBox(height: 6),
             Text(

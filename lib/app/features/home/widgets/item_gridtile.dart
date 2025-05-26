@@ -19,8 +19,8 @@ class ItemGridTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double maxImageSize = tileWidth * 0.7;
-    final double imageSize = maxImageSize * imageScaleFactor;
+    // final double maxImageSize = tileWidth * 0.6;
+    // final double imageSize = maxImageSize * imageScaleFactor;
     final double fontSize = tileWidth * 0.11;
 
     return GestureDetector(
@@ -33,15 +33,11 @@ class ItemGridTile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: maxImageSize,
-              width: maxImageSize,
-              child: Center(
-                child: SizedBox(
-                  height: imageSize,
-                  width: imageSize,
-                  child: Image.asset(imagePath, fit: BoxFit.contain),
-                ),
+            Center(
+              child: SizedBox(
+                height: 50,
+                width: 50,
+                child: Image.asset(imagePath, fit: BoxFit.contain),
               ),
             ),
             const SizedBox(height: 6),

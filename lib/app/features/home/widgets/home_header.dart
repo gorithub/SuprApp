@@ -130,10 +130,10 @@ class HomeHeader extends StatelessWidget {
             const SizedBox(height: 25),
             Text(
               'The Everything App',
-              style: textTheme(context).displayMedium?.copyWith(
+              style: textTheme(context).displayLarge?.copyWith(
                   color: colorScheme(context).primary,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 28),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28.5),
             ),
             const SizedBox(height: 15),
             Padding(
@@ -214,7 +214,9 @@ class HomeHeader extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer(),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

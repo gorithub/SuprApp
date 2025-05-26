@@ -86,13 +86,18 @@ class _SearchPageState extends State<SearchPage> {
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(width: 10),
-                        Text(
-                          "Dubai", // Replace with selected country variable
-                          style: textTheme(context).titleSmall?.copyWith(
-                              color: colorScheme(context)
-                                  .onSurface
-                                  .withOpacity(0.2),
-                              fontWeight: FontWeight.w600),
+                        InkWell(
+                          onTap: () {
+                            context.pushNamed(AppRoute.searchCityPage);
+                          },
+                          child: Text(
+                            "Dubai", // Replace with selected country variable
+                            style: textTheme(context).titleSmall?.copyWith(
+                                color: colorScheme(context)
+                                    .onSurface
+                                    .withOpacity(0.2),
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                         SizedBox(width: 10),
                         IconButton(
@@ -139,7 +144,7 @@ class _SearchPageState extends State<SearchPage> {
                     itemBuilder: (context, index) {
                       final item = items[index];
                       return ListTile(
-                        onLongPress: () {
+                        onTap: () {
                           context.pushNamed(AppRoute.rideHome);
                         },
                         title: Text(
@@ -278,9 +283,6 @@ class _SearchPageState extends State<SearchPage> {
                             color: colorScheme(context).primary,
                           ),
                         ),
-                        onTap: () {
-                          print('Tapped on ${item['title']}');
-                        },
                       );
                     },
                   ),

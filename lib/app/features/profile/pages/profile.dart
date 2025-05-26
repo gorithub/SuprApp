@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/core/utils/custom_snackbar.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -163,18 +164,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context.pushNamed(AppRoute.accountSettingPage);
                   },
                 ),
-              ]),
-              Center(
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Terms and Conditions',
-                    style: textTheme(context).titleSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: colorScheme(context).onSurface.withOpacity(0.5)),
-                  ),
+                _buildSettingItem(
+                  leading: const Icon(Icons.contacts_outlined),
+                  'Terms and Conditions',
+                  onTap: () {
+                    context.pushNamed(AppRoute.termsConditionPage);
+                  },
                 ),
-              ),
+                _buildSettingItem(
+                  leading: const Icon(Icons.logout),
+                  'Logout',
+                  onTap: () {
+                    showSnackbar(
+                      message: "Logout successful!",
+                    );
+                    context.pushNamed(AppRoute.phoneAuthPage);
+                  },
+                ),
+              ]),
               const SizedBox(height: 50),
             ],
           ),

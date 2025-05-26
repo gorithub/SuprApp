@@ -114,7 +114,7 @@ class HomeProductCategories extends StatelessWidget {
               options: CarouselOptions(
                 height: 200,
                 aspectRatio: 14 / 9,
-                viewportFraction: 0.9,
+                viewportFraction: 0.999,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,
