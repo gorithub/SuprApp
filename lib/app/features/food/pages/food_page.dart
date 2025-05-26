@@ -176,14 +176,18 @@ class _FoodPageState extends State<FoodPage> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                        width: 4), // Small space between search bar and toggle
                     Column(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'VEG\nMODE',
-                          style: textTheme(context).bodyMedium?.copyWith(
+                          textAlign: TextAlign.center,
+                          style: textTheme(context).labelMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
-                                height: 1.0, // Tighter line height
+                                height: 1.0,
                                 color: foodToggle.isVeg
                                     ? Colors.green
                                     : Colors.grey,
@@ -197,6 +201,10 @@ class _FoodPageState extends State<FoodPage> {
                               foodToggle.toggle();
                             },
                             activeColor: Colors.green,
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+
+                            // visualDensity: VisualDensity.compact, // Makes it tighter
                           ),
                         ),
                       ],
@@ -292,8 +300,7 @@ class _FoodPageState extends State<FoodPage> {
                   width: size.width,
                   child: LayoutBuilder(
                     builder: (context, constraints) {
-                      bool isTablet = constraints.maxWidth >
-                          600; // You can fine-tune this breakpoint
+                      bool isTablet = constraints.maxWidth > 400;
 
                       return GridView.builder(
                         shrinkWrap: true,
@@ -309,7 +316,8 @@ class _FoodPageState extends State<FoodPage> {
                           crossAxisSpacing: isTablet ? 10 : 0,
                           childAspectRatio: isTablet
                               ? 1
-                              : (size.width * 0.9 / 2) / (size.height * 0.3),
+                              : (size.width * 0.999 / 2.3) /
+                                  (size.height * 0.3),
                         ),
                         itemBuilder: (context, index) {
                           final item = categories[index];
@@ -327,7 +335,6 @@ class _FoodPageState extends State<FoodPage> {
                             },
                             child: Container(
                               height: size.height * 0.15,
-                              width: size.width * 0.9,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -338,8 +345,8 @@ class _FoodPageState extends State<FoodPage> {
                                   Image.asset(
                                     item['image']!,
                                     height: 45,
-                                    width: 40,
-                                    fit: BoxFit.cover,
+                                    width: 45,
+                                    fit: BoxFit.contain,
                                   ),
                                   const SizedBox(height: 3),
                                   Text(
@@ -413,7 +420,7 @@ class _FoodPageState extends State<FoodPage> {
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  height: size.height * 0.4,
+                  height: size.height * 0.35,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: burgerList.length,
@@ -429,16 +436,13 @@ class _FoodPageState extends State<FoodPage> {
                             ),
                           );
                         },
-                        child: SizedBox(
-                          height: size.height * 0.32,
-                          child: FoodCard(
-                            portion: burger['portion'],
-                            image: burger['image'],
-                            title: burger['title'],
-                            oldPrice: burger['oldPrice'],
-                            newPrice: burger['newPrice'],
-                            offerText: burger['offerText'],
-                          ),
+                        child: FoodCard(
+                          portion: burger['portion'],
+                          image: burger['image'],
+                          title: burger['title'],
+                          oldPrice: burger['oldPrice'],
+                          newPrice: burger['newPrice'],
+                          offerText: burger['offerText'],
                         ),
                       );
                     },
@@ -525,7 +529,7 @@ class _FoodPageState extends State<FoodPage> {
                   height: 20,
                 ),
                 SizedBox(
-                  height: size.height * 0.4,
+                  height: size.height * 0.35,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: chaatCravingList.length,
@@ -613,7 +617,7 @@ class _FoodPageState extends State<FoodPage> {
                   height: 10,
                 ),
                 SizedBox(
-                  height: size.height * 0.4,
+                  height: size.height * 0.35,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: cofees.length,
@@ -653,7 +657,7 @@ class _FoodPageState extends State<FoodPage> {
                   height: 20,
                 ),
                 SizedBox(
-                  height: size.height * 0.4,
+                  height: size.height * 0.35,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: blisfulbites.length,
@@ -696,7 +700,7 @@ class _FoodPageState extends State<FoodPage> {
                   height: 20,
                 ),
                 SizedBox(
-                  height: size.height * 0.4,
+                  height: size.height * 0.35,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: quickGrabs.length,

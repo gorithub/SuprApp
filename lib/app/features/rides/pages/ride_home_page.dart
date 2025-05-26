@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/all_services/all_services.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/widgets/appbar_seet.dart';
@@ -65,17 +67,22 @@ class _RideHomePageState extends State<RideHomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.appGrey),
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: const Icon(
-                          Icons.arrow_back,
-                          color: AppColors.darkGrey,
-                          size: 20,
+                      InkWell(
+                        onTap: () {
+                          context.pop();
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.appGrey),
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          child: const Icon(
+                            Icons.arrow_back,
+                            color: AppColors.darkGrey,
+                            size: 20,
+                          ),
                         ),
                       ),
                       Text(
