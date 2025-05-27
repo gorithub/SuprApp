@@ -128,8 +128,8 @@ class CongratulationsContainer extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 170 + 3,
-          height: 140 + 3,
+          width: 168 + 3,
+          height: 107 + 3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             gradient: const LinearGradient(
@@ -143,8 +143,8 @@ class CongratulationsContainer extends StatelessWidget {
           ),
         ),
         Container(
-          width: 170,
-          height: 140,
+          width: 168,
+          height: 130,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -165,7 +165,7 @@ class CongratulationsContainer extends StatelessWidget {
                 child: Image.asset(
                   imagePath,
                   width: 70,
-                  height: 60,
+                  height: 50,
                   fit: BoxFit.cover,
                 ),
               ),

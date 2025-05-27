@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/features/all_services/all_services.dart';
 import 'package:suprapp/app/features/all_services/coming_soon_page.dart';
+import 'package:suprapp/app/features/home/widgets/animated_service_tile.dart';
 import 'package:suprapp/app/features/home/widgets/item_gridtile.dart';
 import 'package:suprapp/app/features/super_quick_electronics/quickelec_main_screen.dart';
 import 'package:suprapp/app/routes/go_router.dart';
@@ -15,7 +17,7 @@ class CategoriesGridview extends StatelessWidget {
   void _handleNavigation(BuildContext context, String categoryName) {
     switch (categoryName) {
       case 'Rides':
-        context.pushNamed(AppRoute.enterPickUpLocationPage);
+        context.pushNamed(AppRoute.rideHome);
         break;
       case 'Electronics':
         Navigator.push(context,
@@ -77,6 +79,25 @@ class CategoriesGridview extends StatelessWidget {
           // 3rd (index 2), 7th (index 6), 8th (index 7)
           final specialIndexes = [2, 6, 7];
           final scaleFactor = specialIndexes.contains(index) ? 1.7 : 1.0;
+
+          final name = item['name']!;
+          if (name == 'All Services') {
+            return AnimatedGridTile(
+              imageList: [
+                AppImages.rides,
+                AppImages.food,
+                AppImages.dineout,
+                AppImages.groceries,
+                AppImages.shops,
+                AppImages.sendmoney,
+                AppImages.electronics,
+                AppImages.allservices,
+              ],
+              title: name,
+              tileWidth: tileWidth,
+              onTap: () => _handleNavigation(context, name),
+            );
+          }
 
           return ItemGridTile(
             imagePath: item['pictureUrl']!,

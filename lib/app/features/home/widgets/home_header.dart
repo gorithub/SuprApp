@@ -127,7 +127,7 @@ class HomeHeader extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
             Text(
               'The Everything App',
               style: textTheme(context).displayLarge?.copyWith(
@@ -176,7 +176,7 @@ class HomeHeader extends StatelessWidget {
                   children: [
                     Text('Supr Pay balance',
                         style: textTheme(context).bodySmall!.copyWith(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                               color: colorScheme(context).onSurface,
                             )),
                     Text('245 INR',
@@ -202,7 +202,7 @@ class HomeHeader extends StatelessWidget {
                   children: [
                     Text('Offers for you',
                         style: textTheme(context).bodySmall!.copyWith(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                               color: colorScheme(context).onSurface,
                             )),
                     Text('233',

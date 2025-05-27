@@ -23,54 +23,54 @@ final List<Map<String, dynamic>> burgerList = [
     'image':
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtsy5ZBbucwY5XFLqo_wlVUcWwnjqIq3uUhg&s",
     'title': 'Eeetwell',
-    // 'rating': 4.5,
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
+    'rating': 4.5,
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
 
-    // 'foodItems': 'Fast Food',
-    // 'distance': '. 1.7 km',
-    // 'arriveTime': ' . 35-45 mins'
+    'foodItems': 'Fast Food',
+    'distance': '. 1.7 km',
+    'arriveTime': ' . 35-45 mins'
   },
   {
     'image':
         "https://media.post.rvohealth.io/wp-content/uploads/2021/07/Starbucks_Food_Spinach_Feta_Wrap-732x549-thumbnail-732x549.jpg",
     'title': 'Yo!-Sushi',
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
-    // 'foodItems': 'Juices, Sand',
-    // 'distance': '. 1.9 km',
-    // 'rating': 4.5,
-    // 'arriveTime': ' . 35-45 mins'
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
+    'foodItems': 'Juices, Sand',
+    'distance': '. 1.9 km',
+    'rating': 4.5,
+    'arriveTime': ' . 35-45 mins'
   },
   {
     'image':
         'https://m-foodz.com/pk/wp-content/uploads/2023/05/Fast-Food-Restaurants-In-Karachi.jpg',
     'title': 'Eeetwell',
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
-    // 'rating': 4.5,
-    // 'foodItems': 'Fast Food',
-    // 'distance': '. 1.7 km',
-    // 'arriveTime': ' . 35-45 mins'
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
+    'rating': 4.5,
+    'foodItems': 'Fast Food',
+    'distance': '. 1.7 km',
+    'arriveTime': ' . 35-45 mins'
   },
   {
     'image':
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIVQ3-mRyGlCWo38s2i1JFRdaABZqKpbgpA&s",
     'title': 'Yo!-Sushi',
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
-    // 'foodItems': 'Juices, Sand',
-    // 'distance': '. 1.9 km',
-    // 'rating': 4.5,
-    // 'arriveTime': ' . 35-45 mins'
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
+    'foodItems': 'Juices, Sand',
+    'distance': '. 1.9 km',
+    'rating': 4.5,
+    'arriveTime': ' . 35-45 mins'
   },
 ];
 final List<Map<String, dynamic>> chaatCravingList = [
@@ -78,54 +78,54 @@ final List<Map<String, dynamic>> chaatCravingList = [
     'image':
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Pani_Puri1.JPG/960px-Pani_Puri1.JPG",
     'title': 'Pani Puri',
-    // 'rating': 4.5,
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
+    'rating': 4.5,
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
 
-    // 'foodItems': 'Fast Food',
-    // 'distance': '. 1.7 km',
-    // 'arriveTime': ' . 35-45 mins'
+    'foodItems': 'Fast Food',
+    'distance': '. 1.7 km',
+    'arriveTime': ' . 35-45 mins'
   },
   {
     'image':
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKyyF00sBq-rPoQLt6IIchD2skgKTBxPRUhA&s",
     'title': 'Bhel Puri',
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
-    // 'foodItems': 'Juices, Sand',
-    // 'distance': '. 1.9 km',
-    // 'rating': 4.5,
-    // 'arriveTime': ' . 35-45 mins'
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
+    'foodItems': 'Juices, Sand',
+    'distance': '. 1.9 km',
+    'rating': 4.5,
+    'arriveTime': ' . 35-45 mins'
   },
   {
     'image':
         'https://www.flourandspiceblog.com/wp-content/uploads/2022/04/IMG_7102.jpg',
     'title': 'Channa Chat',
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
-    // 'rating': 4.5,
-    // 'foodItems': 'Fast Food',
-    // 'distance': '. 1.7 km',
-    // 'arriveTime': ' . 35-45 mins'
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
+    'rating': 4.5,
+    'foodItems': 'Fast Food',
+    'distance': '. 1.7 km',
+    'arriveTime': ' . 35-45 mins'
   },
   {
     'image':
         "https://www.teaforturmeric.com/wp-content/uploads/2022/04/Dahi-Bhalla-06.jpg",
     'title': 'Dahi Bhallay',
-    'oldPrice': 279,
-    'newPrice': 270,
-    'offerText': '10% Off',
-    'portion': '1 Portion',
-    // 'foodItems': 'Juices, Sand',
-    // 'distance': '. 1.9 km',
-    // 'rating': 4.5,
-    // 'arriveTime': ' . 35-45 mins'
+    // 'oldPrice': 279,
+    // 'newPrice': 270,
+    // 'offerText': '10% Off',
+    // 'portion': '1 Portion',
+    'foodItems': 'Juices, Sand',
+    'distance': '. 1.9 km',
+    'rating': 4.5,
+    'arriveTime': ' . 35-45 mins'
   },
 ];
 final List<Map<String, dynamic>> cofees = [
