@@ -103,6 +103,10 @@ class AppImages {
   static const String secondCar = 'assets/images/caresecond.png';
   static const String menu =
       'assets/images/WhatsApp Image 2025-05-14 at 3.41.50 PM.jpeg';
+  static const String banner1Image = 'assets/images/banner1.jpeg';
+  static const String banner2Image = 'assets/images/banner2.jpeg';
+  static const String banner3Image = 'assets/images/banner3.jpeg';
+  static const String banner4Image = 'assets/images/banner4.jpeg';
 }
 
 class AppIcon {

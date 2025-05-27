@@ -99,13 +99,13 @@ class _SuprPayPageState extends State<SuprPayPage> {
                       ),
                       SizedBox(height: 12),
                       Text(
-                        'Zomato Money is now exclusively usable',
+                        'Supr Money is now exclusively usable',
                         style: textTheme(context).bodyMedium?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: colorScheme(context).error.withOpacity(0.6)),
                       ),
                       Text(
-                        'non Zomato.',
+                        'non Supr.',
                         style: textTheme(context).bodyMedium?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: colorScheme(context).error.withOpacity(0.6)),
@@ -127,7 +127,7 @@ class _SuprPayPageState extends State<SuprPayPage> {
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                           child: Text(
-                            'For any queries regarding your Zomato Money balance\n  please contact   zomatomoneysupport@zomato.com',
+                            'For any queries regarding your Supr Money balance\n  please contact   suprtechnology@gmail.com',
                             style: textTheme(context).bodySmall?.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: colorScheme(context)
@@ -169,7 +169,7 @@ class _SuprPayPageState extends State<SuprPayPage> {
                         height: 40,
                       ),
                       const Text(
-                        'zomato\nMONEY',
+                        'supr\nMONEY',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,

@@ -33,12 +33,11 @@ class ItemGridTile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: SizedBox(
-                height: 50,
-                width: 50,
-                child: Image.asset(imagePath, fit: BoxFit.contain),
-              ),
+            Image.asset(
+              imagePath,
+              fit: BoxFit.fitHeight,
+              height: 50,
+              width: 50,
             ),
             const SizedBox(height: 6),
             Text(
