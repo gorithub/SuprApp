@@ -18,10 +18,7 @@ class CustomRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              border: Border(
-                  bottom: BorderSide(color: Colors.black.withOpacity(0.2)),
-                  top: BorderSide(color: Colors.black.withOpacity(0.2)),
-                  left: BorderSide(color: Colors.black.withOpacity(0.2)))),
+              border: Border.all(color: AppColors.appGrey)),
           child: SvgPicture.asset(AppIcon.offer, height: 20, width: 20),
         ),
         GestureDetector(
@@ -30,7 +27,7 @@ class CustomRow extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                border: Border.all(color: Colors.black.withOpacity(0.2))),
+                border: Border.all(color: AppColors.appGrey)),
             child: Row(
               children: [
                 Column(
@@ -45,7 +42,7 @@ class CustomRow extends StatelessWidget {
                     Text(
                       "Crazy Deals: ${discount}",
                       style: textTheme(context).labelMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ),
                     )
                   ],

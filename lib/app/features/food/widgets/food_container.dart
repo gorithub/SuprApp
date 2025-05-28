@@ -27,15 +27,16 @@ class FoodContainer extends StatelessWidget {
             children: [
               Text(
                 "Delivery time",
-                style: textTheme(context)
-                    .labelLarge
-                    ?.copyWith(color: Colors.black.withOpacity(0.5)),
+                style: textTheme(context).labelLarge?.copyWith(
+                      color: Colors.black.withOpacity(0.3),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 4),
               Text(time,
-                  style: textTheme(context)
-                      .labelLarge
-                      ?.copyWith(fontWeight: FontWeight.bold))
+                  style: textTheme(context).bodyMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: colorScheme(context).primary))
             ],
           ),
           Container(
@@ -46,14 +47,15 @@ class FoodContainer extends StatelessWidget {
             children: [
               Text(
                 "Price For one",
-                style: textTheme(context)
-                    .labelLarge
-                    ?.copyWith(color: Colors.black.withOpacity(0.5)),
+                style: textTheme(context).labelLarge?.copyWith(
+                      color: Colors.black.withOpacity(0.3),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 4),
               Text(price,
                   style: textTheme(context)
-                      .labelLarge
+                      .bodyMedium
                       ?.copyWith(fontWeight: FontWeight.bold))
             ],
           ),
@@ -65,14 +67,15 @@ class FoodContainer extends StatelessWidget {
             children: [
               Text(
                 "Delivery Fee",
-                style: textTheme(context)
-                    .labelLarge
-                    ?.copyWith(color: Colors.black.withOpacity(0.3)),
+                style: textTheme(context).labelLarge?.copyWith(
+                      color: Colors.black.withOpacity(0.3),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 4),
               Text(fee,
                   style: textTheme(context)
-                      .labelLarge
+                      .bodyMedium
                       ?.copyWith(fontWeight: FontWeight.bold))
             ],
           )

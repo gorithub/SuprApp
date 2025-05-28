@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class CustomTitleContainer extends StatelessWidget {
@@ -34,15 +35,15 @@ class CustomTitleContainer extends StatelessWidget {
               ),
               Text(
                 location,
-                style: textTheme(context)
-                    .bodySmall
-                    ?.copyWith(color: Colors.black.withOpacity(0.5)),
+                style: textTheme(context).bodyMedium?.copyWith(
+                    color: Colors.black.withOpacity(0.5),
+                    fontWeight: FontWeight.bold),
               ),
               Text(
                 "Business Bay(${distance})",
-                style: textTheme(context)
-                    .bodySmall
-                    ?.copyWith(color: Colors.black.withOpacity(0.5)),
+                style: textTheme(context).bodySmall?.copyWith(
+                    color: Colors.black.withOpacity(0.5),
+                    fontWeight: FontWeight.w500),
               ),
             ],
           ),
@@ -71,20 +72,24 @@ class CustomTitleContainer extends StatelessWidget {
                             size: 15, color: colorScheme(context).primary),
                         Text(
                           rating,
-                          style: textTheme(context)
-                              .labelMedium
-                              ?.copyWith(color: colorScheme(context).primary),
+                          style: textTheme(context).labelMedium?.copyWith(
+                              color: colorScheme(context).primary,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
                   ),
                   const SizedBox(height: 3),
-                  Text(norating, style: textTheme(context).labelMedium),
+                  Text(norating,
+                      style: textTheme(context).labelMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.darkGrey)),
                   const SizedBox(height: 3),
                   Text("ratings",
-                      style: textTheme(context)
-                          .labelMedium
-                          ?.copyWith(color: Colors.black.withOpacity(0.5)))
+                      style: textTheme(context).labelMedium?.copyWith(
+                            color: Colors.black.withOpacity(0.5),
+                            fontWeight: FontWeight.bold,
+                          ))
                 ],
               ),
             ),

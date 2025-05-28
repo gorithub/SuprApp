@@ -51,13 +51,12 @@ class OfferBottomSheet extends StatelessWidget {
           const SizedBox(height: 12),
           Text("Offer",
               style: textTheme(context)
-                  .bodyLarge
+                  .titleLarge
                   ?.copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          Text(
-            "Crazy Deals: 50% off",
-            style: textTheme(context).labelMedium,
-          ),
+          Text("Crazy Deals: 50% off",
+              style: textTheme(context).labelMedium?.copyWith(
+                  color: AppColors.darkGrey, fontWeight: FontWeight.w600)),
           const SizedBox(height: 12),
           Container(
             width: double.infinity,
@@ -87,11 +86,19 @@ class OfferBottomSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
+          Text("• Valid until orders above ",
+              style: textTheme(context)
+                  .bodyMedium
+                  ?.copyWith(color: Colors.black54)),
           Text("• Valid until 2025-05-18",
               style: textTheme(context)
-                  .labelMedium
+                  .bodyMedium
                   ?.copyWith(color: Colors.black54)),
-          const SizedBox(height: 24),
+          Text("• Maximum discount is AED 30",
+              style: textTheme(context)
+                  .bodyMedium
+                  ?.copyWith(color: Colors.black54)),
+          Spacer(),
           CustomElevatedButton(
               text: "Got it",
               onPressed: () {
@@ -110,13 +117,14 @@ class OfferBottomSheet extends StatelessWidget {
           children: [
             Text(
               title,
-              style: textTheme(context).labelMedium,
+              style: textTheme(context).bodyMedium?.copyWith(
+                  color: AppColors.darkGrey, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 4),
             Text(value,
-                style: textTheme(context)
-                    .labelLarge
-                    ?.copyWith(fontWeight: FontWeight.bold))
+                style: textTheme(context).bodySmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme(context).onSurface))
           ],
         ),
       ),

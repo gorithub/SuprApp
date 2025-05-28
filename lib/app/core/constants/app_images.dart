@@ -107,6 +107,7 @@ class AppImages {
   static const String banner2Image = 'assets/images/banner2.jpeg';
   static const String banner3Image = 'assets/images/banner3.jpeg';
   static const String banner4Image = 'assets/images/banner4.jpeg';
+  static const String fruits = 'assets/images/fruits.png';
 }
 
 class AppIcon {

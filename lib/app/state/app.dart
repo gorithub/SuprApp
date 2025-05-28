@@ -14,8 +14,10 @@ import 'package:suprapp/app/features/dine_out/provider/faqs_provider.dart';
 import 'package:suprapp/app/features/dine_out/provider/filter_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
 import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
+import 'package:suprapp/app/features/food/controller/cart_controller.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
 import 'package:suprapp/app/features/food/provider/drink_selection_provider.dart';
+import 'package:suprapp/app/features/food/provider/food_item_provider.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/groceries/controllers/address_provider.dart';
 import 'package:suprapp/app/features/groceries/controllers/herbal_provider.dart';
@@ -112,9 +114,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => NameInputProvider(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (_) => ImageCarouselProvider(),
-        // ),
+        ChangeNotifierProvider(
+          create: (_) => FoodItemProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CartController(),
+        ),
       ],
       child: GlobalLoaderOverlay(
         child: MaterialApp.router(
