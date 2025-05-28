@@ -17,14 +17,14 @@ class GroupOrderBottomSheet extends StatelessWidget {
           Text(
             'Group Orders made easy',
             style: textTheme(context)
-                .headlineSmall
+                .titleLarge
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
             'Share your unique link through any social platform such as WhatsApp or Facebook',
             style:
-                textTheme(context).labelLarge?.copyWith(color: Colors.black54),
+                textTheme(context).bodyMedium?.copyWith(color: Colors.black54),
           ),
           const SizedBox(height: 10),
           const GroupOrderStep(
@@ -78,11 +78,11 @@ class GroupOrderStep extends StatelessWidget {
           radius: 5, backgroundColor: colorScheme(context).primary),
       title: Text(title,
           style: textTheme(context)
-              .bodyMedium
+              .bodyLarge
               ?.copyWith(fontWeight: FontWeight.bold)),
       subtitle: Text(description,
           style: textTheme(context)
-              .bodySmall
+              .bodyMedium
               ?.copyWith(color: Colors.black.withOpacity(0.4))),
     );
   }

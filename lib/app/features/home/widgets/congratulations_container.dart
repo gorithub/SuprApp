@@ -62,7 +62,7 @@ class CongratulationsContainer extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 5,
             mainAxisSpacing: 5,
-            childAspectRatio: 170 / 140,
+            childAspectRatio: 190 / 140,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: [
@@ -72,7 +72,7 @@ class CongratulationsContainer extends StatelessWidget {
               _buildBox('Discount\nStore', 'assets/images/discountStore.png'),
             ],
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Container(
             width: double.infinity,
             height: 50,
@@ -128,8 +128,8 @@ class CongratulationsContainer extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 168 + 3,
-          height: 107 + 3,
+          width: 165 + 3,
+          height: 120 + 3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             gradient: const LinearGradient(
@@ -143,8 +143,8 @@ class CongratulationsContainer extends StatelessWidget {
           ),
         ),
         Container(
-          width: 168,
-          height: 130,
+          width: 165,
+          height: 120,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -161,10 +161,10 @@ class CongratulationsContainer extends StatelessWidget {
                 ),
               ),
               Align(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.topRight,
                 child: Image.asset(
                   imagePath,
-                  width: 70,
+                  width: 60,
                   height: 50,
                   fit: BoxFit.cover,
                 ),

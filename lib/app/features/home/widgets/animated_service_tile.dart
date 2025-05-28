@@ -31,10 +31,11 @@ class AnimatedGridTile extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(8),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 62,
-                width: 62,
+                height: 50,
+                width: 50,
                 child: Consumer<ImageCarouselProvider>(
                   builder: (context, provider, _) {
                     return PageView.builder(
@@ -42,8 +43,10 @@ class AnimatedGridTile extends StatelessWidget {
                       itemCount: imageList.length,
                       itemBuilder: (context, index) {
                         return Image.asset(
+                          height: 50,
+                          width: 50,
                           imageList[index],
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fitWidth,
                         );
                       },
                     );

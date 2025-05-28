@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 
 class HomeProductCategories extends StatelessWidget {
@@ -87,9 +88,9 @@ class HomeProductCategories extends StatelessWidget {
                               colors: [
                                 Colors.transparent,
                                 Colors.transparent,
-                                colorScheme(context).secondary.withOpacity(
+                                AppColors.accentColor.withOpacity(
                                     0.2), // Lower opacity for smoother fade
-                                colorScheme(context).secondary.withOpacity(
+                                AppColors.bluish.withOpacity(
                                     0.8), // Lower opacity for smoother fade
                               ],
                             ),
@@ -98,13 +99,13 @@ class HomeProductCategories extends StatelessWidget {
                       ),
                       // Centered Text on top of the image
                       Positioned(
-                        bottom: 7,
+                        bottom: 20,
                         left: 20,
                         child: Text(
                           item['title']!,
-                          style: textTheme(context).titleMedium?.copyWith(
-                              color: colorScheme(context).onSurface,
-                              fontWeight: FontWeight.w800),
+                          style: textTheme(context).titleLarge?.copyWith(
+                              color: colorScheme(context).surface,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],

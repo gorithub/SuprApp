@@ -8,6 +8,7 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
+import 'package:suprapp/app/features/food/pages/catagory_detail_page.dart';
 import 'package:suprapp/app/features/food/pages/product_screen.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/food/widgets/food_filter_widget.dart';
@@ -278,9 +279,9 @@ class _FoodPageState extends State<FoodPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ProductScreen(
-                                  category: item['text']!,
-                                ),
+                                builder: (context) => BurgerHomePage(
+                                    // category: item['text']!,
+                                    ),
                               ),
                             );
                           },
@@ -532,14 +533,20 @@ class _FoodPageState extends State<FoodPage> {
                     itemCount: brandsList.length,
                     padding: EdgeInsets.zero,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: size.height * 0.08,
-                        width: size.width * 0.2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(brandsList[index]),
+                      return InkWell(
+                        onTap: () {
+                          // foodProvider.selectFood(brandsList);
+                          context.pushNamed(AppRoute.foodDetail);
+                        },
+                        child: Container(
+                          height: size.height * 0.08,
+                          width: size.width * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(brandsList[index]),
+                            ),
                           ),
                         ),
                       );

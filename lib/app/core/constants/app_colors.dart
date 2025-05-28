@@ -34,4 +34,5 @@ class AppColors {
   static const carmineRed = Color(0xFFFF003A);
 
   static const blackGrey = Color(0xff242424);
+  static const bluish = Color(0xffA6E7CF);
 }

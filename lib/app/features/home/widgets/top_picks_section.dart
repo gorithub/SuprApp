@@ -6,18 +6,23 @@ class TopPicksSection extends StatelessWidget {
   final List<Map<String, String>> restaurants = [
     {
       "image":
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStT6eacNbfrriZ--1ou2G1P6ukJL6cDCNYVg&s",
-      "name": "The Spice Villa"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/McDonald%27s_square_2020.svg/960px-McDonald%27s_square_2020.svg.png",
+      "name": "McDonald’s"
     },
     {
       "image":
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1VQDeqq66adbg07OgSvhEhgfUJv2I1EoGRg&s",
-      "name": "Ocean Grill"
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI5Z_v-pdGwU-eiWtUXCdElfa6_qiMYkbuBg&s",
+      "name": "Papa Johns"
     },
     {
       "image":
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPY77NwQr2ijvUaG526WAoO2T0r0CxgPwddQ&s",
-      "name": "Pasta Palace"
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdoIL8ZJoQQom2s6kJGpeXHvuCmwJJjKU0tA&s",
+      "name": "KFC"
+    },
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRfkWHPweuC8XUvE_YlOGrXaEqYO2M0GiyivMfv9J-g5HLLmWlSKFi39C0uqu1mWEU01E&usqp=CAU",
+      "name": "Texas Chicken"
     },
   ];
 

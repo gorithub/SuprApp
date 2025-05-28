@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
+import 'package:suprapp/app/features/food/pages/check_out_page.dart';
 import 'package:suprapp/app/features/food/widgets/custom_bottom_sheet.dart';
 import 'package:suprapp/app/features/food/widgets/custom_item1_bottom_sheet.dart';
 import 'package:suprapp/app/features/food/widgets/custom_offer_bottom_sheet.dart';
@@ -99,6 +101,70 @@ class _FoodDetailPageState extends State<FoodDetailPage>
     final tabTexts = selectedFood.tbartext;
 
     return Scaffold(
+      bottomNavigationBar: Row(
+        children: [
+          const SizedBox(width: 20),
+          Text(
+            'AED 17.0',
+            style: textTheme(context)
+                .titleSmall
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(width: 70),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CheckOutPage(),
+                    ));
+              },
+              child: Container(
+                height: 60,
+                width: 200,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 42, 70, 55),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: colorScheme(context).primary,
+                        ),
+                        child: Center(
+                          child: Text(
+                            '1',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'View Basket', // Replace 1 with dynamic value
+                        style: TextStyle(
+                            color: colorScheme(context).primary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -110,7 +176,7 @@ class _FoodDetailPageState extends State<FoodDetailPage>
                   showProductBottomSheet(context);
                 }),
                 const SizedBox(width: 10),
-                customIconContainer(Icons.favorite_outline, () {}),
+                customIconContainer(Icons.search, () {}),
                 const SizedBox(width: 10),
               ],
               leading: Padding(
@@ -221,7 +287,7 @@ class _FoodDetailPageState extends State<FoodDetailPage>
                                     Text(
                                       "Group order",
                                       style: textTheme(context)
-                                          .labelMedium
+                                          .bodyLarge
                                           ?.copyWith(
                                               fontWeight: FontWeight.bold),
                                     )
@@ -238,6 +304,7 @@ class _FoodDetailPageState extends State<FoodDetailPage>
             pinned: true,
             delegate: SliverAppBarDelegate(
               TabBar(
+                tabAlignment: TabAlignment.start,
                 labelStyle: textTheme(context)
                     .bodySmall
                     ?.copyWith(fontWeight: FontWeight.bold),
@@ -263,114 +330,166 @@ class _FoodDetailPageState extends State<FoodDetailPage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Text(
                           tabTexts[0],
                           style: textTheme(context)
-                              .titleMedium
+                              .titleLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       ListView.builder(
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         itemCount: 3,
-                        itemBuilder: (context, index) => const FoodItemCard(
-                          title: "Salmon Box 24 Pieces",
-                          description:
-                              "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
-                          imageUrl: AppImages.award,
-                          price: 82.5,
-                          oldPrice: 165,
-                          discount: 50,
-                        ),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const FoodItemCard(
+                                title: "Salmon Box 24 Pieces",
+                                description:
+                                    "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
+                                imageUrl: AppImages.award,
+                                price: 82.5,
+                                oldPrice: 165,
+                                discount: 50,
+                              ),
+                              if (index <
+                                  2) // show divider only if not the last item
+                                const Divider(color: AppColors.appGrey),
+                            ],
+                          );
+                        },
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Text(
                           tabTexts[1],
                           style: textTheme(context)
-                              .titleMedium
+                              .titleLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       ListView.builder(
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         itemCount: 3,
-                        itemBuilder: (context, index) => const FoodItemCard(
-                          title: "Salmon Box 24 Pieces",
-                          description:
-                              "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
-                          imageUrl: AppImages.award,
-                          price: 82.5,
-                          oldPrice: 165,
-                          discount: 50,
-                        ),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              const FoodItemCard(
+                                title: "Salmon Box 24 Pieces",
+                                description:
+                                    "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
+                                imageUrl: AppImages.award,
+                                price: 82.5,
+                                oldPrice: 165,
+                                discount: 50,
+                              ),
+                              if (index <
+                                  2) // show divider only if not the last item
+                                const Divider(color: AppColors.appGrey),
+                            ],
+                          );
+                        },
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Text(
                           tabTexts[2],
                           style: textTheme(context)
-                              .titleMedium
+                              .titleLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       ListView.builder(
+                        padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         itemCount: 3,
-                        itemBuilder: (context, index) => const FoodItemCard(
-                          title: "Salmon Box 24 Pieces",
-                          description:
-                              "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
-                          imageUrl: AppImages.award,
-                          price: 82.5,
-                          oldPrice: 165,
-                          discount: 50,
-                        ),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              const FoodItemCard(
+                                title: "Salmon Box 24 Pieces",
+                                description:
+                                    "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
+                                imageUrl: AppImages.award,
+                                price: 82.5,
+                                oldPrice: 165,
+                                discount: 50,
+                              ),
+                              if (index <
+                                  2) // show divider only if not the last item
+                                const Divider(color: AppColors.appGrey),
+                            ],
+                          );
+                        },
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Text(
                           tabTexts[3],
                           style: textTheme(context)
-                              .titleMedium
+                              .titleLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       ListView.builder(
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         itemCount: 3,
-                        itemBuilder: (context, index) => const FoodItemCard(
-                          title: "Salmon Box 24 Pieces",
-                          description:
-                              "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
-                          imageUrl: AppImages.award,
-                          price: 82.5,
-                          oldPrice: 165,
-                          discount: 50,
-                        ),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              const FoodItemCard(
+                                title: "Salmon Box 24 Pieces",
+                                description:
+                                    "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
+                                imageUrl: AppImages.award,
+                                price: 82.5,
+                                oldPrice: 165,
+                                discount: 50,
+                              ),
+                              if (index <
+                                  2) // show divider only if not the last item
+                                const Divider(color: AppColors.appGrey),
+                            ],
+                          );
+                        },
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Text(
                           tabTexts[4],
                           style: textTheme(context)
-                              .titleMedium
+                              .titleLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       ListView.builder(
+                        padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         itemCount: 3,
-                        itemBuilder: (context, index) => const FoodItemCard(
-                          title: "Salmon Box 24 Pieces",
-                          description:
-                              "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
-                          imageUrl: AppImages.award,
-                          price: 82.5,
-                          oldPrice: 165,
-                          discount: 50,
-                        ),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              const FoodItemCard(
+                                title: "Salmon Box 24 Pieces",
+                                description:
+                                    "2 pieces salmon sashimi, 2 pieces salmon nigiri, 4 pieces salmon hoso maki...",
+                                imageUrl: AppImages.award,
+                                price: 82.5,
+                                oldPrice: 165,
+                                discount: 50,
+                              ),
+                              if (index <
+                                  2) // show divider only if not the last item
+                                const Divider(color: AppColors.appGrey),
+                            ],
+                          );
+                        },
                       )
                     ]),
               ),
