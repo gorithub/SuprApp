@@ -27,9 +27,9 @@ class CategoryProductsScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = products[index];
               return ProductCard(
-                id: '2',
+                id: item.id,
                 title: item.name,
-                price: '200',
+                price: item.price,
                 discount: '20',
                 oldPrice: '100',
                 showOldPrice: true,

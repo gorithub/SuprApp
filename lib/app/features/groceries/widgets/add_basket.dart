@@ -6,12 +6,13 @@ import 'package:suprapp/app/features/groceries/controllers/product_quantity_prov
 
 class FloatingBasketButton extends StatelessWidget {
   final VoidCallback? onTap;
+  final String totalAmout;
 
-  const FloatingBasketButton({super.key, this.onTap});
+  const FloatingBasketButton({super.key, this.onTap, required this.totalAmout});
 
   @override
   Widget build(BuildContext context) {
-    final totalItems = context.watch<QuantityProvider>().totalQuantity;
+    final totalItems = context.watch<QuantityProvider>();
     if (totalItems == 0) return const SizedBox.shrink();
 
     return Align(
@@ -53,13 +54,22 @@ class FloatingBasketButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    "$totalItems ${totalItems == 1 ? 'item' : 'items'}",
+                    'items ${totalItems.totalUniqueItems}',
                     style: TextStyle(
                       color: colorScheme(context).onPrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  'ABE :$totalAmout',
+                  style: textTheme(context).bodyMedium?.copyWith(
+                      color: colorScheme(context).surface,
+                      fontWeight: FontWeight.bold),
+                )
               ],
             ),
           ),
