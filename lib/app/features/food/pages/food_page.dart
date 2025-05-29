@@ -279,9 +279,7 @@ class _FoodPageState extends State<FoodPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BurgerHomePage(
-                                    // category: item['text']!,
-                                    ),
+                                builder: (context) => CatagoryDetailPage(),
                               ),
                             );
                           },
