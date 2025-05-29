@@ -169,20 +169,25 @@ class HomeHeader extends StatelessWidget {
               // spacing: 12,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Supr Pay balance',
-                        style: textTheme(context).bodySmall!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: colorScheme(context).onSurface,
-                            )),
-                    Text('245 INR',
-                        style: textTheme(context).bodySmall!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: colorScheme(context).onSurface,
-                            )),
-                  ],
+                InkWell(
+                  onTap: () {
+                    context.pushNamed(AppRoute.suprPayPage);
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Supr Pay balance',
+                          style: textTheme(context).bodySmall!.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: colorScheme(context).onSurface,
+                              )),
+                      Text('245 INR',
+                          style: textTheme(context).bodySmall!.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: colorScheme(context).onSurface,
+                              )),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   width: 20,

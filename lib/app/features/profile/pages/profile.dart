@@ -114,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   leading: const Icon(Icons.headphones_outlined),
                   'Help Center',
                   onTap: () {
-                    context.pushNamed(AppRoute.helpcenter);
+                    context.pushNamed(AppRoute.helpCenterPage);
                   },
                 ),
                 _buildSettingItem(

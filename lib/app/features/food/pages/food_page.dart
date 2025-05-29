@@ -9,6 +9,8 @@ import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
 import 'package:suprapp/app/features/food/pages/catagory_detail_page.dart';
+import 'package:suprapp/app/features/food/pages/poduct_detail_page.dart';
+import 'package:suprapp/app/features/food/pages/product_detail.dart';
 import 'package:suprapp/app/features/food/pages/product_screen.dart';
 import 'package:suprapp/app/features/food/provider/selection_toggle_provider.dart';
 import 'package:suprapp/app/features/food/widgets/food_filter_widget.dart';
@@ -532,10 +534,7 @@ class _FoodPageState extends State<FoodPage> {
                     padding: EdgeInsets.zero,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: () {
-                          // foodProvider.selectFood(brandsList);
-                          context.pushNamed(AppRoute.foodDetail);
-                        },
+                        onTap: () {},
                         child: Container(
                           height: size.height * 0.08,
                           width: size.width * 0.2,

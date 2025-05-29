@@ -5,6 +5,7 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/food/controller/cart_controller.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +98,9 @@ class _PaymentMethodSheetState extends State<PaymentMethodSheet> {
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
                 TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(AppRoute.addBankPage);
+                  },
                   icon: Icon(
                     Icons.add,
                     color: colorScheme(context).onSurface,

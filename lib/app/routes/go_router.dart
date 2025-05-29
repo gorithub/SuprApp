@@ -21,6 +21,7 @@ import 'package:suprapp/app/features/food/pages/offers_tabs_page.dart';
 import 'package:suprapp/app/features/food/pages/order_confirmation_page.dart';
 import 'package:suprapp/app/features/groceries/groceries_home_screen.dart';
 import 'package:suprapp/app/features/groceries/tabs/detail_product_screen.dart';
+import 'package:suprapp/app/features/home/widgets/help_center_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -40,7 +41,7 @@ import 'package:suprapp/app/features/profile/pages/settings_screen.dart';
 import 'package:suprapp/app/features/profile/pages/update_email.dart';
 import 'package:suprapp/app/features/profile/pages/update_name.dart';
 import 'package:suprapp/app/features/profile/pages/update_phone_no.dart';
-import 'package:suprapp/app/features/profile/pages/win_reward_screen.dart';
+import 'package:suprapp/app/features/profile/pages/contact_us_page.dart';
 import 'package:suprapp/app/features/rides/pages/activity_page.dart';
 import 'package:suprapp/app/features/rides/pages/detail_cancel.dart';
 import 'package:suprapp/app/features/rides/pages/enter_pick_up_location.dart';
@@ -61,7 +62,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.homePage}',
+    initialLocation: '/${AppRoute.splashScreen}',
     routes: [
       GoRoute(
         path: '/${AppRoute.splashScreen}',
@@ -116,12 +117,21 @@ class MyAppRouter {
                 child: const ProfileScreen(),
               )),
       GoRoute(
-        name: AppRoute.helpcenter,
-        path: '/${AppRoute.helpcenter}',
+        name: AppRoute.contactUsPage,
+        path: '/${AppRoute.contactUsPage}',
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
           context: context,
           state: state,
-          child: const HelpCenter(),
+          child: const ContactUsPage(),
+        ),
+      ),
+      GoRoute(
+        name: AppRoute.helpCenterPage,
+        path: '/${AppRoute.helpCenterPage}',
+        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+          context: context,
+          state: state,
+          child: const HelpCenterPage(),
         ),
       ),
       GoRoute(
@@ -562,7 +572,7 @@ class AppRoute {
   static const String errorPage = 'error-page';
   //!---- Profile Section---- !//
   static const String profilePage = 'profile'; //
-  static const String helpcenter = 'win-reward-screen';
+  static const String contactUsPage = 'contact-us-page';
   static const String winRewardPage = 'help-center-screen';
   static const String notificationpage = 'notification-screen';
   static const String invitePage = 'invite-screen';
@@ -583,6 +593,7 @@ class AppRoute {
   static const String homePage = 'home-page';
   static const String savedAddressPage = 'saved-address-page';
   static const String manageBusinessProfile = 'manage-business-profile';
+  static const String helpCenterPage = 'help-center-page';
   //!---- Auth Section---- !//
   static const String phoneAuthPage = 'phone-auth-page';
   static const String verifyPhoneAuthPage = 'verify-phone-auth-page';

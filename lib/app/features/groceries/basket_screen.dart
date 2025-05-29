@@ -6,9 +6,132 @@ import 'package:shimmer/shimmer.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/widgets/custom_card.dart';
+import 'package:suprapp/app/features/food/pages/check_out_page.dart';
 import 'package:suprapp/app/features/groceries/controllers/product_quantity_provider.dart';
 import 'package:suprapp/app/features/groceries/models/product_model.dart';
+import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
+
+void showAddNoteToCaptainBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (context) {
+      return Padding(
+        padding: MediaQuery.of(context).viewInsets,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Icon(Icons.close, size: 28),
+                  SizedBox(width: 12),
+                  Text(
+                    'Add a note to the captain',
+                    style: textTheme(context).titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme(context).onSurface),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Make your captain\'s job easier by letting them\nknow anything that will help them to deliever your\norder',
+                style: textTheme(context).titleSmall?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: colorScheme(context).onSurface.withOpacity(0.7)),
+              ),
+              SizedBox(height: 16),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: TextField(
+                  maxLength: 150,
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    isCollapsed: true,
+                    hintText: "E.g. ‘please be aware of the dog’",
+                    counterText: "0/150",
+                    hintStyle: TextStyle(color: Colors.black54),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void showPaymentMethodBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    isScrollControlled: true,
+    builder: (_) {
+      return PaymentMethodSheet();
+    },
+  );
+}
+
+void showErrorDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (_) => AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      titlePadding: const EdgeInsets.only(top: 24, left: 24, right: 24),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      actionsPadding: const EdgeInsets.only(bottom: 16),
+      title: Text(
+        'An error occurred.',
+        style: textTheme(context).headlineLarge?.copyWith(
+            fontWeight: FontWeight.bold, color: colorScheme(context).onSurface),
+      ),
+      content: Text(
+        'Something went wrong... Please try again.',
+        style: textTheme(context).bodyLarge?.copyWith(
+            fontWeight: FontWeight.w500,
+            color: colorScheme(context).onSurface.withOpacity(0.6)),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: CustomElevatedButton(
+            text: 'Ok',
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 class BasketScreen extends StatelessWidget {
   const BasketScreen({super.key});
@@ -18,6 +141,7 @@ class BasketScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: colorScheme(context).surface,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         backgroundColor: Colors.white,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -40,11 +164,10 @@ class BasketScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'My Basket',
-          style: textTheme(context).headlineLarge?.copyWith(
-                color: colorScheme(context).onSurface,
-                fontWeight: FontWeight.w600,
-              ),
+          'Basket',
+          style: textTheme(context).titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: colorScheme(context).onSurface),
         ),
         centerTitle: false,
       ),
@@ -70,9 +193,9 @@ class BasketScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Your Basket',
-                        style: textTheme(context).displayMedium?.copyWith(
-                            color: colorScheme(context).onSurface,
-                            fontWeight: FontWeight.w600),
+                        style: textTheme(context).titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: colorScheme(context).onSurface),
                       ),
                       SizedBox(
                         height: 5,
@@ -80,36 +203,32 @@ class BasketScreen extends StatelessWidget {
                       Consumer<QuantityProvider>(
                         builder: (context, itrm, child) => Text(
                           '${itrm.totalUniqueItems} items :',
-                          style: const TextStyle(
-                              color: AppColors.textGrey,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
+                          style: textTheme(context).bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: colorScheme(context).onSurface),
                         ),
                       )
                     ],
                   ),
                   Spacer(),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
                       context.pop();
                     },
-                    child: Icon(Icons.add,
-                        size: 30,
-                        color: colorScheme(context).primary,
-                        semanticLabel: 'Add more items'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        context.pop();
-                      },
-                      child: Text('Add more items',
-                          style: textTheme(context).displayMedium?.copyWith(
-                                color: colorScheme(context).primary,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                              )),
+                    child: Row(
+                      children: [
+                        Icon(Icons.add,
+                            size: 17, color: colorScheme(context).primary),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Add more items",
+                            style: textTheme(context).bodyLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: colorScheme(context).primary),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -167,12 +286,23 @@ class BasketScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item.title,
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600)),
+                                Text(
+                                  item.title,
+                                  style: textTheme(context).bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: colorScheme(context).onSurface),
+                                ),
                                 const SizedBox(height: 6),
-                                Text('Price: AED ${item.price}'),
+                                Text(
+                                  'Price: AED ${item.price}',
+                                  style: textTheme(context)
+                                      .bodyMedium
+                                      ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: colorScheme(context)
+                                              .onSurface
+                                              .withOpacity(0.6)),
+                                ),
                                 const SizedBox(height: 16),
                                 Align(
                                   alignment: Alignment.bottomRight,
@@ -367,18 +497,18 @@ class BasketScreen extends StatelessWidget {
                     children: [
                       Text(
                         'You seem to be a new location .',
-                        style: textTheme(context).bodySmall?.copyWith(
-                            color: colorScheme(context).onSurface,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 17),
+                        style: textTheme(context).bodyLarge?.copyWith(
+                              color: colorScheme(context).onSurface,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.7,
                         child: Text(
                           'Arabin war Museum Dubai | Al Safa Street, AL Wasi , Dubai , United Arab Emirates',
                           style: textTheme(context).bodySmall?.copyWith(
-                              color: AppColors.textGrey,
-                              fontWeight: FontWeight.w600,
+                              color: AppColors.textGrey.withOpacity(0.6),
+                              fontWeight: FontWeight.w500,
                               fontSize: 14),
                         ),
                       )
@@ -402,11 +532,12 @@ class BasketScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text('Did You Forget ?',
-                  style: textTheme(context).displayMedium?.copyWith(
-                        color: colorScheme(context).onSurface,
-                        fontWeight: FontWeight.w600,
-                      )),
+              child: Text(
+                'Did You Forget ?',
+                style: textTheme(context).titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme(context).onSurface),
+              ),
             ),
             SizedBox(
               height: 10,
@@ -605,21 +736,28 @@ class BasketScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text('Tap to Save',
-                  style: textTheme(context).displayMedium?.copyWith(
-                        color: colorScheme(context).onSurface,
-                        fontWeight: FontWeight.w600,
-                      )),
+              child: Text(
+                'Tap to Save',
+                style: textTheme(context).titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme(context).onSurface),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: CustomTextFormField(
-                borderRadius: 8,
-                fillColor: colorScheme(context).surface,
-                hint: 'Have a code? Tap it here...',
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Have a code? Type it here",
+                  hintStyle: textTheme(context).titleSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.darkGrey.withOpacity(0.5)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -636,11 +774,12 @@ class BasketScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(bottom: 3.0, right: 10),
-                    child: Text('Reward Your Captains',
-                        style: textTheme(context).displayMedium?.copyWith(
-                              color: colorScheme(context).onSurface,
-                              fontWeight: FontWeight.w600,
-                            )),
+                    child: Text(
+                      'Reward Your Captains',
+                      style: textTheme(context).titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: colorScheme(context).onSurface),
+                    ),
                   ),
                   Icon(
                     Icons.info_outline,
@@ -660,8 +799,8 @@ class BasketScreen extends StatelessWidget {
                     (index) => Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Container(
-                            width: 100,
-                            height: 100,
+                            width: 70,
+                            height: 70,
                             decoration: BoxDecoration(
                               color: AppColors.backgroundGrey,
                               borderRadius: BorderRadius.circular(12),
@@ -671,7 +810,7 @@ class BasketScreen extends StatelessWidget {
                               children: [
                                 Text(index.toString(),
                                     style: textTheme(context)
-                                        .displaySmall
+                                        .bodyLarge
                                         ?.copyWith(
                                           color: colorScheme(context).onSurface,
                                           fontWeight: FontWeight.w600,
@@ -681,7 +820,7 @@ class BasketScreen extends StatelessWidget {
                                 ),
                                 Text('AED',
                                     style: textTheme(context)
-                                        .bodyLarge
+                                        .bodyMedium
                                         ?.copyWith(
                                           color: colorScheme(context).onSurface,
                                           fontWeight: FontWeight.w600,
@@ -697,11 +836,12 @@ class BasketScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text('Payment Summary ',
-                  style: textTheme(context).displayMedium?.copyWith(
-                        color: colorScheme(context).onSurface,
-                        fontWeight: FontWeight.w600,
-                      )),
+              child: Text(
+                'Payment Summary ',
+                style: textTheme(context).titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme(context).onSurface),
+              ),
             ),
             SizedBox(
               height: 8,
@@ -742,9 +882,11 @@ class BasketScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Order Total (incl. tax)',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                    style: textTheme(context).titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme(context).onSurface),
                   ),
                   Consumer<QuantityProvider>(
                     builder: (context, price, child) {
@@ -763,11 +905,12 @@ class BasketScreen extends StatelessWidget {
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text('Delivery Instructions',
-                  style: textTheme(context).displayMedium?.copyWith(
-                        color: colorScheme(context).onSurface,
-                        fontWeight: FontWeight.w600,
-                      )),
+              child: Text(
+                'Delivery Instructions',
+                style: textTheme(context).titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme(context).onSurface),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -818,27 +961,25 @@ class BasketScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  Icon(Icons.pedal_bike_rounded),
-                  SizedBox(
-                    width: 14,
-                  ),
-                  Text(
-                    'Add a note to captains',
-                    style: textTheme(context)
-                        .bodyMedium
-                        ?.copyWith(color: AppColors.textGrey, fontSize: 17),
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.textGrey,
-                  )
-                ],
+            ListTile(
+              leading: Icon(
+                Icons.delivery_dining,
+                color: AppColors.darkGrey,
               ),
+              title: Text(
+                "Add a note to the captain",
+                style: textTheme(context).bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme(context).onSurface.withOpacity(0.6)),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: colorScheme(context).onSurface.withOpacity(0.6),
+              ),
+              onTap: () {
+                showAddNoteToCaptainBottomSheet(context);
+              },
             ),
             SizedBox(
               height: 20,
@@ -873,6 +1014,63 @@ class BasketScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             )
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        height: 150,
+        color: Colors.white,
+        child: Column(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.delivery_dining),
+              title: Text("Deliver to Mona",
+                  style: textTheme(context).bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme(context).onSurface,
+                      )),
+              subtitle: Text("67, 4, Business Bay, Dubai",
+                  style: textTheme(context).bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: colorScheme(context).onSurface.withOpacity(0.6),
+                      )),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: AppColors.darkGrey,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    showPaymentMethodBottomSheet(context);
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.money),
+                      const SizedBox(width: 8),
+                      Text("Pay by ...",
+                          style: textTheme(context).bodyLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: colorScheme(context).onSurface,
+                              )),
+                      const SizedBox(width: 4),
+                      const Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ),
+                CustomElevatedButton(
+                  height: 50,
+                  width: 200,
+                  text: 'Pay AED 12..',
+                  onPressed: () {
+                    showErrorDialog(context);
+                  },
+                )
+              ],
+            ),
           ],
         ),
       ),
