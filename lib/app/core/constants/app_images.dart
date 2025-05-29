@@ -101,12 +101,20 @@ class AppImages {
   static const String abcd = 'assets/images/Abcd.png';
   static const String firstCar = 'assets/images/carfirst.png';
   static const String secondCar = 'assets/images/caresecond.png';
+  static const String mainBanner = 'assets/images/main_banner.jpg';
+  static const String shampoBanner = 'assets/images/shampo_banner.jpg';
+  static const String cakeBanner = 'assets/images/cake_banner.jpg';
+
+  static const String sweetBanner = 'assets/images/sweet_banner.jpg';
+
   static const String menu =
       'assets/images/WhatsApp Image 2025-05-14 at 3.41.50 PM.jpeg';
 }
 
 class AppIcon {
   static const String percetIcon = 'assets/icons/percen_icon.svg';
+  static const String creeamLogo = 'assets/icons/creeam_logo.svg';
+
   static const String starIcon = 'assets/icons/star_icon.svg';
   static const String trophyIcon = 'assets/icons/trophy_icon.svg';
   static const String cheersIcon = 'assets/icons/wine_bar_icon.svg';

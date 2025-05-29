@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/groceries/controllers/product_quantity_provider.dart';
 
 class ProductCard extends StatelessWidget {
@@ -13,6 +14,7 @@ class ProductCard extends StatelessWidget {
   final String? oldPrice;
   final bool showOldPrice;
   final VoidCallback? onTap;
+  final Widget? addWidget;
 
   const ProductCard({
     super.key,
@@ -24,6 +26,7 @@ class ProductCard extends StatelessWidget {
     this.oldPrice,
     this.showOldPrice = false,
     this.onTap,
+    this.addWidget,
   });
 
   @override
@@ -34,6 +37,9 @@ class ProductCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 140,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
         margin: const EdgeInsets.only(right: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,6 +67,7 @@ class ProductCard extends StatelessWidget {
                         const Icon(Icons.error),
                   ),
                 ),
+
                 // Discount badge
                 Positioned(
                   top: 6,
@@ -82,81 +89,9 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Quantity controls or Add button
-                Positioned(
-                  bottom: 6,
-                  right: 6,
-                  child: quantity > 0
-                      ? Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 6),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.black12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12.withOpacity(0.05),
-                                blurRadius: 4,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20),
-                                onTap: () {
-                                  if (quantity == 1) {
-                                    context.read<QuantityProvider>().remove(id);
-                                  } else {
-                                    context.read<QuantityProvider>().decrease(id);
-                                  }
-                                },
-                                child: Icon(
-                                  quantity == 1 ? Icons.delete : Icons.remove,
-                                  size: 20,
-                                  color:
-                                      quantity == 1 ? Colors.red : Colors.black,
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Text(
-                                quantity.toString(),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20),
-                                onTap: () {
-                                  context.read<QuantityProvider>().increase(id);
-                                },
-                                child: const Icon(Icons.add, size: 20),
-                              ),
-                            ],
-                          ),
-                        )
-                      : InkWell(
-                          borderRadius: BorderRadius.circular(8),
-                          onTap: () {
-                            context.read<QuantityProvider>().increase(id);
-                          },
-                          child: Container(
-                            height: 32,
-                            width: 32,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: Colors.black12),
-                            ),
-                            child: const Icon(Icons.add, size: 20),
-                          ),
-                        ),
-                ),
+
+                // Quantity controls or Add button with smooth animation
+                addWidget ?? SizedBox(),
               ],
             ),
             const SizedBox(height: 8),

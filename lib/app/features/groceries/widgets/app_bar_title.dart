@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/groceries/widgets/select_address_sheet.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
@@ -35,12 +37,24 @@ class AppBarTitle extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                'GROCERIES',
-                style: textTheme(context).headlineLarge?.copyWith(
-                      color: colorScheme(context).primary,
-                      fontWeight: FontWeight.w600,
-                    ),
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    AppIcon.creeamLogo,
+                    height: 30,
+                    fit: BoxFit.cover,
+                  ),
+                  Text(
+                    'GROCERIES',
+                    style: textTheme(context).headlineLarge?.copyWith(
+                          color: colorScheme(context).primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  )
+                ],
               ),
               InkWell(
                 onTap: () {
