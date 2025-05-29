@@ -1,8 +1,63 @@
+// class ProductModleherbal {
+//   final String image;
+//   final String title;
+//   String? discription;
+//   final String price;
+//   final int? currentTotalItem;
+//   final int? currentTotalPrice;
+
+//   final String condition;
+//   final String cool;
+//   bool? isHerbal;
+//   String? ginger;
+//   String? lenongrass;
+//   String? lemonPeels;
+//   String? licorce;
+//   String? limonmrytle;
+//   String? calories;
+//   String? protein;
+//   String? fate;
+//   String? sugar;
+//   String? old;
+//   final String discount;
+//   final String id;
+//   ProductModleherbal copyWith({
+//     int? currentTotalItem,
+//     int? currentTotalPrice,
+//   })
+//   ProductModleherbal({
+//     required this.image,
+//     required this.title,
+//     this.discription,
+//     this.currentTotalItem,
+//     this.currentTotalPrice,
+//     required this.price,
+//     required this.condition,
+//     required this.cool,
+//     this.ginger,
+//     this.lenongrass,
+//     this.lemonPeels,
+//     this.licorce,
+//     this.limonmrytle,
+//     this.calories,
+//     this.protein,
+//     this.isHerbal,
+//     this.fate,
+//     this.sugar,
+//     this.old,
+//     required this.discount,
+//     required this.id,
+//   });
+// }
+
 class ProductModleherbal {
   final String image;
   final String title;
   String? discription;
-  final String price;
+  String price;
+  int currentTotalItem;
+  int currentTotalPrice;
+
   final String condition;
   final String cool;
   bool? isHerbal;
@@ -18,10 +73,13 @@ class ProductModleherbal {
   String? old;
   final String discount;
   final String id;
+
   ProductModleherbal({
     required this.image,
     required this.title,
     this.discription,
+    this.currentTotalItem = 0,
+    this.currentTotalPrice = 0,
     required this.price,
     required this.condition,
     required this.cool,
@@ -39,15 +97,47 @@ class ProductModleherbal {
     required this.discount,
     required this.id,
   });
+  ProductModleherbal copyWith({
+    String? id,
+    String? title,
+    String? price,
+    String? image,
+    int? currentTotalItem,
+    int? currentTotalPrice,
+  }) {
+    return ProductModleherbal(
+      image: image ?? this.image,
+      title: title ?? this.title,
+      discription: discription,
+      price: price ?? this.price,
+      currentTotalItem: currentTotalItem ?? this.currentTotalItem,
+      currentTotalPrice: currentTotalPrice ?? this.currentTotalPrice,
+      condition: condition,
+      cool: cool,
+      ginger: ginger,
+      lenongrass: lenongrass,
+      lemonPeels: lemonPeels,
+      licorce: licorce,
+      limonmrytle: limonmrytle,
+      calories: calories,
+      protein: protein,
+      isHerbal: isHerbal,
+      fate: fate,
+      sugar: sugar,
+      old: old,
+      discount: discount,
+      id: id ?? this.id,
+    );
+  }
 }
 
 List<ProductModleherbal> myherbalList = [
   ProductModleherbal(
     image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtZEE5zxcfq-nAlS_5fJxJrlcjlnxLWOPMQ&s",
-    title: "Himalaya Soap Neem & Turm...",
+        'https://freshbasket.com.pk/cdn/shop/files/AlmaraiMilkFullFat1L_1024x1024.jpg?v=1724047979',
+    title: "Almaria full fat fresh Milk 2L",
     discription: "Neem & Turm...",
-    price: "AED 19.20",
+    price: "12.10",
     condition: "Storage Condition",
     cool: "Cool & dry, below 25C",
     ginger: "51%",
@@ -60,16 +150,16 @@ List<ProductModleherbal> myherbalList = [
     protein: "0.1g",
     fate: "0.1g",
     sugar: "0.1g",
-    old: 'AED 24',
+    old: '24',
     discount: '-20%',
     id: 'herbal_1',
   ),
   ProductModleherbal(
     image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtZEE5zxcfq-nAlS_5fJxJrlcjlnxLWOPMQ&s",
-    title: "Himalaya Soap Neem & Turm...",
+        'https://thefreshandnatural.com/wp-content/uploads/2020/05/CUCUMBER-SAUDI-KG.jpg',
+    title: "Cucumber UAE \n1 kg",
     discription: "Neem & Turm...",
-    price: "AED 19.20",
+    price: "3.10",
     condition: "Storage Condition",
     cool: "Cool & dry, below 25C",
     ginger: "51%",
@@ -82,16 +172,16 @@ List<ProductModleherbal> myherbalList = [
     protein: "0.1g",
     fate: "0.1g",
     sugar: "0.1g",
-    old: 'AED 24',
+    old: '24',
     discount: '-20%',
     id: 'herbal_2',
   ),
   ProductModleherbal(
     image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtZEE5zxcfq-nAlS_5fJxJrlcjlnxLWOPMQ&s",
-    title: "Himalaya Soap Neem & Turm...",
+        'https://thefreshandnatural.com/wp-content/uploads/2023/05/PHOTO-2023-05-12-21-04-49.jpg',
+    title: "Egg  \n1 dozen",
     discription: "Neem & Turm...",
-    price: "AED 19.20",
+    price: "10.20",
     condition: "Storage Condition",
     cool: "Cool & dry, below 25C",
     ginger: "51%",
@@ -104,17 +194,18 @@ List<ProductModleherbal> myherbalList = [
     protein: "0.1g",
     fate: "0.1g",
     sugar: "0.1g",
-    old: 'AED 24',
+    old: '24',
     discount: '-20%',
     id: 'herbal_3',
   ),
 ];
+
 List<ProductModleherbal> myRecomendations = [
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s",
-      title: "Sanita Club Biodegradable",
-      price: "AED 25.99",
+          'https://media.gettyimages.com/id/173242750/photo/banana-bunch.jpg?s=2048x2048&w=gi&k=20&c=4ScLswWY980TBkoovO1jhQDONHZ7x3kg29JlQGyXs7c=',
+      title: "Banana Ecuador  500 g",
+      price: "2.60",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       old: "",
@@ -123,161 +214,160 @@ List<ProductModleherbal> myRecomendations = [
       id: "item_1"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s",
-      title: "Sanita Club Biodegradable",
-      price: "AED 25.99",
+          'https://media.gettyimages.com/id/1322500654/photo/sweet-soft-drink-bottle-on-white-background.jpg?s=2048x2048&w=gi&k=20&c=QBGmDv_cgH78mksh_0A1m8TbeF7WEplth0Hka7YEIvo=',
+      title: "Fit Fresh\nOranges juice",
+      price: "16.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
       old: "",
       discount: "-9%",
-      id: "item_1"),
+      id: "item_2"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s",
-      title: "Sanita Club Biodegradable",
-      price: "AED 25.99",
+          'https://themeatzgrocer.com.my/wp-content/uploads/2021/11/IMG_3276.webp',
+      title: "Onion Red Indea 900 -1000 g",
+      price: "2.60",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
       old: "",
       discount: "-9%",
-      id: "item_1"),
+      id: "item_3"),
 ];
 List<ProductModleherbal> milkAndYogurt = [
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8bRiOhsb-UKLtNVe8Kvya31CVmYId2MRCg&s",
-      title: "Al Ain Milk 1L",
-      price: "AED 4.25",
+          'https://as2.ftcdn.net/jpg/05/88/75/69/1000_F_588756932_5ZQBUg6KLT3kFAkR4EkRNuAaPCnDVQAS.webp',
+      title: "Lay's Cream & Onion Patato...",
+      price: "4.25",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 5.00",
+      old: "5.00",
       discount: "-15%",
       id: "milk_1"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8bRiOhsb-UKLtNVe8Kvya31CVmYId2MRCg&s",
-      title: "Al Ain Milk 1L",
-      price: "AED 4.25",
+          'https://www.kleenex.com.my/-/media/Project/KleenexMY/Products/PDP/Facial-Tissue/Daily-care/Vintage/Desktop/Artboard-13.png?h=204&iar=0&w=338&rev=7f4ed10449e24d319ea4b8ad674610df',
+      title: "Kleenex Daily Care Facial...",
+      price: "9.25",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 5.00",
+      old: "5.00",
       discount: "-15%",
       id: "milk_2"),
   ProductModleherbal(
-      image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8bRiOhsb-UKLtNVe8Kvya31CVmYId2MRCg&s",
-      title: "Al Ain Milk 1L",
-      price: "AED 4.25",
+      image: 'https://m.media-amazon.com/images/I/71gtvZPieHL._SX679_.jpg',
+      title: "Himalaya pure Tulsi & Aloe ...",
+      price: "17.40",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
-      old: "AED 5.00",
+      old: "5.00",
       discount: "-15%",
-      id: "milk_2"),
+      id: "milk_3"),
 ];
 List<ProductModleherbal> beverages = [
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWm8nJlEPObT1-XdlBT7CagggnQ4t7pjGFEQ&s",
-      title: "Pepsi Can 330ml",
-      price: "AED 3.50",
+          'https://media.istockphoto.com/id/1482149278/photo/fresh-avocado-on-white.jpg?s=2048x2048&w=is&k=20&c=N-woJ9oN7lejIWKouYPCYm1D5w8RP6mlZRtnHvUVq4M=',
+      title: "Avocado Hass RTE South Am...",
+      price: "13.50",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 4.00",
+      old: "4.00",
       discount: "-12%",
       id: "bev_1"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWm8nJlEPObT1-XdlBT7CagggnQ4t7pjGFEQ&s",
-      title: "Pepsi Can 330ml",
-      price: "AED 3.50",
+          'https://spice-world.co.za/cdn/shop/files/1289_3919_65f580da674e14.34558698_IMG_1410_1080x.png?v=1746779291',
+      title: "Osman Chilli Sauce 500ml",
+      price: "5.50",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
-      old: "AED 4.00",
+      old: "4.00",
       discount: "-12%",
       id: "bev_2"),
   ProductModleherbal(
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWm8nJlEPObT1-XdlBT7CagggnQ4t7pjGFEQ&s",
       title: "Pepsi Can 330ml",
-      price: "AED 3.50",
+      price: "3.50",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 4.00",
+      old: "4.00",
       discount: "-12%",
       id: "bev_3"),
 ];
 List<ProductModleherbal> bundleOffers = [
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4bajQIs2fcjMbvO_qcCiKC2BbDM43CgmSw&s",
-      title: "Combo Pasta Pack",
-      price: "AED 18.00",
+          'https://as1.ftcdn.net/jpg/04/35/65/78/1000_F_435657841_ceDTgNEZAY8lVbwK6ESCmTzfKpNQG1Uj.webp',
+      title: "Deter Bundle Pack 5 pieces ",
+      price: "28.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
-      old: "AED 22.00",
+      old: "22.00",
       discount: "-18%",
       id: "bundle_1"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4bajQIs2fcjMbvO_qcCiKC2BbDM43CgmSw&s",
-      title: "Combo Pasta Pack",
-      price: "AED 18.00",
+          'https://as1.ftcdn.net/jpg/05/39/60/90/1000_F_539609028_vqdEYa7GROujPxhItIlLV2e7cEEUVFpT.webp',
+      title: "Fresh  Apple 1 kg",
+      price: "12.50",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 22.00",
+      old: "22.00",
       discount: "-18%",
       id: "bundle_2"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4bajQIs2fcjMbvO_qcCiKC2BbDM43CgmSw&s",
-      title: "Combo Pasta Pack",
-      price: "AED 18.00",
+          'https://as2.ftcdn.net/jpg/05/37/04/61/1000_F_537046123_s8JVn2NrClPQDOryhSm8jonYZPfIzPRX.webp',
+      title: "Fresh Tomatoes per Kg",
+      price: "8.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 22.00",
+      old: "22.00",
       discount: "-18%",
       id: "bundle_3"),
 ];
 List<ProductModleherbal> reducedToClear = [
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8bRiOhsb-UKLtNVe8Kvya31CVmYId2MRCg&s",
-      title: "Choco Cookies (Expiring Soon)",
-      price: "AED 5.00",
+          'https://as2.ftcdn.net/jpg/02/54/92/05/1000_F_254920579_xOIyVqIWxgUi0fSQ8FwBC95YlIVZpuCd.jpg',
+      title: "Mix Sweets in Dish, A large variety of Pakistani Mithai",
+      price: "35.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 10.00",
+      old: "10.00",
       discount: "-50%",
       id: "clear_1"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8bRiOhsb-UKLtNVe8Kvya31CVmYId2MRCg&s",
-      title: "Choco Cookies (Expiring Soon)",
-      price: "AED 5.00",
+          'https://media.istockphoto.com/id/1436864582/photo/top-view-box-of-ice-cream-with-a-spoon-at-horizontal-composition.jpg?s=2048x2048&w=is&k=20&c=_G62yMlEsOwPNsfA1Bx0ugk3AIKMUMpERYtXdqOGkug=',
+      title: "Ice Cream \n 1 Pack",
+      price: "15.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
-      old: "AED 10.00",
+      old: "10.00",
       discount: "-50%",
       id: "clear_2"),
   ProductModleherbal(
       image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp8bRiOhsb-UKLtNVe8Kvya31CVmYId2MRCg&s",
-      title: "Choco Cookies (Expiring Soon)",
-      price: "AED 5.00",
+          'https://media.istockphoto.com/id/1349560821/photo/traditional-vanilla-pound-cake-with-orange-extract-bundt-cake.jpg?s=2048x2048&w=is&k=20&c=N4anbVINtIN2Qs95ZBiHIRbena9rDKQaIaohAaWLWCw=',
+      title: "2 pound Cake ",
+      price: "25.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 10.00",
+      old: "10.00",
       discount: "-50%",
       id: "clear_3"),
 ];
@@ -286,32 +376,32 @@ List<ProductModleherbal> mangoes = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEbYmomBlqAHgrep6gH24ZgGnkRsK0mk9Dw&s",
       title: "Alphonso Mango Premium Box",
-      price: "AED 19.20",
+      price: "19.20",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
-      old: "AED 24",
+      old: "24",
       discount: "-20%",
       id: "mango1"),
   ProductModleherbal(
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEbYmomBlqAHgrep6gH24ZgGnkRsK0mk9Dw&s",
       title: "Alphonso Mango Premium Box",
-      price: "AED 19.20",
+      price: "19.20",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 24",
+      old: "24",
       discount: "-20%",
       id: "mango2"),
   ProductModleherbal(
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEbYmomBlqAHgrep6gH24ZgGnkRsK0mk9Dw&s",
       title: "Alphonso Mango Premium Box",
-      price: "AED 19.20",
+      price: "19.20",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
-      old: "AED 24",
+      old: "24",
       isHerbal: false,
       discount: "-20%",
       id: "mango3"),
@@ -321,21 +411,21 @@ List<ProductModleherbal> mostLoved = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgYoY-mxL8X2G2cF1okBsFDc_EqIjhTsznw&s",
       title: "Alphonso Mango Premium Box",
-      price: "AED 19.20",
+      price: "19.20",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
-      old: "AED 19.20",
+      old: "19.20",
       discount: "-20%",
       id: "loved1"),
   ProductModleherbal(
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgYoY-mxL8X2G2cF1okBsFDc_EqIjhTsznw&s",
       title: "Alphonso Mango Premium Box",
-      price: "AED 19.20",
+      price: "19.20",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
-      old: "AED 19.20",
+      old: "19.20",
       isHerbal: false,
       discount: "-20%",
       id: "loved2"),
@@ -343,11 +433,11 @@ List<ProductModleherbal> mostLoved = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgYoY-mxL8X2G2cF1okBsFDc_EqIjhTsznw&s",
       title: "Alphonso Mango Premium Box",
-      price: "AED 19.20",
+      price: "19.20",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
-      old: "AED 19.20",
+      old: "19.20",
       discount: "-20%",
       id: "loved3"),
 ];
@@ -356,7 +446,7 @@ List<ProductModleherbal> liquid = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrW9Qy1nHncu5WHJXEY2I2JIpueTABoNECSg&s",
       title: "Omo Active Detergent Liquid 2L",
-      price: "AED 25.99",
+      price: "25.99",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -366,7 +456,7 @@ List<ProductModleherbal> liquid = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrW9Qy1nHncu5WHJXEY2I2JIpueTABoNECSg&s",
       title: "Omo Active Detergent Liquid 2L",
-      price: "AED 25.99",
+      price: "25.99",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -376,7 +466,7 @@ List<ProductModleherbal> liquid = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrW9Qy1nHncu5WHJXEY2I2JIpueTABoNECSg&s",
       title: "Omo Active Detergent Liquid 2L",
-      price: "AED 25.99",
+      price: "25.99",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -388,8 +478,8 @@ List<ProductModleherbal> powder = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQajfjQ7QBehnOBrEorTgSmy7w0cm5Cfa2_Kg&s",
       title: "Ariel Original Detergent Powder 2.5kg",
-      price: "AED 19.20",
-      old: "AED 24",
+      price: "19.20",
+      old: "24",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -399,19 +489,19 @@ List<ProductModleherbal> powder = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQajfjQ7QBehnOBrEorTgSmy7w0cm5Cfa2_Kg&s",
       title: "Ariel Original Detergent Powder 2.5kg",
-      price: "AED 19.20",
-      old: "AED 24",
+      price: "19.20",
+      old: "24",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
       discount: "-20%",
-      id: "powder3"),
+      id: "powder2"),
   ProductModleherbal(
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQajfjQ7QBehnOBrEorTgSmy7w0cm5Cfa2_Kg&s",
       title: "Ariel Original Detergent Powder 2.5kg",
-      price: "AED 19.20",
-      old: "AED 24",
+      price: "19.20",
+      old: "24",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -423,8 +513,8 @@ List<ProductModleherbal> toab = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSrX1lI7ToaPINYCMPVfOzG2MmSaFE8WvXIw&s",
       title: "Finish Powerball Dishwasher Tabs (20 pcs)",
-      price: "AED 3.50",
-      old: "AED 4.00",
+      price: "3.50",
+      old: "4.00",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -434,8 +524,8 @@ List<ProductModleherbal> toab = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSrX1lI7ToaPINYCMPVfOzG2MmSaFE8WvXIw&s",
       title: "Finish Powerball Dishwasher Tabs (20 pcs)",
-      price: "AED 3.50",
-      old: "AED 4.00",
+      price: "3.50",
+      old: "4.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -445,8 +535,8 @@ List<ProductModleherbal> toab = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSrX1lI7ToaPINYCMPVfOzG2MmSaFE8WvXIw&s",
       title: "Finish Powerball Dishwasher Tabs (20 pcs)",
-      price: "AED 3.50",
-      old: "AED 4.00",
+      price: "3.50",
+      old: "4.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -458,9 +548,9 @@ List<ProductModleherbal> surfaceCleaners = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBA_5tGd8AqriWNeJuHb3GtpgwDg6wKNjxpw&s",
       title: "Dettol Surface Cleaner 1L",
-      price: "AED 18.00",
+      price: "18.00",
       isHerbal: false,
-      old: "AED 22.00",
+      old: "22.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       discount: "-18%",
@@ -469,8 +559,8 @@ List<ProductModleherbal> surfaceCleaners = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBA_5tGd8AqriWNeJuHb3GtpgwDg6wKNjxpw&s",
       title: "Dettol Surface Cleaner 1L",
-      price: "AED 18.00",
-      old: "AED 22.00",
+      price: "18.00",
+      old: "22.00",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -480,8 +570,8 @@ List<ProductModleherbal> surfaceCleaners = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBA_5tGd8AqriWNeJuHb3GtpgwDg6wKNjxpw&s",
       title: "Dettol Surface Cleaner 1L",
-      price: "AED 18.00",
-      old: "AED 22.00",
+      price: "18.00",
+      old: "22.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -493,9 +583,9 @@ List<ProductModleherbal> stainRemover = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tBFi8uRkBdYEyV8aJlZXTKaUaKBlryl93A&s",
       title: "Vanish Oxi Action Powder 500g",
-      price: "AED 5.00",
+      price: "5.00",
       isHerbal: false,
-      old: "AED 10.00",
+      old: "10.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       discount: "-50%",
@@ -504,8 +594,8 @@ List<ProductModleherbal> stainRemover = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tBFi8uRkBdYEyV8aJlZXTKaUaKBlryl93A&s",
       title: "Vanish Oxi Action Powder 500g",
-      price: "AED 5.00",
-      old: "AED 10.00",
+      price: "5.00",
+      old: "10.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -515,8 +605,8 @@ List<ProductModleherbal> stainRemover = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tBFi8uRkBdYEyV8aJlZXTKaUaKBlryl93A&s",
       title: "Vanish Oxi Action Powder 500g",
-      price: "AED 5.00",
-      old: "AED 10.00",
+      price: "5.00",
+      old: "10.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -528,8 +618,8 @@ List<ProductModleherbal> fabricSoftners = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo8XrC4NRGPNfV83R5BxqYtvg8xNskiTInTg&s",
       title: "Comfort Fabric Softener Blue 1L",
-      price: "AED 4.25",
-      old: "AED 5.00",
+      price: "4.25",
+      old: "5.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -539,8 +629,8 @@ List<ProductModleherbal> fabricSoftners = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo8XrC4NRGPNfV83R5BxqYtvg8xNskiTInTg&s",
       title: "Comfort Fabric Softener Blue 1L",
-      price: "AED 4.25",
-      old: "AED 5.00",
+      price: "4.25",
+      old: "5.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -550,8 +640,8 @@ List<ProductModleherbal> fabricSoftners = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo8XrC4NRGPNfV83R5BxqYtvg8xNskiTInTg&s",
       title: "Comfort Fabric Softener Blue 1L",
-      price: "AED 4.25",
-      old: "AED 5.00",
+      price: "4.25",
+      old: "5.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -563,7 +653,7 @@ List<ProductModleherbal> items = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s",
       title: "Sanita Club Biodegradable",
-      price: "AED 25.99",
+      price: "25.99",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -573,7 +663,7 @@ List<ProductModleherbal> items = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s",
       title: "Sanita Club Biodegradable",
-      price: "AED 25.99",
+      price: "25.99",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -583,7 +673,7 @@ List<ProductModleherbal> items = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQavcMVvrXn7KoldH8-1IiGNwLbh0mFtskAgA&s",
       title: "Sanita Club Biodegradable",
-      price: "AED 25.99",
+      price: "25.99",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -595,7 +685,7 @@ List<ProductModleherbal> daipers = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTycPxb70Yu6ww3l0b85CtvcOYCxa468tgY_g&s",
       title: "Pampers Premium Care Size 3 (58 pcs)",
-      price: "AED 25.99",
+      price: "25.99",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -605,7 +695,7 @@ List<ProductModleherbal> daipers = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTycPxb70Yu6ww3l0b85CtvcOYCxa468tgY_g&s",
       title: "Pampers Premium Care Size 3 (58 pcs)",
-      price: "AED 25.99",
+      price: "25.99",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -615,7 +705,7 @@ List<ProductModleherbal> daipers = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTycPxb70Yu6ww3l0b85CtvcOYCxa468tgY_g&s",
       title: "Pampers Premium Care Size 3 (58 pcs)",
-      price: "AED 25.99",
+      price: "25.99",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       isHerbal: false,
@@ -627,8 +717,8 @@ List<ProductModleherbal> babyBath = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPeH9Zji50jD_pss2wmvPgQYETYgnv7iFtpA&s",
       title: "Johnson’s Baby Bath 500ml",
-      price: "AED 19.20",
-      old: "AED 24",
+      price: "19.20",
+      old: "24",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -638,9 +728,9 @@ List<ProductModleherbal> babyBath = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPeH9Zji50jD_pss2wmvPgQYETYgnv7iFtpA&s",
       title: "Johnson’s Baby Bath 500ml",
-      price: "AED 19.20",
+      price: "19.20",
       isHerbal: false,
-      old: "AED 24",
+      old: "24",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       discount: "-20%",
@@ -649,8 +739,8 @@ List<ProductModleherbal> babyBath = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPeH9Zji50jD_pss2wmvPgQYETYgnv7iFtpA&s",
       title: "Johnson’s Baby Bath 500ml",
-      price: "AED 19.20",
-      old: "AED 24",
+      price: "19.20",
+      old: "24",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -662,8 +752,8 @@ List<ProductModleherbal> babyCare = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEV5qK-KIb0HWUenN0enHWQsiKM5hlChpLWw&s",
       title: "Johnson’s Baby Lotion 500ml",
-      price: "AED 14.50",
-      old: "AED 18.00",
+      price: "14.50",
+      old: "18.00",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -673,8 +763,8 @@ List<ProductModleherbal> babyCare = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEV5qK-KIb0HWUenN0enHWQsiKM5hlChpLWw&s",
       title: "Johnson’s Baby Lotion 500ml",
-      price: "AED 14.50",
-      old: "AED 18.00",
+      price: "14.50",
+      old: "18.00",
       condition: "Storage Condition",
       isHerbal: false,
       cool: "Cool & dry, below 25C",
@@ -684,8 +774,8 @@ List<ProductModleherbal> babyCare = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEV5qK-KIb0HWUenN0enHWQsiKM5hlChpLWw&s",
       title: "Johnson’s Baby Lotion 500ml",
-      price: "AED 14.50",
-      old: "AED 18.00",
+      price: "14.50",
+      old: "18.00",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
@@ -697,9 +787,9 @@ List<ProductModleherbal> babyFood = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-5W_woOKQPX7F3AkdIIhVt3n2GXkdYnMZ6Q&s",
       title: "Gerber Rice Cereal 227g",
-      price: "AED 15.00",
+      price: "15.00",
       isHerbal: false,
-      old: "AED 18.00",
+      old: "18.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       discount: "-17%",
@@ -708,9 +798,9 @@ List<ProductModleherbal> babyFood = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-5W_woOKQPX7F3AkdIIhVt3n2GXkdYnMZ6Q&s",
       title: "Gerber Rice Cereal 227g",
-      price: "AED 15.00",
+      price: "15.00",
       isHerbal: false,
-      old: "AED 18.00",
+      old: "18.00",
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       discount: "-17%",
@@ -719,11 +809,58 @@ List<ProductModleherbal> babyFood = [
       image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-5W_woOKQPX7F3AkdIIhVt3n2GXkdYnMZ6Q&s",
       title: "Gerber Rice Cereal 227g",
-      price: "AED 15.00",
-      old: "AED 18.00",
+      price: "15.00",
+      old: "18.00",
       isHerbal: false,
       condition: "Storage Condition",
       cool: "Cool & dry, below 25C",
       discount: "-17%",
       id: "403"),
+];
+
+List<ProductModleherbal> forgotList = [
+  ProductModleherbal(
+      image:
+          'https://images.pexels.com/photos/1093038/pexels-photo-1093038.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      title: "Banana Ecuador  500 g",
+      price: "2.60",
+      condition: "Storage Condition",
+      cool: "Cool & dry, below 25C",
+      old: "",
+      isHerbal: false,
+      discount: "-9%",
+      id: "Banana_1"),
+  ProductModleherbal(
+      image:
+          'https://as2.ftcdn.net/jpg/09/22/47/81/1000_F_922478174_NXnW2EgbqUaPphCnIxAXcigjUIoAFmZh.jpg',
+      title: "Strawberry 500 g",
+      price: "46.00",
+      condition: "Storage Condition",
+      cool: "Cool & dry, below 25C",
+      isHerbal: false,
+      old: "",
+      discount: "-9%",
+      id: "banana_2"),
+  ProductModleherbal(
+      image:
+          'https://as1.ftcdn.net/v2/jpg/11/09/89/14/1000_F_1109891497_Duf92wXPuTjSMFK4JPaAayv12yX7QByN.jpg',
+      title: "Pomegranate  500 g",
+      price: "2.60",
+      condition: "Storage Condition",
+      cool: "Cool & dry, below 25C",
+      isHerbal: false,
+      old: "",
+      discount: "-9%",
+      id: "banana_3"),
+  ProductModleherbal(
+      image:
+          'https://as2.ftcdn.net/jpg/09/36/00/81/1000_F_936008110_gpv6t5cHPXZJ7Y5L32BfPfil0hNX8oFU.jpg',
+      title: "Pine Apple  1k g",
+      price: "12.260",
+      condition: "Storage Condition",
+      cool: "Cool & dry, below 25C",
+      isHerbal: false,
+      old: "",
+      discount: "-9%",
+      id: "banan_4")
 ];

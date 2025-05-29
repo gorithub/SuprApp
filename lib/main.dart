@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:suprapp/app/state/app.dart';
 
 void main() {
-  runApp(
-    DevicePreview(enabled: !kReleaseMode, builder: (context) => const MyApp()),
-  );
+  runApp(MyApp()
+      // DevicePreview(enabled: !kReleaseMode, builder: (context) => const MyApp()),
+      );
 }
