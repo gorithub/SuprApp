@@ -37,7 +37,7 @@ class GroceriesHomeScreen extends StatelessWidget {
             return [
               SliverAppBar(
                 pinned: true,
-                expandedHeight: 100,
+                expandedHeight: 135,
                 backgroundColor: Colors.white,
                 elevation: 0,
                 leading: InkWell(
@@ -63,8 +63,6 @@ class GroceriesHomeScreen extends StatelessWidget {
                     : Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(AppIcon.creeamLogo, height: 30),
-                          SizedBox(width: 8),
                           Text(
                             'GROCERIES',
                             style: textTheme(context).headlineLarge?.copyWith(
@@ -119,7 +117,8 @@ class GroceriesHomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16.0, vertical: 20),
                           child: _buildCollapsedTitle(context),
                         ),
                       ],

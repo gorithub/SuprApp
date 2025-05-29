@@ -6,6 +6,8 @@ import 'package:suprapp/app/features/groceries/widgets/category_grid.dart';
 import 'package:suprapp/app/features/groceries/widgets/large_image_listview.dart';
 import 'package:suprapp/app/features/groceries/widgets/product_section.dart';
 
+import '../../../core/constants/global_variables.dart';
+
 class AllTab extends StatelessWidget {
   const AllTab({super.key});
 
@@ -90,7 +92,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Bakery',
           imageUrl:
-              'https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+              'https://static.vecteezy.com/system/resources/thumbnails/045/910/259/small_2x/variety-of-freshly-baked-goods-displayed-in-a-basket-cut-out-stock-png.png'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -110,7 +112,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Meat',
           imageUrl:
-              'https://as1.ftcdn.net/jpg/02/26/53/80/1000_F_226538033_C42p96JDNwkSdQs86Agxd1TtaVJsyJ71.jpg'),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcMz9FwMf0XG0WOJdj7lC8GEW0lU1c04PrgA&s'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -130,7 +132,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Seafood',
           imageUrl:
-              'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQItpkWKkbYYaqyNjdCEqVsUxtZVmlz2fUVoA&s'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -150,7 +152,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Snacks',
           imageUrl:
-              'https://as2.ftcdn.net/jpg/01/73/41/63/1000_F_173416361_2YCaYyXrVk6nhNoIkg21515HUWseyqyr.jpg'),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKPoZOwrMpfBS47KK29ytG3dc3SIK0g1CG2A&s'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -170,7 +172,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Frozen Foods',
           imageUrl:
-              'https://media.istockphoto.com/id/1292299849/photo/frozen-food-in-the-freezer-frozen-vegetables-soup-ready-meals.jpg?s=2048x2048&w=is&k=20&c=l4dkl3fb1466T02bR48QyfQRGN5Tz6YV8tXxc5a9PWU='),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8eCJzHaAkjio0-6oNthhrV1l5j_KxH8mqIw&s'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -190,7 +192,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Beverages',
           imageUrl:
-              'https://media.istockphoto.com/id/1468173966/photo/cocktail-party-bright-fruity-and-citrus-alcoholic-drinks-with-gin-vodka-vermouth-and-juice.jpg?s=2048x2048&w=is&k=20&c=NrbO4hLtbksuKl9eVXElrvKrai9OFqObejfLpCAXVIY='),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTOPAIQFCYQEB22FsPP0x7IHpj_xfiND-eWQ&s'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -210,7 +212,7 @@ class AllTab extends StatelessWidget {
           ],
           title: 'Soft Drinks',
           imageUrl:
-              'https://media.istockphoto.com/id/470036142/photo/iced-metallic-cans.jpg?s=2048x2048&w=is&k=20&c=mdJPZ9y3MzbRAoanyC1Gt4-W4baHrrzCfskbUDAYfEU='),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPoQO2smSLmeHrb1LfH4PZND15NWW5EUam6w&s'),
       const CategoryItem(
           products: [
             ProductItem(
@@ -229,7 +231,7 @@ class AllTab extends StatelessWidget {
             ),
           ],
           title: 'Water',
-          imageUrl: 'https://img.icons8.com/color/96/milk-carton.png'),
+          imageUrl: 'https://icon2.cleanpng.com/20180401/zxw/avcd6uodd.webp'),
       // const CategoryItem(
       //     products: [
       //       ProductItem(
@@ -348,30 +350,31 @@ class AllTab extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Image.asset(
-            AppImages.mainBanner,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ProductSection(
-              title: 'Recommended',
-              products: myRecomendations,
-              isHerbal: false,
-              isShow: SizedBox(),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
+          // Image.asset(
+          //   AppImages.mainBanner,
+          //   width: double.infinity,
+          //   fit: BoxFit.cover,
+          // ),
 
           // Herbal Goodness Section
-
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Our Top Picks",
+              style: textTheme(context)
+                  .titleLarge
+                  ?.copyWith(fontWeight: FontWeight.w600),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Stack(
             alignment: Alignment.bottomCenter,
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               Column(
                 children: [
                   Container(
@@ -484,21 +487,21 @@ class AllTab extends StatelessWidget {
               onSectionTap: () {},
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: const SizedBox(
-              height: 250,
-              child: LargeImageList(
-                imageUrls: [
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMIh-OsMjJMEfnxl3IIhIr2bIWUmkEXRikWw&s"
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjjpf6uemrYZC16p9XjA8xvqQfWRHMIXMKFA&s',
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8d2IYYe7usBxeyzKCyVESImqcCENieL1pLw&s',
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWvo5gawyT3ciPZz3TXAxpRYutChp7_VHqxg&s',
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbU0uYwyRqHXYWAaTC8UJOaQtBD4oizlCE2Q&s',
-                ],
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 16.0),
+          //   child: const SizedBox(
+          //     height: 250,
+          //     child: LargeImageList(
+          //       imageUrls: [
+          //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMIh-OsMjJMEfnxl3IIhIr2bIWUmkEXRikWw&s"
+          //             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjjpf6uemrYZC16p9XjA8xvqQfWRHMIXMKFA&s',
+          //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8d2IYYe7usBxeyzKCyVESImqcCENieL1pLw&s',
+          //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWvo5gawyT3ciPZz3TXAxpRYutChp7_VHqxg&s',
+          //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbU0uYwyRqHXYWAaTC8UJOaQtBD4oizlCE2Q&s',
+          //       ],
+          //     ),
+          //   ),
+          // ),
           const SizedBox(height: 20),
         ],
       ),
