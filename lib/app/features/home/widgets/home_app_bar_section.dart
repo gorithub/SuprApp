@@ -18,7 +18,6 @@ class HomeAppBarSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: const BoxDecoration(
         color: Color(0xFFFFF3D9),
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
       ),
       child: Row(
         children: [

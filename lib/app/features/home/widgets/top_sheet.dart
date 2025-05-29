@@ -66,7 +66,7 @@ class TopSheetWidget extends StatelessWidget {
                   Icons.headset_mic_outlined,
                   'Help',
                   () {
-                    context.pushNamed(AppRoute.helpcenter);
+                    context.pushNamed(AppRoute.helpCenterPage);
                   },
                 ),
                 _buildMenuItem(

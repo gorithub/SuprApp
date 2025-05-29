@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/all_services/coming_soon_page.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
@@ -9,10 +11,9 @@ class AllServicesPage extends StatelessWidget {
   void onServiceTap(BuildContext context, String service) {
     switch (service) {
       case 'Rides':
-        Navigator.pushNamed(context, AppRoute.enterPickUpLocationPage);
+        Navigator.pushNamed(context, AppRoute.rideHome);
         break;
       case 'Car Rental':
-      case 'Bike Rental':
       case 'Bike':
       case 'Box':
       case 'Send Money':
@@ -47,11 +48,9 @@ class AllServicesPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => onServiceTap(context, label),
       child: Container(
-        height: 100,
-        width: 100,
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         decoration: BoxDecoration(
-          color: const Color(0xFFFDF5EA),
+          color: AppColors.appGrey.withOpacity(0.5),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -80,22 +79,33 @@ class AllServicesPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 24),
+        const SizedBox(height: 10),
         Text(
           title,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
         const SizedBox(height: 12),
-        GridView.count(
-          crossAxisCount: 3,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
+        GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          children: items
-              .map((item) =>
-                  buildServiceTile(context, item['label']!, item['image']!))
-              .toList(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 25,
+            childAspectRatio: 0.8,
+            // crossAxisCount: 3, // 3 items per row
+            // crossAxisSpacing: 19, // Horizontal space between tiles
+            // mainAxisSpacing: 19, // Vertical space between tiles
+            // childAspectRatio: 1.4, // Width / Height ratio
+          ),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return buildServiceTile(
+              context,
+              items[index]['label']!,
+              items[index]['image']!,
+            );
+          },
         ),
       ],
     );
@@ -104,6 +114,35 @@ class AllServicesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: InkWell(
+            onTap: () {
+              context.pop();
+            },
+            child: Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.appGrey),
+                  borderRadius: BorderRadius.circular(7)),
+              child: const Icon(
+                Icons.arrow_back,
+                color: AppColors.darkGrey,
+                size: 20,
+              ),
+            ),
+          ),
+        ),
+        title: Text(
+          "All Services ",
+          style: textTheme(context)
+              .titleMedium
+              ?.copyWith(fontWeight: FontWeight.bold),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
@@ -112,20 +151,6 @@ class AllServicesPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const Icon(Icons.close, size: 24),
-                    ),
-                    const SizedBox(width: 12),
-                    const Text(
-                      'All Services',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
                 buildCategory(context, "Go Anywhere", [
                   {'label': 'Rides', 'image': 'rides.png'},
                   {'label': 'Car Rental', 'image': 'car_rental.png'},

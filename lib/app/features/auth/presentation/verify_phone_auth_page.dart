@@ -76,7 +76,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                context.pushNamed(AppRoute.helpcenter);
+                context.pushNamed(AppRoute.contactUsPage);
               },
               child: Container(
                 height: 50,
