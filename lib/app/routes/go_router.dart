@@ -61,7 +61,7 @@ import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.homePage}',
+    initialLocation: '/${AppRoute.foodPage}',
     routes: [
       GoRoute(
         path: '/${AppRoute.splashScreen}',
