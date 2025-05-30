@@ -380,8 +380,8 @@ class AllTab extends StatelessWidget {
                   Container(
                     height: 200,
                     width: double.infinity,
-                    child: Image.asset(
-                      AppImages.shampoBanner,
+                    child: Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3xTm9UN9Z5MDeTS4x8W6h3Pv02VbfOkse5w&s',
                       fit: BoxFit.cover,
                     ),
                   ),

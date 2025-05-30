@@ -483,31 +483,27 @@ class _FoodPageState extends State<FoodPage> {
                                         ],
                                       ),
                                       const SizedBox(height: 5),
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 8,
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8, vertical: 3),
+                                          decoration: BoxDecoration(
+                                            color: Colors.pink,
+                                            borderRadius:
+                                                BorderRadius.circular(5),
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 3),
-                                            decoration: BoxDecoration(
-                                              color: Colors.pink,
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                            ),
-                                            child: Text(
-                                                '50 % off just for items',
-                                                style: textTheme(context)
-                                                    .labelMedium
-                                                    ?.copyWith(
-                                                        color:
-                                                            colorScheme(context)
-                                                                .surface,
-                                                        fontWeight:
-                                                            FontWeight.w600)),
-                                          )
-                                        ],
+                                          child: Text('50 % off just for items',
+                                              style: textTheme(context)
+                                                  .labelMedium
+                                                  ?.copyWith(
+                                                      fontSize: 10,
+                                                      color:
+                                                          colorScheme(context)
+                                                              .surface,
+                                                      fontWeight:
+                                                          FontWeight.w600)),
+                                        ),
                                       )
                                     ]),
                               ),
@@ -535,14 +531,17 @@ class _FoodPageState extends State<FoodPage> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {},
-                        child: Container(
-                          height: size.height * 0.08,
-                          width: size.width * 0.2,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(brandsList[index]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Container(
+                            height: size.height * 0.08,
+                            width: size.width * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(brandsList[index]),
+                              ),
                             ),
                           ),
                         ),
@@ -736,6 +735,7 @@ class _FoodPageState extends State<FoodPage> {
                                                     style: textTheme(context)
                                                         .labelMedium
                                                         ?.copyWith(
+                                                            fontSize: 10,
                                                             color: colorScheme(
                                                                     context)
                                                                 .surface,

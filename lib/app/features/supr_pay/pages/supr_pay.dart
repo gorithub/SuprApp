@@ -112,7 +112,7 @@ class _SuprPayPageState extends State<SuprPayPage> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        '    We’re soon launching a wallet made for Blinkit,\ndesigned for smooth, one-tap checkouts. Stay tuned!',
+                        '    We’re soon launching a wallet made for Supr,\ndesigned for smooth, one-tap checkouts. Stay tuned!',
                         style: textTheme(context).bodySmall?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: colorScheme(context)
