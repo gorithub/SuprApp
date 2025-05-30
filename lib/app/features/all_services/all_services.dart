@@ -59,14 +59,14 @@ class AllServicesPage extends StatelessWidget {
             Image.asset(
               "assets/images/$image",
               fit: BoxFit.contain,
-              height: 50,
+              height: 40,
               width: 50,
             ),
             const SizedBox(height: 6),
             Text(
               label,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -92,7 +92,7 @@ class AllServicesPage extends StatelessWidget {
             crossAxisCount: 4,
             crossAxisSpacing: 10,
             mainAxisSpacing: 25,
-            childAspectRatio: 0.8,
+            childAspectRatio: 0.7,
             // crossAxisCount: 3, // 3 items per row
             // crossAxisSpacing: 19, // Horizontal space between tiles
             // mainAxisSpacing: 19, // Vertical space between tiles

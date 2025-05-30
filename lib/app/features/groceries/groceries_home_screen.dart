@@ -12,6 +12,7 @@ import 'package:suprapp/app/features/groceries/widgets/add_basket.dart';
 import 'package:suprapp/app/features/groceries/widgets/groceries_bottom_sheet.dart';
 import 'package:suprapp/app/features/groceries/widgets/grocery_home_tabs.dart';
 import 'package:suprapp/app/features/groceries/tabs/all_tab.dart';
+import 'package:suprapp/app/features/groceries/widgets/select_address_sheet.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 
 // ignore: must_be_immutable
@@ -158,67 +159,75 @@ class GroceriesHomeScreen extends StatelessWidget {
   }
 
   Widget _buildCollapsedTitle(context) {
-    return GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          builder: (context) => DeliveryLocationSheet(),
-        );
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    'Dubai',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        color: Colors.black),
-                  ),
-                  Icon(Icons.keyboard_arrow_down_outlined, color: Colors.black),
-                ],
-              ),
-              Text(
-                'Dubai',
-                style: TextStyle(color: Colors.black, fontSize: 12),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                'Delivering in',
-                style: TextStyle(
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      InkWell(
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            builder: (_) => const SelectAddressSheet(),
+          );
+        },
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Mona',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12),
-              ),
-              Row(
-                children: [
-                  Icon(Icons.flash_on_outlined, size: 15, color: Colors.black),
-                  SizedBox(width: 4),
-                  Text(
-                    '27 mins',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
                   ),
-                ],
+                ),
+                SizedBox(width: 4),
+                Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  size: 20,
+                  color: Colors.black54,
+                ),
+              ],
+            ),
+            SizedBox(height: 2),
+            Text(
+              'Mona 63, Business Area',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey,
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
-    );
+      const Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              'Delivering in',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black54,
+              ),
+            ),
+            SizedBox(height: 2),
+            Row(
+              children: [
+                Icon(Icons.flash_on_outlined, color: Colors.black, size: 18),
+                SizedBox(width: 4),
+                Text(
+                  '18 mins',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            )
+          ]),
+    ]);
   }
 }
 
