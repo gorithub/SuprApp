@@ -178,7 +178,7 @@ class ShopByCategoryGrid extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 70, // Increased height for image
+                    height: 50, // Increased height for image
                     width: double.infinity,
                     child: CachedNetworkImage(
                       imageUrl: item.imageUrl,
@@ -188,7 +188,7 @@ class ShopByCategoryGrid extends StatelessWidget {
                         highlightColor: Colors.grey.shade100,
                         child: Container(
                           width: double.infinity,
-                          height: 70,
+                          height: 50,
                           color: Colors.grey[300],
                         ),
                       ),

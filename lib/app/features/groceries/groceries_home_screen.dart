@@ -194,9 +194,9 @@ class GroceriesHomeScreen extends StatelessWidget {
             Text(
               'Mona 63, Business Area',
               style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-              ),
+                  fontSize: 10,
+                  color: Colors.grey,
+                  overflow: TextOverflow.ellipsis),
             ),
           ],
         ),
