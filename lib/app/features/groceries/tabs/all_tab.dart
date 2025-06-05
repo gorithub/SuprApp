@@ -3,7 +3,6 @@ import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/features/groceries/models/item_model.dart';
 import 'package:suprapp/app/features/groceries/models/product_model.dart';
 import 'package:suprapp/app/features/groceries/widgets/category_grid.dart';
-import 'package:suprapp/app/features/groceries/widgets/large_image_listview.dart';
 import 'package:suprapp/app/features/groceries/widgets/product_section.dart';
 
 import '../../../core/constants/global_variables.dart';

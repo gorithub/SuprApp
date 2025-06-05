@@ -5,12 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/dine_out/widgets/custom_card.dart';
 import 'package:suprapp/app/features/food/pages/check_out_page.dart';
 import 'package:suprapp/app/features/groceries/controllers/product_quantity_provider.dart';
 import 'package:suprapp/app/features/groceries/models/product_model.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
-import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 void showAddNoteToCaptainBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -419,15 +417,6 @@ class BasketScreen extends StatelessWidget {
                                                   ],
                                                 ),
                                                 const SizedBox(height: 4),
-                                                // Optional: Show total price
-                                                // Text(
-                                                //   '₹${totalPrice.toStringAsFixed(2)}',
-                                                //   style: const TextStyle(
-                                                //     fontSize: 14,
-                                                //     color: Colors.green,
-                                                //     fontWeight: FontWeight.w600,
-                                                //   ),
-                                                // ),
                                               ],
                                             ),
                                           )

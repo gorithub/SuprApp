@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/groceries/controllers/product_quantity_provider.dart';
 
 class ProductCard extends StatelessWidget {

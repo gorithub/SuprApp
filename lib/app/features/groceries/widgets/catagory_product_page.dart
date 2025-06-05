@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:suprapp/app/features/groceries/controllers/herbal_provider.dart';
 import 'package:suprapp/app/features/groceries/models/item_model.dart';
 import 'package:suprapp/app/features/groceries/widgets/detail_screen.dart';
 import 'package:suprapp/app/features/groceries/widgets/product_card.dart';

@@ -1,55 +1,3 @@
-// class ProductModleherbal {
-//   final String image;
-//   final String title;
-//   String? discription;
-//   final String price;
-//   final int? currentTotalItem;
-//   final int? currentTotalPrice;
-
-//   final String condition;
-//   final String cool;
-//   bool? isHerbal;
-//   String? ginger;
-//   String? lenongrass;
-//   String? lemonPeels;
-//   String? licorce;
-//   String? limonmrytle;
-//   String? calories;
-//   String? protein;
-//   String? fate;
-//   String? sugar;
-//   String? old;
-//   final String discount;
-//   final String id;
-//   ProductModleherbal copyWith({
-//     int? currentTotalItem,
-//     int? currentTotalPrice,
-//   })
-//   ProductModleherbal({
-//     required this.image,
-//     required this.title,
-//     this.discription,
-//     this.currentTotalItem,
-//     this.currentTotalPrice,
-//     required this.price,
-//     required this.condition,
-//     required this.cool,
-//     this.ginger,
-//     this.lenongrass,
-//     this.lemonPeels,
-//     this.licorce,
-//     this.limonmrytle,
-//     this.calories,
-//     this.protein,
-//     this.isHerbal,
-//     this.fate,
-//     this.sugar,
-//     this.old,
-//     required this.discount,
-//     required this.id,
-//   });
-// }
-
 class ProductModleherbal {
   final String image;
   final String title;
@@ -309,6 +257,7 @@ List<ProductModleherbal> bundleOffers = [
       title: "Deter Bundle Pack 5 pieces ",
       price: "28.00",
       condition: "Storage Condition",
+      isHerbal: false,
       cool: "Cool & dry, below 25C",
       old: "22.00",
       discount: "-18%",
