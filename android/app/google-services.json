@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "7744689687",
+    "firebase_url": "https://supr-app-default-rtdb.firebaseio.com",
+    "project_id": "supr-app",
+    "storage_bucket": "supr-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7744689687:android:014e0762dfc9eb750a2e52",
+        "android_client_info": {
+          "package_name": "com.example.suprapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7744689687-r6r7nb3h37fqv2hgl2nqpnnat75u9cjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOePPAy-8u97YA9UO3ztKi8aAz2J9CUb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7744689687-r6r7nb3h37fqv2hgl2nqpnnat75u9cjv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
