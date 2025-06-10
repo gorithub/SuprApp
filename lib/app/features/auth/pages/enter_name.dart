@@ -1,14 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
 import 'package:suprapp/app/features/auth/provider/name_input_provider.dart';
-import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
-import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class EnterNamePage extends StatefulWidget {
@@ -23,7 +21,7 @@ class _EnterNamePageState extends State<EnterNamePage> {
   @override
   Widget build(BuildContext context) {
     final nameProvider = context.watch<NameInputProvider>();
-
+    final authProvider = Provider.of<AuthProviders>(context);
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -92,10 +90,12 @@ class _EnterNamePageState extends State<EnterNamePage> {
               width: 300,
               child: ElevatedButton(
                 onPressed: nameProvider.isValid
-                    ? () {
-                        Provider.of<AuthProvider>(context, listen: false)
-                            .saveUserToFirestore(name: name.text, context);
-                        context.pushNamed(AppRoute.homePage);
+                    ? () async {
+                        final firebaseUser = FirebaseAuth.instance.currentUser;
+                        await authProvider.saveUserToFirestore(
+                            name: name.text,
+                            context,
+                            email: firebaseUser?.email);
                       }
                     : null,
                 style: ElevatedButton.styleFrom(

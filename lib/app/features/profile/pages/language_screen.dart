@@ -29,15 +29,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
           children: [
-            GestureDetector(
-              onTap: () {
-                languageController.selectLanguage("Arabic");
-              },
-              child: _buildLanguageOption(
-                'Arabic',
-                languageController.selectedLanguage == 'Arabic',
-              ),
-            ),
             const SizedBox(height: 8),
             GestureDetector(
               onTap: () {

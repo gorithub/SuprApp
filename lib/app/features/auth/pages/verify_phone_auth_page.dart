@@ -48,7 +48,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<OTPProvider>(context);
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final authProvider = Provider.of<AuthProviders>(context, listen: false);
     final bool isOtpEmpty =
         _controllers.any((controller) => controller.text.isEmpty);
 
@@ -180,8 +180,11 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                     ),
                 children: [
                   const TextSpan(
-                    text:
-                        'You will receive an SMS with verification pin on +93143523154  ',
+                      text:
+                          'You will receive an SMS with verification pin on '),
+                  TextSpan(
+                    text: '${authProvider.phone} ',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
                     text: 'Edit number',

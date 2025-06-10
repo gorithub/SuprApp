@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/core/constants/static_data.dart';
+import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
 import 'package:suprapp/app/features/profile/controller/gender_controller.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
@@ -11,6 +13,7 @@ class GenderBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<GenderProvider>(context);
+    final authprovider = Provider.of<AuthProviders>(context);
     String tempSelectedGender = provider.selectedGender; // Temporary value
 
     return StatefulBuilder(
@@ -57,8 +60,21 @@ class GenderBottomSheet extends StatelessWidget {
               const SizedBox(height: 10),
               CustomElevatedButton(
                 text: "Update",
-                onPressed: () {
+                onPressed: () async {
                   provider.setGender(tempSelectedGender);
+
+                  final dateBirth = StaticData.model?.dateOfBirth ?? '';
+                  final gmail = StaticData.model?.email ?? '';
+                  final phone = StaticData.model!.phone ?? '';
+                  final name = StaticData.model!.name;
+                  await authprovider.updateDobAndGender(
+                      name: name,
+                      context: context,
+                      dob:
+                          dateBirth, // Use current DOB or '' if not yet selected
+                      gender: tempSelectedGender,
+                      email: gmail,
+                      phoneNo: phone);
                   context.pop();
                 },
               ),

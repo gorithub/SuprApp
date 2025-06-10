@@ -1,12 +1,12 @@
 import 'package:suprapp/app/core/constants/app_images.dart';
 
-class CarsModel {
+class BikeModel {
   final String image;
   final String title;
   final String subtitle;
   final String price;
   final String schdule;
-  CarsModel(
+  BikeModel(
       {required this.image,
       required this.title,
       required this.subtitle,
@@ -14,27 +14,27 @@ class CarsModel {
       required this.schdule});
 }
 
-List<CarsModel> cars = [
-  CarsModel(
-      image: AppImages.car1,
+List<BikeModel> bike = [
+  BikeModel(
+      image: AppImages.bikeImage,
       title: "Go Premium 5-hr",
       subtitle: "300 km tak ki savvari",
       price: "INR 1368",
       schdule: "4 mint "),
-  CarsModel(
-      image: AppImages.car2,
+  BikeModel(
+      image: AppImages.bikeImage,
       title: "Go ",
       subtitle: "300 km tak ki savvari",
       price: "INR 1368",
       schdule: "4 mint "),
-  CarsModel(
-      image: AppImages.car1,
+  BikeModel(
+      image: AppImages.bikeImage,
       title: "Go Mini",
       subtitle: "300 km tak ki savvari",
       price: "INR 1368",
       schdule: "4 mint "),
-  CarsModel(
-      image: AppImages.car1,
+  BikeModel(
+      image: AppImages.bikeImage,
       title: "Bike",
       subtitle: "300 km tak ki savvari",
       price: "INR 1368",

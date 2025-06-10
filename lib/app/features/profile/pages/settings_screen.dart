@@ -18,15 +18,15 @@ class ProfileSettingsScreen extends StatelessWidget {
                 ?.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
-                alignment: Alignment.topCenter,
+                alignment: Alignment.topLeft,
                 child: Text('Profile Settings',
                     style: textTheme(context)
-                        .headlineSmall
+                        .titleLarge
                         ?.copyWith(fontWeight: FontWeight.bold))),
             const SizedBox(height: 10),
             ListView.builder(
