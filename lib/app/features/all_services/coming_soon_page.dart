@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
+import 'package:suprapp/app/features/auth/pages/biometric_setup_page.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 import '../../core/constants/app_colors.dart';

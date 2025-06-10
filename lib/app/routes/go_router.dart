@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suprapp/app/features/auth/presentation/enter_name.dart';
+import 'package:suprapp/app/features/auth/pages/enter_name.dart';
 import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
@@ -54,15 +54,15 @@ import 'package:suprapp/app/features/rides/pages/your_ride.dart';
 import 'package:suprapp/app/features/supr_pay/pages/supr_pay.dart';
 import 'package:suprapp/app/routes/error_route.dart';
 import 'package:suprapp/app/routes/route_transition.dart';
-import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
-import 'package:suprapp/app/features/auth/presentation/phone_auth_page.dart';
-import 'package:suprapp/app/features/auth/presentation/verify_phone_auth_page.dart';
+import 'package:suprapp/app/features/auth/pages/biometric_setup_page.dart';
+import 'package:suprapp/app/features/auth/pages/phone_auth_page.dart';
+import 'package:suprapp/app/features/auth/pages/verify_phone_auth_page.dart';
 import 'package:suprapp/app/features/home/home.dart';
 import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.homePage}',
+    initialLocation: '/${AppRoute.splashScreen}',
     routes: [
       GoRoute(
         path: '/${AppRoute.splashScreen}',

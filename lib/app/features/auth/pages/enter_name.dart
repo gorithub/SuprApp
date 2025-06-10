@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
 import 'package:suprapp/app/features/auth/provider/name_input_provider.dart';
 import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
@@ -92,6 +93,8 @@ class _EnterNamePageState extends State<EnterNamePage> {
               child: ElevatedButton(
                 onPressed: nameProvider.isValid
                     ? () {
+                        Provider.of<AuthProvider>(context, listen: false)
+                            .saveUserToFirestore(name: name.text, context);
                         context.pushNamed(AppRoute.homePage);
                       }
                     : null,
