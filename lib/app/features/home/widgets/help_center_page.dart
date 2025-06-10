@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
+import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 
@@ -176,10 +177,84 @@ class _HelpCenterPageState extends State<HelpCenterPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Help with account",
+                            "Get help with recent activity",
                             style: textTheme(context)
                                 .titleLarge
                                 ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: DecorationImage(
+                                    image: AssetImage(AppImages.rides),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Ride to Dubai Mall ',
+                                      style: textTheme(context)
+                                          .titleSmall
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      'Today 11:49 am',
+                                      style: textTheme(context)
+                                          .bodyLarge
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.darkGrey
+                                                  .withOpacity(0.8)),
+                                    ),
+                                    Text(
+                                      'INR 200',
+                                      style: textTheme(context)
+                                          .bodyLarge
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.darkGrey
+                                                  .withOpacity(0.8)),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.timer_outlined,
+                                            size: 20,
+                                            color: AppColors.darkGrey
+                                                .withOpacity(0.8)),
+                                        TextButton(
+                                          onPressed: () {},
+                                          child: Text(
+                                            'Coming up',
+                                            style: textTheme(context)
+                                                .titleSmall
+                                                ?.copyWith(
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 16,
+                              ),
+                            ],
                           ),
                           const SizedBox(height: 8),
                           _buildHelpItem(
@@ -267,10 +342,84 @@ class _HelpCenterPageState extends State<HelpCenterPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Help with Rides",
+                            "Get help with recent activity",
                             style: textTheme(context)
                                 .titleLarge
                                 ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: DecorationImage(
+                                    image: AssetImage(AppImages.rides),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Ride to Dubai Mall ',
+                                      style: textTheme(context)
+                                          .titleSmall
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      'Today 11:49 am',
+                                      style: textTheme(context)
+                                          .bodyLarge
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.darkGrey
+                                                  .withOpacity(0.8)),
+                                    ),
+                                    Text(
+                                      'INR 200',
+                                      style: textTheme(context)
+                                          .bodyLarge
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.darkGrey
+                                                  .withOpacity(0.8)),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.timer_outlined,
+                                            size: 20,
+                                            color: AppColors.darkGrey
+                                                .withOpacity(0.8)),
+                                        TextButton(
+                                          onPressed: () {},
+                                          child: Text(
+                                            'Coming up',
+                                            style: textTheme(context)
+                                                .titleSmall
+                                                ?.copyWith(
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 16,
+                              ),
+                            ],
                           ),
                           const SizedBox(height: 8),
                           _buildHelpItem(

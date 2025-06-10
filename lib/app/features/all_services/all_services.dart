@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/all_services/coming_soon_page.dart';
+import 'package:suprapp/app/features/super_quick_electronics/quickelec_main_screen.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class AllServicesPage extends StatelessWidget {
@@ -11,16 +12,33 @@ class AllServicesPage extends StatelessWidget {
   void onServiceTap(BuildContext context, String service) {
     switch (service) {
       case 'Rides':
-        Navigator.pushNamed(context, AppRoute.rideHome);
+        context.pushNamed(AppRoute.rideHome);
         break;
       case 'Car Rental':
       case 'Bike':
+        context.pushNamed(AppRoute.bikeRideHome);
+        break;
       case 'Box':
       case 'Send Money':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ComingSoonPage()));
+        break;
       case 'Bills & Recharges':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ComingSoonPage()));
+        break;
       case 'Gaza & Lebanon':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ComingSoonPage()));
+        break;
       case 'Pay Someone':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ComingSoonPage()));
+        break;
       case 'Home Services':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ComingSoonPage()));
+        break;
       case 'Supr Live':
         Navigator.push(
             context, MaterialPageRoute(builder: (_) => ComingSoonPage()));
@@ -38,8 +56,8 @@ class AllServicesPage extends StatelessWidget {
         //  Navigator.pushNamed(context, AppRoutes.shopsScreen);
         break;
       case 'Electronics':
-        // Navigator.push(context,
-        //     MaterialPageRoute(builder: (_) => QuickElectronicsScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (_) => QuickElectronicsScreen()));
         break;
     }
   }

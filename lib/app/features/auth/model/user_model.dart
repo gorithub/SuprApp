@@ -9,11 +9,17 @@ class UserModel {
   final String? phone;
   final DateTime? createdAt;
   final String userid;
+  final String? dateOfBirth;
+  final String? email;
+  final String? gender;
   UserModel({
     required this.name,
     this.phone,
     this.createdAt,
     required this.userid,
+    this.dateOfBirth,
+    this.email,
+    this.gender,
   });
 
   UserModel copyWith({
@@ -21,12 +27,18 @@ class UserModel {
     String? phone,
     DateTime? createdAt,
     String? userid,
+    String? dateOfBirth,
+    String? email,
+    String? gender,
   }) {
     return UserModel(
       name: name ?? this.name,
       phone: phone ?? this.phone,
       createdAt: createdAt ?? this.createdAt,
       userid: userid ?? this.userid,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      email: email ?? this.email,
+      gender: gender ?? this.gender,
     );
   }
 
@@ -36,6 +48,9 @@ class UserModel {
       'phone': phone,
       'createdAt': createdAt?.millisecondsSinceEpoch,
       'userid': userid,
+      'dateOfBirth': dateOfBirth,
+      'email': email,
+      'gender': gender,
     };
   }
 
@@ -47,6 +62,10 @@ class UserModel {
           ? DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int)
           : null,
       userid: map['userid'] as String,
+      dateOfBirth:
+          map['dateOfBirth'] != null ? map['dateOfBirth'] as String : null,
+      email: map['email'] != null ? map['email'] as String : null,
+      gender: map['gender'] != null ? map['gender'] as String : null,
     );
   }
 
@@ -57,7 +76,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(name: $name, phone: $phone, createdAt: $createdAt, userid: $userid)';
+    return 'UserModel(name: $name, phone: $phone, createdAt: $createdAt, userid: $userid, dateOfBirth: $dateOfBirth, email: $email, gender: $gender)';
   }
 
   @override
@@ -67,7 +86,10 @@ class UserModel {
     return other.name == name &&
         other.phone == phone &&
         other.createdAt == createdAt &&
-        other.userid == userid;
+        other.userid == userid &&
+        other.dateOfBirth == dateOfBirth &&
+        other.email == email &&
+        other.gender == gender;
   }
 
   @override
@@ -75,6 +97,9 @@ class UserModel {
     return name.hashCode ^
         phone.hashCode ^
         createdAt.hashCode ^
-        userid.hashCode;
+        userid.hashCode ^
+        dateOfBirth.hashCode ^
+        email.hashCode ^
+        gender.hashCode;
   }
 }

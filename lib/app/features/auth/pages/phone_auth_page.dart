@@ -134,9 +134,8 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                     );
                     return;
                   }
-                  Provider.of<AuthProvider>(context, listen: false)
+                  Provider.of<AuthProviders>(context, listen: false)
                       .sendWhatsAppOtp(context);
-                  // context.pushNamed(AppRoute.verifyPhoneAuthPage);
                 },
               ),
             const SizedBox(height: 50)

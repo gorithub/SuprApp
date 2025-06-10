@@ -1,9 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/core/constants/shared_pref.dart';
 import 'package:suprapp/app/core/constants/static_data.dart';
 import 'package:suprapp/app/core/utils/custom_snackbar.dart';
 import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
@@ -19,6 +20,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProviders>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorScheme(context).onPrimary,
@@ -178,11 +180,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSettingItem(
                   leading: const Icon(Icons.logout),
                   'Logout',
-                  onTap: () {
+                  onTap: () async {
+                    context.loaderOverlay.show();
+
+                    authProvider.logoutUser();
+
                     showSnackbar(
                       message: "Logout successful!",
                     );
-                    context.pushNamed(AppRoute.phoneAuthPage);
+                    context.loaderOverlay.hide();
+                    context.pushReplacementNamed(AppRoute.splashScreen);
                   },
                 ),
               ]),

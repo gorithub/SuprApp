@@ -7,6 +7,7 @@ import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
 import 'package:suprapp/app/features/auth/provider/name_input_provider.dart';
 import 'package:suprapp/app/features/auth/provider/otp_provider.dart';
 import 'package:suprapp/app/features/auth/provider/phone_input_provider.dart';
+import 'package:suprapp/app/features/bike_ride/provider/bike_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_color_provider.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
@@ -122,7 +123,10 @@ class MyApp extends StatelessWidget {
           create: (_) => CartController(),
         ),
         ChangeNotifierProvider(
-          create: (_) => AuthProvider(),
+          create: (_) => AuthProviders(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => BikeProvider(),
         ),
       ],
       child: GlobalLoaderOverlay(
