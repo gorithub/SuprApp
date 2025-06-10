@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
+import 'package:suprapp/app/features/auth/pages/biometric_setup_page.dart';
 import 'package:suprapp/app/features/home/widgets/custom_icon_button.dart';
 import 'package:suprapp/app/features/home/widgets/home_app_bar_section.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';

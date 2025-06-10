@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suprapp/app/core/constants/static_data.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_date_picker_bottom_sheet.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_gender_bottom_sheet.dart';
 import 'package:suprapp/app/routes/go_router.dart';
@@ -60,10 +61,12 @@ class ProfileModel {
 
 List<ProfileModel> myprofile = [
   ProfileModel(
-      name: "Name", yourName: "Shahid", routename: AppRoute.updateNamePage),
+      name: "Name",
+      yourName: StaticData.model!.name,
+      routename: AppRoute.updateNamePage),
   ProfileModel(
       name: "Phone Number",
-      yourName: "09876578",
+      yourName: StaticData.model!.phone!,
       routename: AppRoute.updatePhonPage),
   ProfileModel(
       name: "Email",
