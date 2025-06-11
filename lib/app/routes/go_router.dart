@@ -558,7 +558,7 @@ class MyAppRouter {
               )),
       GoRoute(
           name: AppRoute.shopScreen,
-          path: '/${AppRoute.bikeRideHome}',
+          path: '/${AppRoute.shopScreen}',
           pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
                 context: context,
                 state: state,
