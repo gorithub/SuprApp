@@ -33,7 +33,7 @@ class CategoriesGridview extends StatelessWidget {
         context.pushNamed(AppRoute.groceryHomeScreen);
         break;
       case 'Shops':
-        // Navigator.pushNamed(context, AppRoutes.shopsScreen);
+        context.pushNamed(AppRoute.shopScreen);
         break;
       case 'Send Money':
         Navigator.push(

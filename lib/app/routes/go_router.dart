@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suprapp/app/features/auth/presentation/enter_name.dart';
+import 'package:suprapp/app/features/auth/pages/enter_name.dart';
+import 'package:suprapp/app/features/bike_ride/pages/bike_ride_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/cream_plus.dart';
 import 'package:suprapp/app/features/dine_out/pages/detail_dine_out.dart';
@@ -11,7 +12,6 @@ import 'package:suprapp/app/features/dine_out/pages/faqs_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/filter_widget.dart';
 import 'package:suprapp/app/features/dine_out/pages/restaurent_photos.dart';
 import 'package:suprapp/app/features/dine_out/pages/terms_condition.dart';
-import 'package:suprapp/app/features/dine_out/pages/menu_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/offer_page.dart';
 import 'package:suprapp/app/features/dine_out/pages/usefull_bit.dart';
 import 'package:suprapp/app/features/food/pages/food_page.dart';
@@ -25,7 +25,6 @@ import 'package:suprapp/app/features/home/widgets/help_center_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
-import 'package:suprapp/app/features/profile/pages/change_password_screen.dart';
 import 'package:suprapp/app/features/profile/pages/contact_screen.dart';
 import 'package:suprapp/app/features/profile/pages/delete_account_screen.dart';
 import 'package:suprapp/app/features/profile/pages/help_center_screen.dart';
@@ -51,20 +50,22 @@ import 'package:suprapp/app/features/rides/pages/save_location_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_city_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_page.dart';
 import 'package:suprapp/app/features/rides/pages/your_ride.dart';
+import 'package:suprapp/app/features/shops/pages/shops_screen.dart';
 import 'package:suprapp/app/features/supr_pay/pages/supr_pay.dart';
 import 'package:suprapp/app/routes/error_route.dart';
 import 'package:suprapp/app/routes/route_transition.dart';
-import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
-import 'package:suprapp/app/features/auth/presentation/phone_auth_page.dart';
-import 'package:suprapp/app/features/auth/presentation/verify_phone_auth_page.dart';
+import 'package:suprapp/app/features/auth/pages/biometric_setup_page.dart';
+import 'package:suprapp/app/features/auth/pages/phone_auth_page.dart';
+import 'package:suprapp/app/features/auth/pages/verify_phone_auth_page.dart';
 import 'package:suprapp/app/features/home/home.dart';
 import 'package:suprapp/app/get_started/pages/splash_screen.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
-    initialLocation: '/${AppRoute.homePage}',
+    initialLocation: '/${AppRoute.splashScreen}',
     routes: [
       GoRoute(
+        name: AppRoute.splashScreen,
         path: '/${AppRoute.splashScreen}',
         pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
           context: context,
@@ -170,15 +171,7 @@ class MyAppRouter {
           child: const ProfileSettingsScreen(),
         ),
       ),
-      GoRoute(
-        name: AppRoute.changePasswordPage,
-        path: '/${AppRoute.changePasswordPage}',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-          context: context,
-          state: state,
-          child: const ChangePasswordScreen(),
-        ),
-      ),
+
       GoRoute(
         name: AppRoute.contactpage,
         path: '/${AppRoute.contactpage}',
@@ -554,6 +547,23 @@ class MyAppRouter {
                 state: state,
                 child: const ManageBusinessProfilePage(),
               )),
+
+      GoRoute(
+          name: AppRoute.bikeRideHome,
+          path: '/${AppRoute.bikeRideHome}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const BikeRidePage(),
+              )),
+      GoRoute(
+          name: AppRoute.shopScreen,
+          path: '/${AppRoute.shopScreen}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const ShopsScreen(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -634,4 +644,9 @@ class AppRoute {
 
   //!---- Supr pay Section---- !//
   static const String suprPayPage = 'supr-pay-page';
+
+  //!---- Bike Rides ---- !//
+  static const String bikeRideHome = 'bike-ride-home-page';
+  //!----Shops ---- !//
+  static const String shopScreen = 'shops-screen';
 }

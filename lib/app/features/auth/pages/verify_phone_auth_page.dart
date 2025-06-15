@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
 import 'package:suprapp/app/features/auth/provider/otp_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
@@ -19,8 +20,8 @@ class VerifyPhoneAuthPage extends StatefulWidget {
 
 class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
   final List<TextEditingController> _controllers =
-      List.generate(4, (_) => TextEditingController());
-  final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
+      List.generate(6, (_) => TextEditingController());
+  final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
   @override
   void initState() {
     super.initState();
@@ -34,7 +35,8 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
 
   void _handleChange(BuildContext context, String value, int index) {
     final provider = Provider.of<OTPProvider>(context, listen: false);
-    if (value.isNotEmpty && index < 3) {
+
+    if (value.isNotEmpty && index < _focusNodes.length - 1) {
       FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
       provider.moveFocus(index, true);
     } else if (value.isEmpty && index > 0) {
@@ -46,6 +48,7 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<OTPProvider>(context);
+    final authProvider = Provider.of<AuthProviders>(context, listen: false);
     final bool isOtpEmpty =
         _controllers.any((controller) => controller.text.isEmpty);
 
@@ -138,8 +141,18 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                   );
                   return;
                 }
+                final enteredOtp = _controllers.map((e) => e.text).join();
 
-                context.pushNamed(AppRoute.enterNamePage);
+                if (enteredOtp == authProvider.otp) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("OTP Verified Successfully")),
+                  );
+                  context.pushNamed(AppRoute.enterNamePage);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Incorrect OTP")),
+                  );
+                }
               },
             ),
             const SizedBox(height: 50)
@@ -167,8 +180,11 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
                     ),
                 children: [
                   const TextSpan(
-                    text:
-                        'You will receive an SMS with verification pin on +93143523154  ',
+                      text:
+                          'You will receive an SMS with verification pin on '),
+                  TextSpan(
+                    text: '${authProvider.phone} ',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
                     text: 'Edit number',
@@ -187,11 +203,11 @@ class _VerifyPhoneAuthPageState extends State<VerifyPhoneAuthPage> {
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(4, (index) {
+              children: List.generate(6, (index) {
                 return AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  width: 70,
-                  height: 60,
+                  width: 50,
+                  height: 50,
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(

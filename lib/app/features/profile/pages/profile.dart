@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/core/constants/shared_pref.dart';
+import 'package:suprapp/app/core/constants/static_data.dart';
 import 'package:suprapp/app/core/utils/custom_snackbar.dart';
+import 'package:suprapp/app/features/auth/provider/auth_provider.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -15,6 +20,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProviders>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorScheme(context).onPrimary,
@@ -47,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              Text("Khani",
+              Text(StaticData.model!.name,
                   style: textTheme(context)
                       .headlineLarge
                       ?.copyWith(fontWeight: FontWeight.bold)),
@@ -58,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSettingItem(
                   leading: const Icon(Icons.person_outline_outlined),
                   'Personal Information',
-                  subtitle: "+914567893 ",
+                  subtitle: StaticData.model!.phone,
                   onTap: () {
                     context.pushNamed(AppRoute.personalInfo);
                   },
@@ -174,11 +180,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSettingItem(
                   leading: const Icon(Icons.logout),
                   'Logout',
-                  onTap: () {
+                  onTap: () async {
+                    context.loaderOverlay.show();
+
+                    authProvider.logoutUser();
+
                     showSnackbar(
                       message: "Logout successful!",
                     );
-                    context.pushNamed(AppRoute.phoneAuthPage);
+                    context.loaderOverlay.hide();
+                    context.pushReplacementNamed(AppRoute.splashScreen);
                   },
                 ),
               ]),

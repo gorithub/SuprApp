@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/core/theme/color_scheme.dart';
-import 'package:suprapp/app/features/auth/presentation/biometric_setup_page.dart';
+import 'package:suprapp/app/features/auth/pages/biometric_setup_page.dart';
 import 'package:suprapp/app/features/dine_out/controller/state_controller.dart';
 import 'package:suprapp/app/features/dine_out/widgets/custom_bottomsheett_subscription.dart';
 import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';

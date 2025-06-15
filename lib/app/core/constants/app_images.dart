@@ -6,6 +6,7 @@ class AppImages {
   static const String dineout = 'assets/images/dineout.png';
   static const String groceries = 'assets/images/groceries.png';
   static const String shops = 'assets/images/shops.png';
+  static const String bikeImage = 'assets/images/bike.png';
   static const String sendmoney = 'assets/images/sendmoney.png';
   static const String allservices = 'assets/images/allservices.png';
   static const String pharmacy = 'assets/images/pharmacy.png';
