@@ -225,7 +225,7 @@ class _SearchPageState extends State<SearchPage> {
                                                             const Color
                                                                 .fromARGB(255,
                                                                 222, 36, 23)),
-                                                    fixedSize: MaterialStateProperty
+                                                    fixedSize: WidgetStateProperty
                                                         .all(Size(130,
                                                             50)), // width: 150, height: 50
                                                   ),
@@ -249,10 +249,9 @@ class _SearchPageState extends State<SearchPage> {
                                                               colorScheme(
                                                                       context)
                                                                   .primary),
-                                                      fixedSize:
-                                                          MaterialStateProperty
-                                                              .all(Size(130,
-                                                                  50)), // width: 150, height: 50
+                                                      fixedSize: WidgetStateProperty
+                                                          .all(Size(130,
+                                                              50)), // width: 150, height: 50
                                                     ),
                                                     child: Text(
                                                       'Yes',

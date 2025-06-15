@@ -5,7 +5,6 @@ import 'package:suprapp/app/core/constants/global_variables.dart';
 
 import 'package:suprapp/app/features/rides/widgets/arrow_back_leading.dart';
 import 'package:suprapp/app/features/rides/widgets/cancel_custom_bottom_sheet.dart';
-import 'package:suprapp/app/routes/go_router.dart';
 
 class ManageRidePage extends StatefulWidget {
   const ManageRidePage({super.key});

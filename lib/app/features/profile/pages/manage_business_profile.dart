@@ -217,9 +217,8 @@ class _ManageBusinessProfilePageState extends State<ManageBusinessProfilePage> {
                                         backgroundColor: WidgetStatePropertyAll(
                                             const Color.fromARGB(
                                                 255, 222, 36, 23)),
-                                        fixedSize: MaterialStateProperty.all(
-                                            Size(130,
-                                                50)), // width: 150, height: 50
+                                        fixedSize: WidgetStateProperty.all(Size(
+                                            130, 50)), // width: 150, height: 50
                                       ),
                                       child: Text(
                                         'No',
@@ -237,7 +236,7 @@ class _ManageBusinessProfilePageState extends State<ManageBusinessProfilePage> {
                                           backgroundColor:
                                               WidgetStatePropertyAll(
                                                   colorScheme(context).primary),
-                                          fixedSize: MaterialStateProperty.all(
+                                          fixedSize: WidgetStateProperty.all(
                                               Size(130,
                                                   50)), // width: 150, height: 50
                                         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_color_provider.dart';
-import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
 
 class FilterButtonsWidget extends StatelessWidget {
   final String label;

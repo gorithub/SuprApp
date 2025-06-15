@@ -6,16 +6,12 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
-import 'package:suprapp/app/features/dine_out/pages/another_restorant.dart';
 import 'package:suprapp/app/features/dine_out/pages/restaurent_detail_page.dart';
-import 'package:suprapp/app/features/dine_out/widgets/custom_card.dart';
 import 'package:suprapp/app/features/dine_out/widgets/filter_food.dart';
 import 'package:suprapp/app/features/dine_out/widgets/restaurent_widget.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/features/dine_out/controller/filter_controller.dart';
-import 'package:suprapp/app/features/dine_out/widgets/filterwidget.dart';
-import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
 import 'package:suprapp/app/shared/widgets/custom_textformfield.dart';
 
 class DineOutPage extends StatefulWidget {

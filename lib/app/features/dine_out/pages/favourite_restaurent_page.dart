@@ -6,7 +6,6 @@ import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/provider/view_toggler_provider.dart';
 import 'package:suprapp/app/features/dine_out/widgets/remove_fav_bottom_sheet.dart';
 import 'package:suprapp/app/features/dine_out/widgets/restaurent_card.dart';
-import 'package:suprapp/app/routes/go_router.dart';
 
 class FavouriteRestaurentPage extends StatefulWidget {
   const FavouriteRestaurentPage({super.key});

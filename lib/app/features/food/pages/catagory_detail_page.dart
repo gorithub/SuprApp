@@ -6,7 +6,6 @@ import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/food/controller/food_controller.dart';
 import 'package:suprapp/app/features/food/pages/sub_catagory_food.dart';
 import 'package:suprapp/app/features/food/widgets/catagory_tab_buttons.dart';
-import 'package:suprapp/app/features/food/widgets/food_filter_widget.dart';
 import 'package:suprapp/app/features/food/widgets/lists.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 

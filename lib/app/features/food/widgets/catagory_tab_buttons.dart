@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/routes/go_router.dart';
 
 class CatagoryTabButtons extends StatelessWidget {
   final String label;

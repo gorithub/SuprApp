@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
-import 'package:suprapp/app/features/all_services/all_services.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
 import 'package:suprapp/app/features/rides/provider/map_provider.dart';
 import 'package:suprapp/app/features/rides/widgets/appbar_seet.dart';

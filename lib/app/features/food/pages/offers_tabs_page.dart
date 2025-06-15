@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/food/widgets/filter_bottom_sheet.dart';
-import 'package:suprapp/app/routes/go_router.dart';
 
 class OffersTabsPage extends StatefulWidget {
   const OffersTabsPage({super.key});

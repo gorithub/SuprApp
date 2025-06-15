@@ -230,7 +230,7 @@ class _ProductDetailPageState extends State<ProductDetail>
                       child: Column(
                         children: [
                           Image.asset(
-                            selectedFood!.image,
+                            selectedFood.image,
                             height: height * 0.3,
                             width: width,
                             fit: BoxFit.cover,

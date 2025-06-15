@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
-import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/home/widgets/categories_gridview.dart';
 import 'package:suprapp/app/features/home/widgets/congratulations_container.dart';
-import 'package:suprapp/app/features/home/widgets/home_app_bar_section.dart';
 import 'package:suprapp/app/features/home/widgets/home_header.dart';
 import 'package:suprapp/app/features/home/widgets/home_product_categories.dart';
 import 'package:suprapp/app/features/home/widgets/star_plus_promo_section.dart';

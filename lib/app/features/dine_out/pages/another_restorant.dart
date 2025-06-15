@@ -7,7 +7,6 @@ import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/dine_out/controller/dine_out_provider.dart';
 import 'package:suprapp/app/features/dine_out/widgets/opening_hour_bottom_sheet.dart';
-import 'package:suprapp/app/features/profile/widgets/custom_arrow_back.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
