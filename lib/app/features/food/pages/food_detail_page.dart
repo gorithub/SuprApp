@@ -234,7 +234,7 @@ class _FoodDetailPageState extends State<FoodDetailPage>
                       width: width,
                       child: Column(
                         children: [
-                          Image.asset(
+                          Image.network(
                             selectedFood!.image,
                             height: height * 0.3,
                             width: width,

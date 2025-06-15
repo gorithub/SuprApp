@@ -18,6 +18,8 @@ import '../../../routes/go_router.dart';
 class AuthProviders extends ChangeNotifier {
   final String accountSid = 'ACa4f84bbe4ca9bce244aa20e45634a404';
   final String authToken = '915ffe3035342b6c68b2ee100f4f9788';
+  // final String accountSid = 'AC9f0a2d5d5a993fbb241dfb39155f4d3e';
+  // final String authToken = 'bd4e6c666748658cf3584a4b9c0fb313';
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   String? _phone;
 

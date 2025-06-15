@@ -13,12 +13,19 @@ class ImageCarouselProvider extends ChangeNotifier {
 
   void _startAutoScroll() {
     _timer = Timer.periodic(const Duration(seconds: 2), (_) {
-      _currentPage = (_currentPage + 1) % imageCount;
-      controller.animateToPage(
-        _currentPage,
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut,
-      );
+      if (_currentPage < imageCount - 1) {
+        _currentPage++;
+        controller.animateToPage(
+          _currentPage,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInOut,
+        );
+      } else {
+        // Reached last → Jump instantly to first (no backward scrolling)
+        _currentPage = 0;
+        controller.jumpToPage(
+            _currentPage); // Use jumpToPage to avoid backward animation
+      }
     });
   }
 
