@@ -4,6 +4,7 @@ import 'package:suprapp/app/core/constants/app_colors.dart';
 import 'package:suprapp/app/core/constants/app_images.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
 import 'package:suprapp/app/features/home/widgets/top_sheet.dart';
+import 'package:suprapp/app/routes/go_router.dart';
 
 class HelpCenterPage extends StatefulWidget {
   const HelpCenterPage({super.key});
@@ -257,6 +258,14 @@ class _HelpCenterPageState extends State<HelpCenterPage>
                             ],
                           ),
                           const SizedBox(height: 8),
+                          InkWell(
+                            onTap: () {
+                              context.pushNamed(AppRoute.activitiesPage);
+                            },
+                            child: _buildHelpItem(
+                              'Show More Activities',
+                            ),
+                          ),
                           _buildHelpItem(
                             "I can't change my account currency",
                           ),

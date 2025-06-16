@@ -34,7 +34,7 @@ class OfferScreen extends StatelessWidget {
       appBar: AppBar(
         leading: const CustomArrowBack(),
         title: Text(
-          "Careem Plus Offers",
+          "Supr Plus Offers",
           style: textTheme(context)
               .bodyLarge
               ?.copyWith(fontWeight: FontWeight.bold),

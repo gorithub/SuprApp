@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:suprapp/app/core/constants/global_variables.dart';
+import 'package:suprapp/app/features/rides/widgets/find_captain_sheet.dart';
 import 'package:suprapp/app/routes/go_router.dart';
 import 'package:suprapp/app/shared/widgets/custom_elevated_button.dart';
 
@@ -71,7 +72,12 @@ class ScheduledRideBottomSheet extends StatelessWidget {
               style: textTheme(context).bodySmall?.copyWith(color: Colors.grey),
             ),
             const SizedBox(height: 24),
-            CustomElevatedButton(text: "Okay got it", onPressed: () {}),
+            CustomElevatedButton(
+              text: "Okay got it",
+              onPressed: () {
+                context.pushNamed(AppRoute.findingCaptain);
+              },
+            ),
             const SizedBox(height: 12),
             GestureDetector(
               onTap: () => context.pushNamed(AppRoute.manageRide),

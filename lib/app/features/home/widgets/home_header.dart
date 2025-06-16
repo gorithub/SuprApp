@@ -199,20 +199,25 @@ class HomeHeader extends StatelessWidget {
                 const SizedBox(
                   width: 20,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Offers for you',
-                        style: textTheme(context).bodySmall!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: colorScheme(context).onSurface,
-                            )),
-                    Text('233',
-                        style: textTheme(context).bodySmall!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: colorScheme(context).onSurface,
-                            )),
-                  ],
+                InkWell(
+                  onTap: () {
+                    context.pushNamed(AppRoute.offer);
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Offers for you',
+                          style: textTheme(context).bodySmall!.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: colorScheme(context).onSurface,
+                              )),
+                      Text('233',
+                          style: textTheme(context).bodySmall!.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: colorScheme(context).onSurface,
+                              )),
+                    ],
+                  ),
                 ),
               ],
             ),
