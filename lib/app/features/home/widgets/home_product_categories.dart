@@ -8,18 +8,20 @@ class HomeProductCategories extends StatelessWidget {
 
   final List<Map<String, String>> sliderItems = [
     {
-      'image': 'assets/images/grocery_banner.jpeg',
+      'image':
+          'https://tapcom-live.ams3.cdn.digitaloceanspaces.com/media/cache/f0/a0/f0a0e2c7269e2c92eb270c41b967da47.jpg',
       'title': 'Shop Healthy Food',
     },
     {
-      'image': 'assets/images/pay_baner.jpeg',
+      'image':
+          'https://www.macopkg.com/wp-content/uploads/2023/02/supermarket-aisle-1536x1152.jpg',
       'title': 'shop Groceries',
     },
-    // {
-    //   'image':
-    //       'https://i.pinimg.com/736x/69/e1/d8/69e1d85f37191bcfd655c9892dcf11f4.jpg',
-    //   'title': 'shop Electronics',
-    // },
+    {
+      'image':
+          'https://i.pinimg.com/736x/69/e1/d8/69e1d85f37191bcfd655c9892dcf11f4.jpg',
+      'title': 'shop Electronics',
+    },
   ];
 
   @override
@@ -47,7 +49,7 @@ class HomeProductCategories extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                      image: AssetImage(item['image']!),
+                      image: NetworkImage(item['image']!),
                       fit: BoxFit.cover,
                     ),
                   ),

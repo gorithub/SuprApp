@@ -16,8 +16,8 @@ class Offer {
 
 final offers = [
   Offer(
-      title: "Careem Plus AED 15/month",
-      subtitle: "Enjoy Careem Plus benefits and save money for AED 15/month",
+      title: "Supr Plus AED 15/month",
+      subtitle: "Enjoy Supr Plus benefits and save money for AED 15/month",
       image: AppImages.abcd,
       durationMonths: 0),
   Offer(

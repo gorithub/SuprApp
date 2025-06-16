@@ -21,7 +21,9 @@ import 'package:suprapp/app/features/food/pages/offers_tabs_page.dart';
 import 'package:suprapp/app/features/food/pages/order_confirmation_page.dart';
 import 'package:suprapp/app/features/groceries/groceries_home_screen.dart';
 import 'package:suprapp/app/features/groceries/tabs/detail_product_screen.dart';
+import 'package:suprapp/app/features/home/widgets/activities_page.dart';
 import 'package:suprapp/app/features/home/widgets/help_center_page.dart';
+import 'package:suprapp/app/features/home/widgets/ride_detail_page.dart';
 import 'package:suprapp/app/features/profile/pages/account_setting_screen.dart';
 import 'package:suprapp/app/features/profile/pages/add_bank_screen.dart';
 import 'package:suprapp/app/features/profile/pages/bank_screen.dart';
@@ -50,6 +52,7 @@ import 'package:suprapp/app/features/rides/pages/save_location_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_city_page.dart';
 import 'package:suprapp/app/features/rides/pages/search_page.dart';
 import 'package:suprapp/app/features/rides/pages/your_ride.dart';
+import 'package:suprapp/app/features/rides/widgets/find_captain_sheet.dart';
 import 'package:suprapp/app/features/shops/pages/shops_screen.dart';
 import 'package:suprapp/app/features/supr_pay/pages/supr_pay.dart';
 import 'package:suprapp/app/routes/error_route.dart';
@@ -564,6 +567,30 @@ class MyAppRouter {
                 state: state,
                 child: const ShopsScreen(),
               )),
+      GoRoute(
+          name: AppRoute.findingCaptain,
+          path: '/${AppRoute.findingCaptain}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const FindCaptainBottomSheet(),
+              )),
+      GoRoute(
+          name: AppRoute.activitiesPage,
+          path: '/${AppRoute.activitiesPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const ActivitiesPage(),
+              )),
+      GoRoute(
+          name: AppRoute.rideDetailPage,
+          path: '/${AppRoute.rideDetailPage}',
+          pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+                context: context,
+                state: state,
+                child: const RideDetailPage(),
+              )),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -604,6 +631,8 @@ class AppRoute {
   static const String savedAddressPage = 'saved-address-page';
   static const String manageBusinessProfile = 'manage-business-profile';
   static const String helpCenterPage = 'help-center-page';
+  static const String activitiesPage = 'activities-page';
+  static const String rideDetailPage = 'ride-detail-page';
   //!---- Auth Section---- !//
   static const String phoneAuthPage = 'phone-auth-page';
   static const String verifyPhoneAuthPage = 'verify-phone-auth-page';
@@ -637,6 +666,7 @@ class AppRoute {
   static const String manageRide = 'manage-ride-page';
   static const String yourRidePage = 'your-ride';
   static const String activity = 'activity-page';
+  static const String findingCaptain = 'finding-captain-sheet';
   static const String detailcancelRidePage = 'detail-cancel';
   //!---- Grocery Section---- !//
   static const String groceryHomeScreen = 'grocery-home-screen';

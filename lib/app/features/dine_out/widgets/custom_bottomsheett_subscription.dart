@@ -24,7 +24,7 @@ class SubscriptionBottomSheet extends StatelessWidget {
             style: textTheme(context).labelLarge,
           ),
           const SizedBox(height: 6),
-          Text("Careem Plus",
+          Text("Supr Plus",
               style: textTheme(context)
                   .headlineSmall
                   ?.copyWith(fontWeight: FontWeight.bold)),
